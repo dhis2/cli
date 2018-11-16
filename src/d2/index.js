@@ -7,6 +7,7 @@ commandant.init({
   commands: [
     require('./commands/info'),
     require('./commands/config'),
+    require('./commands/cache'),
     { name: 'backend', alias: 'b' },
   ],
   config
