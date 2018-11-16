@@ -3,7 +3,7 @@ const path = require('path');
 const request = require("request");
 const tar = require('tar');
 const mkdirp = require('mkdirp');
-const config = require('./config');
+const config = require('./ConfigLoader').config;
 const reporter = require('./reporter');
 
 class D2Cache {

@@ -1,10 +1,10 @@
-const configDefaults = require('./configDefaults');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const colors = require('colors');
+const commander = require("commander");
 
-const homedir = 'homedir';
+const homedir = os.homedir();
 const rcFileName = '.d2rc';
 const configFileName = 'config.yaml';
 const loader = {
@@ -15,16 +15,19 @@ const loader = {
   configFiles: [],
 }
 
-require('commander')
-  .option('--verbose', 'Log all the things')
-  .option('--config <file>', 'Specify a custom config file');
+const builtins = {
+  verbose: false,
+  quiet: false,
+  rcfile: undefined,
+  cache: path.join(homedir, '.cache'),
+};
 
-const log = (msg, ...args) => {
-  if (loader.config.verbose) {
-    console.log(`${"[CONFIG]".bold} ${msg} ${args.join(', ')}`.gray);
+const log = (msg, force) => {
+  if (loader.config.verbose || process.env.NODE_ENV === 'development') {
+    process.stderr.write(`${"[CONFIG]".bold} ${msg}\n`.gray);
   }
 }
-const warn = (msg) => {
+const warn = (msg, force) => {
   log(msg.yellow)
 }
 const err = (msg) => {
@@ -81,17 +84,17 @@ const setConfigProps = (configObj, prefix, sources, schema) => {
   });
 };
 
-const loadConfigFileSources = (argConfigFile) => {
+const loadConfigFileSources = (defaults, argConfigFile) => {
   const envConfigFile = process.env[makeEnvKey('config')];
 
-  const cacheDir = configDefaults.cache;
+  const cacheConfig = defaults.cache ? path.join(defaults.cache, configFileName) : null;
 
   const files = [
     argConfigFile,
     envConfigFile,
     path.join(process.cwd(), rcFileName),
     path.join(homedir, rcFileName),
-    path.join(cacheDir, configFileName),
+    cacheConfig,
   ];
 
   const fileSources = [];
@@ -124,29 +127,63 @@ const setVerbosity = (sources) => {
   }
 }
 
-function load(args) {
+let argSource = {};
+function load(defaults) {
   if (loader.loaded) {
     return;
   }
 
+  defaults = {
+    ...builtins,
+    ...defaults,
+  };
+
   const verbositySources = [
-    { name: 'CLI', getter: (key, keyPath) => args[keyPath] },
+    { name: 'CLI', getter: (key, keyPath) => argSource[keyPath] },
     { name: 'ENV', getter: (key, keyPath) => process.env[makeEnvKey(keyPath)] },
   ]
   setVerbosity(verbositySources);
 
+  if (!commander._name.length) {
+    warn(`CLI configuration options will not be parsed.`);
+    warn(`Call ${"configLoader.load".bold} after ${"commander.parse".bold} to support command-line configuration.`);
+    verbositySources.shift();
+  }
+
   const sources = [
     ...verbositySources,
-    ...loadConfigFileSources(args.config),
-    { name: 'DEFAULT', values: configDefaults },
+    ...loadConfigFileSources(defaults, argSource.rcfile),
+    { name: 'DEFAULT', values: defaults },
   ];
   log(`Config sources:`)
   sources.forEach(s => log(`\t${s.name}${s.filePath ? ` @ ${s.filePath}` : ""}`));
 
-  setConfigProps(loader.config, '', sources, configDefaults);
+  setConfigProps(loader.config, '', sources, defaults);
   loader.loaded = true;
 
   return loader.config;
 }
+
+const splitConfigArg = assignment => {
+  const idx = assignment.indexOf('=');
+  if (idx === -1) {
+    return [assignment.trim(), true]
+  } else {
+    return [assignment.substr(0, idx).trim(), assignment.substr(idx+1).trim()]
+  }
+}
+const updateArgSource = (key, value) => {
+  argSource[key] = value;
+}
+
+commander
+  .option("--verbose", "Log all the things")
+    .on('option:verbose', () => updateArgSource('verbose', 'true'))
+  .option("--quiet", "Only print essential output")
+    .on('option:quiet', () => updateArgSource('quiet', 'true'))
+  .option("--rcfile <file>", "Specify a custom JSON config file")
+    .on('option:rcfile', (file) => updateArgSource('rcfile', file))
+  .option("--config <assignment>", "Explicitly set a config value (i.e. cache=./d2cache)")
+    .on('option:config', (assignment) => updateArgSource(...splitConfigArg(assignment)));
 
 module.exports = loader;

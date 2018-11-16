@@ -1,37 +1,42 @@
 const colors = require("colors");
-const config = require("./config");
+const config = require("./ConfigLoader").config;
 
 const levels = [
   {
-    name: "dump",
-    verbose: true,
-    msgEnhancer: msg => `${msg}`.gray
-  },
-  {
     name: "debug",
     verbose: true,
+    stderr: true,
     msgEnhancer: msg => `${"[DEBUG]".bold.gray} ${colors.gray(msg)}\n`
   },
   {
     name: "info",
     verbose: false,
+    stderr: true,
     msgEnhancer: msg => `${colors.cyan(msg)}\n`
   },
   {
-    name: "print",
-    verbose: false,
-    msgEnhancer: msg => `${msg}\n`
-  },
-  {
-    name: "warn",
-    verbose: false,
-    msgEnhancer: msg => `${"[WARNING]".bold.yellow} ${colors.yellow(msg)}\n`
+    name: "dump",
+    verbose: true,
+    quiet: true,
+    msgEnhancer: msg => colors.gray(`${msg}`)
   },
   {
     name: "dumpErr",
     verbose: true,
     stderr: true,
-    msgEnhancer: msg => `${msg}`.gray
+    msgEnhancer: msg => colors.bgGray(`${msg}`)
+  },
+  {
+    name: "print",
+    verbose: false,
+    quiet: true,
+    msgEnhancer: msg => `${msg}\n`
+  },
+  {
+    name: "warn",
+    verbose: false,
+    stderr: true,
+    msgEnhancer: msg => `${"[WARNING]".bold.yellow} ${colors.yellow(msg)}\n`
   },
   {
     name: "printErr",
@@ -43,23 +48,26 @@ const levels = [
     name: "error",
     verbose: false,
     stderr: true,
-    msgEnhancer: msg => `${"[ERROR]".bold.red} ${msg.red}\n`
+    msgEnhancer: msg => `${"[ERROR]".bold.red} ${colors.red(msg)}\n`
   }
 ];
 
+const shouldLog = (lvl) => (
+  (
+    !lvl.verbose || config.verbose !== false // If config.verbose is still undefined we shouldn't suppress logs
+  ) && (
+    !config.quiet || lvl.quiet
+  )
+);
+
 const write = (lvl = {}, msg) => {
-  // console.log("write-pre", lvl, msg, config);
-  if (!lvl.verbose || config.verbose) {
-    // console.log("write", msg);
+  if (shouldLog(lvl)) {
     if (lvl.msgEnhancer) {
       msg = lvl.msgEnhancer(msg);
     }
-    // console.log('write-post');
     if (lvl.stderr) {
-      // console.log("write-err", msg);
       process.stderr.write(msg);
     } else {
-      // console.log("write-out", msg);
       process.stdout.write(msg);
     }
   }

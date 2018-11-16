@@ -26,9 +26,9 @@ const reconstructOptionsHash = (command) => {
     [option.name()]: true,
   }), {});
 
-  const options = Object.keys(command).reduce((out, key, val) => {
+  const options = Object.keys(command).reduce((out, key) => {
     if (optionNames[key]) {
-      out[key] = val;
+      out[key] = command[key];
     }
     return out;
   }, {});
@@ -55,7 +55,8 @@ const parseCommand = (out, config) => {
     out.command = args.pop();
     out.options = reconstructOptionsHash(out.command);
     out.args = args;
-    out.unknown = out.command._unknownOptions;
+    out.unknown = out.command._unknownOptions || [];
+    out.isSubCommand = !run;
     out.run = run || runSubCommand;
     out.config = config;
   });

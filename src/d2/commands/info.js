@@ -1,7 +1,8 @@
 const envInfo = require("envinfo");
+const { reporter } = require('../../util/commandant');
 
-const run = () => {
-  envInfo.run(
+const run = async () => {
+  const info = await envInfo.run(
     {
       System: ['OS', 'CPU', 'Memory', 'Shell'],
       Binaries: ['Node', 'Yarn', 'npm', 'docker-compose', 'docker'],
@@ -10,8 +11,9 @@ const run = () => {
       IDEs: ['VSCode', 'Sublime Text'],
       Databases: ['PostgreSQL'],
     },
-    { console: true, showNotFound: true }
+    { showNotFound: true }
   );
+  reporter.print(info);
 }
 
 module.exports = {

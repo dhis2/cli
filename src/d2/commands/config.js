@@ -1,7 +1,6 @@
-const config = require('../../util/config');
-const reporter = require('../../util/reporter');
+const { config, reporter } = require('../../util/commandant');
 
-const run = ({ args, options }) => {
+const run = ({ options }) => {
   reporter.print(JSON.stringify(config, null, options.format ? 2 : null));
 }
 

@@ -1,5 +1,5 @@
 const { spawn } = require("child_process");
-const reporter = require('./reporter');
+const { reporter } = require('./commandant');
 
 module.exports = function ({ cmd, args, ...opts }) {
   reporter.info(`> ${cmd} ${args.join(' ')}`);

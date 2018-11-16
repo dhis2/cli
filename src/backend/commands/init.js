@@ -1,5 +1,4 @@
-const reporter = require('../../util/reporter');
-const cache = require('../../util/cache');
+const { cache, reporter } = require("../../util/commandant");
 
 const backendGithubURL =
   "https://github.com/amcgee/dhis2-backend/archive/master.tar.gz";
