@@ -1,6 +1,6 @@
 const colors = require('colors');
 const exec = require('../../util/exec');
-const { cache, reporter } = require('../../util/commandant');
+const { cache, reporter } = require('commandant');
 
 const makeComposeProject = version => `d2-backend-${version}`;
 

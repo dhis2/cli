@@ -1,5 +1,5 @@
 const envInfo = require("envinfo");
-const { reporter } = require('../../util/commandant');
+const { reporter } = require('commandant');
 
 const run = async () => {
   const info = await envInfo.run(

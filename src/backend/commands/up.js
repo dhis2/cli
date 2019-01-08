@@ -1,32 +1,39 @@
 const colors = require('colors');
+const path = require('path');
 const exec = require('../../util/exec');
-const { config, cache, reporter } = require("../../util/commandant");
+const { config, cache, reporter } = require("commandant");
+const { initDockerComposeCache } = require('../common');
+const { tryCatchAsync } = require('../../util/helpers');
 
 const makeComposeProject = version => `d2-backend-${version}`;
 
 const run = async function ({ args, options } = {}) {
-  const { tag = config.backend.tag, port = config.backend.port } = options;
-  if (!await cache.exists("backend/dhis2-backend-master")) {
-    reporter.error(`No cached ${"dhis2-backend".bold} found, please run ${"d2 backend init".bold.blue} and try again.`);
+  const tag = args[0];
+  const { port = config.backend.port } = options;
+  const cacheLocation = await initDockerComposeCache(false);
+  if (!cacheLocation) {
+    reporter.error('Failed to initialize cache...');
     process.exit(1);
   }
-  console.log(`Spinning up backend version ${colors.cyan(tag)}`);
-  try {
-    await exec({
+  reporter.info(`Spinning up backend version ${colors.cyan(tag)}`);
+  const res = await tryCatchAsync('exec(docker-compose)',
+    exec({
       cmd: 'docker-compose',
-      args: ["-p", makeComposeProject(tag), "-f", cache.getCacheLocation("backend/dhis2-backend-master/docker-compose.yml"), "up", '-d'],
+      args: ["-p", makeComposeProject(tag), "-f", path.join(cacheLocation, "docker-compose.yml"), "up", '-d'],
       env: {
         'DHIS2_CORE_TAG': tag,
         'DHIS2_CORE_PORT': port,
       },
-    });
-  } catch (e) {
+    })
+  );
+  if (res.err) {
+    reporter.error('Failed to spin up backend docker-compose cluster');
     process.exit(1);
   }
 }
 
 module.exports = {
-  name: "up",
+  name: "up <tag>",
   alias: "u",
   options: [
     [

@@ -1,4 +1,4 @@
-const { config, reporter } = require('../../util/commandant');
+const { config, reporter } = require('commandant');
 
 const run = ({ options }) => {
   reporter.print(JSON.stringify(config, null, options.format ? 2 : null));

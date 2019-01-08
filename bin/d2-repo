@@ -1,0 +1,2 @@
+#!/usr/bin/env node
+require('@dhis2/packages/packages.js');
