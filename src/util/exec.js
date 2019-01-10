@@ -1,9 +1,10 @@
 const { spawn } = require("child_process");
-const { reporter } = require('commandant');
+const chalk = require('chalk');
+const reporter = require('./reporter');
 
 module.exports = function ({ cmd, args, ...opts }) {
   reporter.info(`> ${cmd} ${args.join(' ')}`);
-  const label = `<${cmd}> `.bold;
+  const label = chalk.bold(`<${cmd}> `);
 
   const env = {
     ...process.env,
@@ -33,10 +34,10 @@ module.exports = function ({ cmd, args, ...opts }) {
 
     child.on('close', code => {
       if (code !== 0) {
-        reporter.error(`${cmd.bold} exited with non-zero exit code (${code}).`);
+        reporter.error(`${chalk.bold(cmd)} exited with non-zero exit code (${code}).`);
         reject();
       } else {
-        reporter.info(`${cmd.bold} completed successfully.`);
+        reporter.info(`${chalk.bold(cmd)} completed successfully.`);
         resolve();
       }
     })

@@ -1,5 +1,5 @@
 const colors = require('colors');
-const { reporter } = require('commandant');
+const reporter = require('./reporter');
 
 module.exports.tryCatchAsync = async (name, promise) => {
   if (arguments.length === 1) {

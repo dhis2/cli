@@ -1,8 +1,11 @@
 const fs = require("fs");
 const request = require("request");
 const tar = require("tar");
-
+const chalk = require('chalk');
+const mkdirp = require('mkdirp');
 const reporter = require('../reporter'); // TODO: generalize
+
+const { rename } = require('./fsAsync');
 
 module.exports = async ({ url, name, tmpLoc, outLoc, raw }) => {
   const p = new Promise(async (resolve, reject) => {
@@ -30,7 +33,7 @@ module.exports = async ({ url, name, tmpLoc, outLoc, raw }) => {
         )
         .on("end", async () => {
           try {
-            await renameAsync(tmpLoc, outLoc);
+            await rename(tmpLoc, outLoc);
             resolve(outLoc);
           } catch (e) {
             reject(

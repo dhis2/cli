@@ -4,6 +4,7 @@ const mkdirp = require('mkdirp');
 const reporter = require('../reporter'); // TODO: generalize
 
 const { rimraf, exists, readdir, stat, rename } = require('./fsAsync');
+const fetchAndExtract = require('./fetchAndExtract');
 
 class Cache {
   constructor({ name, cacheRoot }) {
@@ -14,10 +15,16 @@ class Cache {
     } else {
       throw new Error('Either name or cacheDir must be specified to Cache initializer');
     }
+
+    mkdirp(this.baseDir);
   } 
 
   async exists(pathname) {
     return await exists(this.getCacheLocation(pathname));
+  }
+
+  get baseDir() {
+    return path.join(this.cacheRoot, 'cache');
   }
 
   get tmpDir() {
@@ -25,8 +32,8 @@ class Cache {
   }
 
   getCacheLocation(pathname) {
-    const loc = path.join(this.cacheRoot, pathname);
-    if (loc.indexOf(this.cacheRoot) !== 0) {
+    const loc = path.join(this.baseDir, pathname);
+    if (loc.indexOf(this.baseDir) !== 0) {
       throw new Error("Cache items must be within the cache directory, relative paths are not allowed.");
     }
     return loc;

@@ -12,8 +12,6 @@
   "dependencies": {
     "@dhis2/packages": "^1.3.0",
     "cli-table": "^0.3.1",
-    "colors": "^1.3.2",
-    "commandant": "https://github.com/amcgee/commandant.git",
     "envinfo": "^5.12.1",
     "inquirer": "^6.2.0",
     "mkdirp": "^0.5.1",

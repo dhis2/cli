@@ -1,4 +1,4 @@
-const { reporter } = require('commandant');
+const reporter = require('../../util/reporter');
 const { initDockerComposeCache } = require('../common');
 
 const run = async ({ force, ...argv }) => {
