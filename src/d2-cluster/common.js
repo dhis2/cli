@@ -1,8 +1,8 @@
-const { config, cache, reporter } = require("commandant");
+const reporter = require('../util/reporter');
 
 const dockerComposeCacheName = 'docker-compose-backend';
 
-module.exports.initDockerComposeCache = async (force) => {
+module.exports.initDockerComposeCache = async ({ cache, dockerComponseRepository, force }) => {
   const exists = await cache.exists(dockerComposeCacheName);
   if (exists && !force) {
     reporter.debug('Skipping docker compose repo initialization, found cached dir');
@@ -11,7 +11,7 @@ module.exports.initDockerComposeCache = async (force) => {
 
   reporter.info('Initializing Docker Compose repository...')
   try {
-    return await cache.get(config.backend.dockerComposeRepository, dockerComposeCacheName, {
+    return await cache.get(dockerComposeRepository, dockerComposeCacheName, {
       force: true
     }); 
   } catch (e) {

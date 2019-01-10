@@ -1,5 +1,5 @@
 const envInfo = require("envinfo");
-const { reporter } = require('commandant');
+const reporter = require('../../../util/reporter');
 
 const run = async () => {
   const info = await envInfo.run(
@@ -17,8 +17,7 @@ const run = async () => {
 }
 
 module.exports = {
-  name: 'info',
-  alias: 'i',
-  description: 'Get information about the system environment',
-  run
+  command: 'system',
+  desc: 'Print system environment information',
+  handler: run
 }

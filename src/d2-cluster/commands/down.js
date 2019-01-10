@@ -26,11 +26,20 @@ const run = async function ({ args, options = {} } = {}) {
 }
 
 module.exports = {
-  name: 'down',
-  alias: 'd',
+  name: "down",
+  desc: "Destroy a running container",
+  alias: "d",
   options: [
-    ['--tag [t]', 'Specify the DHIS2 Core version to use (a tag of hub.docker.com/u/amcgee/dhis2-backend)', 'dev'],
-    ['--port [p]', 'Specify the port on which to expose the DHIS2 instance', '8080']
+    [
+      "--tag [t]",
+      "Specify the DHIS2 Core version to use (a tag of hub.docker.com/u/amcgee/dhis2-backend)",
+      "dev"
+    ],
+    [
+      "--port [p]",
+      "Specify the port on which to expose the DHIS2 instance",
+      "8080"
+    ]
   ],
   run
 };
