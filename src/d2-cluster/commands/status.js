@@ -3,12 +3,7 @@ const exec = require("../../util/exec");
 const reporter = require("../../util/reporter");
 const { initDockerComposeCache, makeComposeProject } = require("../common");
 
-const run = async function({ tag = "dev", getCache, ...argv }) {
-  const cacheLocation = await initDockerComposeCache({
-    cache: getCache(),
-    dockerComposeRepository: argv.backend.dockerComposeRepository,
-    force: false,
-  });
+const run = async function({ tag = "dev", ...argv }) {
   try {
     await exec({
       cmd: "docker",
