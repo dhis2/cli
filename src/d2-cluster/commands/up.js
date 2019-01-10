@@ -2,12 +2,10 @@ const colors = require('colors');
 const path = require('path');
 const exec = require('../../util/exec');
 const reporter = require('../../util/reporter');
-const { initDockerComposeCache } = require('../common');
+const { initDockerComposeCache, makeComposeProject } = require("../common");
 const { tryCatchAsync } = require('../../util/helpers');
 
-const makeComposeProject = version => `d2-backend-${version}`;
-
-const run = async function ({ tag, port, ...argv }) {
+const run = async function ({ tag = 'dev', port, ...argv }) {
   const cacheLocation = await initDockerComposeCache({
     cache: argv.getCache(),
     dockerComposeRepository: argv.backend.dockerComposeRepository,
@@ -26,6 +24,7 @@ const run = async function ({ tag, port, ...argv }) {
         'DHIS2_CORE_TAG': tag,
         'DHIS2_CORE_PORT': port,
       },
+      pipe: true,
     })
   );
   if (res.err) {
@@ -35,16 +34,10 @@ const run = async function ({ tag, port, ...argv }) {
 }
 
 module.exports = {
-  command: "up <tag>",
+  command: "up [tag]",
   desc: 'Spin up a new cluster',
   alias: "u",
   builder: {
-    "tag": {
-      alias: 't',
-      desc: "Specify the DHIS2 Core version to use (a tag of hub.docker.com/u/amcgee/dhis2-backend)",
-      type: 'string',
-      default: 'dev'
-    },
     "port": {
       alias: 'p',
       desc: "Specify the port on which to expose the DHIS2 instance",

@@ -26,6 +26,8 @@ module.exports.initDockerComposeCache = async ({
       return null;
     }
   }
-  
+
   return null;
 };
+
+module.exports.makeComposeProject = version => `d2-cluster-${version}`;

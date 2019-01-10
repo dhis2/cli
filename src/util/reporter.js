@@ -1,4 +1,4 @@
-const colors = require("colors");
+const chalk = require('chalk');
 // const config = require("./ConfigLoader").config;
 const util = require('util');
 
@@ -20,25 +20,45 @@ const levels = [
     name: "debug",
     verbose: true,
     stderr: true,
-    msgEnhancer: msg => `${"[DEBUG]".bold.gray} ${colors.gray(msg)}\n`
+    msgEnhancer: msg => `${chalk.bold.gray("[DEBUG]")} ${chalk.gray(msg)}\n`
+  },
+  {
+    name: "debugErr",
+    verbose: true,
+    stderr: true,
+    msgEnhancer: msg =>
+      `${chalk.bold.red.dim("[DEBUG ERROR]")} ${chalk.red.dim(msg)}\n`
   },
   {
     name: "info",
     verbose: false,
     stderr: true,
-    msgEnhancer: msg => `${colors.cyan(msg)}\n`
+    msgEnhancer: msg => `${chalk.cyan(msg)}\n`
   },
   {
     name: "dump",
     verbose: true,
     quiet: true,
-    msgEnhancer: msg => colors.gray(`${msg}`)
+    msgEnhancer: msg => chalk.gray(`${msg}`)
+  },
+  {
+    name: "pipe",
+    verbose: false,
+    quiet: true,
+    msgEnhancer: msg => msg
+  },
+  {
+    name: "pipeErr",
+    verbose: false,
+    quiet: true,
+    stderr: true,
+    msgEnhancer: msg => msg
   },
   {
     name: "dumpErr",
     verbose: true,
     stderr: true,
-    msgEnhancer: msg => colors.bgRed(`${msg}`)
+    msgEnhancer: msg => chalk.bgRed(`${msg}`)
   },
   {
     name: "print",
@@ -50,7 +70,8 @@ const levels = [
     name: "warn",
     verbose: false,
     stderr: true,
-    msgEnhancer: msg => `${"[WARNING]".bold.yellow} ${colors.yellow(msg)}\n`
+    msgEnhancer: msg =>
+      `${chalk.bold.yellow("[WARNING]")} ${chalk.yellow(msg)}\n`
   },
   {
     name: "printErr",
@@ -62,7 +83,7 @@ const levels = [
     name: "error",
     verbose: false,
     stderr: true,
-    msgEnhancer: msg => `${"[ERROR]".bold.red} ${colors.red(msg)}\n`
+    msgEnhancer: msg => `${chalk.bold.red("[ERROR]")} ${chalk.red(msg)}\n`
   }
 ];
 
