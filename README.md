@@ -71,8 +71,12 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
 - [x] Automatic update checks with [update-notifier](https://npmjs.com/package/update-notifier) (updates checked at most 1x per day)
 - [x] Basic DHIS2 Docker cluster management with `d2 cluster`
 - [ ] Incorporate [packages](https://github.com/dhis2/packages) as a command module
-- [ ] Implement unit and integration tests
+- [ ] Implement unit tests, integration tests, and `code-style`
 - [ ] Enforce Commit-Style and Travis CI for automated (non-manual) NPM publishing
 - [ ] Build standalone packaged executables with [pkg](https://www.npmjs.com/package/pkg)
 - [ ] Cut version 1.0 with baseline feature set and semantic versioning guarantee
-- [ ] Consider mono-repo or poly-repo for code sharing (particularly sharing the `cliUtils` package with different cli modules
+
+### Bonus features
+
+- [ ] Consider mono-repo or poly-repo for code sharing (particularly sharing `cliUtils`)
+- [ ] Consider using typescript for better static analysis
