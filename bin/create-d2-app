@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+const { makeEntryPoint } = require('../src/util/cliUtils');
+const command = require('../src/d2/commands/app/create');
+
+makeEntryPoint(command).parse();

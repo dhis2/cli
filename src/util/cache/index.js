@@ -1,5 +1,6 @@
 const path = require('path');
 const mkdirp = require('mkdirp');
+const os = require('os');
 
 const reporter = require('../reporter'); // TODO: generalize
 

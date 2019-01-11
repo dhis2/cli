@@ -1,41 +1,30 @@
 const chalk = require("chalk");
+const fs = require("fs");
 const defaultConfig = require("../configDefaults");
 const cacheMiddleware = require("../cache/middleware");
 const reporter = require("../reporter");
-const { strings } = require('./');
 
-module.exports = ({ desc, builder }) => {
+module.exports = ({ desc, builder, handler }) => {
   const yargs = require("yargs"); // singleton
   // TODO: Show description
 
   builder(yargs);
-  // yargs
-    // .demandCommand(1, strings.missingCommand)
-    // .recommendCommands()
-    // .check((argv) => {
-    //   console.log(yargs.getContext())
-    //   if (argv.command && y.getCommandInstance().getCommands().indexOf(argv.command) === -1) {
-    //     throw new Error(strings.unrecognizedCommand);
-    //   }
-    //   return true;
-    // })
 
   // Define global options
   yargs
-    .env("D2")
     .help()
     .alias("h", "help")
-    .version()
-    .pkgConf('d2')
-    .config(defaultConfig)
-    .config("config", cfg => {
-      const r = JSON.parse(fs.readFileSync(cfg));
-      console.log(cfg, r);
-      return r;
-    });
+    .version();
 
-  // Configure output
-  // yargs.wrap(72);
+  // Configuration loading
+  yargs
+    .config(defaultConfig) // First, load defaults
+    .config("config", file => { // Next, support configuration from a --config=<file> JSON file
+      const r = JSON.parse(fs.readFileSync(file));
+      return r;
+    })
+    .env("D2") // D2_* environment variables get mapped to argv
+    .pkgConf("d2"); // Support d2 key in package.json
 
   yargs.updateStrings({
     "Options:": chalk.bold(`Options:`),
@@ -46,9 +35,15 @@ module.exports = ({ desc, builder }) => {
     )
   });
 
+  // Support cache engine and reporter functionality
   yargs.middleware([cacheMiddleware({ name: "d2" }), reporter.middleware()]);
 
+  // The actual business
   yargs.parse();
+
+  if (handler) {
+    handler(yargs.argv)
+  }
 
   return yargs;
 }

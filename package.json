@@ -22,6 +22,7 @@
   },
   "bin": {
     "d2": "bin/d2",
-    "d2-cluster": "bin/d2-cluster"
+    "d2-cluster": "bin/d2-cluster",
+    "create-d2-app": "bin/create-d2-app"
   }
 }
