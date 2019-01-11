@@ -7,5 +7,4 @@ module.exports = namespace("app", {
     require('./app/create'),
     require('./app/scripts'),
   ]
-  // builder: yargs => yargs.commandDir("app"),
 });
