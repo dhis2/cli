@@ -70,6 +70,7 @@ class Cache {
       reporter.debug(`[CACHE] fetchAndExtract error: ${e}`);
       throw `Failed to fetch ${name}`;
     }
+    return outLoc;
   }
 
   async purge(pathname) {

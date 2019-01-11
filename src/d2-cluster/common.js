@@ -1,6 +1,6 @@
 const reporter = require('../util/reporter');
 
-const dockerComposeCacheName = 'docker-compose-backend';
+const dockerComposeCacheName = 'd2-cluster-docker-compose';
 
 module.exports.initDockerComposeCache = async ({
   cache,
@@ -15,16 +15,14 @@ module.exports.initDockerComposeCache = async ({
     return cache.getCacheLocation(dockerComposeCacheName);
   }
 
-  if (force) {
-    reporter.info("Initializing Docker Compose repository...");
-    try {
-      return await cache.get(dockerComposeRepository, dockerComposeCacheName, {
-        force: true
-      });
-    } catch (e) {
-      reporter.error("Initialization failed!");
-      return null;
-    }
+  reporter.info("Initializing Docker Compose repository...");
+  try {
+    return await cache.get(dockerComposeRepository, dockerComposeCacheName, {
+      force: true
+    });
+  } catch (e) {
+    reporter.error("Initialization failed!");
+    return null;
   }
 
   return null;

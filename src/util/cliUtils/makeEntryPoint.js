@@ -35,7 +35,7 @@ module.exports = ({ desc, builder }) => {
     });
 
   // Configure output
-  yargs.wrap(72);
+  // yargs.wrap(72);
 
   yargs.updateStrings({
     "Options:": chalk.bold(`Options:`),
