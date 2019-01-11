@@ -1,6 +1,6 @@
 {
   "name": "@dhis2/cli",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "A command line interface for DHIS2 development workflows",
   "main": "src/d2/index.js",
   "author": "Austin McGee <austin@dhis2.org>",
@@ -17,6 +17,7 @@
     "request": "^2.88.0",
     "rimraf": "^2.6.3",
     "tar": "^4.4.8",
+    "update-notifier": "^2.5.0",
     "yargs": "^12.0.5"
   },
   "bin": {

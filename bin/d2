@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-const { makeEntryPoint } = require('../src/util/cliUtils');
+const { makeEntryPoint, notifyOfUpdates } = require("../src/util/cliUtils");
 const command = require('../src/d2');
+
+notifyOfUpdates(require('../package.json'));
 
 makeEntryPoint(command).parse();

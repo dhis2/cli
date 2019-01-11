@@ -17,3 +17,4 @@ module.exports.groupGlobalOptions = groupGlobalOptions;
 
 module.exports.namespace = require('./namespace');
 module.exports.makeEntryPoint = require('./makeEntryPoint');
+module.exports.notifyOfUpdates = require("./notifyOfUpdates");
