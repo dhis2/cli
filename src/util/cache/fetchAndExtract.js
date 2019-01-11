@@ -42,9 +42,9 @@ module.exports = async ({ url, name, tmpLoc, outLoc, raw }) => {
           }
         });
     } else {
-      reporter.debug(`[CACHE] Fetching ${colors.bold(name)}`);
-      reporter.debug(`[CACHE]   from ${colors.bold(url)}`);
-      reporter.debug(`[CACHE]   to ${colors.bold(outLoc)}`);
+      reporter.debug(`[CACHE] Fetching ${chalk.bold(name)}`);
+      reporter.debug(`[CACHE]   from ${chalk.bold(url)}`);
+      reporter.debug(`[CACHE]   to ${chalk.bold(outLoc)}`);
       stream
         .pipe(fs.createWriteStream(outLoc))
         .on("end", () => resolve(outLoc));

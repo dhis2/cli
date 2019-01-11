@@ -2,7 +2,7 @@ const fs = require('fs');
 const chalk = require("chalk");
 const reporter = require('../../../util/reporter');
 const inquirer = require('inquirer');
-const Table = require("cli-table");
+const Table = require("cli-table3");
 
 const printStats = (table, name, stats) => {
   const nameColor = stats.isDirectory() ? chalk.blue : chalk.green;

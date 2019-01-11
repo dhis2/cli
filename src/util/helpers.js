@@ -1,4 +1,4 @@
-const colors = require('colors');
+const chalk = require('chalk');
 const reporter = require('./reporter');
 
 module.exports.tryCatchAsync = async (name, promise) => {
@@ -12,7 +12,7 @@ module.exports.tryCatchAsync = async (name, promise) => {
       out: await promise
     }
   } catch (e) {
-    reporter.debug(`tryCatchAsync(${colors.bold(name)}) error: ${e}`);
+    reporter.debug(`tryCatchAsync(${chalk.bold(name)}) error: ${e}`);
     return { err: e || 'unknown', out: null};
   }
 }

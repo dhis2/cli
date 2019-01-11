@@ -1,4 +1,4 @@
-const colors = require('colors');
+const chalk = require('chalk');
 const path = require('path');
 const exec = require('../../util/exec');
 const reporter = require('../../util/reporter');
@@ -15,7 +15,7 @@ const run = async function ({ tag = 'dev', port, ...argv }) {
     reporter.error('Failed to initialize cache...');
     process.exit(1);
   }
-  reporter.info(`Spinning up backend version ${colors.cyan(tag)}`);
+  reporter.info(`Spinning up backend version ${chalk.cyan(tag)}`);
   const res = await tryCatchAsync('exec(docker-compose)',
     exec({
       cmd: 'docker-compose',
