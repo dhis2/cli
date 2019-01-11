@@ -5,7 +5,7 @@ module.exports.strings = {
     "You need at least one command before moving on."
   ),
   unrecognizedCommand: chalk.red(
-    "Command not recognized!"
+    "Command not recognized..."
   )
 }
 

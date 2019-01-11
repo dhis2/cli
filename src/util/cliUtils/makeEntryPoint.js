@@ -9,9 +9,16 @@ module.exports = ({ desc, builder }) => {
   // TODO: Show description
 
   builder(yargs);
-  yargs
-    .demandCommand(1, strings.missingCommand)
-    .recommendCommands();
+  // yargs
+    // .demandCommand(1, strings.missingCommand)
+    // .recommendCommands()
+    // .check((argv) => {
+    //   console.log(yargs.getContext())
+    //   if (argv.command && y.getCommandInstance().getCommands().indexOf(argv.command) === -1) {
+    //     throw new Error(strings.unrecognizedCommand);
+    //   }
+    //   return true;
+    // })
 
   // Define global options
   yargs

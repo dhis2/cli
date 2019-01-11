@@ -8,6 +8,6 @@ module.exports = {
     yargs.option('silent')
   },
   handler: argv => {
-    console.log('CREATE', argv)
+    console.log('CREATE APP HERE')
   }
 };

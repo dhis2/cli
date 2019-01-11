@@ -20,6 +20,6 @@ const run = async function({ tag = "dev", ...argv }) {
 module.exports = {
   command: "status [tag]",
   desc: "Check the status of cluster containers",
-  alias: "s",
+  aliases: "s",
   handler: run
 };

@@ -36,7 +36,7 @@ const run = async function ({ tag = 'dev', port, ...argv }) {
 module.exports = {
   command: "up [tag]",
   desc: 'Spin up a new cluster',
-  alias: "u",
+  aliases: "u",
   builder: {
     "port": {
       alias: 'p',

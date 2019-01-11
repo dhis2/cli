@@ -39,7 +39,7 @@ const run = async function ({ tag = 'dev', getCache, ...argv }) {
 module.exports = {
   command: "down [tag]",
   desc: "Destroy a running container",
-  alias: "d",
+  aliases: "d",
   builder: {
     "port": {
       alias: 'p',

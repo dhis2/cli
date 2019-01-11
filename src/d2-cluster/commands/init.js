@@ -15,7 +15,7 @@ const run = async ({ force, ...argv }) => {
 module.exports = {
   command: "init",
   desc: "Initialize the docker-compose cache",
-  alias: "i",
+  aliases: "i",
   builder: {
     force: {
       alias: "f",
