@@ -2,6 +2,8 @@
 
 A unified CLI for DHIS2 development workflows.
 
+![npm](https://img.shields.io/npm/v/@dhis2/cli.svg)
+
 ## Installation
 
 The CLI can be installed globally with `npm` or `yarn` as follows:
@@ -10,6 +12,12 @@ The CLI can be installed globally with `npm` or `yarn` as follows:
 > yarn glogal add @dhis2/cli
 OR
 > npm install --global @dhis2/cli
+```
+
+You can also run the CLI ad-hoc with `npx`, no installation necessary (sacrifices startup performance):
+
+```
+> npx @dhis2/cli app create
 ```
 
 ## Usage
