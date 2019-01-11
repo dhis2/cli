@@ -1,11 +1,10 @@
 {
   "name": "@dhis2/cli",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "A command line interface for DHIS2 development workflows",
   "main": "src/d2/index.js",
   "author": "Austin McGee <austin@dhis2.org>",
   "license": "BSD-3-Clause",
-  "private": true,
   "engines": {
     "node": ">=8.6"
   },
