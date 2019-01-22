@@ -9,7 +9,7 @@ A unified CLI for DHIS2 development workflows.
 The CLI can be installed globally with `npm` or `yarn` as follows:
 
 ```sh
-> yarn glogal add @dhis2/cli
+> yarn global add @dhis2/cli
 OR
 > npm install --global @dhis2/cli
 ```
