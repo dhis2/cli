@@ -62,6 +62,7 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
   - [x] environment variables (`D2_VERBOSE=true`)
   - [ ] find-up .rc files
   - [ ] globally-installed user config (`~/.config/d2` or `~/.cache/d2`)
+- [ ] more performant config/cache initialization (they currently cause a slight startup lag)
 - [ ] Namespaced configuration (i.e. { config: { verbose: true } } instead of { verbose: true }
 - [x] A user-level file cache (located at `~/.cache/d2`) and abstract caching mechanism for use in various commands.
 - [x] Meta/debug command namespace for:
