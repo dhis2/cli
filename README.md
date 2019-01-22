@@ -27,9 +27,10 @@ You can also run the CLI ad-hoc with `npx`, no installation necessary (sacrifice
 d2 <command>
 
 Commands:
-  d2 app      Manage DHIS2 applications                             [aliases: a]
   d2 debug    Debug local d2 installation
+  d2 app      Manage DHIS2 applications                             [aliases: a]
   d2 cluster  Manage DHIS2 Docker clusters                          [aliases: c]
+  d2 repo     Manage DHIS2 repositories                             [aliases: r]
 
 Options:
   --version   Show version number                                      [boolean]
