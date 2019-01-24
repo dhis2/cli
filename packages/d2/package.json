@@ -9,10 +9,10 @@
         "node": ">=8.6"
     },
     "dependencies": {
-        "@dhis2/cli-utils": "0.9.3",
-        "@dhis2/cli-app": "0.9.3",
-        "@dhis2/cli-cluster": "0.9.3",
-        "@dhis2/cli-packages": "0.9.3",
+        "@dhis2/cli-app": "^0.9.3",
+        "@dhis2/cli-cluster": "^0.9.3",
+        "@dhis2/cli-packages": "^0.9.3",
+        "@dhis2/cli-utils": "^0.9.3",
         "cli-table3": "^0.5.1",
         "envinfo": "^5.12.1",
         "inquirer": "^6.2.0"
