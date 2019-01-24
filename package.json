@@ -8,9 +8,17 @@
   "author": "Austin McGee <austin@dhis2.org>",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "@dhis2/cli-repo": "0.9.3"
+    "lerna": "^3.4.0",
+    "husky": "^1.2.0",
+    "@dhis2/cli-packages": "0.9.3"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "d2-packages commit-style",
+      "pre-commit": "d2-packages code-style"
+    }
   },
   "scripts": {
-    "link": "d2 repo link"
+    "code-style": "d2-packages code-style"
   }
 }
