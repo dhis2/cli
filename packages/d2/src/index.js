@@ -1,4 +1,4 @@
-const { namespace } = require('@dhis2/cli-utils')
+const { namespace } = require('@dhis2/cli-helpers-engine')
 
 const command = namespace('d2', {
     desc: 'DHIS2 CLI',

@@ -1,11 +1,11 @@
-const { namespace } = require('@dhis2/cli-utils');
+const { namespace } = require('@dhis2/cli-helpers-engine')
 
-const command = namespace("cluster", {
-  desc: "Manage DHIS2 Docker clusters",
-  aliases: 'c',
-  builder: yargs => {
-    yargs.commandDir("commands");
-  }
-});
+const command = namespace('cluster', {
+    desc: 'Manage DHIS2 Docker clusters',
+    aliases: 'c',
+    builder: yargs => {
+        yargs.commandDir('commands')
+    },
+})
 
-module.exports = command;
+module.exports = command

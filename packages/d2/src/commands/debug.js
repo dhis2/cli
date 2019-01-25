@@ -1,6 +1,6 @@
-const { namespace } = require("@dhis2/cli-utils");
+const { namespace } = require('@dhis2/cli-helpers-engine')
 
-module.exports = namespace("debug", {
-  desc: "Debug local d2 installation",
-  builder: yargs => yargs.commandDir("debug"),
-});
+module.exports = namespace('debug', {
+    desc: 'Debug local d2 installation',
+    builder: yargs => yargs.commandDir('debug'),
+})

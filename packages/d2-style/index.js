@@ -1,4 +1,4 @@
-const { namespace } = require('@dhis2/cli-utils')
+const { namespace } = require('@dhis2/cli-helpers-engine')
 const codeCommand = require('@dhis2/code-style/lib/cmds/fmt-code.js')
 const commitCommand = require('@dhis2/code-style/lib/cmds/fmt-commit.js')
 
