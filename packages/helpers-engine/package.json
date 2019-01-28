@@ -1,6 +1,6 @@
 {
     "name": "@dhis2/cli-helpers-engine",
-    "version": "0.9.3",
+    "version": "0.10.0",
     "description": "Utilities for the creation of D2 CLI modules",
     "main": "index.js",
     "repository": "https://github.com/dhis2/cli",
