@@ -1,6 +1,6 @@
 {
     "name": "@dhis2/create-app",
-    "version": "0.10.1",
+    "version": "0.10.2",
     "description": "D2 frontend application bootstrapping inspired by create-react-app",
     "main": "index.js",
     "repository": "https://github.com/dhis2/cli",
