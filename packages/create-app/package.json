@@ -9,9 +9,7 @@
     "dependencies": {
         "@dhis2/cli-helpers-engine": "^0.10.1"
     },
-    "bin": {
-        "create-d2-app": "./bin/create-d2-app"
-    },
+    "bin": "./bin/create-app",
     "publishConfig": {
         "access": "public"
     }
