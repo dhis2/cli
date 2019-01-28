@@ -2,8 +2,7 @@
 
 A unified CLI for DHIS2 development workflows.
 
-![npm](https://img.shields.io/npm/v/cypress-plugin-network-shim.svg)
-![travis build](https://img.shields.io/travis/amcgee/cypress-plugin-network-shim.svg)
+![npm](https://img.shields.io/npm/v/@dhis2/cli.svg)
 
 ## Installation
 
