@@ -12,5 +12,8 @@
     },
     "bin": {
         "d2-cluster": "./bin/d2-cluster"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }

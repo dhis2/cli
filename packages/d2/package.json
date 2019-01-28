@@ -19,5 +19,8 @@
     },
     "bin": {
         "d2": "bin/d2"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }

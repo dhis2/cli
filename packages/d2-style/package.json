@@ -12,5 +12,8 @@
     },
     "bin": {
         "d2-style": "./bin/d2-style"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }

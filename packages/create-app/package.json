@@ -11,5 +11,8 @@
     },
     "bin": {
         "create-d2-app": "./bin/create-d2-app"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }
