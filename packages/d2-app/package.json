@@ -1,0 +1,16 @@
+{
+    "name": "@dhis2/cli-app",
+    "version": "0.9.3",
+    "description": "D2 CLI module for interacting with frontend applications",
+    "main": "index.js",
+    "repository": "https://github.com/dhis2/cli",
+    "author": "Austin McGee <austin@dhis2.org>",
+    "license": "BSD-3-Clause",
+    "dependencies": {
+        "@dhis2/cli-helpers-engine": "^0.9.3",
+        "@dhis2/create-app": "^0.9.3"
+    },
+    "bin": {
+        "d2-app": "./bin/d2-app"
+    }
+}

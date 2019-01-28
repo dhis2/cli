@@ -1,0 +1,16 @@
+{
+    "name": "@dhis2/cli-style",
+    "version": "0.9.3",
+    "description": "D2 CLI module for opinionated code- and commit-style",
+    "main": "index.js",
+    "repository": "https://github.com/dhis2/cli",
+    "author": "Austin McGee <austin@dhis2.org>",
+    "license": "BSD-3-Clause",
+    "dependencies": {
+        "@dhis2/cli-helpers-engine": "^0.9.3",
+        "@dhis2/code-style": "^1.7.1"
+    },
+    "bin": {
+        "d2-style": "./bin/d2-style"
+    }
+}
