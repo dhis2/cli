@@ -12,7 +12,7 @@
         "@dhis2/cli-app": "^0.10.2",
         "@dhis2/cli-cluster": "^0.10.1",
         "@dhis2/cli-helpers-engine": "^0.10.1",
-        "@dhis2/cli-packages": "^0.9.3",
+        "@dhis2/cli-packages": "^2.0.1",
         "cli-table3": "^0.5.1",
         "envinfo": "^5.12.1",
         "inquirer": "^6.2.0"
