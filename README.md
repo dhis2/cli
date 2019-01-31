@@ -75,6 +75,7 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
 -   [x] Basic DHIS2 Docker cluster management with `d2 cluster`
 -   [x] Incorporate [packages](https://github.com/dhis2/packages) as a command module
     -   [x] Link to updated [packages](https://github.com/dhis2/packages) using cli engine
+-   [ ] Implement `create-d2-app` and `d2-app-scripts` for application creation
 -   Implement
     -   [ ] unit tests
     -   [ ] integration tests
