@@ -27,10 +27,11 @@ You can also run the CLI ad-hoc with `npx`, no installation necessary (sacrifice
 d2 <command>
 
 Commands:
-  d2 debug    Debug local d2 installation
-  d2 app      Manage DHIS2 applications                             [aliases: a]
-  d2 cluster  Manage DHIS2 Docker clusters                          [aliases: c]
-  d2 style    Enforce DHIS2 code- and commit-style conventions      [aliases: s]
+  d2 debug     Debug local d2 installation
+  d2 app       Manage DHIS2 applications                            [aliases: a]
+  d2 cluster   Manage DHIS2 Docker clusters                         [aliases: c]
+  d2 packages  Manage DHIS2 packages                              [aliases: pkg]
+  d2 style     Enforce DHIS2 code- and commit-style conventions     [aliases: s]
 
 Options:
   --version   Show version number                                      [boolean]
@@ -73,7 +74,7 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
 -   [x] Automatic update checks with [update-notifier](https://npmjs.com/package/update-notifier) (updates checked at most 1x per day)
 -   [x] Basic DHIS2 Docker cluster management with `d2 cluster`
 -   [x] Incorporate [packages](https://github.com/dhis2/packages) as a command module
-    -   [ ] Link to updated [packages](https://github.com/dhis2/packages) using cli engine
+    -   [x] Link to updated [packages](https://github.com/dhis2/packages) using cli engine
 -   Implement
     -   [ ] unit tests
     -   [ ] integration tests
