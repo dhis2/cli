@@ -83,6 +83,7 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
     -   [ ] Travis CI
     -   [ ] CI deploy to NPM
 -   [ ] Build standalone packaged executables with [pkg](https://www.npmjs.com/package/pkg)
+-   [ ] Add individual package READMEs for better NPM optics
 -   [ ] Cut version 1.0 with baseline feature set and semantic versioning guarantee
 
 ### Bonus features
