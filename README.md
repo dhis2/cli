@@ -79,11 +79,11 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
 -   [ ] Integrate the legacy [`dhis2-cli`](https://www.npmjs.com/package/dhis2-cli) UUID generation functionality ([source](https://github.com/dhis2/dhis2-cli))
 -   Implement
     -   [ ] unit tests
-    -   [ ] integration tests
+    -   [ ] integration / smoke tests
     -   [x] `code-style`
     -   [x] `commit-style`
-    -   [ ] Travis CI
-    -   [ ] CI deploy to NPM
+    -   [x] Travis CI
+    -   [x] CI deploy to NPM
 -   [ ] Build standalone packaged executables with [pkg](https://www.npmjs.com/package/pkg)
 -   [ ] Add individual package READMEs for better NPM optics
 -   [ ] Confirm Greenkeeper functionality (add greenkeeper.json for monorepo awareness)
