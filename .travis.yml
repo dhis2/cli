@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- 10
+before_script:
+- npm install --global @dhis2/deploy-build
+script:
+- echo "no build script, proceed..."
+deploy:
+- provider: script
+  script: publish-build
+  skip_cleanup: true
+  on:
+    tags: true
+env:
+  global:
+    secure: IO7GIeIW/T124100IvcffZZbR6NU5wVLSH7LvUDjm8ir5zJwi1GLxYaNj/TaFzyLgq9vxzJ59DwZ3kNkX6lYJ7UthTt9ar1h86b3VgHhmXpheQrYvuu12Ut95cnWsOQBKBuB1o7Is/hol6umgZfYUe3g0aT8F7BXYI5mN/7B3jiQdRlwh8rKTuY0sR+PPqK82gPfGVAETAIqq2UB7KpuPmNPkUNwGmP6TxazKtGVudRJ0pwKOW7FLexBttrVFZA9g+ktZqRo2jjVvOs0PmVG2WjJK1feBEDLS0MfXkMqjHHkC3OajQ7VKUCjYPGF/QZtM6BWKFPeZFBKiWDkiqyTyAX11ymsUAXOjgoSl55Kv5Hd/X/JMMgielFr/gYaVxBPr/a1FaGf1v5dWf7VVzEwUdEv3wdLkh3ZSzCmYXiz5YPRnKIeRXZhCXbakNnZcXmlL+VQpt5X5aRQJ/3fRTOj6pFqYiIpYFTr7rumxpHjNhDAQiokUoitB3nMOKIdzVyvSVQ5BJsmy0Yd29Q5td7LdM4A72GsFNa//76KL+tfUxELVa3WG8hViKxVvD/zlFZc2ei38fB1KsTgS2Nwyzn27LkO6VWwRUwO6uGa4v0uMYriXfiLVc9Qawhir+3K4ci3ZuBn1nOMg69lxLahHlTSqT24FpGtrFGWqTLGyhgwuNc=
