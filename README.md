@@ -81,7 +81,9 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
     -   [ ] unit tests
     -   [ ] integration / smoke tests
     -   [x] `code-style`
+      -    [ ] Switch to verb-form command
     -   [x] `commit-style`
+      -    [ ] Switch to verb-form command
     -   [x] Travis CI
     -   [x] CI deploy to NPM
 -   [ ] Build standalone packaged executables with [pkg](https://www.npmjs.com/package/pkg)
