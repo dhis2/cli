@@ -1,0 +1,15 @@
+{
+    "name": "@dhis2/cli-script",
+    "bin": {
+        "d2-script": "./bin/d2-script"
+    },
+    "version": "0.10.0",
+    "main": "src/index.js",
+    "author": "Viktor Varland",
+    "license": "BSD-3-Clause",
+    "private": false,
+    "dependencies": {
+        "@dhis2/cli-helpers-engine": "^0.10.1",
+        "dhis2-uid": "^0.1.2"
+    }
+}
