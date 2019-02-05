@@ -14,7 +14,7 @@
         "@dhis2/cli-helpers-engine": "^0.10.1",
         "@dhis2/cli-packages": "^2.0.1",
         "cli-table3": "^0.5.1",
-        "envinfo": "^5.12.1",
+        "envinfo": "^6.0.1",
         "inquirer": "^6.2.0"
     },
     "bin": {
