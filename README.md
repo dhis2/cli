@@ -88,7 +88,7 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
     -   [x] CI deploy to NPM
 -   [ ] Build standalone packaged executables with [pkg](https://www.npmjs.com/package/pkg)
 -   [ ] Add individual package READMEs for better NPM optics
--   [ ] Confirm Greenkeeper functionality (add greenkeeper.json for monorepo awareness)
+-   [x] Confirm Greenkeeper functionality (add greenkeeper.json for monorepo awareness)
 -   [ ] Confirm that update notifications work well
 -   [ ] Cut version 1.0 with baseline feature set and semantic versioning guarantee
 
