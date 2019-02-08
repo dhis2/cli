@@ -8,7 +8,7 @@ const command = namespace('d2', {
         yargs.command(require('@dhis2/cli-cluster'))
         yargs.command(require('@dhis2/cli-packages'))
         yargs.command(require('@dhis2/cli-style'))
-        yargs.command(require('@dhis2/cli-script'))
+        yargs.command(require('@dhis2/cli-utils'))
     },
 })
 

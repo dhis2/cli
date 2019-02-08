@@ -1,17 +1,11 @@
 const { generateCode, generateCodes } = require('dhis2-uid')
+const log = require('@dhis2/cli-helpers-engine').reporter
 
-module.exports = {
-    command: 'uid [limit]',
-    desc: 'Generate DHIS2 UIDs',
-    aliases: 'u',
+const generateCmd = {
+    command: 'generate [limit]',
+    aliases: ['g', 'gen'],
+    describe: 'Generate DHIS2 UIDs',
     builder: {
-        limit: {
-            desc: 'Limit the amount of UIDs to generate',
-            aliases: 'l',
-            type: 'integer',
-            default: 10,
-        },
-
         json: {
             desc: 'Output UIDs in JSON format',
             type: 'boolean',
@@ -23,23 +17,36 @@ module.exports = {
         },
     },
     handler: argv => {
-        const codes = generateCodes(argv.limit)
+        const { limit } = argv
+
+        const codes = generateCodes(limit || 10)
 
         if (argv.json) {
-            console.log(JSON.stringify({ codes }, null, 4))
+            log.print(JSON.stringify({ codes }, null, 4))
         } else if (argv.csv) {
-            console.log('codes')
+            log.print('codes')
 
             for (let i = 0; i < argv.limit; i++) {
-                console.log(generateCode())
+                log.print(generateCode())
             }
         } else {
             const chunk = 5
 
             for (let i = 0, j = codes.length; i < j; i += chunk) {
                 const chunked = codes.slice(i, i + chunk)
-                console.log(chunked.join(' '))
+                log.print(chunked.join(' '))
             }
         }
     },
+}
+
+module.exports = {
+    command: 'uid <cmd>',
+    desc: 'DHIS2 UID tools',
+    aliases: 'u',
+    builder: yargs => {
+        return yargs
+            .command(generateCmd)
+    },
+    handler: argv => {},
 }

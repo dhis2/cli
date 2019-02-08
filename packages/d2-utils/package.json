@@ -1,7 +1,7 @@
 {
-    "name": "@dhis2/cli-script",
+    "name": "@dhis2/cli-utils",
     "bin": {
-        "d2-script": "./bin/d2-script"
+        "d2-utils": "./bin/d2-utils"
     },
     "version": "0.10.0",
     "main": "src/index.js",
