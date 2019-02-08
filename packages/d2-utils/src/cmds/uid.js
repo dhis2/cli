@@ -1,5 +1,6 @@
 const { generateCode, generateCodes } = require('dhis2-uid')
 const log = require('@dhis2/cli-helpers-engine').reporter
+const namespace = require('@dhis2/cli-helpers-engine').namespace
 
 const generateCmd = {
     command: 'generate [limit]',
@@ -40,13 +41,10 @@ const generateCmd = {
     },
 }
 
-module.exports = {
-    command: 'uid <cmd>',
+module.exports = namespace('uid', {
     desc: 'DHIS2 UID tools',
     aliases: 'u',
     builder: yargs => {
-        return yargs
-            .command(generateCmd)
+        return yargs.command(generateCmd)
     },
-    handler: argv => {},
-}
+})
