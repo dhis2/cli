@@ -76,14 +76,14 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
 -   [x] Incorporate [packages](https://github.com/dhis2/packages) as a command module
     -   [x] Link to updated [packages](https://github.com/dhis2/packages) using cli engine
 -   [ ] Implement `create-d2-app` and `d2-app-scripts` for application creation
--   [ ] Integrate the legacy [`dhis2-cli`](https://www.npmjs.com/package/dhis2-cli) UUID generation functionality ([source](https://github.com/dhis2/dhis2-cli))
+-   [x] Integrate the legacy [`dhis2-cli`](https://www.npmjs.com/package/dhis2-cli) UUID generation functionality ([source](https://github.com/dhis2/dhis2-cli))
 -   Implement
     -   [ ] unit tests
     -   [ ] integration / smoke tests
     -   [x] `code-style`
-      -    [ ] Switch to verb-form command
+        -    [ ] Switch to verb-form command
     -   [x] `commit-style`
-      -    [ ] Switch to verb-form command
+        -    [ ] Switch to verb-form command
     -   [x] Travis CI
     -   [x] CI deploy to NPM
 -   [ ] Build standalone packaged executables with [pkg](https://www.npmjs.com/package/pkg)
