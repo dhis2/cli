@@ -129,6 +129,14 @@
     standard-version "^4.4.0"
     tape "^4.9.1"
 
+"@dhis2/cli-style@^0.10.1":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-style/-/cli-style-0.10.1.tgz#62bd5756d09cf50762076bfd86194f4270823564"
+  integrity sha512-5UkcgksX0+KeFl2EAGkFGmpp1KnxSmnA63NsedonTMuOujQsTfaxFgVBDEG8e0oYAJNwSOonWJMohOZWVfauMg==
+  dependencies:
+    "@dhis2/cli-helpers-engine" "^0.10.1"
+    "@dhis2/code-style" "^1.7.1"
+
 "@dhis2/code-style@^1.7.1":
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@dhis2/code-style/-/code-style-1.7.1.tgz#7bf061a032e370951346222922c59172953e99eb"
