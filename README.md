@@ -45,7 +45,8 @@ Commands:
   d2 app       Manage DHIS2 applications                            [aliases: a]
   d2 cluster   Manage DHIS2 Docker clusters                         [aliases: c]
   d2 packages  Manage DHIS2 packages                              [aliases: pkg]
-  d2 style     Enforce DHIS2 code- and commit-style conventions     [aliases: s]
+  d2 style     DHIS2 programmatic style for commit msgs/code        [aliases: s]
+  d2 utils     Utils for miscellaneous operations
 
 Options:
   --version   Show version number                                      [boolean]
