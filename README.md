@@ -68,6 +68,22 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
 > d2 cluster up 2.31-rc1-alpine --port 8082
 ```
 
+## Conventions
+
+The `d2` command-line tool is structured as a collection of namespaces, each of which may include sub-namespaces and sub-commands.  This heirarchy should follow one simple rule: 
+
+**namespaces are nouns, commands are verbs**
+
+Each subsequent namespace should narrow the context in which a command (an action) will be performed.  For example:
+
+* `d2 app create` performs the action **create** in the **d2 app** namespace
+* `d2 style js apply` performs the **apply** action in the **js** sub-namespace of the **d2 style** namespace
+
+Anything following the action verb is either a positional argument or a flag (if preceded by `-` or `--`), i.e.:
+
+* `d2 style js apply --all --no-stage` tells the `apply` action to run on all files and not to stage the changes in git
+* `d2 app create my-app` passes the argument `my-app` to the `create` action, which tells the action what to name the created application.
+
 ## Features & v1.0 Roadmap
 
 -   [x] Heirarchical command namespaces (`d2`, `d2 app`, `d2 app scripts` etc.)
@@ -90,6 +106,7 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
 -   [x] Basic DHIS2 Docker cluster management with `d2 cluster`
 -   [x] Incorporate [packages](https://github.com/dhis2/packages) as a command module
     -   [x] Link to updated [packages](https://github.com/dhis2/packages) using cli engine
+    -   [ ] Deprecate `d2 package` ?
 -   [ ] Implement `create-d2-app` and `d2-app-scripts` for application creation
 -   [x] Integrate the legacy [`dhis2-cli`](https://www.npmjs.com/package/dhis2-cli) UUID generation functionality ([source](https://github.com/dhis2/dhis2-cli))
 -   Implement
@@ -100,7 +117,7 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
     -   [x] `commit-style`
         -    [x] Switch to verb-form command
     -   [x] Travis CI
-    -   [x] CI deploy to NPM
+        -   [ ] CI deploy to NPM
 -   [ ] Build standalone packaged executables with [pkg](https://www.npmjs.com/package/pkg)
 -   [ ] Add individual package READMEs for better NPM optics
 -   [x] Confirm Greenkeeper functionality (add greenkeeper.json for monorepo awareness)
