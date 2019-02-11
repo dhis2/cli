@@ -116,7 +116,20 @@
   dependencies:
     find-up "^2.1.0"
 
-"@dhis2/cli-packages@^2.0.1":
+"@dhis2/cli-helpers-engine@^0.10.1":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-helpers-engine/-/cli-helpers-engine-0.10.1.tgz#bd3f589d862e629fe74f8717efeae448fe55038c"
+  integrity sha512-HEvswPHCF+y1N4L5ZEdBDoXWc0ijfGb5RDYNlAhab6yXzCZpbDk339jnLF3sYjKZ1fFFWC3uc7wthdywfqeGuw==
+  dependencies:
+    chalk "^2.4.2"
+    mkdirp "^0.5.1"
+    request "^2.88.0"
+    rimraf "^2.6.3"
+    tar "^4.4.8"
+    update-notifier "^2.5.0"
+    yargs "^12.0.5"
+
+"@dhis2/cli-packages@^2.0.1", "@dhis2/cli-packages@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@dhis2/cli-packages/-/cli-packages-2.0.2.tgz#efaa62097dde9577aa7e6835bdd4ed1235cac142"
   integrity sha512-487eooGoRPtEIJN6DBJDsFXf6IhVIoR3LqM4t1dLv97qUDanWpkQPl5qWhSXOyxHxRq9+IExxTO/yGLxeG6n9A==
@@ -129,24 +142,18 @@
     standard-version "^4.4.0"
     tape "^4.9.1"
 
-"@dhis2/cli-style@^0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-style/-/cli-style-0.10.1.tgz#62bd5756d09cf50762076bfd86194f4270823564"
-  integrity sha512-5UkcgksX0+KeFl2EAGkFGmpp1KnxSmnA63NsedonTMuOujQsTfaxFgVBDEG8e0oYAJNwSOonWJMohOZWVfauMg==
-  dependencies:
-    "@dhis2/cli-helpers-engine" "^0.10.1"
-    "@dhis2/code-style" "^1.7.1"
-
-"@dhis2/code-style@^1.7.1":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@dhis2/code-style/-/code-style-1.7.1.tgz#7bf061a032e370951346222922c59172953e99eb"
-  integrity sha512-tXj4meoK9L/pmS0SUzzYoB980nwmeCz5YW3GBoWdVI4aFJSR9qn8XtbAXGPsr14ExZoqvFFpA8VGaN6RTCFQqA==
+"@dhis2/cli-style@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-style/-/cli-style-2.0.1.tgz#efb7758742dbf7168ff348ba5edf4c6639b98122"
+  integrity sha512-HHweNpvozMCfXN1yL6oWvorp7+CDVdEzkabpY7CELn6bE29CGkMVv7dOsbKJex1YoHEWhAE8vthuCTs4fraoeQ==
   dependencies:
     "@commitlint/config-conventional" "^7.1.2"
     "@commitlint/format" "^7.2.1"
     "@commitlint/lint" "^7.2.1"
     "@commitlint/load" "^7.2.1"
     "@commitlint/read" "^7.1.2"
+    "@dhis2/cli-helpers-engine" "^0.10.1"
+    "@dhis2/cli-packages" "^2.0.2"
     prettier "^1.15.3"
     yargs "^12.0.5"
 
@@ -1892,6 +1899,11 @@ dezalgo@^1.0.0:
   dependencies:
     asap "^2.0.0"
     wrappy "1"
+
+dhis2-uid@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/dhis2-uid/-/dhis2-uid-0.1.2.tgz#3fe70ca0ead8f7eaa191dc76590c4d7b0bc493ef"
+  integrity sha512-mpQkogEE8xOgXkztrpGCK2uudctb6dyYM0gKRzKRzPuhx0bJKtlFYC/rr/orkebK9pusNk+3noS3tMeSdyZsBQ==
 
 dir-glob@2.0.0:
   version "2.0.0"
