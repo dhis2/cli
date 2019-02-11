@@ -2,7 +2,9 @@
 
 A unified CLI for DHIS2 development workflows.
 
-[![npm](https://img.shields.io/npm/v/@dhis2/cli.svg)](https://www.npmjs.com/package/@dhis2/cli) [![Greenkeeper badge](https://badges.greenkeeper.io/dhis2/cli.svg)](https://greenkeeper.io/)
+[![npm](https://img.shields.io/npm/v/@dhis2/cli.svg)](https://www.npmjs.com/package/@dhis2/cli)
+[![build](https://img.shields.io/travis/dhis2/cli.svg)](https://travis-ci.org/dhis2/cli)
+[![Greenkeeper badge](https://badges.greenkeeper.io/dhis2/cli.svg)](https://greenkeeper.io/)
 
 ## Installation
 
