@@ -9,14 +9,14 @@ A unified CLI for DHIS2 development workflows.
 
 | Executable | Package | Repository | Version |
 | ---------- | ------- | ---------- | ------- |
-| d2 | @dhis2/cli | [dhis2/cli](https://github.com/dhis2/cli) | [![npm](https://img.shields.io/npm/v/@dhis2/cli.svg)](https://www.npmjs.com/package/@dhis2/cli)  |
-| d2-app | @dhis2/cli-app | [dhis2/cli](https://github.com/dhis2/cli) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-app.svg)](https://www.npmjs.com/package/@dhis2/cli-app)  |
-| create-d2-app | @dhis2/create-app | [dhis2/cli](https://github.com/dhis2/cli) | [![npm](https://img.shields.io/npm/v/@dhis2/create-app.svg)](https://www.npmjs.com/package/@dhis2/create-app)  |
-| d2-cluster | @dhis2/cli-cluster | [dhis2/cli](https://github.com/dhis2/cli) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-cluster.svg)](https://www.npmjs.com/package/@dhis2/cli-cluster)  |
-| d2-utils | @dhis2/cli-utils | [dhis2/cli](https://github.com/dhis2/cli) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-utils.svg)](https://www.npmjs.com/package/@dhis2/cli-utils)  |
+| d2 | @dhis2/cli | [dhis2/cli](https://github.com/dhis2/cli/tree/master/packages/d2) | [![npm](https://img.shields.io/npm/v/@dhis2/cli.svg)](https://www.npmjs.com/package/@dhis2/cli)  |
+| d2-app | @dhis2/cli-app | [dhis2/cli](https://github.com/dhis2/cli/tree/master/packages/d2-app) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-app.svg)](https://www.npmjs.com/package/@dhis2/cli-app)  |
+| create-d2-app | @dhis2/create-app | [dhis2/cli](https://github.com/dhis2/cli/tree/master/packages/create-app) | [![npm](https://img.shields.io/npm/v/@dhis2/create-app.svg)](https://www.npmjs.com/package/@dhis2/create-app)  |
+| d2-cluster | @dhis2/cli-cluster | [dhis2/cli](https://github.com/dhis2/cli/tree/master/packages/d2-cluster) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-cluster.svg)](https://www.npmjs.com/package/@dhis2/cli-cluster)  |
+| d2-utils | @dhis2/cli-utils | [dhis2/cli](https://github.com/dhis2/cli/tree/master/packages/d2-utils) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-utils.svg)](https://www.npmjs.com/package/@dhis2/cli-utils)  |
 | d2-style | @dhis2/cli-style | [dhis2/cli-style](https://github.com/dhis2/cli-style) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-style.svg)](https://www.npmjs.com/package/@dhis2/cli-style)  |
 | d2-packages | @dhis2/cli-packages | [dhis2/cli-packages](https://github.com/dhis2/cli-packages) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-packages.svg)](https://www.npmjs.com/package/@dhis2/cli-packages)  |
-|  | @dhis2/cli-helpers-engine | [dhis2/cli](https://github.com/dhis2/cli) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-helpers-engine.svg)](https://www.npmjs.com/package/@dhis2/cli-helpers-engine) |
+|  | @dhis2/cli-helpers-engine | [dhis2/cli](https://github.com/dhis2/cli/tree/master/packages/helpers-engine) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-helpers-engine.svg)](https://www.npmjs.com/package/@dhis2/cli-helpers-engine) |
 
 ## Installation
 
