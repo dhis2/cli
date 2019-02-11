@@ -3,7 +3,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "version": "0.9.3",
   "repository": "https://github.com/dhis2/cli",
   "author": "Austin McGee <austin@dhis2.org>",
   "license": "BSD-3-Clause",
