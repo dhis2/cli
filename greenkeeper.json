@@ -1,15 +1,15 @@
 {
-  "groups": {
-    "default": {
-      "packages": [
-        "package.json",
-        "packages/create-app/package.json",
-        "packages/d2-app/package.json",
-        "packages/d2-cluster/package.json",
-        "packages/d2-style/package.json",
-        "packages/d2/package.json",
-        "packages/helpers-engine/package.json"
-      ]
+    "groups": {
+        "default": {
+            "packages": [
+                "package.json",
+                "packages/create-app/package.json",
+                "packages/d2-app/package.json",
+                "packages/d2-cluster/package.json",
+                "packages/d2-style/package.json",
+                "packages/d2/package.json",
+                "packages/helpers-engine/package.json"
+            ]
+        }
     }
-  }
 }

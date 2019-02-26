@@ -1,0 +1,17 @@
+{
+    "name": "@dhis2/cli-{{fullName}}",
+    "bin": {
+        "{{executable}}": "./bin/{{executable}}"
+    },
+    "version": "{{version}}",
+    "main": "src/index.js",
+    "author": "{{author}}",
+    "license": "BSD-3-Clause",
+    "private": false,
+    "dependencies": {
+        "@dhis2/cli-helpers-engine": "^0.11.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "name": "@dhis2/cli-create",
+    "bin": {
+        "d2-create": "./bin/d2-create"
+    },
+    "version": "0.11.0",
+    "main": "src/index.js",
+    "author": "Austin McGee <austin@dhis2.org>",
+    "license": "BSD-3-Clause",
+    "private": false,
+    "dependencies": {
+        "@dhis2/cli-helpers-engine": "^0.11.0",
+        "fs-extra": "^7.0.1",
+        "handlebars": "^4.1.0",
+        "inquirer": "^6.2.2"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

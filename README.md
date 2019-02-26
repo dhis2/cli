@@ -7,16 +7,16 @@ A unified CLI for DHIS2 development workflows.
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![Greenkeeper badge](https://badges.greenkeeper.io/dhis2/cli.svg)](https://greenkeeper.io/)
 
-| Alias | Executable | Package | Source | Version |
-| ----- | ---------- | ------- | ------ | ------- |
-| d2    | d2 | @dhis2/cli | [./packages/d2](packages/d2) | [![npm](https://img.shields.io/npm/v/@dhis2/cli.svg)](https://www.npmjs.com/package/@dhis2/cli)  |
-| d2 app | d2-app | @dhis2/cli-app | [./packages/d2-app](./packages/d2-app) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-app.svg)](https://www.npmjs.com/package/@dhis2/cli-app)  |
-| d2 app create | create-d2-app | @dhis2/create-app | [./packages/create-app](./packages/create-app) | [![npm](https://img.shields.io/npm/v/@dhis2/create-app.svg)](https://www.npmjs.com/package/@dhis2/create-app)  |
-| d2 cluster | d2-cluster | @dhis2/cli-cluster | [./packages/d2-cluster](./packages/d2-cluster) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-cluster.svg)](https://www.npmjs.com/package/@dhis2/cli-cluster)  |
-| d2 utils | d2-utils | @dhis2/cli-utils | [./packages/d2-utils](./packages/d2-utils) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-utils.svg)](https://www.npmjs.com/package/@dhis2/cli-utils)  |
-| d2 style | d2-style | @dhis2/cli-style | [dhis2/cli-style](https://github.com/dhis2/cli-style) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-style.svg)](https://www.npmjs.com/package/@dhis2/cli-style)  |
-| d2 packages | d2-packages | @dhis2/cli-packages | [dhis2/cli-packages](https://github.com/dhis2/cli-packages) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-packages.svg)](https://www.npmjs.com/package/@dhis2/cli-packages)  |
-|  |  | @dhis2/cli-helpers-engine | [./packages/helpers-engine](./packages/helpers-engine) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-helpers-engine.svg)](https://www.npmjs.com/package/@dhis2/cli-helpers-engine) |
+| Alias         | Executable    | Package                   | Source                                                      | Version                                                                                                                       |
+| ------------- | ------------- | ------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| d2            | d2            | @dhis2/cli                | [./packages/d2](packages/d2)                                | [![npm](https://img.shields.io/npm/v/@dhis2/cli.svg)](https://www.npmjs.com/package/@dhis2/cli)                               |
+| d2 app        | d2-app        | @dhis2/cli-app            | [./packages/d2-app](./packages/d2-app)                      | [![npm](https://img.shields.io/npm/v/@dhis2/cli-app.svg)](https://www.npmjs.com/package/@dhis2/cli-app)                       |
+| d2 app create | create-d2-app | @dhis2/create-app         | [./packages/create-app](./packages/create-app)              | [![npm](https://img.shields.io/npm/v/@dhis2/create-app.svg)](https://www.npmjs.com/package/@dhis2/create-app)                 |
+| d2 cluster    | d2-cluster    | @dhis2/cli-cluster        | [./packages/d2-cluster](./packages/d2-cluster)              | [![npm](https://img.shields.io/npm/v/@dhis2/cli-cluster.svg)](https://www.npmjs.com/package/@dhis2/cli-cluster)               |
+| d2 utils      | d2-utils      | @dhis2/cli-utils          | [./packages/d2-utils](./packages/d2-utils)                  | [![npm](https://img.shields.io/npm/v/@dhis2/cli-utils.svg)](https://www.npmjs.com/package/@dhis2/cli-utils)                   |
+| d2 style      | d2-style      | @dhis2/cli-style          | [dhis2/cli-style](https://github.com/dhis2/cli-style)       | [![npm](https://img.shields.io/npm/v/@dhis2/cli-style.svg)](https://www.npmjs.com/package/@dhis2/cli-style)                   |
+| d2 packages   | d2-packages   | @dhis2/cli-packages       | [dhis2/cli-packages](https://github.com/dhis2/cli-packages) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-packages.svg)](https://www.npmjs.com/package/@dhis2/cli-packages)             |
+|               |               | @dhis2/cli-helpers-engine | [./packages/helpers-engine](./packages/helpers-engine)      | [![npm](https://img.shields.io/npm/v/@dhis2/cli-helpers-engine.svg)](https://www.npmjs.com/package/@dhis2/cli-helpers-engine) |
 
 ## Installation
 
@@ -70,19 +70,19 @@ Spin up a DHIS2 server installation on port 8082 (requires [Docker](https://www.
 
 ## Conventions
 
-The `d2` command-line tool is structured as a collection of namespaces, each of which may include sub-namespaces and sub-commands.  This heirarchy should follow one simple rule: 
+The `d2` command-line tool is structured as a collection of namespaces, each of which may include sub-namespaces and sub-commands. This heirarchy should follow one simple rule:
 
 **namespaces are nouns, commands are verbs**
 
-Each subsequent namespace should narrow the context in which a command (an action) will be performed.  For example:
+Each subsequent namespace should narrow the context in which a command (an action) will be performed. For example:
 
-* `d2 app create` performs the action **create** in the **d2 app** namespace
-* `d2 style js apply` performs the **apply** action in the **js** sub-namespace of the **d2 style** namespace
+-   `d2 app create` performs the action **create** in the **d2 app** namespace
+-   `d2 style js apply` performs the **apply** action in the **js** sub-namespace of the **d2 style** namespace
 
 Anything following the action verb is either a positional argument or a flag (if preceded by `-` or `--`), i.e.:
 
-* `d2 style js apply --all --no-stage` tells the `apply` action to run on all files and not to stage the changes in git
-* `d2 app create my-app` passes the argument `my-app` to the `create` action, which tells the action what to name the created application.
+-   `d2 style js apply --all --no-stage` tells the `apply` action to run on all files and not to stage the changes in git
+-   `d2 app create my-app` passes the argument `my-app` to the `create` action, which tells the action what to name the created application.
 
 ## Features & v1.0 Roadmap
 
@@ -113,9 +113,9 @@ Anything following the action verb is either a positional argument or a flag (if
     -   [ ] unit tests
     -   [ ] integration / smoke tests
     -   [x] `code-style`
-        -    [x] Switch to verb-form command
+        -   [x] Switch to verb-form command
     -   [x] `commit-style`
-        -    [x] Switch to verb-form command
+        -   [x] Switch to verb-form command
     -   [x] Travis CI
         -   [ ] CI deploy to NPM
 -   [ ] Build standalone packaged executables with [pkg](https://www.npmjs.com/package/pkg)

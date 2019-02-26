@@ -15,6 +15,7 @@
         "@dhis2/cli-packages": "^2.0.1",
         "@dhis2/cli-style": "^2.0.1",
         "@dhis2/cli-utils": "^0.11.0",
+        "@dhis2/cli-create": "^0.11.0",
         "cli-table3": "^0.5.1",
         "envinfo": "^6.0.1",
         "inquirer": "^6.2.0"

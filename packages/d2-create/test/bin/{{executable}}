@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+const { makeEntryPoint, notifyOfUpdates } = require('@dhis2/cli-helpers-engine')
+
+const pkgJson = require('../package.json');
+const command = require(`../src`);
+
+notifyOfUpdates(pkgJson);
+makeEntryPoint(command).parse();
