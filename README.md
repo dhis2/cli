@@ -12,6 +12,7 @@ A unified CLI for DHIS2 development workflows.
 | d2            | d2            | @dhis2/cli                | [./packages/d2](packages/d2)                                | [![npm](https://img.shields.io/npm/v/@dhis2/cli.svg)](https://www.npmjs.com/package/@dhis2/cli)                               |
 | d2 app        | d2-app        | @dhis2/cli-app            | [./packages/d2-app](./packages/d2-app)                      | [![npm](https://img.shields.io/npm/v/@dhis2/cli-app.svg)](https://www.npmjs.com/package/@dhis2/cli-app)                       |
 | d2 app create | create-d2-app | @dhis2/create-app         | [./packages/create-app](./packages/create-app)              | [![npm](https://img.shields.io/npm/v/@dhis2/create-app.svg)](https://www.npmjs.com/package/@dhis2/create-app)                 |
+| d2 create     | d2-create     | @dhis2/cli-create         | [./packages/d2-cluster](./packages/d2-create)               | [![npm](https://img.shields.io/npm/v/@dhis2/cli-create.svg)](https://www.npmjs.com/package/@dhis2/cli-create)                 |
 | d2 cluster    | d2-cluster    | @dhis2/cli-cluster        | [./packages/d2-cluster](./packages/d2-cluster)              | [![npm](https://img.shields.io/npm/v/@dhis2/cli-cluster.svg)](https://www.npmjs.com/package/@dhis2/cli-cluster)               |
 | d2 utils      | d2-utils      | @dhis2/cli-utils          | [./packages/d2-utils](./packages/d2-utils)                  | [![npm](https://img.shields.io/npm/v/@dhis2/cli-utils.svg)](https://www.npmjs.com/package/@dhis2/cli-utils)                   |
 | d2 style      | d2-style      | @dhis2/cli-style          | [dhis2/cli-style](https://github.com/dhis2/cli-style)       | [![npm](https://img.shields.io/npm/v/@dhis2/cli-style.svg)](https://www.npmjs.com/package/@dhis2/cli-style)                   |
@@ -107,7 +108,7 @@ Anything following the action verb is either a positional argument or a flag (if
 -   [x] Incorporate [packages](https://github.com/dhis2/packages) as a command module
     -   [x] Link to updated [packages](https://github.com/dhis2/packages) using cli engine
     -   [ ] Deprecate `d2 package` ?
--   [ ] Implement `create-d2-app` and `d2-app-scripts` for application creation
+-   [x] Implement `create-d2-app` and `d2-app-scripts` for application creation
 -   [x] Integrate the legacy [`dhis2-cli`](https://www.npmjs.com/package/dhis2-cli) UUID generation functionality ([source](https://github.com/dhis2/dhis2-cli))
 -   Implement
     -   [ ] unit tests
