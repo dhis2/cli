@@ -2,6 +2,7 @@ const path = require('path')
 const fs = require('fs-extra')
 const handlebars = require('handlebars')
 const { reporter } = require('@dhis2/cli-helpers-engine')
+const chalk = require('chalk')
 
 const walkDir = (rootDir, fn) => {
     const children = fs.readdirSync(rootDir)
@@ -28,12 +29,15 @@ const writeTemplate = (inFile, outFile, data) => {
     let dest = replacePathVariables(outFile, data)
 
     reporter.debug(`Installing ${dest} from ${inFile}`)
-    fs.ensureDirSync(path.dirname(outFile))
-    fs.writeFileSync(outFile, template(data))
+    fs.ensureDirSync(path.dirname(dest))
+    fs.writeFileSync(dest, template(data))
 }
 
 const installTemplate = (type, outDir, data) => {
     const rootDir = path.join(__dirname, '../templates', type)
+    reporter.debug(`Installing template ${chalk.bold(type)}`)
+    reporter.debug('  outDir:', outDir)
+    reporter.debug('  data:  ', data)
     walkDir(rootDir, p => {
         const outPath = path.join(outDir, path.relative(rootDir, p))
         writeTemplate(p, outPath, data)

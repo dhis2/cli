@@ -18,7 +18,7 @@ const handler = async ({ type, name, ...argv }) => {
             await installTemplate('cli', dest, data)
             break
         case 'app':
-            reporter.info(`Creating DHIS2 application in ${name}'...`)
+            await require('./builders/app')({ name, ...argv })
             break
         default:
             reporter.error(`Unrecognized template ${type}`)

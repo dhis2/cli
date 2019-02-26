@@ -1,4 +1,5 @@
 const { groupGlobalOptions } = require('@dhis2/cli-helpers-engine')
+const create = require('@dhis2/cli-create')
 
 module.exports = {
     command: 'create [type]',
@@ -8,6 +9,9 @@ module.exports = {
         yargs.option('silent')
     },
     handler: argv => {
-        console.log('CREATE APP HERE')
+        create.handler({
+            ...argv,
+            type: 'app',
+        })
     },
 }
