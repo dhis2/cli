@@ -3,7 +3,7 @@
 A unified CLI for DHIS2 development workflows.
 
 [![dhis2-cli Compatible](https://img.shields.io/badge/dhis2-cli-ff69b4.svg)](https://github.com/dhis2/cli)
-[![build](https://img.shields.io/travis/dhis2/cli.svg)](https://travis-ci.org/dhis2/cli)
+[![build](https://img.shields.io/travis/dhis2/cli.svg)](https://travis-ci.com/dhis2/cli)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![Greenkeeper badge](https://badges.greenkeeper.io/dhis2/cli.svg)](https://greenkeeper.io/)
 
@@ -108,7 +108,8 @@ Anything following the action verb is either a positional argument or a flag (if
 -   [x] Incorporate [packages](https://github.com/dhis2/packages) as a command module
     -   [x] Link to updated [packages](https://github.com/dhis2/packages) using cli engine
     -   [ ] Deprecate `d2 package` ?
--   [x] Implement `create-d2-app` and `d2-app-scripts` for application creation
+-   [x] Implement `d2-app-scripts` for application creation (WIP [app-platform](https://github.com/amcgee/dhis2-app-platform)
+-   [ ] Implement top-level `create` command for bootstrapping `cli`, `app`, and other components
 -   [x] Integrate the legacy [`dhis2-cli`](https://www.npmjs.com/package/dhis2-cli) UUID generation functionality ([source](https://github.com/dhis2/dhis2-cli))
 -   Implement
     -   [ ] unit tests
@@ -121,6 +122,8 @@ Anything following the action verb is either a positional argument or a flag (if
         -   [ ] CI deploy to NPM
 -   [ ] Build standalone packaged executables with [pkg](https://www.npmjs.com/package/pkg)
 -   [ ] Add individual package READMEs for better NPM optics
+-   [ ] Consolidate `makeEntryPoint` and `notifyOfUpdates` since it's boilderplate code.
+-   [ ] Handle rejected promises at command level (incorporate `exitOnCatch` helper)
 -   [x] Confirm Greenkeeper functionality (add greenkeeper.json for monorepo awareness)
 -   [ ] Confirm that update notifications work well
 -   [ ] Cut version 1.0 with baseline feature set and semantic versioning guarantee
