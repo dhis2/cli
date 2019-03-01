@@ -8,7 +8,16 @@ const path = require('path')
 
 exports.command = 'release [options]'
 
-exports.describe = 'Generate CHANGELOG.md based on Git history.'
+exports.describe = `Generate change logs, tags, etc.
+
+We use [standard-version](https://github.com/conventional-changelog/standard-version) to generate release information.
+
+To do a subsequent release, run 'd2-app release'.
+
+After that run 'git push --follow-tags origin master'.
+
+DO NOT RUN 'npm publish'. Travis does this when it builds a tag.
+`
 
 exports.builder = {
     prerelease: {
