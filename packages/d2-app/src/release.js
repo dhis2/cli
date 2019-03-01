@@ -3,6 +3,9 @@ const std_version = require('standard-version')
 const exec = require('@dhis2/cli-helpers-engine').exec
 const log = require('@dhis2/cli-helpers-engine').reporter
 
+const fs = require('fs')
+const path = require('path')
+
 exports.command = 'release [options]'
 
 exports.describe = 'Generate CHANGELOG.md based on Git history.'
@@ -21,7 +24,7 @@ exports.builder = {
     'dry-run': {
         type: 'boolean',
         describe: 'Do release steps but do not commit to results',
-        default: true,
+        default: false,
     },
     silent: {
         type: 'boolean',
@@ -34,7 +37,16 @@ exports.builder = {
 exports.handler = async function(argv) {
     const repoDir = process.cwd()
 
-    log.info(`i'm in ${repoDir}, what up?`)
+    if (!argv.firstRelease) {
+        try {
+            fs.accessSync(path.join(repoDir, 'CHANGELOG.md'))
+        } catch (e) {
+            log.error(
+                `'${repoDir}/CHANGELOG.md' does not exist, and command was called without '--first-release'.`
+            )
+            process.exit(1)
+        }
+    }
 
     const options = {
         noVerify: true,
@@ -45,32 +57,19 @@ exports.handler = async function(argv) {
         tagPrefix: '',
         firstRelease: argv.firstRelease,
         prerelease: argv.prerelease,
-        skip: {
-            tag: true,
-        },
-    }
-
-    try {
-        const foo = await exec({
-            cmd: 'echo',
-            args: ['boo'],
-            opts: [],
-        })
-        log.info(foo)
-    } catch (e) {
-        log.error('exec borked', e)
     }
 
     try {
         await std_version(options, function(err) {
             if (err) {
-                console.error(
+                log.error(
                     `standard-version failed with message: ${err.message}`
                 )
             }
             // standard-version is done
         })
     } catch (e) {
-        console.error('BOOM!', e)
+        log.error('standard-version failed', e)
+        process.exit(1)
     }
 }
