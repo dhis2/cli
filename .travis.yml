@@ -4,8 +4,13 @@ node_js:
 before_script:
 - npm install --global @dhis2/deploy-build
 script:
-- echo "no build script, proceed..."
+- echo "No build script, proceed..."
 deploy:
+- provider: script
+  script: deploy-build
+  skip_cleanup: true
+  on:
+    all_branches: true
 - provider: script
   script: publish-build
   skip_cleanup: true
@@ -13,4 +18,5 @@ deploy:
     tags: true
 env:
   global:
-    secure: CxBl9xFgVQhl/xFj8G9WrWKGcIB5cmdwYsSohmes2xvJZJ/2wDSC0PjewSk3BWT9CxiZ6Hv36S/54TL3q6xRsMl2GKawLtVkuozFtJd42G8wqrXVylQvix7HjgiYpPPK68sYnrV0Q3/9DK4StXYFr4JBWcgZ0pKL9KaaY7BeKMFkahRiVqa4yhTIZm1V1o6CYyQ4CKy+ZipDp9Igy+VNjSY6waTifQ5EuvL8DnETdtbp/tngUHbdXoNT+H4RQvd1f9ChRncUYlk6jTiBdGd5aN/ag0O1GY5SPQJJ4K/dyiQdbNUIb345z2tJjwr+FaUTm/fU6j+riZIs2sJ9oFlGylGokPSZQgozCtJTiP5JIP3uHtu3K9Tw/md/a1uZ8dIoCIQQoR8rx/zwlWpAVKs+ZudrNQKtnGiJ58qr5EezPuXQrMQAh+cMMkYfVRpdFv/c4yq/7SU1nK6y93gJnqw6I01nn4wNK77impIhdpwDTGbsrUdIeMojDb+VOoo3llwkeV9gRKquLZpKW1b/TXU9IQ/Icw+bN8SAnY6vqKxbg3vdBGrs9amYBIJGXxKxBZjYa+MnQiP/ipRpm3EDLn8XXiVS+VZSTCbr1cuEmJQPllTOV9c2Ov0Ie0KcBpevzfQ2p2uH+zYMSzE7+hkoQht2o+bVrSfiHqgSup8pAnYVmX4=
+  - secure: CxBl9xFgVQhl/xFj8G9WrWKGcIB5cmdwYsSohmes2xvJZJ/2wDSC0PjewSk3BWT9CxiZ6Hv36S/54TL3q6xRsMl2GKawLtVkuozFtJd42G8wqrXVylQvix7HjgiYpPPK68sYnrV0Q3/9DK4StXYFr4JBWcgZ0pKL9KaaY7BeKMFkahRiVqa4yhTIZm1V1o6CYyQ4CKy+ZipDp9Igy+VNjSY6waTifQ5EuvL8DnETdtbp/tngUHbdXoNT+H4RQvd1f9ChRncUYlk6jTiBdGd5aN/ag0O1GY5SPQJJ4K/dyiQdbNUIb345z2tJjwr+FaUTm/fU6j+riZIs2sJ9oFlGylGokPSZQgozCtJTiP5JIP3uHtu3K9Tw/md/a1uZ8dIoCIQQoR8rx/zwlWpAVKs+ZudrNQKtnGiJ58qr5EezPuXQrMQAh+cMMkYfVRpdFv/c4yq/7SU1nK6y93gJnqw6I01nn4wNK77impIhdpwDTGbsrUdIeMojDb+VOoo3llwkeV9gRKquLZpKW1b/TXU9IQ/Icw+bN8SAnY6vqKxbg3vdBGrs9amYBIJGXxKxBZjYa+MnQiP/ipRpm3EDLn8XXiVS+VZSTCbr1cuEmJQPllTOV9c2Ov0Ie0KcBpevzfQ2p2uH+zYMSzE7+hkoQht2o+bVrSfiHqgSup8pAnYVmX4=
+  - secure: OVdVE/sQMl0kLT4SvKFr6yVlGGC6DiQyMdUjZM4tjfh/pMNVLm8EmMccnoUSfnuDjp7lU87gbjauVP4qbMBl2j9ZBBisRAArZgf4jJ3W9H+kQGrQB8COxgWXp85mVO3qvCbbNTOCQXKPiR51kEHV4xxPcbQzLNz9endqi6zyfOGdes4kEJY/gWX+TAtYMstHVUVN097S0bLMW6xjeodlnulcEzw2LFAXSDtGj1xtjkE6XrqBIIqIR2eW/gKwiB+WGLscn9pZln1I1F2upGSE/KVBzvFk02aV5md/2PkJLtYYRxrI5LwqRvKf0FazUfsjG2BlkSV7pGySvBeLeTz2hTvOjUjXM+w5VjpL00Qor9q20p+qXe31sS7dGr8Pk6vsXMsDljvEgi32k1VuumaU2RfgPYMFtH+gYam7SIchg8A/XtWQnL5hOybc7ceVM09uRUPBtEWAy6Wn5bczt6nTsXOmfcpYH+PMnIoStG+A/636nkEDTy30k2mOa3PW+Yjh7a8jOk+yHClvoZANw3cqKjL83lW5cP/LdWe3LT5UjSUjk9hd1ndEWAUbOBEAG6MACJniF9YuwGe25JJMHArOS+pGIM3AuZsBC5lXSnALMjH2Bqfgjuhcn+djWXEvTJGr5kCwchgtqlARWUh0J5B1nwx48jvUnCyyniReKdR6n5k=
