@@ -9,7 +9,7 @@
     "dependencies": {
         "@dhis2/cli-helpers-engine": "^0.11.0",
         "@dhis2/create-app": "^0.11.0",
-        "standard-version": "^4.4.0"
+        "standard-version": "^5.0.1"
     },
     "bin": {
         "d2-app": "./bin/d2-app"
