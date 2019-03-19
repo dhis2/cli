@@ -7,7 +7,7 @@ const {
     makeDockerImage,
 } = require('../common')
 
-const run = async function({ v, port, ...argv }) {
+const run = async function({ service, v, ...argv }) {
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
         dockerComposeRepository: argv.cluster.dockerComposeRepository,
@@ -17,7 +17,11 @@ const run = async function({ v, port, ...argv }) {
         reporter.error('Failed to initialize cache...')
         process.exit(1)
     }
-    reporter.info(`Spinning up cluster version ${chalk.cyan(v)}`)
+    reporter.info(
+        `Reading logs from cluster version ${chalk.cyan(v)}${
+            service ? ` <${service}>` : ''
+        }`
+    )
     const res = await tryCatchAsync(
         'exec(docker-compose)',
         exec({
@@ -27,33 +31,25 @@ const run = async function({ v, port, ...argv }) {
                 makeComposeProject(v),
                 '-f',
                 path.join(cacheLocation, 'docker-compose.yml'),
-                'up',
-                '-d',
-            ],
+                'logs',
+                '-f',
+            ].concat(service ? [service] : []),
             env: {
                 DHIS2_CORE_TAG: makeDockerImage(v),
-                DHIS2_CORE_PORT: port,
+                DHIS2_CORE_PORT: '0000',
             },
             pipe: true,
         })
     )
     if (res.err) {
-        reporter.error('Failed to spin up cluster docker-compose cluster')
+        reporter.error('Failed to read cluster logs')
         process.exit(1)
     }
 }
 
 module.exports = {
-    command: 'up <v>',
-    desc: 'Spin up a new cluster',
-    aliases: 'u',
-    builder: {
-        port: {
-            alias: 'p',
-            desc: 'Specify the port on which to expose the DHIS2 instance',
-            type: 'integer',
-            default: 8080,
-        },
-    },
+    command: 'logs <v> [service]',
+    desc: 'Tail the logs from a given service',
+    aliases: 'r',
     handler: run,
 }
