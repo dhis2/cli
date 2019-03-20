@@ -6,8 +6,9 @@ const {
     makeComposeProject,
     makeDockerImage,
 } = require('../common')
+const { seed: doSeed } = require('../db')
 
-const run = async function({ v, port, ...argv }) {
+const run = async function({ v, port, seed, seedFile, ...argv }) {
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
         dockerComposeRepository: argv.cluster.dockerComposeRepository,
@@ -17,6 +18,11 @@ const run = async function({ v, port, ...argv }) {
         reporter.error('Failed to initialize cache...')
         process.exit(1)
     }
+
+    if (seed || seedFile) {
+        await doSeed({ cacheLocation, v, path: seedFile, ...argv })
+    }
+
     reporter.info(`Spinning up cluster version ${chalk.cyan(v)}`)
     const res = await tryCatchAsync(
         'exec(docker-compose)',
@@ -53,6 +59,17 @@ module.exports = {
             desc: 'Specify the port on which to expose the DHIS2 instance',
             type: 'integer',
             default: 8080,
+        },
+        seed: {
+            alias: 's',
+            desc: 'Seed the detabase from a sql dump',
+            type: 'boolean',
+            default: false,
+        },
+        seedFile: {
+            desc:
+                'The location of the sql dump to use when seeding that database',
+            type: 'string',
         },
     },
     handler: run,
