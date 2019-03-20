@@ -8,11 +8,11 @@ const {
 } = require('../common')
 const { seed: doSeed } = require('../db')
 
-const run = async function({ v, port, seed, seedFile, ...argv }) {
+const run = async function({ v, port, seed, seedFile, update, ...argv }) {
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
         dockerComposeRepository: argv.cluster.dockerComposeRepository,
-        force: false,
+        force: update,
     })
     if (!cacheLocation) {
         reporter.error('Failed to initialize cache...')
@@ -20,7 +20,7 @@ const run = async function({ v, port, seed, seedFile, ...argv }) {
     }
 
     if (seed || seedFile) {
-        await doSeed({ cacheLocation, v, path: seedFile, ...argv })
+        await doSeed({ cacheLocation, v, path: seedFile, update, ...argv })
     }
 
     reporter.info(`Spinning up cluster version ${chalk.cyan(v)}`)
@@ -70,6 +70,12 @@ module.exports = {
             desc:
                 'The location of the sql dump to use when seeding that database',
             type: 'string',
+        },
+        update: {
+            alias: 'u',
+            desc: 'Indicate that d2 cluster should re-download cached files',
+            type: 'boolean',
+            default: false,
         },
     },
     handler: run,
