@@ -1,11 +1,11 @@
 {
-    "name": "@dhis2/cli-{{fullName}}",
+    "name": "@dhis2/cli-{{{fullName}}}",
     "bin": {
-        "{{executable}}": "./bin/{{executable}}"
+        "{{executable}}": "./bin/{{{executable}}}"
     },
-    "version": "{{version}}",
+    "version": "{{{version}}}",
     "main": "src/index.js",
-    "author": "{{author}}",
+    "author": "{{{author}}}",
     "license": "BSD-3-Clause",
     "private": false,
     "dependencies": {
