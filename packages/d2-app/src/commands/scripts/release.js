@@ -2,13 +2,10 @@ const { reporter } = require('@dhis2/cli-helpers-engine')
 
 const semanticRelease = require('semantic-release')
 
-const handler = async ({ name, dryRun, ci }) => {
+const handler = async ({ name }) => {
     const options = {
         branch: 'master',
         version: 'v${version}',
-
-        dryRun: dryRun,
-        ci: ci,
 
         plugins: [
             '@semantic-release/commit-analyzer',
@@ -79,19 +76,6 @@ const handler = async ({ name, dryRun, ci }) => {
 
 module.exports = {
     command: 'release',
-    builder: {
-        'dry-run': {
-            type: 'boolean',
-            describe: 'Dry run of the release process.',
-            alias: 'd',
-            default: false,
-        },
-        ci: {
-            type: 'boolean',
-            describe: 'Allow to run the release process locally',
-            default: true,
-        },
-    },
     desc: 'Execute the release process',
     aliases: 'r',
     handler,
