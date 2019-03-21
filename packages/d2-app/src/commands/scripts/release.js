@@ -26,7 +26,7 @@ const options = {
 }
 
 const handler = async ({ name }) => {
-	const config = {
+    const config = {
         env: {
             ...process.env,
             GIT_AUTHOR_NAME: '@dhis2-bot',
@@ -34,29 +34,29 @@ const handler = async ({ name }) => {
             GIT_COMMITTER_NAME: '@dhis2-bot',
             GIT_COMMITTER_EMAIL: 'ci@dhis2.org',
         }
-	}
+    }
 
-	try {
-	  const result = await semanticRelease(options, config);
+    try {
+        const result = await semanticRelease(options, config);
 
-	  if (result) {
-		const {lastRelease, commits, nextRelease, releases} = result;
+        if (result) {
+            const {lastRelease, commits, nextRelease, releases} = result;
 
-		console.log(`Published ${nextRelease.type} release version ${nextRelease.version} containing ${commits.length} commits.`);
+            reporter.info(`Published ${nextRelease.type} release version ${nextRelease.version} containing ${commits.length} commits.`);
 
-		if (lastRelease.version) {
-		  console.log(`The last release was "${lastRelease.version}".`);
-		}
+            if (lastRelease.version) {
+                reporter.info(`The last release was "${lastRelease.version}".`);
+            }
 
-		for (const release of releases) {
-		  console.log(`The release was published with plugin "${release.pluginName}".`);
-		}
-	  } else {
-		console.log('No release published.');
-	  }
-	} catch (err) {
-	  console.error('The automated release failed with %O', err)
-	}
+            for (const release of releases) {
+                reporter.info(`The release was published with plugin "${release.pluginName}".`);
+            }
+        } else {
+            reporter.info('No release published.');
+        }
+    } catch (err) {
+        reporter.error('The automated release failed with %O', err)
+    }
 }
 
 module.exports = {
