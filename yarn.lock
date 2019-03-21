@@ -116,14 +116,6 @@
   dependencies:
     find-up "^2.1.0"
 
-"@dhis2/cli-app@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-app/-/cli-app-0.11.0.tgz#4fc81ed99059e23b052a6362cbb9aaf9d8413430"
-  integrity sha512-XNRGHtaAW/ZcV1SRiV6st96n5+2Qin5w6v9i0ELKXMQE7L6Zk+PXy6KG7wMz5XEh9DRUwmxmPl7MVrxIkw1kCQ==
-  dependencies:
-    "@dhis2/cli-helpers-engine" "^0.11.0"
-    "@dhis2/create-app" "^0.11.0"
-
 "@dhis2/cli-helpers-engine@^0.10.1":
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/@dhis2/cli-helpers-engine/-/cli-helpers-engine-0.10.1.tgz#bd3f589d862e629fe74f8717efeae448fe55038c"

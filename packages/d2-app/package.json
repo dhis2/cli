@@ -3,7 +3,7 @@
     "bin": {
         "d2-app": "./bin/d2-app"
     },
-    "version": "1.0.0",
+    "version": "0.11.0",
     "main": "src/index.js",
     "author": "DHIS2 &lt;info@dhis2.org&gt;",
     "license": "BSD-3-Clause",

@@ -2,37 +2,40 @@ const { reporter } = require('@dhis2/cli-helpers-engine')
 
 const semanticRelease = require('semantic-release')
 
-const options = {
-    branch: 'master',
-    version: 'v${version}',
+const handler = async ({ name, dryRun, ci }) => {
+    const options = {
+        branch: 'master',
+        version: 'v${version}',
 
-    plugins: [
-        '@semantic-release/commit-analyzer',
-        '@semantic-release/release-notes-generator',
+        dryRun: dryRun,
+        ci: ci,
 
-        [
-            '@semantic-release/changelog',
-            {
-                changelogFile: 'CHANGELOG.md',
-            },
+        plugins: [
+            '@semantic-release/commit-analyzer',
+            '@semantic-release/release-notes-generator',
+
+            [
+                '@semantic-release/changelog',
+                {
+                    changelogFile: 'CHANGELOG.md',
+                },
+            ],
+
+            '@semantic-release/npm',
+
+            [
+                '@semantic-release/git',
+                {
+                    assets: ['CHANGELOG.md', 'package.json', 'yarn.lock'],
+                    message:
+                        'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+                },
+            ],
+
+            '@semantic-release/github',
         ],
+    }
 
-        '@semantic-release/npm',
-
-        [
-            '@semantic-release/git',
-            {
-                assets: ['CHANGELOG.md', 'package.json', 'yarn.lock'],
-                message:
-                    'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
-            },
-        ],
-
-        '@semantic-release/github',
-    ],
-}
-
-const handler = async ({ name }) => {
     const config = {
         env: {
             ...process.env,
@@ -70,12 +73,25 @@ const handler = async ({ name }) => {
             reporter.info('No release published.')
         }
     } catch (err) {
-        reporter.error('The automated release failed with %O', err)
+        reporter.error(`The automated release failed with ${err}`)
     }
 }
 
 module.exports = {
     command: 'release',
+    builder: {
+        'dry-run': {
+            type: 'boolean',
+            describe: 'Dry run of the release process.',
+            alias: 'd',
+            default: false,
+        },
+        ci: {
+            type: 'boolean',
+            describe: 'Allow to run the release process locally',
+            default: true,
+        },
+    },
     desc: 'Execute the release process',
     aliases: 'r',
     handler,
