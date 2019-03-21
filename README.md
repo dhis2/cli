@@ -106,9 +106,9 @@ Anything following the action verb is either a positional argument or a flag (if
 -   [x] Basic DHIS2 Docker cluster management with `d2 cluster`
 -   [x] Incorporate [packages](https://github.com/dhis2/packages) as a command module
     -   [x] Link to updated [packages](https://github.com/dhis2/packages) using cli engine
-    -   [ ] Deprecate `d2 package` ?
+    -   [x] Deprecate `d2 package` ?
 -   [x] Implement `d2-app-scripts` for application creation (WIP [app-platform](https://github.com/amcgee/dhis2-app-platform)
--   [ ] Implement top-level `create` command for bootstrapping `cli`, `app`, and other components
+-   [x] Implement top-level `create` command for bootstrapping `cli`, `app`, and other components
 -   [x] Integrate the legacy [`dhis2-cli`](https://www.npmjs.com/package/dhis2-cli) UUID generation functionality ([source](https://github.com/dhis2/dhis2-cli))
 -   Implement
     -   [ ] unit tests
@@ -119,8 +119,13 @@ Anything following the action verb is either a positional argument or a flag (if
         -   [x] Switch to verb-form command
     -   [x] Travis CI
         -   [ ] CI deploy to NPM
--   [ ] Build standalone packaged executables with [pkg](https://www.npmjs.com/package/pkg)
+-   [ ] Build standalone packaged executables with [rollup](https://rollupjs.org/) or [pkg](https://www.npmjs.com/package/pkg)
 -   [ ] Add individual package READMEs for better NPM optics
+    -   [ ] d2-app
+    -   [x] d2-cluster
+    -   [ ] d2-create
+    -   [ ] d2-utils
+    -   [ ] helpers-engine
 -   [ ] Consolidate `makeEntryPoint` and `notifyOfUpdates` since it's boilderplate code.
 -   [ ] Handle rejected promises at command level (incorporate `exitOnCatch` helper)
 -   [x] Confirm Greenkeeper functionality (add greenkeeper.json for monorepo awareness)
