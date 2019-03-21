@@ -5,7 +5,10 @@
     },
     "version": "0.11.0",
     "main": "src/index.js",
-    "author": "Viktor Varland <viktor@dhis2.org>",
+    "author": "Austin McGee <austin@dhis2.org>",
+    "contributors": [
+        "Viktor Varland <viktor@dhis2.org>"
+    ],
     "license": "BSD-3-Clause",
     "private": false,
     "dependencies": {
