@@ -2,35 +2,49 @@ const { reporter } = require('@dhis2/cli-helpers-engine')
 
 const semanticRelease = require('semantic-release')
 
-const handler = async ({ name }) => {
+function publisher(target = '') {
+    switch (target.toLowerCase()) {
+        case 'npm': {
+            return '@semantic-release/npm'
+        }
+
+        default: {
+            return undefined
+        }
+    }
+}
+
+const handler = async ({ name, publish }) => {
+    // set up the plugins and filter out any undefined elements
+    const plugins = [
+        '@semantic-release/commit-analyzer',
+        '@semantic-release/release-notes-generator',
+
+        [
+            '@semantic-release/changelog',
+            {
+                changelogFile: 'CHANGELOG.md',
+            },
+        ],
+
+        publisher(publish),
+
+        [
+            '@semantic-release/git',
+            {
+                assets: ['CHANGELOG.md', 'package.json', 'yarn.lock'],
+                message:
+                    'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+            },
+        ],
+
+        '@semantic-release/github',
+    ].filter(n => n)
+
     const options = {
         branch: 'master',
         version: 'v${version}',
-
-        plugins: [
-            '@semantic-release/commit-analyzer',
-            '@semantic-release/release-notes-generator',
-
-            [
-                '@semantic-release/changelog',
-                {
-                    changelogFile: 'CHANGELOG.md',
-                },
-            ],
-
-            '@semantic-release/npm',
-
-            [
-                '@semantic-release/git',
-                {
-                    assets: ['CHANGELOG.md', 'package.json', 'yarn.lock'],
-                    message:
-                        'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
-                },
-            ],
-
-            '@semantic-release/github',
-        ],
+        plugins: plugins,
     }
 
     const config = {
@@ -79,4 +93,10 @@ module.exports = {
     desc: 'Execute the release process',
     aliases: 'r',
     handler,
+    builder: {
+        publish: {
+            type: 'string',
+            aliases: 'p',
+        },
+    },
 }
