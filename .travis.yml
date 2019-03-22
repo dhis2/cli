@@ -7,7 +7,7 @@ deploy:
 - provider: script
   skip_cleanup: true
   script:
-  - ./packages/d2-app/bin/d2-app release --publish mono-npm
+  - ./packages/d2-app/bin/d2-app scripts release --publish mono-npm
   on:
     tags: false
     branch: master
