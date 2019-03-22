@@ -31,31 +31,31 @@ function publisher(target = '') {
 
 const handler = async ({ name, publish }) => {
     // set up the plugins and filter out any undefined elements
-    const plugins = [
-        '@semantic-release/commit-analyzer',
-        '@semantic-release/release-notes-generator',
 
-        [
-            '@semantic-release/changelog',
-            {
-                changelogFile: 'CHANGELOG.md',
-            },
-        ],
+    const changelogPlugin = [
+        '@semantic-release/changelog',
+        {
+            changelogFile: 'CHANGELOG.md',
+        },
     ]
 
-    const pub = publisher(publish)
-    pub.map(p => plugins.push(p))
-
-    plugins.push([
+    const gitPlugin = [
         '@semantic-release/git',
         {
             assets: ['CHANGELOG.md', 'package.json', 'yarn.lock'],
             message:
                 'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
         },
-    ])
+    ]
 
-    plugins.push('@semantic-release/github')
+    const plugins = [
+        '@semantic-release/commit-analyzer',
+        '@semantic-release/release-notes-generator',
+        changelogPlugin,
+        ...publisher(publish),
+        gitPlugin,
+        '@semantic-release/github',
+    ]
 
     const options = {
         branch: 'master',
