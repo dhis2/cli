@@ -42,7 +42,13 @@ const handler = async ({ name, publish }) => {
     const gitPlugin = [
         '@semantic-release/git',
         {
-            assets: ['CHANGELOG.md', 'package.json', 'yarn.lock'],
+            assets: [
+                'CHANGELOG.md',
+                'package.json',
+                'yarn.lock',
+                'packages/**/package.json',
+                'packages/**/yarn.lock',
+            ],
             message:
                 'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
         },
@@ -54,7 +60,7 @@ const handler = async ({ name, publish }) => {
         changelogPlugin,
         ...publisher(publish),
         gitPlugin,
-        '@semantic-release/github',
+        // '@semantic-release/github',
     ]
 
     const options = {
