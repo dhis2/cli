@@ -1,15 +1,30 @@
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
+const { readdirSync } = require('fs')
+const { join } = require('path')
+
 const semanticRelease = require('semantic-release')
 
 function publisher(target = '') {
     switch (target.toLowerCase()) {
         case 'npm': {
-            return '@semantic-release/npm'
+            return ['@semantic-release/npm']
+        }
+
+        case 'mono-npm': {
+            const packages = readdirSync('./packages')
+            return packages.map(p => {
+                return [
+                    '@semantic-release/npm',
+                    {
+                        pkgRoot: join('./packages', p),
+                    },
+                ]
+            })
         }
 
         default: {
-            return undefined
+            return [undefined]
         }
     }
 }
@@ -26,25 +41,26 @@ const handler = async ({ name, publish }) => {
                 changelogFile: 'CHANGELOG.md',
             },
         ],
+    ]
 
-        publisher(publish),
+    const pub = publisher(publish)
+    pub.map(p => plugins.push(p))
 
-        [
-            '@semantic-release/git',
-            {
-                assets: ['CHANGELOG.md', 'package.json', 'yarn.lock'],
-                message:
-                    'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
-            },
-        ],
+    plugins.push([
+        '@semantic-release/git',
+        {
+            assets: ['CHANGELOG.md', 'package.json', 'yarn.lock'],
+            message:
+                'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+        },
+    ])
 
-        '@semantic-release/github',
-    ].filter(n => n)
+    plugins.push('@semantic-release/github')
 
     const options = {
         branch: 'master',
         version: 'v${version}',
-        plugins: plugins,
+        plugins: plugins.filter(n => n),
     }
 
     const config = {
