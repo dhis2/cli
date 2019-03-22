@@ -1,15 +1,15 @@
 const chalk = require('chalk')
 const path = require('path')
-const { exec, reporter } = require('@dhis2/cli-helpers-engine')
+const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
     makeComposeProject,
     makeDockerImage,
 } = require('../common')
 
-const run = async function({ v, clean, getCache, ...argv }) {
+const run = async function({ service, v, port, ...argv }) {
     const cacheLocation = await initDockerComposeCache({
-        cache: getCache(),
+        cache: argv.getCache(),
         dockerComposeRepository: argv.cluster.dockerComposeRepository,
         force: false,
     })
@@ -17,43 +17,41 @@ const run = async function({ v, clean, getCache, ...argv }) {
         reporter.error('Failed to initialize cache...')
         process.exit(1)
     }
-    console.log(`Winding down cluster version ${chalk.cyan(v)}`)
-    try {
-        await exec({
+    reporter.info(`Spinning up cluster version ${chalk.cyan(v)}`)
+    const res = await tryCatchAsync(
+        'exec(docker-compose)',
+        exec({
             cmd: 'docker-compose',
             args: [
                 '-p',
                 makeComposeProject(v),
                 '-f',
                 path.join(cacheLocation, 'docker-compose.yml'),
-                'down',
-            ].concat(clean ? ['--volumes'] : []),
+                'restart',
+            ].concat(service ? [service] : []),
             env: {
                 DHIS2_CORE_TAG: makeDockerImage(v),
-                DHIS2_CORE_PORT: '0000', // Doesn't matter for `down`
+                DHIS2_CORE_PORT: port,
             },
+            pipe: true,
         })
-    } catch (e) {
-        reporter.error('Failed to execute docker-compose', e)
+    )
+    if (res.err) {
+        reporter.error('Failed to restart cluster service(s)')
         process.exit(1)
     }
 }
 
 module.exports = {
-    command: 'down <v>',
-    desc: 'Destroy a running container',
-    aliases: 'd',
+    command: 'restart <v> [service]',
+    desc: 'Restart a cluster or cluster service',
+    aliases: 'r',
     builder: {
         port: {
             alias: 'p',
             desc: 'Specify the port on which to expose the DHIS2 instance',
             type: 'integer',
             default: 8080,
-        },
-        clean: {
-            desc: 'Destroy all data volumes as well as ephemeral containers',
-            type: 'boolean',
-            default: false,
         },
     },
     handler: run,
