@@ -1,23 +1,17 @@
 const { reporter } = require('@dhis2/cli-helpers-engine')
-
-const { readdirSync } = require('fs')
-const { join } = require('path')
-
+const { existsSync } = require('fs')
+const path = require('path')
 const semanticRelease = require('semantic-release')
+const getWorkspacePackages = require('./support/getWorkspacePackages')
 
-function publisher(target = '') {
+function publisher(target = '', packages) {
     switch (target.toLowerCase()) {
         case 'npm': {
-            return ['@semantic-release/npm']
-        }
-
-        case 'mono-npm': {
-            const packages = readdirSync('./packages')
-            return packages.map(p => {
+            return packages.map(pkgRoot => {
                 return [
                     '@semantic-release/npm',
                     {
-                        pkgRoot: join('./packages', p),
+                        pkgRoot,
                     },
                 ]
             })
@@ -32,6 +26,19 @@ function publisher(target = '') {
 const handler = async ({ name, publish }) => {
     // set up the plugins and filter out any undefined elements
 
+    const rootPackageFile = path.join(process.cwd(), 'package.json')
+    const packages = [
+        rootPackageFile,
+        ...(await getWorkspacePackages(rootPackageFile)),
+    ]
+
+    const updateDepsPlugin = [
+        require('./support/semantic-release-update-deps'),
+        {
+            packages,
+        },
+    ]
+
     const changelogPlugin = [
         '@semantic-release/changelog',
         {
@@ -44,10 +51,17 @@ const handler = async ({ name, publish }) => {
         {
             assets: [
                 'CHANGELOG.md',
-                'package.json',
-                'yarn.lock',
-                'packages/**/package.json',
-                'packages/**/yarn.lock',
+                packages.map(pkgJsonPath =>
+                    path.relative(process.cwd(), pkgJsonPath)
+                ),
+                packages
+                    .map(pkgJsonPath =>
+                        path.join(path.dirname(pkgJsonPath), 'yarn.lock')
+                    )
+                    .filter(existsSync)
+                    .map(pkgJsonPath =>
+                        path.relative(process.cwd(), pkgJsonPath)
+                    ),
             ],
             message:
                 'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
@@ -57,16 +71,17 @@ const handler = async ({ name, publish }) => {
     const plugins = [
         '@semantic-release/commit-analyzer',
         '@semantic-release/release-notes-generator',
+        updateDepsPlugin,
         changelogPlugin,
-        ...publisher(publish),
+        ...publisher(publish, packages),
         gitPlugin,
-        // '@semantic-release/github',
+        '@semantic-release/github',
     ]
 
     const options = {
         branch: 'master',
         version: 'v${version}',
-        plugins: plugins.filter(n => n),
+        plugins: plugins.filter(n => !!n),
     }
 
     const config = {
