@@ -32,7 +32,7 @@ function publisher(target = '', packages) {
     }
 }
 
-const handler = async ({ name, publish }) => {
+const handler = async ({ publish }) => {
     // set up the plugins and filter out any undefined elements
 
     const rootPackageFile = path.join(process.cwd(), 'package.json')
@@ -41,12 +41,15 @@ const handler = async ({ name, publish }) => {
         ...(await getWorkspacePackages(rootPackageFile)),
     ]
 
-    const updateDepsPlugin = [
-        require('./support/semantic-release-update-deps'),
-        {
-            packages,
-        },
-    ]
+    const updateDepsPlugin =
+        packages.length > 1
+            ? [
+                  require('./support/semantic-release-update-deps'),
+                  {
+                      packages,
+                  },
+              ]
+            : undefined
 
     const changelogPlugin = [
         '@semantic-release/changelog',
@@ -77,6 +80,7 @@ const handler = async ({ name, publish }) => {
         },
     ]
 
+    // Order matters here!
     const plugins = [
         '@semantic-release/commit-analyzer',
         '@semantic-release/release-notes-generator',
@@ -84,7 +88,7 @@ const handler = async ({ name, publish }) => {
         changelogPlugin,
         ...publisher(publish, packages),
         gitPlugin,
-        // '@semantic-release/github',
+        '@semantic-release/github',
     ]
 
     const options = {
