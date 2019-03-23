@@ -36,7 +36,7 @@ const replaceDependencies = (pkg, listNames, packageNames, version) => {
     packageNames.forEach(packageName => {
         listNames.forEach(listName => {
             if (pkg[listName] && pkg[listName][packageName]) {
-                pkg[listName][packageName] = `^${version}`
+                pkg[listName][packageName] = version
                 dependencies.push(`${packageName} (${listName})`)
             }
         })
@@ -48,8 +48,12 @@ const prepare = (config, context) => {
     if (!context.packages) {
         verifyConditions({ ...config, silent: true }, context)
     }
-    const { silent } = config
+    const { silent, exact } = config
     const { nextRelease, logger, packages } = context
+
+    const targetVersion = exact
+        ? nextRelease.version
+        : `^${nextRelease.version}`
 
     const names = packages.map(package => package.json.name).filter(n => n)
     packages.forEach(package => {
@@ -69,12 +73,12 @@ const prepare = (config, context) => {
             pkgJson,
             ['dependencies', 'devDependencies', 'peerDependencies'],
             names,
-            nextRelease.version
+            targetVersion
         ).forEach(
             dep =>
                 !silent &&
                 logger.log(
-                    `Upgraded dependency ${dep} for ${
+                    `Upgraded dependency ${dep}@${targetVersion} for ${
                         package.label
                     } at ${relativePath}`
                 )
