@@ -4,14 +4,23 @@ const path = require('path')
 const semanticRelease = require('semantic-release')
 const getWorkspacePackages = require('./support/getWorkspacePackages')
 
+const packageIsPublishable = pkgJsonPath => {
+    try {
+        const pkgJson = require(pkgJsonPath)
+        return !!pkgJson.name && !pkgJson.private
+    } catch (e) {
+        return false
+    }
+}
+
 function publisher(target = '', packages) {
     switch (target.toLowerCase()) {
         case 'npm': {
-            return packages.map(pkgRoot => {
+            return packages.filter(packageIsPublishable).map(pkgJsonPath => {
                 return [
                     '@semantic-release/npm',
                     {
-                        pkgRoot,
+                        pkgRoot: path.dirname(pkgJsonPath),
                     },
                 ]
             })
@@ -75,12 +84,12 @@ const handler = async ({ name, publish }) => {
         changelogPlugin,
         ...publisher(publish, packages),
         gitPlugin,
-        '@semantic-release/github',
+        // '@semantic-release/github',
     ]
 
     const options = {
-        branch: 'master',
-        version: 'v${version}',
+        branch: 'feat/semantic-release-update-deps',
+        version: 'v${version}-test',
         plugins: plugins.filter(n => !!n),
     }
 
