@@ -1,3 +1,19 @@
+# [1.0.0](https://github.com/dhis2/cli/compare/v0.14.0...v1.0.0) (2019-03-25)
+
+
+### Features
+
+* upgrade cli-helpers-engine and cli-style dependencies ([#32](https://github.com/dhis2/cli/issues/32)) ([21c78dd](https://github.com/dhis2/cli/commit/21c78dd))
+
+
+### BREAKING CHANGES
+
+* cut major version 1.0.0
+
+* chore: update cli-helpers-engine and cli-style dependencies
+
+* chore: let greenkeeper watch the create cli template
+
 # [0.14.0](https://github.com/dhis2/cli/compare/v0.13.0...v0.14.0) (2019-03-25)
 
 
