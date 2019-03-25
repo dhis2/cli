@@ -1,18 +1,18 @@
 {
-    "name": "@dhis2/cli-utils",
-    "bin": {
-        "d2-utils": "./bin/d2-utils"
-    },
-    "version": "0.12.0",
-    "main": "src/index.js",
-    "author": "Viktor Varland",
-    "license": "BSD-3-Clause",
-    "private": false,
-    "dependencies": {
-        "@dhis2/cli-helpers-engine": "^0.12.0",
-        "dhis2-uid": "^0.1.2"
-    },
-    "publishConfig": {
-        "access": "public"
-    }
+  "name": "@dhis2/cli-utils",
+  "bin": {
+    "d2-utils": "./bin/d2-utils"
+  },
+  "version": "0.13.0",
+  "main": "src/index.js",
+  "author": "Viktor Varland",
+  "license": "BSD-3-Clause",
+  "private": false,
+  "dependencies": {
+    "@dhis2/cli-helpers-engine": "^0.13.0",
+    "dhis2-uid": "^0.1.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

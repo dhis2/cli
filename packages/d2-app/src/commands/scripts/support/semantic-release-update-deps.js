@@ -48,7 +48,7 @@ const prepare = (config, context) => {
     if (!context.packages) {
         verifyConditions({ ...config, silent: true }, context)
     }
-    const { silent, exact, tabSpaces = 4 } = config
+    const { silent, exact, updatePackageVersion = true, tabSpaces = 4 } = config
     const { nextRelease, logger, packages } = context
 
     const targetVersion = exact
@@ -60,13 +60,15 @@ const prepare = (config, context) => {
         const pkgJson = package.json
         const relativePath = path.relative(context.cwd, package.path)
 
-        pkgJson.version = nextRelease.version
-        if (!silent) {
-            logger.log(
-                `Updated version to ${nextRelease.version} for package ${
-                    package.label
-                } at ${relativePath}`
-            )
+        if (updatePackageVersion) {
+            pkgJson.version = nextRelease.version
+            if (!silent) {
+                logger.log(
+                    `Updated version to ${nextRelease.version} for package ${
+                        package.label
+                    } at ${relativePath}`
+                )
+            }
         }
 
         replaceDependencies(
