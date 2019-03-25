@@ -3,12 +3,11 @@
         "default": {
             "packages": [
                 "package.json",
+                "packages/app/package.json",
+                "packages/cluster/package.json",
+                "packages/create/package.json",
                 "packages/create-app/package.json",
-                "packages/d2-app/package.json",
-                "packages/d2-cluster/package.json",
-                "packages/d2-create/package.json",
-                "packages/d2/package.json",
-                "packages/helpers-engine/package.json"
+                "packages/main/package.json"
             ]
         }
     }
