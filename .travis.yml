@@ -3,12 +3,12 @@ node_js:
     - 10
 script:
     - echo "Smoke testing d2 executable"
-    - ./packages/d2/bin/d2 debug system
+    - ./packages/main/bin/d2 debug system
 deploy:
     - provider: script
       skip_cleanup: true
       script:
-          - ./packages/d2-app/bin/d2-app scripts release --publish npm
+          - ./packages/utils/bin/d2-utils release --publish npm
       on:
           tags: false
           branch: master
