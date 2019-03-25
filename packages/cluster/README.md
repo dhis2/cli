@@ -27,7 +27,7 @@ This sequence of commands will install the latest bleeding-edge DHIS2 core insta
 > d2 cluster up dev --seed
 > d2 cluster logs dev core
 # Wait for the line "Catalina.start Server startup in XXXX ms", then ctrl+c / cmd+c to terminate
-> d2 cluster restart 2.31.1 gateway # this is a hack necessary to rehup the gateway
+> d2 cluster restart dev gateway # this is a hack necessary to rehup the gateway
 # DHIS2 is available with Sierra Leone db at http://localhost:8080
 # Run the Analytics Table export task from the Data Administration app
 ```
