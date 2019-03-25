@@ -48,7 +48,7 @@ const prepare = (config, context) => {
     if (!context.packages) {
         verifyConditions({ ...config, silent: true }, context)
     }
-    const { silent, exact } = config
+    const { silent, exact, tabSpaces = 4 } = config
     const { nextRelease, logger, packages } = context
 
     const targetVersion = exact
@@ -85,7 +85,7 @@ const prepare = (config, context) => {
         )
         fs.writeFileSync(
             package.path,
-            JSON.stringify(pkgJson, undefined, config.tabSpaces || 2) + '\n'
+            JSON.stringify(pkgJson, undefined, tabSpaces) + '\n'
         )
     })
 }
