@@ -60,15 +60,6 @@ const prepare = (config, context) => {
         const pkgJson = package.json
         const relativePath = path.relative(context.cwd, package.path)
 
-        pkgJson.version = nextRelease.version
-        if (!silent) {
-            logger.log(
-                `Updated version to ${nextRelease.version} for package ${
-                    package.label
-                } at ${relativePath}`
-            )
-        }
-
         replaceDependencies(
             pkgJson,
             ['dependencies', 'devDependencies', 'peerDependencies'],

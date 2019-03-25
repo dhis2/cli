@@ -4,19 +4,10 @@ const path = require('path')
 const semanticRelease = require('semantic-release')
 const getWorkspacePackages = require('./support/getWorkspacePackages')
 
-const packageIsPublishable = pkgJsonPath => {
-    try {
-        const pkgJson = require(pkgJsonPath)
-        return !!pkgJson.name && !pkgJson.private
-    } catch (e) {
-        return false
-    }
-}
-
 function publisher(target = '', packages) {
     switch (target.toLowerCase()) {
         case 'npm': {
-            return packages.filter(packageIsPublishable).map(pkgJsonPath => {
+            return packages.map(pkgJsonPath => {
                 return [
                     '@semantic-release/npm',
                     {
