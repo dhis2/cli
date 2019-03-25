@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-    - 10
+    - lts/*
 script:
     - echo "Smoke testing d2 executable"
     - ./packages/main/bin/d2 debug system
