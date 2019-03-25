@@ -1,23 +1,26 @@
 const { reporter } = require('@dhis2/cli-helpers-engine')
-
-const { readdirSync } = require('fs')
-const { join } = require('path')
-
+const { existsSync } = require('fs')
+const path = require('path')
 const semanticRelease = require('semantic-release')
+const getWorkspacePackages = require('./support/getWorkspacePackages')
 
-function publisher(target = '') {
+const packageIsPublishable = pkgJsonPath => {
+    try {
+        const pkgJson = require(pkgJsonPath)
+        return !!pkgJson.name && !pkgJson.private
+    } catch (e) {
+        return false
+    }
+}
+
+function publisher(target = '', packages) {
     switch (target.toLowerCase()) {
         case 'npm': {
-            return ['@semantic-release/npm']
-        }
-
-        case 'mono-npm': {
-            const packages = readdirSync('./packages')
-            return packages.map(p => {
+            return packages.filter(packageIsPublishable).map(pkgJsonPath => {
                 return [
                     '@semantic-release/npm',
                     {
-                        pkgRoot: join('./packages', p),
+                        pkgRoot: path.dirname(pkgJsonPath),
                     },
                 ]
             })
@@ -29,38 +32,69 @@ function publisher(target = '') {
     }
 }
 
-const handler = async ({ name, publish }) => {
+const handler = async ({ publish }) => {
     // set up the plugins and filter out any undefined elements
-    const plugins = [
-        '@semantic-release/commit-analyzer',
-        '@semantic-release/release-notes-generator',
 
-        [
-            '@semantic-release/changelog',
-            {
-                changelogFile: 'CHANGELOG.md',
-            },
-        ],
+    const rootPackageFile = path.join(process.cwd(), 'package.json')
+    const packages = [
+        rootPackageFile,
+        ...(await getWorkspacePackages(rootPackageFile)),
     ]
 
-    const pub = publisher(publish)
-    pub.map(p => plugins.push(p))
+    const updateDepsPlugin =
+        packages.length > 1
+            ? [
+                  require('./support/semantic-release-update-deps'),
+                  {
+                      packages,
+                  },
+              ]
+            : undefined
 
-    plugins.push([
+    const changelogPlugin = [
+        '@semantic-release/changelog',
+        {
+            changelogFile: 'CHANGELOG.md',
+        },
+    ]
+
+    const gitPlugin = [
         '@semantic-release/git',
         {
-            assets: ['CHANGELOG.md', 'package.json', 'yarn.lock'],
+            assets: [
+                'CHANGELOG.md',
+                packages.map(pkgJsonPath =>
+                    path.relative(process.cwd(), pkgJsonPath)
+                ),
+                packages
+                    .map(pkgJsonPath =>
+                        path.join(path.dirname(pkgJsonPath), 'yarn.lock')
+                    )
+                    .filter(existsSync)
+                    .map(pkgJsonPath =>
+                        path.relative(process.cwd(), pkgJsonPath)
+                    ),
+            ],
             message:
                 'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
         },
-    ])
+    ]
 
-    plugins.push('@semantic-release/github')
+    // Order matters here!
+    const plugins = [
+        '@semantic-release/commit-analyzer',
+        '@semantic-release/release-notes-generator',
+        updateDepsPlugin,
+        changelogPlugin,
+        ...publisher(publish, packages),
+        gitPlugin,
+        '@semantic-release/github',
+    ]
 
     const options = {
         branch: 'master',
         version: 'v${version}',
-        plugins: plugins.filter(n => n),
+        plugins: plugins.filter(n => !!n),
     }
 
     const config = {
