@@ -4,10 +4,19 @@ const path = require('path')
 const semanticRelease = require('semantic-release')
 const getWorkspacePackages = require('./support/getWorkspacePackages')
 
+const packageIsPublishable = pkgJsonPath => {
+    try {
+        const pkgJson = require(pkgJsonPath)
+        return !!pkgJson.name && !pkgJson.private
+    } catch (e) {
+        return false
+    }
+}
+
 function publisher(target = '', packages) {
     switch (target.toLowerCase()) {
         case 'npm': {
-            return packages.map(pkgJsonPath => {
+            return packages.filter(packageIsPublishable).map(pkgJsonPath => {
                 return [
                     '@semantic-release/npm',
                     {
@@ -95,6 +104,7 @@ const handler = async ({ publish }) => {
             GIT_AUTHOR_EMAIL: 'ci@dhis2.org',
             GIT_COMMITTER_NAME: '@dhis2-bot',
             GIT_COMMITTER_EMAIL: 'ci@dhis2.org',
+            NPM_CONFIG_ALLOW_SAME_VERSION: 'true', // Ensure we still publish even though we've already updated the pacakge versions
         },
     }
 

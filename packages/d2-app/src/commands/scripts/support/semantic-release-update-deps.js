@@ -48,7 +48,7 @@ const prepare = (config, context) => {
     if (!context.packages) {
         verifyConditions({ ...config, silent: true }, context)
     }
-    const { silent, exact, updatePackageVersion = false } = config
+    const { silent, exact, updatePackageVersion = true } = config
     const { nextRelease, logger, packages } = context
 
     const targetVersion = exact
