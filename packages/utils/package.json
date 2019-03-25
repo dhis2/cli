@@ -1,0 +1,28 @@
+{
+    "name": "@dhis2/cli-utils",
+    "bin": {
+        "d2-utils": "./bin/d2-utils"
+    },
+    "version": "0.13.0",
+    "main": "src/index.js",
+    "author": "Viktor Varland <viktor@dhis2.org>",
+    "contributors": [
+        "Austin McGee <austin@dhis2.org>"
+    ],
+    "license": "BSD-3-Clause",
+    "private": false,
+    "dependencies": {
+        "@dhis2/cli-helpers-engine": "^0.13.0",
+        "@semantic-release/changelog": "^3.0.2",
+        "@semantic-release/commit-analyzer": "^6.1.0",
+        "@semantic-release/git": "^7.0.8",
+        "@semantic-release/github": "^5.2.10",
+        "@semantic-release/npm": "^5.1.4",
+        "@semantic-release/release-notes-generator": "^7.1.4",
+        "semantic-release": "^15.13.3",
+        "dhis2-uid": "^0.1.2"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
