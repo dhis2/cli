@@ -92,8 +92,8 @@ const handler = async ({ publish }) => {
     ]
 
     const options = {
-        branch: 'feat/semantic-release-update-deps',
-        version: 'v${version}-test',
+        branch: 'master',
+        version: 'v${version}',
         plugins: plugins.filter(n => !!n),
     }
 

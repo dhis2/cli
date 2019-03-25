@@ -7,7 +7,7 @@ const normalizeAndValidatePackages = require('./normalizeAndValidatePackages')
 const verifyConditions = (config = {}, context) => {
     const { silent, packages } = config
     const { logger } = context
-    if (!packages || !packages.length || packages.lenght < 2) {
+    if (!packages || !packages.length || packages.length < 2) {
         throw new SemanticReleaseError(
             'Invalid packages option',
             'EINVALIDPACKAGES',
