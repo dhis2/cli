@@ -15,7 +15,7 @@ const downloadDatabase = async ({ cache, path, v, update, url }) => {
                     v
                 )}, use --update to re-download`
             )
-            dbFile = cache.getCacheLocation(cacheName)
+            return cache.getCacheLocation(cacheName)
         } else {
             const dbUrl = url.replace(/{version}/g, v)
             reporter.info(
@@ -36,7 +36,7 @@ const downloadDatabase = async ({ cache, path, v, update, url }) => {
     }
 }
 
-const seedFromFile = async ({ cacheLocation, file, v }) => {
+const seedFromFile = async ({ cacheLocation, dbFile, v }) => {
     reporter.info(`Seeding database (this may take some time)...`)
     reporter.debug(`Seeding from database dump ${chalk.bold(dbFile)}`)
 
