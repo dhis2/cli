@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/dhis2/cli/compare/v1.0.0...v1.0.1) (2019-03-27)
+
+
+### Bug Fixes
+
+* seed from file variable name was misspelled ([#33](https://github.com/dhis2/cli/issues/33)) ([6109c95](https://github.com/dhis2/cli/commit/6109c95))
+
 # [1.0.0](https://github.com/dhis2/cli/compare/v0.14.0...v1.0.0) (2019-03-25)
 
 
