@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/dhis2/cli/compare/v1.0.1...v1.0.2) (2019-03-28)
+
+
+### Bug Fixes
+
+* upgrade @dhis2/cli-helpers-engine and @dhis2/cli-style ([#35](https://github.com/dhis2/cli/issues/35)) ([251ac22](https://github.com/dhis2/cli/commit/251ac22))
+
 ## [1.0.1](https://github.com/dhis2/cli/compare/v1.0.0...v1.0.1) (2019-03-27)
 
 
