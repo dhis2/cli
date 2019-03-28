@@ -37,5 +37,3 @@ Note that any Docker image in [amcgee/dhis2-core](https://cloud.docker.com/u/amc
 ## Known Issues
 
 -   The 2.31 patch releases (2.31.0, 2.31.1, etc.) are nested, so they cannot be downloaded automatically. You can download any .sql.gz file manually and specify it with the `--seedFile` option to the `d2 cluster up` command or the `--path` option to the `d2 cluster seed` command.
-
--   The `d2 cluster seed <version>` command sometimes exits prematurely after downloading the db archive, run it again _without_ the `--update` option to continue seeding the cluster database from the downloaded file.
