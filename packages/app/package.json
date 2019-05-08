@@ -12,7 +12,7 @@
     "license": "BSD-3-Clause",
     "private": false,
     "dependencies": {
-        "@dhis2/cli-helpers-engine": "^1.0.1"
+        "@dhis2/cli-helpers-engine": "1.0.1"
     },
     "publishConfig": {
         "access": "public"

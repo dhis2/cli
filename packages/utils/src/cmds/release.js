@@ -46,6 +46,7 @@ const handler = async ({ publish }) => {
             ? [
                   require('../support/semantic-release-update-deps'),
                   {
+                      exact: true,
                       packages,
                   },
               ]
