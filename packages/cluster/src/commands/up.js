@@ -33,26 +33,24 @@ const run = async function({
         await doSeed({ cacheLocation, v, path: seedFile, update, ...argv })
     }
 
+    let contextPath = ''
     if (context) {
-        try {
-            reporter.info(
-                `Setting Tomcat context path to ${chalk.cyan(context)}`
-            )
-            const serverxml = readFileSync(
-                path.join(cacheLocation, 'config', 'tomcat-server.xml')
-            ).replace(
-                '{REPLACE_WITH_CONTEXT}',
-                `<Context path="/${context}" docBase="ROOT/" />`
-            )
+        contextPath = `<Context path="/${context}" docBase="ROOT/" />`
+    }
 
-            writeFileSync(
-                path.join(cacheLocation, 'config', 'tomcat-server.xml'),
-                serverxml
-            )
-        } catch (e) {
-            reporter.error('Failed to modifiy server.xml', e)
-            process.exit(1)
-        }
+    try {
+        reporter.info(`Setting Tomcat context path to ${chalk.cyan(context)}`)
+        const serverxml = readFileSync(
+            path.join(cacheLocation, 'config', 'tomcat-server.xml')
+        ).replace('{REPLACE_WITH_CONTEXT}', contextPath)
+
+        writeFileSync(
+            path.join(cacheLocation, 'config', 'tomcat-server.xml'),
+            serverxml
+        )
+    } catch (e) {
+        reporter.error('Failed to modifiy server.xml', e)
+        process.exit(1)
     }
 
     reporter.info(`Spinning up cluster version ${chalk.cyan(v)}`)
