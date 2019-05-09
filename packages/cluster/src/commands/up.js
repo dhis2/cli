@@ -33,12 +33,16 @@ const run = async function({
         await doSeed({ cacheLocation, v, path: seedFile, update, ...argv })
     }
 
+    let contextPath = context ? `/${context}` : context
+
     try {
-        reporter.info(`Setting Tomcat context path to ${chalk.cyan(context)}`)
+        reporter.info(
+            `Setting Tomcat context path to ${chalk.cyan(contextPath)}`
+        )
         const serverxml = readFileSync(
             path.join(cacheLocation, 'config', 'tomcat-server.xml'),
             { encoding: 'utf8' }
-        ).replace('{REPLACE_WITH_CONTEXT}', context)
+        ).replace('{REPLACE_WITH_CONTEXT}', contextPath)
 
         writeFileSync(
             path.join(cacheLocation, 'config', 'tomcat-server.xml'),
