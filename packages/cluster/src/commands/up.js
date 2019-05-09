@@ -9,15 +9,7 @@ const {
 } = require('../common')
 const { seed: doSeed } = require('../db')
 
-const run = async function({
-    v,
-    port,
-    seed,
-    seedFile,
-    update,
-    context,
-    ...argv
-}) {
+const run = async function({ v, port, seed, seedFile, update, name, ...argv }) {
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
         dockerComposeRepository: argv.cluster.dockerComposeRepository,
@@ -49,7 +41,7 @@ const run = async function({
             env: {
                 DHIS2_CORE_TAG: makeDockerImage(v),
                 DHIS2_CORE_PORT: port,
-                DHIS2_CORE_CONTEXT: context,
+                DHIS2_CORE_NAME: name,
             },
             pipe: true,
         })
@@ -65,9 +57,9 @@ module.exports = {
     desc: 'Spin up a new cluster',
     aliases: 'u',
     builder: {
-        context: {
-            alias: 'c',
-            desc: 'Set the Tomcat context path',
+        name: {
+            alias: 'n',
+            desc: 'Give the cluster a name to use in scripts',
             type: 'string',
             default: '',
         },
