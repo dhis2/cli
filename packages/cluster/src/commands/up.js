@@ -41,12 +41,14 @@ const run = async function({
     try {
         reporter.info(`Setting Tomcat context path to ${chalk.cyan(context)}`)
         const serverxml = readFileSync(
-            path.join(cacheLocation, 'config', 'tomcat-server.xml')
+            path.join(cacheLocation, 'config', 'tomcat-server.xml'),
+            { encoding: 'utf8' }
         ).replace('{REPLACE_WITH_CONTEXT}', contextPath)
 
         writeFileSync(
             path.join(cacheLocation, 'config', 'tomcat-server.xml'),
-            serverxml
+            serverxml,
+            { encoding: 'utf8' }
         )
     } catch (e) {
         reporter.error('Failed to modifiy server.xml', e)
