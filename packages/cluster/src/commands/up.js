@@ -45,7 +45,11 @@ const run = async function({
         ).replace('{REPLACE_WITH_CONTEXT}', contextPath)
 
         writeFileSync(
-            path.join(cacheLocation, 'config', 'tomcat-server.xml'),
+            path.join(
+                cacheLocation,
+                'config',
+                `tomcat-server-${makeDockerImage(v)}.xml`
+            ),
             serverxml,
             { encoding: 'utf8' }
         )
