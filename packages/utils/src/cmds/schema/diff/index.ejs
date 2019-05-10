@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+ <meta charset="UTF-8">
+<html>
+    <head>
+        <link rel="stylesheet" href="data:text/css;base64,<%= jsondiffpatchCSS %>">
+        <script src="data:application/javascript;base64,<%= jsondiffpatchJS %>"></script>
+        <script>
+            const left = <%- JSON.stringify(left) %>;
+            const delta = <%- JSON.stringify(delta) %>;
+        </script>
+        
+        <script>
+            const htmlFormatter = jsondiffpatch.formatters.html;
+            const FormatterClass = htmlFormatter.default;
+            const original = FormatterClass.prototype.nodeBegin;
+
+            // This is used to hook formatting of the node, so that we always show the name of the schema in the visulization
+            FormatterClass.prototype.nodeBegin = function nodeBeginHooked(context, key, leftKey, type, nodeType) {
+                    if(leftKey === 'singular' && type === "unchanged") {
+                        type = "node"
+                        original.call(this, context, key, leftKey, type, nodeType )
+                    } else {
+                        original.apply(this, arguments)
+                    }
+                }
+
+            let hidden = true;
+
+            function toggleHide() {
+                hidden = !hidden;
+                if(hidden) {
+                    htmlFormatter.hideUnchanged();
+                } else {
+                    htmlFormatter.showUnchanged();
+                }
+            }
+            </script>
+    </head>
+    <body>
+        <div>
+            <div id="controls">
+                <input type="button" value="Show / hide unchanged" onClick="toggleHide()"/>
+            </div>
+            <div id="visual"></div>
+            <hr />
+            <div id="annotated"></div>
+            <script>
+                htmlFormatter.hideUnchanged();
+                document.getElementById(
+                    'visual'
+                ).innerHTML = htmlFormatter.format(delta, left);
+
+            </script>
+        </div>
+    </body>
+</html>

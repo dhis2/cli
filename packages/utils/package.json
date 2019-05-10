@@ -20,6 +20,8 @@
         "@semantic-release/npm": "^5.1.4",
         "@semantic-release/release-notes-generator": "^7.1.4",
         "dhis2-uid": "^0.1.2",
+        "ejs": "^2.6.1",
+        "jsondiffpatch": "^0.3.11",
         "semantic-release": "^15.13.3"
     },
     "publishConfig": {
