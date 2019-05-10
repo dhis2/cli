@@ -3,6 +3,5 @@ const { makeEntryPoint, notifyOfUpdates } = require('@dhis2/cli-helpers-engine')
 
 const pkgJson = require('../package.json')
 const command = require(`..`)
-
 notifyOfUpdates(pkgJson)
 makeEntryPoint(command).parse()
