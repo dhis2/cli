@@ -1,6 +1,5 @@
 const chalk = require('chalk')
 const path = require('path')
-const { readFileSync, writeFileSync } = require('fs')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
