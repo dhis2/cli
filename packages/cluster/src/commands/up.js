@@ -8,7 +8,7 @@ const {
 } = require('../common')
 const { seed: doSeed } = require('../db')
 
-const run = async function({ v, port, seed, seedFile, update, name, ...argv }) {
+const run = async function({ v, port, seed, seedFile, update, ...argv }) {
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
         dockerComposeRepository: argv.cluster.dockerComposeRepository,
@@ -39,8 +39,8 @@ const run = async function({ v, port, seed, seedFile, update, name, ...argv }) {
             ],
             env: {
                 DHIS2_CORE_TAG: makeDockerImage(v),
+                DHIS2_CORE_VERSION: v,
                 DHIS2_CORE_PORT: port,
-                DHIS2_CORE_NAME: name,
             },
             pipe: true,
         })
@@ -56,12 +56,6 @@ module.exports = {
     desc: 'Spin up a new cluster',
     aliases: 'u',
     builder: {
-        name: {
-            alias: 'n',
-            desc: 'Give the cluster a name to use in scripts',
-            type: 'string',
-            default: '',
-        },
         port: {
             alias: 'p',
             desc: 'Specify the port on which to expose the DHIS2 instance',
