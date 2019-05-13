@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-//const yargs = require('yargs')
 const path = require('path')
 const jsondiffpatch = require('jsondiffpatch')
 const fs = require('fs')
@@ -8,7 +6,6 @@ const ejs = require('ejs')
 const request = require('request')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 const inquirer = require('inquirer')
-
 const defaultOpts = {
     schemasEndpoint: '/api/schemas.json',
     infoEndpoint: '/api/system/info.json',
@@ -34,8 +31,13 @@ const schemaDiffIdentifier = (info1, info2) =>
 // We use the singular property as an unique identifier for schemas
 // name and type are used for other nested properties
 const Differ = jsondiffpatch.create({
-    objectHash: obj => obj.singular || obj.name || obj.type,
+    objectHash: obj =>
+        obj.singular || obj.name || obj.type || '$$index:' + index,
     propertyFilter: name => name !== 'href' && name !== 'apiEndpoint',
+    arrays: {
+        detectMove: true,
+        includeValueOnMove: true,
+    },
 })
 
 function asyncRequest(url, opts) {
@@ -93,28 +95,30 @@ async function getAuthHeader(url, { auth, promptAuth }) {
         : defaultRequestOpts.headers.Authorization
 }
 
-async function schemasFromUrl(url, baseUrl, restArgs) {
+async function schemasFromUrl(url, { baseUrl, auth, promptAuth, force }) {
     const schemasUrl = url.concat(defaultOpts.schemasEndpoint)
     const infoUrl = url.concat(defaultOpts.infoEndpoint)
     const requestOpts = { ...defaultRequestOpts, baseUrl }
-    requestOpts.headers.Authorization = await getAuthHeader(url, restArgs)
+    requestOpts.headers.Authorization = await getAuthHeader(url, {
+        auth,
+        promptAuth,
+    })
 
     const meta = await asyncRequest(infoUrl, requestOpts)
     const schemaFileName = `${schemaIdentifier(meta)}.json`
     const loc = await cache.get(schemasUrl, schemaFileName, {
         raw: true,
         requestOpts,
-        force: restArgs.force,
+        force,
     })
-    const schemas = getJSONFile(loc)
-
+    const schemas = getJSONFile(loc).schemas
     return {
         meta,
         schemas,
     }
 }
 
-async function getSchemas(urlLike, baseUrl, restArgs) {
+async function getSchemas(urlLike, { baseUrl, auth, promptAuth, force }) {
     let schemas
     let fileContents
 
@@ -122,7 +126,12 @@ async function getSchemas(urlLike, baseUrl, restArgs) {
         reporter.debug(urlLike, ' is a file')
         schemas = fileContents
     } else {
-        schemas = await schemasFromUrl(urlLike, baseUrl, restArgs)
+        schemas = await schemasFromUrl(urlLike, {
+            baseUrl,
+            auth,
+            promptAuth,
+            force,
+        })
     }
 
     if (!schemas.schemas || !schemas.meta) {
@@ -134,19 +143,39 @@ async function getSchemas(urlLike, baseUrl, restArgs) {
     return schemas
 }
 
-function diff(left, right, html = false, json) {
-    const delta = Differ.diff(left.schemas, right.schemas)
+// We are not interersted in indexes, so we convert to an object
+// with 'singular' as hash for schemas
+// This makes the diff more stable, as it has problems with
+// arrays with moved objects (even with objectHash)
+function prepareDiff(left, right) {
+    const leftO = left.reduce((acc, curr) => {
+        acc[curr.singular] = curr
+        return acc
+    }, {})
+    const rightO = right.reduce((acc, curr) => {
+        acc[curr.singular] = curr
+        return acc
+    }, {})
+    return [leftO, rightO]
+}
 
+function diff(schemasLeft, schemasRight, { html = false, json }) {
+    const [left, right] = prepareDiff(schemasLeft.schemas, schemasRight.schemas)
+    const delta = Differ.diff(left, right)
+    const meta = {
+        left: schemasLeft.meta,
+        right: schemasRight.meta,
+    }
     if (json) {
         reporter.pipe(JSON.stringify(delta))
     } else if (html !== false) {
-        writeHtml(html, left, right, delta)
+        writeHtml(html, { left, right, delta, meta })
     }
 
     return delta
 }
 
-function generateHtml(left, delta, meta) {
+function generateHtml({ left, right, delta, meta }) {
     const assets = {
         jsondiffpatchCSS: utils.btoa(
             fs.readFileSync(
@@ -168,20 +197,23 @@ function generateHtml(left, delta, meta) {
         left,
         delta,
         meta,
+        right,
         ...assets,
     })
 }
 
-function writeHtml(loc, left, right, delta) {
+function writeHtml(loc, { left, right, delta, meta }) {
     reporter.debug('Generating visuals...')
 
-    const html = generateHtml(left.schemas, delta, {
-        left: left.meta,
-        right: right.meta,
-    })
-    const isDir = typeof loc === 'string' ? fs.statSync(loc).isDirectory : false
+    const html = generateHtml({ left, right, delta, meta })
+    let isDir = false
+    try {
+        isDir = fs.statSync(loc).isDirectory
+    } catch (e) {
+        isDir = false
+    }
     if (loc === '' || loc === true || isDir) {
-        const fileName = `${schemaDiffIdentifier(left.meta, right.meta)}.html`
+        const fileName = `${schemaDiffIdentifier(meta.left, meta.right)}.html`
         loc = path.join(isDir ? loc : '', fileName)
     }
 
@@ -192,10 +224,10 @@ function writeHtml(loc, left, right, delta) {
 
 async function run({ url1, url2, baseUrl, html, json, ...rest }) {
     cache = rest.getCache()
-    const left = await getSchemas(url1, baseUrl, rest)
-    const right = await getSchemas(url2, baseUrl, rest)
+    const left = await getSchemas(url1, { baseUrl, ...rest })
+    const right = await getSchemas(url2, { baseUrl, ...rest })
     //let [left, right] = await Promise.all([prom1, prom2])
-    return diff(left, right, html, json)
+    return diff(left, right, { html, json })
 }
 
 const builder = yargs => {
