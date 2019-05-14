@@ -3,54 +3,43 @@
 <html>
     <head>
         <link rel="stylesheet" href="data:text/css;base64,<%= jsondiffpatchCSS %>">
-        <script src="data:application/javascript;base64,<%= jsondiffpatchJS %>"></script>
-        <script>
-            const left = <%- JSON.stringify(left) %>;
-            const delta = <%- JSON.stringify(delta) %>;
-        </script>
-        
-        <script>
-            const htmlFormatter = jsondiffpatch.formatters.html;
-            const FormatterClass = htmlFormatter.default;
-            const original = FormatterClass.prototype.nodeBegin;
 
-            // This is used to hook formatting of the node, so that we always show the name of the schema in the visulization
-            FormatterClass.prototype.nodeBegin = function nodeBeginHooked(context, key, leftKey, type, nodeType) {
-                    if(leftKey === 'singular' && type === "unchanged") {
-                        type = "node"
-                        original.call(this, context, key, leftKey, type, nodeType )
-                    } else {
-                        original.apply(this, arguments)
-                    }
-                }
-
-            let hidden = true;
-
-            function toggleHide() {
-                hidden = !hidden;
-                if(hidden) {
-                    htmlFormatter.hideUnchanged();
-                } else {
-                    htmlFormatter.showUnchanged();
-                }
+        <style>
+            th {
+                text-align: left
             }
-            </script>
+            .left {
+                background-color: #fbb
+            }
+            .right {
+                background-color: #bfb
+            }
+        </style>
     </head>
     <body>
         <div>
-            <div id="controls">
-                <input type="button" value="Show / hide unchanged" onClick="toggleHide()"/>
+             <div id="info">
+                <div>
+                    <table style="width:100%">
+                    <tr>
+                        <th></th>
+                        <th class='left'>Left</th>
+                        <th class='right'>Right</th>
+                    </tr>
+                    <% const metaPropsToShow = ['contextPath', 'version', 'revision', 'buildTime']%>
+                    <% metaPropsToShow.forEach(key => { %>
+                        <tr>
+                            <td><%= key %></td>
+                            <td><%= meta.left[key] %></td>
+                            <td><%= meta.right[key] %></td>
+                        </tr>
+                    <%}) %>
+                    </table>
+                </div>
             </div>
-            <div id="visual"></div>
-            <hr />
-            <div id="annotated"></div>
-            <script>
-                htmlFormatter.hideUnchanged();
-                document.getElementById(
-                    'visual'
-                ).innerHTML = htmlFormatter.format(delta, left);
-
-            </script>
+            <div id="visual">
+                <%- formatted%>
+            </div>
         </div>
     </body>
 </html>

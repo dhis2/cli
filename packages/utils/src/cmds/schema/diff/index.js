@@ -173,6 +173,8 @@ function diff(schemasLeft, schemasRight) {
     return {
         delta,
         meta,
+        left,
+        right,
     }
 }
 
@@ -209,11 +211,6 @@ function generateHtml({ left, delta, meta }) {
                 require.resolve('jsondiffpatch/dist/formatters-styles/html.css')
             )
         ),
-        jsondiffpatchJS: utils.btoa(
-            fs.readFileSync(
-                require.resolve('jsondiffpatch/dist/jsondiffpatch.umd.slim.js')
-            )
-        ),
     }
 
     const template = fs
@@ -224,7 +221,7 @@ function generateHtml({ left, delta, meta }) {
         left,
         delta,
         meta,
-        formatted: formatters.html.format(delta, left),
+        formatted: formatters.html.format(delta),
         ...assets,
     })
 }
@@ -251,11 +248,11 @@ function writeOutput(loc, output, { meta, extension }) {
 
 async function run({ url1, url2, baseUrl, format, output, ...rest }) {
     cache = rest.getCache()
-    const left = await getSchemas(url1, { baseUrl, ...rest })
-    const right = await getSchemas(url2, { baseUrl, ...rest })
+    const schemasLeft = await getSchemas(url1, { baseUrl, ...rest })
+    const schemasRight = await getSchemas(url2, { baseUrl, ...rest })
     //let [left, right] = await Promise.all([prom1, prom2])
-    const { delta, meta } = diff(left, right)
-    handleOutput(output, { format, left: left.schemas, delta, meta })
+    const { left, delta, meta } = diff(schemasLeft, schemasRight)
+    handleOutput(output, { format, left, delta, meta })
 }
 
 const builder = yargs => {
