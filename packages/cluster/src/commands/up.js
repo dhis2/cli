@@ -14,6 +14,7 @@ const run = async function({ v, port, seed, seedFile, update, ...argv }) {
         dockerComposeRepository: argv.cluster.dockerComposeRepository,
         force: update,
     })
+
     if (!cacheLocation) {
         reporter.error('Failed to initialize cache...')
         process.exit(1)
@@ -38,6 +39,7 @@ const run = async function({ v, port, seed, seedFile, update, ...argv }) {
             ],
             env: {
                 DHIS2_CORE_TAG: makeDockerImage(v),
+                DHIS2_CORE_VERSION: v,
                 DHIS2_CORE_PORT: port,
             },
             pipe: true,

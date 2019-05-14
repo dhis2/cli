@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/dhis2/cli/compare/v1.0.2...v1.0.3) (2019-05-13)
+
+
+### Bug Fixes
+
+* **cluster:** expose the version as an environment variable in the context ([#39](https://github.com/dhis2/cli/issues/39)) ([7e8e8dd](https://github.com/dhis2/cli/commit/7e8e8dd))
+
 ## [1.0.2](https://github.com/dhis2/cli/compare/v1.0.1...v1.0.2) (2019-03-28)
 
 

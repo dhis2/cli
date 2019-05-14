@@ -3,7 +3,7 @@
     "bin": {
         "d2-utils": "./bin/d2-utils"
     },
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "src/index.js",
     "author": "Viktor Varland <viktor@dhis2.org>",
     "contributors": [
@@ -12,7 +12,7 @@
     "license": "BSD-3-Clause",
     "private": false,
     "dependencies": {
-        "@dhis2/cli-helpers-engine": "^1.0.1",
+        "@dhis2/cli-helpers-engine": "1.0.1",
         "@semantic-release/changelog": "^3.0.2",
         "@semantic-release/commit-analyzer": "^6.1.0",
         "@semantic-release/git": "^7.0.8",
