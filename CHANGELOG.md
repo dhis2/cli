@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/dhis2/cli/compare/v1.0.3...v1.0.4) (2019-05-14)
+
+
+### Bug Fixes
+
+* update @dhis2/cli-helpers-engine in group default to the latest version 🚀 ([#47](https://github.com/dhis2/cli/issues/47)) ([6139000](https://github.com/dhis2/cli/commit/6139000))
+
 ## [1.0.3](https://github.com/dhis2/cli/compare/v1.0.2...v1.0.3) (2019-05-13)
 
 
