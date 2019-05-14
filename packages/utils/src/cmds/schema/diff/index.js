@@ -6,10 +6,10 @@ const ejs = require('ejs')
 const request = require('request')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 const inquirer = require('inquirer')
+
 const defaultOpts = {
     schemasEndpoint: '/api/schemas.json',
     infoEndpoint: '/api/system/info.json',
-    cacheLocation: 'cache',
 }
 
 const defaultRequestOpts = {
@@ -29,7 +29,7 @@ const schemaDiffIdentifier = (info1, info2) =>
     `${schemaIdentifier(info1)}__${schemaIdentifier(info2)}`
 
 // We use the singular property as an unique identifier for schemas
-// name and type are used for other nested properties
+// name and type are used for other nested properties, fallback to index
 const Differ = jsondiffpatch.create({
     objectHash: obj =>
         obj.singular || obj.name || obj.type || '$$index:' + index,
@@ -39,6 +39,11 @@ const Differ = jsondiffpatch.create({
         includeValueOnMove: true,
     },
 })
+
+const formatters = {
+    html: jsondiffpatch.formatters.html,
+    console: jsondiffpatch.formatters.console,
+}
 
 function asyncRequest(url, opts) {
     return new Promise((resolve, reject) => {
@@ -68,12 +73,12 @@ function getJSONFile(file) {
     }
 }
 
-async function getAuthHeader(url, { auth, promptAuth }) {
+async function getAuthHeader(url, { auth }) {
     let username, password
     if (auth) {
         ;[username, password] = auth.split(':')
     }
-    if (promptAuth) {
+    if (auth === '') {
         ;({ username, password } = await prompt([
             {
                 type: 'input',
@@ -95,13 +100,12 @@ async function getAuthHeader(url, { auth, promptAuth }) {
         : defaultRequestOpts.headers.Authorization
 }
 
-async function schemasFromUrl(url, { baseUrl, auth, promptAuth, force }) {
+async function schemasFromUrl(url, { baseUrl, auth, force }) {
     const schemasUrl = url.concat(defaultOpts.schemasEndpoint)
     const infoUrl = url.concat(defaultOpts.infoEndpoint)
     const requestOpts = { ...defaultRequestOpts, baseUrl }
     requestOpts.headers.Authorization = await getAuthHeader(url, {
         auth,
-        promptAuth,
     })
 
     const meta = await asyncRequest(infoUrl, requestOpts)
@@ -118,7 +122,7 @@ async function schemasFromUrl(url, { baseUrl, auth, promptAuth, force }) {
     }
 }
 
-async function getSchemas(urlLike, { baseUrl, auth, promptAuth, force }) {
+async function getSchemas(urlLike, { baseUrl, auth, force }) {
     let schemas
     let fileContents
 
@@ -129,7 +133,6 @@ async function getSchemas(urlLike, { baseUrl, auth, promptAuth, force }) {
         schemas = await schemasFromUrl(urlLike, {
             baseUrl,
             auth,
-            promptAuth,
             force,
         })
     }
@@ -159,23 +162,47 @@ function prepareDiff(left, right) {
     return [leftO, rightO]
 }
 
-function diff(schemasLeft, schemasRight, { html = false, json }) {
+function diff(schemasLeft, schemasRight) {
     const [left, right] = prepareDiff(schemasLeft.schemas, schemasRight.schemas)
     const delta = Differ.diff(left, right)
     const meta = {
         left: schemasLeft.meta,
         right: schemasRight.meta,
     }
-    if (json) {
-        reporter.pipe(JSON.stringify(delta))
-    } else if (html !== false) {
-        writeHtml(html, { left, right, delta, meta })
-    }
 
-    return delta
+    return {
+        delta,
+        meta,
+    }
 }
 
-function generateHtml({ left, right, delta, meta }) {
+function handleOutput(loc = false, { left, delta, meta, format }) {
+    let out = delta
+    let extension = format
+    switch (format) {
+        case 'html': {
+            out = generateHtml({ left, delta, meta })
+            break
+        }
+        case 'console': {
+            out = formatters.console.format(delta, left)
+            extension = 'out'
+            break
+        }
+        case 'json': {
+            out = JSON.stringify(delta)
+            break
+        }
+    }
+
+    if (loc !== false) {
+        writeOutput(loc, out, { meta, extension })
+    } else {
+        reporter.pipe(out)
+    }
+}
+
+function generateHtml({ left, delta, meta }) {
     const assets = {
         jsondiffpatchCSS: utils.btoa(
             fs.readFileSync(
@@ -197,37 +224,38 @@ function generateHtml({ left, right, delta, meta }) {
         left,
         delta,
         meta,
-        right,
+        formatted: formatters.html.format(delta, left),
         ...assets,
     })
 }
 
-function writeHtml(loc, { left, right, delta, meta }) {
-    reporter.debug('Generating visuals...')
-
-    const html = generateHtml({ left, right, delta, meta })
+function writeOutput(loc, output, { meta, extension }) {
     let isDir = false
     try {
-        isDir = fs.statSync(loc).isDirectory
+        isDir = fs.statSync(loc).isDirectory()
     } catch (e) {
         isDir = false
     }
     if (loc === '' || loc === true || isDir) {
-        const fileName = `${schemaDiffIdentifier(meta.left, meta.right)}.html`
+        const fileName = `${schemaDiffIdentifier(
+            meta.left,
+            meta.right
+        )}.${extension}`
         loc = path.join(isDir ? loc : '', fileName)
     }
 
-    fs.writeFileSync(loc, html)
+    fs.writeFileSync(loc, output)
     reporter.info('Visual output generated:', loc)
     reporter.pipe(loc)
 }
 
-async function run({ url1, url2, baseUrl, html, json, ...rest }) {
+async function run({ url1, url2, baseUrl, format, output, ...rest }) {
     cache = rest.getCache()
     const left = await getSchemas(url1, { baseUrl, ...rest })
     const right = await getSchemas(url2, { baseUrl, ...rest })
     //let [left, right] = await Promise.all([prom1, prom2])
-    return diff(left, right, { html, json })
+    const { delta, meta } = diff(left, right)
+    handleOutput(output, { format, left: left.schemas, delta, meta })
 }
 
 const builder = yargs => {
@@ -251,20 +279,17 @@ const builder = yargs => {
                 'BaseUrl to use for downloading schemas. If this is set url1 and url2 should be relative to this url, eg. /dev.',
             type: 'string',
         })
-        .option('html', {
+        .option('output', {
+            alias: 'o',
             type: 'string',
-            default: true,
-            describe: `Specify the location of the html output. By default a file relative to current working directory is generated with the name "LEFT-version_revision__RIGHT-version_revision.html".
-                Use --no-html to not generate a report.
-                If the location is a directory, the default filename is used and output to location.`,
+            describe: `Specify the location of the output. If used as a flag a file relative to current working directory is generated with the name "LEFT-version_revision__RIGHT-version_revision.html".
+            If the location is a directory, the default filename is used and output to location.`,
         })
-
-        .option('json', {
-            alias: 'j',
-            type: 'boolean',
-            default: false,
-            describe:
-                'Output JSON instead of displaying a visualization. Can be used to pipe the diff to a file.',
+        .option('format', {
+            type: 'string',
+            default: 'console',
+            choices: ['html', 'json', 'console'],
+            describe: `Specify the format of the output`,
         })
         .option('force', {
             type: 'boolean',
@@ -274,17 +299,8 @@ const builder = yargs => {
         .option('auth', {
             type: 'string',
             describe: `Auth to use, formatted as "user:password". Note that this is not safe, as password is shown in history.
-                        Use --prompt-auth to be prompted for sensitive passwords instead of through cli.
-                        Note that this uses the same credentials for both servers. Use --prompt-auth for different credentials.`,
+            Use it as a flag (--auth, no args) to be prompted for credentials for each server.`,
         })
-
-        .option('prompt-auth', {
-            type: 'boolean',
-            conflicts: 'auth',
-            describe:
-                'A prompt for username and password for each server will be given.',
-        })
-
         .check(argv => {
             const { url1, url2 } = argv
             if (
