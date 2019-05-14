@@ -1,11 +1,11 @@
 const { exec, reporter } = require('@dhis2/cli-helpers-engine')
 const { makeComposeProject } = require('../common')
 
-const run = async function({ v, ...argv }) {
+const run = async function({ name, ...argv }) {
     try {
         await exec({
             cmd: 'docker',
-            args: ['ps', '--filter', `name=${makeComposeProject(v)}`],
+            args: ['ps', '--filter', `name=${makeComposeProject(name)}`],
             pipe: true,
             quiet: !argv.verbose,
         })
@@ -16,7 +16,7 @@ const run = async function({ v, ...argv }) {
 }
 
 module.exports = {
-    command: 'status <v>',
+    command: 'status <name>',
     desc: 'Check the status of cluster containers',
     aliases: 's',
     handler: run,

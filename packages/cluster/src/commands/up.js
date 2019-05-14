@@ -8,7 +8,16 @@ const {
 } = require('../common')
 const { seed: doSeed } = require('../db')
 
-const run = async function({ v, port, seed, seedFile, update, tag, ...argv }) {
+const run = async function({
+    name,
+    port,
+    seed,
+    seedFile,
+    update,
+    tag,
+    version,
+    ...argv
+}) {
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
         dockerComposeRepository: argv.cluster.dockerComposeRepository,
@@ -21,22 +30,26 @@ const run = async function({ v, port, seed, seedFile, update, tag, ...argv }) {
     }
 
     if (seed || seedFile) {
-        await doSeed({ cacheLocation, v, path: seedFile, update, ...argv })
+        const resolvedVersion = version ? version : name
+        await doSeed({
+            cacheLocation,
+            resolvedVersion,
+            path: seedFile,
+            update,
+            ...argv,
+        })
     }
 
-    let image = makeDockerImage(v)
-    if (tag) {
-        image = tag
-    }
+    const image = tag ? tag : makeDockerImage(version)
 
-    reporter.info(`Spinning up cluster version ${chalk.cyan(v)}`)
+    reporter.info(`Spinning up cluster ${chalk.cyan(name)}`)
     const res = await tryCatchAsync(
         'exec(docker-compose)',
         exec({
             cmd: 'docker-compose',
             args: [
                 '-p',
-                makeComposeProject(v),
+                makeComposeProject(name),
                 '-f',
                 path.join(cacheLocation, 'docker-compose.yml'),
                 'up',
@@ -44,7 +57,8 @@ const run = async function({ v, port, seed, seedFile, update, tag, ...argv }) {
             ],
             env: {
                 DHIS2_CORE_TAG: image,
-                DHIS2_CORE_VERSION: v,
+                DHIS2_CORE_VERSION: version,
+                DHIS2_CORE_NAME: name,
                 DHIS2_CORE_PORT: port,
             },
             pipe: true,
@@ -57,7 +71,7 @@ const run = async function({ v, port, seed, seedFile, update, tag, ...argv }) {
 }
 
 module.exports = {
-    command: 'up <v>',
+    command: 'up <name>',
     desc: 'Spin up a new cluster',
     aliases: 'u',
     builder: {
@@ -87,6 +101,12 @@ module.exports = {
         tag: {
             alias: 't',
             desc: 'Use the specified tag',
+            type: 'string',
+            default: '',
+        },
+        version: {
+            alias: 'v',
+            desc: 'Set the version',
             type: 'string',
             default: '',
         },
