@@ -8,7 +8,7 @@ const {
 } = require('../common')
 const { seed: doSeed } = require('../db')
 
-const run = async function({ v, port, seed, seedFile, update, ...argv }) {
+const run = async function({ v, port, seed, seedFile, update, tag, ...argv }) {
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
         dockerComposeRepository: argv.cluster.dockerComposeRepository,
@@ -22,6 +22,11 @@ const run = async function({ v, port, seed, seedFile, update, ...argv }) {
 
     if (seed || seedFile) {
         await doSeed({ cacheLocation, v, path: seedFile, update, ...argv })
+    }
+
+    let image = makeDockerImage(v)
+    if (tag) {
+        image = tag
     }
 
     reporter.info(`Spinning up cluster version ${chalk.cyan(v)}`)
@@ -38,7 +43,7 @@ const run = async function({ v, port, seed, seedFile, update, ...argv }) {
                 '-d',
             ],
             env: {
-                DHIS2_CORE_TAG: makeDockerImage(v),
+                DHIS2_CORE_TAG: image,
                 DHIS2_CORE_VERSION: v,
                 DHIS2_CORE_PORT: port,
             },
@@ -78,6 +83,12 @@ module.exports = {
             desc: 'Indicate that d2 cluster should re-download cached files',
             type: 'boolean',
             default: false,
+        },
+        tag: {
+            alias: 't',
+            desc: 'Use the specified tag',
+            type: 'string',
+            default: '',
         },
     },
     handler: run,
