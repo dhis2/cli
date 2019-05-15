@@ -36,6 +36,7 @@ const run = async function({ service, name, ...argv }) {
             ].concat(service ? [service] : []),
             env: {
                 DHIS2_CORE_NAME: name,
+                DHIS2_CORE_PORT: 8000, // doesn't matter
             },
             pipe: true,
         })

@@ -14,10 +14,13 @@ const run = async function({
     seed,
     seedFile,
     update,
+    repo,
     tag,
-    version,
+    ver,
     ...argv
 }) {
+    console.info(argv)
+
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
         dockerComposeRepository: argv.cluster.dockerComposeRepository,
@@ -30,10 +33,10 @@ const run = async function({
     }
 
     if (seed || seedFile) {
-        const resolvedVersion = version ? version : name
         await doSeed({
             cacheLocation,
-            resolvedVersion,
+            ver: ver || argv.cluster.ver,
+            name,
             path: seedFile,
             update,
             ...argv,
@@ -41,6 +44,7 @@ const run = async function({
     }
 
     reporter.info(`Spinning up cluster ${chalk.cyan(name)}`)
+
     const res = await tryCatchAsync(
         'exec(docker-compose)',
         exec({
@@ -54,10 +58,11 @@ const run = async function({
                 '-d',
             ],
             env: {
-                DHIS2_CORE_TAG: tag,
-                DHIS2_CORE_VERSION: version,
+                DHIS2_CORE_REPO: repo,
+                DHIS2_CORE_TAG: tag || argv.cluster.tag,
+                DHIS2_CORE_VERSION: ver || argv.cluster.ver,
                 DHIS2_CORE_NAME: name,
-                DHIS2_CORE_PORT: port,
+                DHIS2_CORE_PORT: port || argv.cluster.port,
             },
             pipe: true,
         })
@@ -96,14 +101,19 @@ module.exports = {
             type: 'boolean',
             default: false,
         },
+        repo: {
+            alias: 'r',
+            desc: 'Use the specified Docker repo',
+            type: 'string',
+            default: 'dhis2/core',
+        },
         tag: {
             alias: 't',
             desc: 'Use the specified tag',
             type: 'string',
             default: '',
         },
-        version: {
-            alias: 'v',
+        ver: {
             desc: 'Set the version',
             type: 'string',
             default: '',

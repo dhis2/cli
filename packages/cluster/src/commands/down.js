@@ -32,6 +32,7 @@ const run = async function({ name, clean, getCache, ...argv }) {
             ].concat(clean ? ['--volumes'] : []),
             env: {
                 DHIS2_CORE_NAME: name,
+                DHIS2_CORE_PORT: 8000, // doesn't matter
             },
         })
     } catch (e) {

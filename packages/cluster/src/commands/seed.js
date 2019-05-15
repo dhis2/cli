@@ -20,7 +20,7 @@ const run = async function(argv) {
 }
 
 module.exports = {
-    command: 'seed <v> [path]',
+    command: 'seed <name> [path]',
     desc: 'Seed the database from a backup',
     builder: {
         update: {
@@ -28,6 +28,12 @@ module.exports = {
             desc: 'Force re-download of cached files',
             type: 'boolean',
             default: false,
+        },
+        ver: {
+            alias: '-v',
+            desc: 'DB version to use',
+            type: 'string',
+            default: '',
         },
     },
     handler: run,

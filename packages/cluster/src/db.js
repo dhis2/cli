@@ -3,23 +3,23 @@ const chalk = require('chalk')
 const path = require('path')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 
-const downloadDatabase = async ({ cache, path, v, update, url }) => {
+const downloadDatabase = async ({ cache, path, ver, update, url }) => {
     if (path) {
         return path.resolve(path)
     } else {
         const ext = '.sql.gz' //dbUrl.endsWith('.gz') ? '.gz' : '.sql'
-        const cacheName = `cluster-db-${v}${ext}`
+        const cacheName = `cluster-db-${ver}${ext}`
         if (!update && (await cache.exists(cacheName))) {
             reporter.info(
                 `Found cached database version ${chalk.bold(
-                    v
+                    ver
                 )}, use --update to re-download`
             )
             return cache.getCacheLocation(cacheName)
         } else {
-            const dbUrl = url.replace(/{version}/g, v)
+            const dbUrl = url.replace(/{version}/g, ver)
             reporter.info(
-                `Downloading demo database version ${chalk.bold(v)}...`
+                `Downloading demo database version ${chalk.bold(ver)}...`
             )
 
             try {
@@ -36,7 +36,7 @@ const downloadDatabase = async ({ cache, path, v, update, url }) => {
     }
 }
 
-const seedFromFile = async ({ cacheLocation, dbFile, v }) => {
+const seedFromFile = async ({ cacheLocation, dbFile, ver, name }) => {
     reporter.info(`Seeding database (this may take some time)...`)
     reporter.debug(`Seeding from database dump ${chalk.bold(dbFile)}`)
 
@@ -48,7 +48,7 @@ const seedFromFile = async ({ cacheLocation, dbFile, v }) => {
             args: [dbFile],
             pipe: false,
             env: {
-                DOCKER_COMPOSE: `docker-compose -p ${makeComposeProject(v)}`,
+                DOCKER_COMPOSE: `docker-compose -p ${makeComposeProject(name)}`,
             },
         })
     )
@@ -56,7 +56,8 @@ const seedFromFile = async ({ cacheLocation, dbFile, v }) => {
 
 module.exports.seed = async ({
     cacheLocation,
-    v,
+    ver,
+    name,
     path: dbPath,
     url,
     update,
@@ -66,9 +67,9 @@ module.exports.seed = async ({
         ? path.resolve(dbPath)
         : await downloadDatabase({
               cache: argv.getCache(),
-              v,
+              ver,
               url: url || argv.cluster.demoDatabaseURL,
               update,
           })
-    await seedFromFile({ cacheLocation, dbFile, v })
+    await seedFromFile({ cacheLocation, dbFile, ver, name })
 }
