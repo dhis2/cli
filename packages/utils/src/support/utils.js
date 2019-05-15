@@ -28,7 +28,11 @@ function getJSONFile(file) {
         const content = fs.readFileSync(file)
         return JSON.parse(content)
     } catch (e) {
-        return false
+        if (e instanceof SyntaxError) {
+            //file exists, not json
+            return false
+        }
+        return null
     }
 }
 

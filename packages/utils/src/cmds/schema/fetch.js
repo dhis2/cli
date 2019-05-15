@@ -17,8 +17,15 @@ const handler = async ({ url, output = false, force, auth, ...rest }) => {
 const command = {
     command: 'fetch <url>',
     describe:
-        'Fetch schema from running DHIS2 server. Can be used to generate diff offline.',
-    builder: {},
+        'Fetch schema from a running DHIS2 server. Can be used to feed into "schema diff".',
+    builder: {
+        output: {
+            alias: 'o',
+            type: 'string',
+            describe: `Specify the location of the output. If used as a flag a file relative to current working directory is generated with the name "version_revision.json".
+            If the location is a directory, the default filename is used and output to location.`,
+        },
+    },
     handler,
 }
 

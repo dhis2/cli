@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const { namespace } = require('@dhis2/cli-helpers-engine')
 const utils = require('../../support/utils')
 const request = require('request')

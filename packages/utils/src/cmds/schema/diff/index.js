@@ -154,13 +154,15 @@ const builder = yargs => {
             type: 'string',
             describe: `the url to the running DHIS2 server, should have schemas available relative to this at ${
                 defaultOpts.schemasEndpoint
-            }`,
+            }
+            Can also be a JSON-file with schemas. See schema fetch`,
         })
         .positional('url2', {
             type: 'string',
             describe: `the url to another running DHIS2 server, should have schemas available relative to this at ${
                 defaultOpts.schemasEndpoint
-            }`,
+            }
+            Can also be a JSON-file with schemas. See schema fetch`,
         })
         .option('base-url', {
             alias: 'b',
@@ -182,17 +184,5 @@ const builder = yargs => {
             choices: ['html', 'json', 'console'],
             describe: `Specify the format of the output`,
         })
-        .check(argv => {
-            const { url1, url2 } = argv
-            if (
-                !argv.baseUrl &&
-                (!utils.isAbsoluteUrl(url1) || !utils.isAbsoluteUrl(url2))
-            ) {
-                throw new Error(
-                    'Must specify absolute urls when base-url is not given.'
-                )
-            }
-            return true
-        }, false)
 }
 module.exports = { builder, handler: run }
