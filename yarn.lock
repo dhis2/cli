@@ -180,7 +180,7 @@
   dependencies:
     find-up "^2.1.0"
 
-"@dhis2/cli-helpers-engine@1.0.1", "@dhis2/cli-helpers-engine@^1.0.1":
+"@dhis2/cli-helpers-engine@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@dhis2/cli-helpers-engine/-/cli-helpers-engine-1.0.1.tgz#4de5ca3a179faa22583c45533b1126446e89d081"
   dependencies:
@@ -192,9 +192,9 @@
     update-notifier "^2.5.0"
     yargs "^13.1.0"
 
-"@dhis2/cli-helpers-engine@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-helpers-engine/-/cli-helpers-engine-1.1.0.tgz#010acf2e6d57999d96cfc54060c8c1a79110b9a6"
+"@dhis2/cli-helpers-engine@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-helpers-engine/-/cli-helpers-engine-1.2.0.tgz#ffec930cf57668aa29c91de3d871d7898ac915b7"
   dependencies:
     chalk "^2.4.2"
     mkdirp "^0.5.1"
@@ -204,16 +204,16 @@
     update-notifier "^3.0.0"
     yargs "^13.1.0"
 
-"@dhis2/cli-style@3.1.3":
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-style/-/cli-style-3.1.3.tgz#69b6a02b235c03525e045afa883a7cd2a93bd849"
+"@dhis2/cli-style@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-style/-/cli-style-3.2.1.tgz#82e841de86a70256f9f3c1ce393ee945c4698667"
   dependencies:
     "@commitlint/config-conventional" "^7.6.0"
     "@commitlint/format" "^7.6.1"
     "@commitlint/lint" "^7.6.0"
     "@commitlint/load" "^7.6.2"
     "@commitlint/read" "^7.6.0"
-    "@dhis2/cli-helpers-engine" "^1.0.1"
+    "@dhis2/cli-helpers-engine" "1.2.0"
     babel-eslint "^10.0.1"
     eslint "^5.16.0"
     perfy "^1.1.5"
@@ -394,8 +394,8 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
 
 "@types/node@*":
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.0.tgz#d11813b9c0ff8aaca29f04cbc12817f4c7d656e5"
+  version "12.0.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.1.tgz#3dde31f8da274dfeb90e96abf55038fef46285f0"
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -1813,8 +1813,8 @@ fs-extra@^7.0.0:
     universalify "^0.1.0"
 
 fs-extra@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-8.0.0.tgz#3660bea66719e3a3c46bf7a4b1249fb658db3f0c"
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-8.0.1.tgz#90294081f978b1f182f347a440a209154344285b"
   dependencies:
     graceful-fs "^4.1.2"
     jsonfile "^4.0.0"
@@ -2888,7 +2888,6 @@ lodash.isplainobject@^4.0.6:
 lodash.isstring@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/lodash.isstring/-/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
-  integrity sha1-1SfftUVuynzJu5XV2ur4i6VKVFE=
 
 lodash.set@^4.3.2:
   version "4.3.2"

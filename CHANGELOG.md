@@ -1,3 +1,17 @@
+## [1.0.5](https://github.com/dhis2/cli/compare/v1.0.4...v1.0.5) (2019-05-14)
+
+
+### Bug Fixes
+
+* update @dhis2/cli style 3.2.1 ([#49](https://github.com/dhis2/cli/issues/49)) ([c375f8d](https://github.com/dhis2/cli/commit/c375f8d)), closes [#48](https://github.com/dhis2/cli/issues/48) [#48](https://github.com/dhis2/cli/issues/48)
+
+## [1.0.4](https://github.com/dhis2/cli/compare/v1.0.3...v1.0.4) (2019-05-14)
+
+
+### Bug Fixes
+
+* update @dhis2/cli-helpers-engine in group default to the latest version 🚀 ([#47](https://github.com/dhis2/cli/issues/47)) ([6139000](https://github.com/dhis2/cli/commit/6139000))
+
 ## [1.0.3](https://github.com/dhis2/cli/compare/v1.0.2...v1.0.3) (2019-05-13)
 
 
