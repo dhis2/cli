@@ -8,7 +8,8 @@
                 "packages/create/package.json",
                 "packages/create/templates/cli/package.json",
                 "packages/create-app/package.json",
-                "packages/main/package.json"
+                "packages/main/package.json",
+                "packages/utils/package.json"
             ]
         }
     }
