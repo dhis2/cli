@@ -40,8 +40,6 @@ const run = async function({
         })
     }
 
-    const image = tag ? tag : makeDockerImage(version)
-
     reporter.info(`Spinning up cluster ${chalk.cyan(name)}`)
     const res = await tryCatchAsync(
         'exec(docker-compose)',
@@ -56,7 +54,7 @@ const run = async function({
                 '-d',
             ],
             env: {
-                DHIS2_CORE_TAG: image,
+                DHIS2_CORE_TAG: tag,
                 DHIS2_CORE_VERSION: version,
                 DHIS2_CORE_NAME: name,
                 DHIS2_CORE_PORT: port,
