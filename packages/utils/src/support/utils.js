@@ -1,4 +1,5 @@
 const URL = require('url').URL
+const fs = require('fs')
 
 function isUrl(url) {
     try {
@@ -22,9 +23,19 @@ function isAbsoluteUrl(url) {
     return url.indexOf('http://') === 0 || url.indexOf('https://') === 0
 }
 
+function getJSONFile(file) {
+    try {
+        const content = fs.readFileSync(file)
+        return JSON.parse(content)
+    } catch (e) {
+        return false
+    }
+}
+
 module.exports = {
     isUrl,
     isAbsoluteUrl,
     btoa,
     basicAuthHeader,
+    getJSONFile,
 }

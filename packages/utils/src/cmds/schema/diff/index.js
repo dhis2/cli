@@ -1,33 +1,19 @@
 const path = require('path')
 const jsondiffpatch = require('jsondiffpatch')
 const fs = require('fs')
-const utils = require('./utils')
+const utils = require('../../../support/utils')
 const ejs = require('ejs')
-const request = require('request')
 const { reporter } = require('@dhis2/cli-helpers-engine')
-const inquirer = require('inquirer')
 
-const defaultOpts = {
-    schemasEndpoint: '/api/schemas.json',
-    infoEndpoint: '/api/system/info.json',
-}
-
-const defaultRequestOpts = {
-    baseUrl: 'https://play.dhis2.org',
-    headers: {
-        'x-requested-with': 'XMLHttpRequest',
-        Authorization: utils.basicAuthHeader('admin', 'district'),
-    },
-    json: true,
-}
+const {
+    schemasFromUrl,
+    writeOutput,
+    schemaDiffIdentifier,
+    defaultOpts,
+    defaultRequestOpts,
+} = require('../')
 
 let cache
-const prompt = inquirer.createPromptModule({ output: process.stderr })
-
-const schemaIdentifier = info => `${info.version}_${info.revision}`
-const schemaDiffIdentifier = (info1, info2) =>
-    `${schemaIdentifier(info1)}__${schemaIdentifier(info2)}`
-
 // We use the singular property as an unique identifier for schemas
 // name and type are used for other nested properties, fallback to index
 const Differ = jsondiffpatch.create({
@@ -45,88 +31,11 @@ const formatters = {
     console: jsondiffpatch.formatters.console,
 }
 
-function asyncRequest(url, opts) {
-    return new Promise((resolve, reject) => {
-        request.get(url, opts, (err, res, body) => {
-            if (err || res.statusCode > 299) {
-                reporter.error('Request', url, 'failed to fetch')
-                err && reporter.dumpErr(err)
-                res &&
-                    reporter.error(
-                        res.statusCode,
-                        ':',
-                        res.statusMessage || (res.body && res.body.message)
-                    )
-                process.exit(1)
-            }
-            return resolve(body)
-        })
-    })
-}
-
-function getJSONFile(file) {
-    try {
-        const content = fs.readFileSync(file)
-        return JSON.parse(content)
-    } catch (e) {
-        return false
-    }
-}
-
-async function getAuthHeader(url, { auth }) {
-    let username, password
-    if (auth) {
-        ;[username, password] = auth.split(':')
-    }
-    if (auth === '') {
-        ;({ username, password } = await prompt([
-            {
-                type: 'input',
-                name: 'username',
-                message: `Username for ${url}`,
-                default: 'admin',
-            },
-            {
-                type: 'password',
-                name: 'password',
-                message: `Password for ${url}`,
-                default: 'district',
-                mask: true,
-            },
-        ]))
-    }
-    return username && password
-        ? utils.basicAuthHeader(username, password)
-        : defaultRequestOpts.headers.Authorization
-}
-
-async function schemasFromUrl(url, { baseUrl, auth, force }) {
-    const schemasUrl = url.concat(defaultOpts.schemasEndpoint)
-    const infoUrl = url.concat(defaultOpts.infoEndpoint)
-    const requestOpts = { ...defaultRequestOpts, baseUrl }
-    requestOpts.headers.Authorization = await getAuthHeader(url, {
-        auth,
-    })
-
-    const meta = await asyncRequest(infoUrl, requestOpts)
-    const schemaFileName = `${schemaIdentifier(meta)}.json`
-    const loc = await cache.get(schemasUrl, schemaFileName, {
-        raw: true,
-        requestOpts,
-        force,
-    })
-    const schemas = getJSONFile(loc).schemas
-    return {
-        meta,
-        schemas,
-    }
-}
-
 async function getSchemas(urlLike, { baseUrl, auth, force }) {
     let schemas
     let fileContents
 
-    if ((fileContents = getJSONFile(urlLike))) {
+    if ((fileContents = utils.getJSONFile(urlLike))) {
         reporter.debug(urlLike, ' is a file')
         schemas = fileContents
     } else {
@@ -134,6 +43,7 @@ async function getSchemas(urlLike, { baseUrl, auth, force }) {
             baseUrl,
             auth,
             force,
+            cache,
         })
     }
 
@@ -169,7 +79,6 @@ function diff(schemasLeft, schemasRight) {
         left: schemasLeft.meta,
         right: schemasRight.meta,
     }
-
     return {
         delta,
         meta,
@@ -198,7 +107,11 @@ function handleOutput(loc = false, { left, delta, meta, format }) {
     }
 
     if (loc !== false) {
-        writeOutput(loc, out, { meta, extension })
+        const defaultName = `${schemaDiffIdentifier(
+            meta.left,
+            meta.right
+        )}.${extension}`
+        writeOutput(loc, out, { defaultName })
     } else {
         reporter.pipe(out)
     }
@@ -224,26 +137,6 @@ function generateHtml({ left, delta, meta }) {
         formatted: formatters.html.format(delta),
         ...assets,
     })
-}
-
-function writeOutput(loc, output, { meta, extension }) {
-    let isDir = false
-    try {
-        isDir = fs.statSync(loc).isDirectory()
-    } catch (e) {
-        isDir = false
-    }
-    if (loc === '' || loc === true || isDir) {
-        const fileName = `${schemaDiffIdentifier(
-            meta.left,
-            meta.right
-        )}.${extension}`
-        loc = path.join(isDir ? loc : '', fileName)
-    }
-
-    fs.writeFileSync(loc, output)
-    reporter.info('Visual output generated:', loc)
-    reporter.pipe(loc)
 }
 
 async function run({ url1, url2, baseUrl, format, output, ...rest }) {
@@ -272,8 +165,9 @@ const builder = yargs => {
         .option('base-url', {
             alias: 'b',
             coerce: val => val || (val === '' && defaultRequestOpts.baseUrl),
-            describe:
-                'BaseUrl to use for downloading schemas. If this is set url1 and url2 should be relative to this url, eg. /dev.',
+            describe: `BaseUrl to use for downloading schemas. If this is set url1 and url2 should be relative to this url, eg. /dev. [default: ${
+                defaultRequestOpts.baseUrl
+            }]`,
             type: 'string',
         })
         .option('output', {
@@ -287,16 +181,6 @@ const builder = yargs => {
             default: 'console',
             choices: ['html', 'json', 'console'],
             describe: `Specify the format of the output`,
-        })
-        .option('force', {
-            type: 'boolean',
-            describe:
-                'By default each schema is cached, identified by the version and revision. Use this flag to disable caching and download the schemas.',
-        })
-        .option('auth', {
-            type: 'string',
-            describe: `Auth to use, formatted as "user:password". Note that this is not safe, as password is shown in history.
-            Use it as a flag (--auth, no args) to be prompted for credentials for each server.`,
         })
         .check(argv => {
             const { url1, url2 } = argv
