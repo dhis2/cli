@@ -1,5 +1,5 @@
 <!DOCTYPE html>
- <meta charset="UTF-8">
+<meta charset="UTF-8">
 <html>
     <head>
         <link rel="stylesheet" href="data:text/css;base64,<%= jsondiffpatchCSS %>">
@@ -15,6 +15,19 @@
                 background-color: #bfb
             }
         </style>
+         <%
+            const metaPropsToShow = ['contextPath', 'version', 'revision', 'buildTime']
+            const commitBaseUrl = 'https://github.com/dhis2/dhis2-core/commit/'
+            const linkWrap = (url, label) => `<a href="${url}">${label}</a>`
+            const format = (key, val) => {
+                if(key === 'contextPath') {
+                    return linkWrap(val, val)
+                } else if(key === 'revision') {
+                    return linkWrap(commitBaseUrl.concat(val), val)
+                }
+                return val;
+            }
+        %>
     </head>
     <body>
         <div>
@@ -26,19 +39,18 @@
                         <th class='left'>Left</th>
                         <th class='right'>Right</th>
                     </tr>
-                    <% const metaPropsToShow = ['contextPath', 'version', 'revision', 'buildTime']%>
                     <% metaPropsToShow.forEach(key => { %>
                         <tr>
                             <td><%= key %></td>
-                            <td><%= meta.left[key] %></td>
-                            <td><%= meta.right[key] %></td>
+                            <td><%- format(key, meta.left[key]) %></td>
+                            <td><%- format(key, meta.right[key]) %></td>
                         </tr>
-                    <%}) %>
+                    <% }) %>
                     </table>
                 </div>
             </div>
             <div id="visual">
-                <%- formatted%>
+                <%- formatted %>
             </div>
         </div>
     </body>
