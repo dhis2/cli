@@ -16,12 +16,12 @@ const run = async function({
     update,
     repo,
     tag,
-    ver,
+    dhis2Version,
     ...argv
 }) {
     const { cluster } = argv
 
-    const resolvedVersion = ver ? ver : name
+    const resolvedVersion = dhis2Version ? dhis2Version : name
     const resolvedTag = tag
         ? tag
         : cluster.tag.replace(/{version}/g, resolvedVersion)
@@ -120,8 +120,8 @@ module.exports = {
             type: 'string',
             default: '',
         },
-        ver: {
-            desc: 'Set the version',
+        dhis2Version: {
+            desc: 'Set the DHIS2 version',
             type: 'string',
             default: '',
         },
