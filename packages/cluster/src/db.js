@@ -3,23 +3,23 @@ const chalk = require('chalk')
 const path = require('path')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 
-const downloadDatabase = async ({ cache, path, ver, update, url }) => {
+const downloadDatabase = async ({ cache, path, dbVersion, update, url }) => {
     if (path) {
         return path.resolve(path)
     } else {
         const ext = '.sql.gz' //dbUrl.endsWith('.gz') ? '.gz' : '.sql'
-        const cacheName = `cluster-db-${ver}${ext}`
+        const cacheName = `cluster-db-${dbVersion}${ext}`
         if (!update && (await cache.exists(cacheName))) {
             reporter.info(
                 `Found cached database version ${chalk.bold(
-                    ver
+                    dbVersion
                 )}, use --update to re-download`
             )
             return cache.getCacheLocation(cacheName)
         } else {
-            const dbUrl = url.replace(/{version}/g, ver)
+            const dbUrl = url.replace(/{version}/g, dbVersion)
             reporter.info(
-                `Downloading demo database version ${chalk.bold(ver)}...`
+                `Downloading demo database version ${chalk.bold(dbVersion)}...`
             )
 
             try {
@@ -36,7 +36,7 @@ const downloadDatabase = async ({ cache, path, ver, update, url }) => {
     }
 }
 
-const seedFromFile = async ({ cacheLocation, dbFile, ver, name }) => {
+const seedFromFile = async ({ cacheLocation, dbFile, dbVersion, name }) => {
     reporter.info(`Seeding database (this may take some time)...`)
     reporter.debug(`Seeding from database dump ${chalk.bold(dbFile)}`)
 
@@ -56,7 +56,7 @@ const seedFromFile = async ({ cacheLocation, dbFile, ver, name }) => {
 
 module.exports.seed = async ({
     cacheLocation,
-    ver,
+    dbVersion,
     name,
     path: dbPath,
     url,
@@ -67,9 +67,9 @@ module.exports.seed = async ({
         ? path.resolve(dbPath)
         : await downloadDatabase({
               cache: argv.getCache(),
-              ver,
+              dbVersion,
               url: url || argv.cluster.demoDatabaseURL,
               update,
           })
-    await seedFromFile({ cacheLocation, dbFile, ver, name })
+    await seedFromFile({ cacheLocation, dbFile, dbVersion, name })
 }

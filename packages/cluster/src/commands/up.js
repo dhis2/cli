@@ -19,7 +19,14 @@ const run = async function({
     ver,
     ...argv
 }) {
-    console.info(argv)
+    const { cluster } = argv
+
+    const resolvedVersion = ver ? ver : name
+    const resolvedTag = tag
+        ? tag
+        : cluster.tag.replace(/{version}/g, resolvedVersion)
+    const resolvedRepo = repo ? repo : cluster.repo
+    const resolvedPort = port ? port : cluster.port
 
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
@@ -35,7 +42,7 @@ const run = async function({
     if (seed || seedFile) {
         await doSeed({
             cacheLocation,
-            ver: ver || argv.cluster.ver,
+            dbVersion: resolvedVersion,
             name,
             path: seedFile,
             update,
@@ -58,11 +65,11 @@ const run = async function({
                 '-d',
             ],
             env: {
-                DHIS2_CORE_REPO: repo,
-                DHIS2_CORE_TAG: tag || argv.cluster.tag,
-                DHIS2_CORE_VERSION: ver || argv.cluster.ver,
                 DHIS2_CORE_NAME: name,
-                DHIS2_CORE_PORT: port || argv.cluster.port,
+                DHIS2_CORE_REPO: resolvedRepo,
+                DHIS2_CORE_TAG: resolvedTag,
+                DHIS2_CORE_VERSION: resolvedVersion,
+                DHIS2_CORE_PORT: resolvedPort,
             },
             pipe: true,
         })
