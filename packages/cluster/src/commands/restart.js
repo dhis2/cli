@@ -7,10 +7,14 @@ const {
     makeDockerImage,
 } = require('../common')
 
+const defaults = require('../defaults')
+
 const run = async function({ service, name, port, ...argv }) {
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
-        dockerComposeRepository: argv.cluster.dockerComposeRepository,
+        dockerComposeRepository:
+            argv.cluster.dockerComposeRepository ||
+            defaults.dockerComposeRepository,
         force: false,
     })
     if (!cacheLocation) {
@@ -51,7 +55,7 @@ module.exports = {
             alias: 'p',
             desc: 'Specify the port on which to expose the DHIS2 instance',
             type: 'integer',
-            default: 8080,
+            default: defaults.port,
         },
     },
     handler: run,

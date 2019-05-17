@@ -34,5 +34,7 @@ module.exports.initDockerComposeCache = async ({
 
 module.exports.makeComposeProject = version => `d2-cluster-${version}`
 module.exports.makeDockerImage = version => `${version}-alpine`
+module.exports.substituteVersion = (string, version) =>
+    string.replace(/{version}/g, version)
 
 module.exports.getLocalClusters = async () => {}

@@ -5,7 +5,10 @@ const {
     initDockerComposeCache,
     makeComposeProject,
     makeDockerImage,
+    substituteVersion,
 } = require('../common')
+
+const defaults = require('../defaults')
 const { seed: doSeed } = require('../db')
 
 const run = async function({
@@ -21,16 +24,17 @@ const run = async function({
 }) {
     const { cluster } = argv
 
-    const resolvedVersion = dhis2Version ? dhis2Version : name
-    const resolvedTag = tag
-        ? tag
-        : cluster.tag.replace(/{version}/g, resolvedVersion)
-    const resolvedRepo = repo ? repo : cluster.repo
-    const resolvedPort = port ? port : cluster.port
+    const resolvedVersion = dhis2Version || name
+    const resolvedImage = substituteVersion(
+        image || cluster.image || defaults.image
+    )
+    const resolvedPort = port || cluster.port || defaults.port
 
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
-        dockerComposeRepository: argv.cluster.dockerComposeRepository,
+        dockerComposeRepository:
+            argv.cluster.dockerComposeRepository ||
+            defaults.dockerComposeRepository,
         force: update,
     })
 
@@ -66,8 +70,7 @@ const run = async function({
             ],
             env: {
                 DHIS2_CORE_NAME: name,
-                DHIS2_CORE_REPO: resolvedRepo,
-                DHIS2_CORE_TAG: resolvedTag,
+                DHIS2_CORE_IMAGE: resolvedImage,
                 DHIS2_CORE_VERSION: resolvedVersion,
                 DHIS2_CORE_PORT: resolvedPort,
             },
@@ -89,7 +92,7 @@ module.exports = {
             alias: 'p',
             desc: 'Specify the port on which to expose the DHIS2 instance',
             type: 'integer',
-            default: 8080,
+            default: defaults.port,
         },
         seed: {
             alias: 's',
@@ -108,17 +111,11 @@ module.exports = {
             type: 'boolean',
             default: false,
         },
-        repo: {
-            alias: 'r',
-            desc: 'Use the specified Docker repo',
+        image: {
+            alias: 'i',
+            desc: 'Specify the Docker image to use',
             type: 'string',
-            default: 'dhis2/core',
-        },
-        tag: {
-            alias: 't',
-            desc: 'Use the specified tag',
-            type: 'string',
-            default: '',
+            default: defaults.image,
         },
         dhis2Version: {
             desc: 'Set the DHIS2 version',

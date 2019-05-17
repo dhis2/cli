@@ -1,7 +1,8 @@
-const { makeComposeProject } = require('./common')
+const { makeComposeProject, substituteVersion } = require('./common')
 const chalk = require('chalk')
 const path = require('path')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
+const defaults = require('./defaults')
 
 const downloadDatabase = async ({ cache, path, dbVersion, update, url }) => {
     if (path) {
@@ -17,7 +18,7 @@ const downloadDatabase = async ({ cache, path, dbVersion, update, url }) => {
             )
             return cache.getCacheLocation(cacheName)
         } else {
-            const dbUrl = url.replace(/{version}/g, dbVersion)
+            const dbUrl = substituteVersion(url, dbVersion)
             reporter.info(
                 `Downloading demo database version ${chalk.bold(dbVersion)}...`
             )
@@ -68,7 +69,10 @@ module.exports.seed = async ({
         : await downloadDatabase({
               cache: argv.getCache(),
               dbVersion,
-              url: url || argv.cluster.demoDatabaseURL,
+              url:
+                  url ||
+                  argv.cluster.demoDatabaseURL ||
+                  defaults.demoDatabaseURL,
               update,
           })
     await seedFromFile({ cacheLocation, dbFile, dbVersion, name })

@@ -6,11 +6,14 @@ const {
     makeComposeProject,
     makeDockerImage,
 } = require('../common')
+const defaults = require('../defaults')
 
 const run = async function({ name, clean, getCache, ...argv }) {
     const cacheLocation = await initDockerComposeCache({
         cache: getCache(),
-        dockerComposeRepository: argv.cluster.dockerComposeRepository,
+        dockerComposeRepository:
+            argv.cluster.dockerComposeRepository ||
+            defaults.dockerComposeRepository,
         force: false,
     })
 
