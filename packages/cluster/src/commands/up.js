@@ -17,8 +17,7 @@ const run = async function({
     seed,
     seedFile,
     update,
-    repo,
-    tag,
+    image,
     dhis2Version,
     ...argv
 }) {
