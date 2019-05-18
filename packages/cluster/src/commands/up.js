@@ -25,7 +25,8 @@ const run = async function({
 
     const resolvedVersion = dhis2Version || name
     const resolvedImage = substituteVersion(
-        image || cluster.image || defaults.image
+        image || cluster.image || defaults.image,
+        resolvedVersion
     )
     const resolvedPort = port || cluster.port || defaults.port
 
