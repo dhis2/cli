@@ -37,7 +37,7 @@ const run = async function({ name, clean, getCache, ...argv }) {
             env: {
                 DHIS2_CORE_IMAGE: defaults.image,
                 DHIS2_CORE_NAME: name,
-                DHIS2_CORE_PORT: 8000, // doesn't matter
+                DHIS2_CORE_PORT: defaults.port,
             },
         })
     } catch (e) {
