@@ -125,6 +125,7 @@ module.exports = {
             default: '',
         },
         root: {
+            alias: 'r',
             desc: 'Serve on the root context path',
             type: 'boolean',
             default: false,

@@ -6,6 +6,7 @@ const {
     makeComposeProject,
     makeDockerImage,
 } = require('../common')
+
 const defaults = require('../defaults')
 
 const run = async function({ name, clean, getCache, ...argv }) {
@@ -34,6 +35,7 @@ const run = async function({ name, clean, getCache, ...argv }) {
                 'down',
             ].concat(clean ? ['--volumes'] : []),
             env: {
+                DHIS2_CORE_IMAGE: defaults.image,
                 DHIS2_CORE_NAME: name,
                 DHIS2_CORE_PORT: 8000, // doesn't matter
             },
