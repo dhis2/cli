@@ -19,6 +19,7 @@ const run = async function({
     update,
     image,
     dhis2Version,
+    root,
     ...argv
 }) {
     const { cluster } = argv
@@ -29,6 +30,7 @@ const run = async function({
         resolvedVersion
     )
     const resolvedPort = port || cluster.port || defaults.port
+    const resolvedName = root ? '' : `/${name}`
 
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
@@ -69,7 +71,7 @@ const run = async function({
                 '-d',
             ],
             env: {
-                DHIS2_CORE_NAME: name,
+                DHIS2_CORE_NAME: resolvedName,
                 DHIS2_CORE_IMAGE: resolvedImage,
                 DHIS2_CORE_VERSION: resolvedVersion,
                 DHIS2_CORE_PORT: resolvedPort,
@@ -121,6 +123,11 @@ module.exports = {
             desc: 'Set the DHIS2 version',
             type: 'string',
             default: '',
+        },
+        root: {
+            desc: 'Serve on the root context path',
+            type: 'boolean',
+            default: false,
         },
     },
     handler: run,
