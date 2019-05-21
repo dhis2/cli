@@ -29,8 +29,10 @@ const run = async function({
         image || cluster.image || defaults.image,
         resolvedVersion
     )
+
     const resolvedPort = port || cluster.port || defaults.port
-    const resolvedName = root ? '' : `/${name}`
+    const resolvedRoot = root || cluster.root || defaults.root
+    const resolvedContextPath = resolvedRoot ? '' : `/${name}`
 
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
@@ -71,7 +73,8 @@ const run = async function({
                 '-d',
             ],
             env: {
-                DHIS2_CORE_NAME: resolvedName,
+                DHIS2_CORE_NAME: name,
+                DHIS2_CORE_CONTEXT_PATH: resolvedContextPath,
                 DHIS2_CORE_IMAGE: resolvedImage,
                 DHIS2_CORE_VERSION: resolvedVersion,
                 DHIS2_CORE_PORT: resolvedPort,
@@ -100,7 +103,7 @@ module.exports = {
             alias: 's',
             desc: 'Seed the detabase from a sql dump',
             type: 'boolean',
-            default: false,
+            default: defaults.seed,
         },
         seedFile: {
             desc:
@@ -111,7 +114,7 @@ module.exports = {
             alias: 'u',
             desc: 'Indicate that d2 cluster should re-download cached files',
             type: 'boolean',
-            default: false,
+            default: defaults.update,
         },
         image: {
             alias: 'i',
@@ -122,13 +125,13 @@ module.exports = {
         dhis2Version: {
             desc: 'Set the DHIS2 version',
             type: 'string',
-            default: '',
+            default: defaults.dhis2Version,
         },
         root: {
             alias: 'r',
             desc: 'Serve on the root context path',
             type: 'boolean',
-            default: false,
+            default: defaults.root,
         },
     },
     handler: run,

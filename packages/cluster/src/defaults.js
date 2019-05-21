@@ -1,6 +1,10 @@
 module.exports = {
+    dhis2Version: '',
     image: 'dhis2/core:{version}-latest-alpine',
     port: 8080,
+    root: false,
+    update: false,
+    seed: false,
     dockerComposeRepository:
         'https://github.com/amcgee/dhis2-backend/archive/master.tar.gz',
     demoDatabaseURL:
