@@ -1,8 +1,8 @@
 module.exports = {
     dhis2Version: '',
-    image: 'dhis2/core:{version}-latest-alpine',
+    image: 'amcgee/dhis2-core:{version}-alpine',
     port: 8080,
-    root: false,
+    customContext: false,
     update: false,
     seed: false,
     dockerComposeRepository:
