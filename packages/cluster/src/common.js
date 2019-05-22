@@ -1,6 +1,6 @@
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
-const dockerComposeCacheName = 'd2-cluster-docker-compose'
+const dockerComposeCacheName = 'd2-cluster-docker-compose-v2'
 
 module.exports.initDockerComposeCache = async ({
     cache,
