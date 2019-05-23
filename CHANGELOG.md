@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/dhis2/cli/compare/v1.0.5...v1.1.0) (2019-05-23)
+
+
+### Features
+
+* decouple tag, name, and version ([#46](https://github.com/dhis2/cli/issues/46)) ([28e88e4](https://github.com/dhis2/cli/commit/28e88e4))
+
 ## [1.0.5](https://github.com/dhis2/cli/compare/v1.0.4...v1.0.5) (2019-05-14)
 
 
