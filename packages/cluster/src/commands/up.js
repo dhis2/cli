@@ -5,13 +5,41 @@ const {
     initDockerComposeCache,
     makeComposeProject,
     makeDockerImage,
+    substituteVersion,
 } = require('../common')
+
+const defaults = require('../defaults')
 const { seed: doSeed } = require('../db')
 
-const run = async function({ v, port, seed, seedFile, update, ...argv }) {
+const run = async function({
+    name,
+    port,
+    seed,
+    seedFile,
+    update,
+    image,
+    dhis2Version,
+    customContext,
+    ...argv
+}) {
+    const { cluster } = argv
+
+    const resolvedVersion = dhis2Version || name
+    const resolvedImage = substituteVersion(
+        image || cluster.image || defaults.image,
+        resolvedVersion
+    )
+
+    const resolvedPort = port || cluster.port || defaults.port
+    const resolvedContext =
+        customContext || cluster.customContext || defaults.customContext
+    const resolvedContextPath = resolvedContext ? `/${name}` : ''
+
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
-        dockerComposeRepository: argv.cluster.dockerComposeRepository,
+        dockerComposeRepository:
+            argv.cluster.dockerComposeRepository ||
+            defaults.dockerComposeRepository,
         force: update,
     })
 
@@ -21,26 +49,36 @@ const run = async function({ v, port, seed, seedFile, update, ...argv }) {
     }
 
     if (seed || seedFile) {
-        await doSeed({ cacheLocation, v, path: seedFile, update, ...argv })
+        await doSeed({
+            cacheLocation,
+            dbVersion: resolvedVersion,
+            name,
+            path: seedFile,
+            update,
+            ...argv,
+        })
     }
 
-    reporter.info(`Spinning up cluster version ${chalk.cyan(v)}`)
+    reporter.info(`Spinning up cluster ${chalk.cyan(name)}`)
+
     const res = await tryCatchAsync(
         'exec(docker-compose)',
         exec({
             cmd: 'docker-compose',
             args: [
                 '-p',
-                makeComposeProject(v),
+                makeComposeProject(name),
                 '-f',
                 path.join(cacheLocation, 'docker-compose.yml'),
                 'up',
                 '-d',
             ],
             env: {
-                DHIS2_CORE_TAG: makeDockerImage(v),
-                DHIS2_CORE_VERSION: v,
-                DHIS2_CORE_PORT: port,
+                DHIS2_CORE_NAME: name,
+                DHIS2_CORE_CONTEXT_PATH: resolvedContextPath,
+                DHIS2_CORE_IMAGE: resolvedImage,
+                DHIS2_CORE_VERSION: resolvedVersion,
+                DHIS2_CORE_PORT: resolvedPort,
             },
             pipe: true,
         })
@@ -52,7 +90,7 @@ const run = async function({ v, port, seed, seedFile, update, ...argv }) {
 }
 
 module.exports = {
-    command: 'up <v>',
+    command: 'up <name>',
     desc: 'Spin up a new cluster',
     aliases: 'u',
     builder: {
@@ -60,13 +98,13 @@ module.exports = {
             alias: 'p',
             desc: 'Specify the port on which to expose the DHIS2 instance',
             type: 'integer',
-            default: 8080,
+            default: defaults.port,
         },
         seed: {
             alias: 's',
             desc: 'Seed the detabase from a sql dump',
             type: 'boolean',
-            default: false,
+            default: defaults.seed,
         },
         seedFile: {
             desc:
@@ -77,7 +115,24 @@ module.exports = {
             alias: 'u',
             desc: 'Indicate that d2 cluster should re-download cached files',
             type: 'boolean',
-            default: false,
+            default: defaults.update,
+        },
+        image: {
+            alias: 'i',
+            desc: 'Specify the Docker image to use',
+            type: 'string',
+            default: defaults.image,
+        },
+        dhis2Version: {
+            desc: 'Set the DHIS2 version',
+            type: 'string',
+            default: defaults.dhis2Version,
+        },
+        customContext: {
+            alias: 'c',
+            desc: 'Serve on a custom context path',
+            type: 'boolean',
+            default: defaults.customContext,
         },
     },
     handler: run,

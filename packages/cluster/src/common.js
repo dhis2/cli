@@ -1,6 +1,6 @@
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
-const dockerComposeCacheName = 'd2-cluster-docker-compose'
+const dockerComposeCacheName = 'd2-cluster-docker-compose-v2'
 
 module.exports.initDockerComposeCache = async ({
     cache,
@@ -34,5 +34,7 @@ module.exports.initDockerComposeCache = async ({
 
 module.exports.makeComposeProject = version => `d2-cluster-${version}`
 module.exports.makeDockerImage = version => `${version}-alpine`
+module.exports.substituteVersion = (string, version) =>
+    string.replace(/{version}/g, version)
 
 module.exports.getLocalClusters = async () => {}
