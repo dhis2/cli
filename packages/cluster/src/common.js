@@ -50,8 +50,9 @@ module.exports.initDockerComposeCache = async ({
 
 module.exports.writeCache = (cache, loc) => {
     try {
+        const target = path.dirname(loc)
         fs.writeFileSync(
-            path.join(loc, 'clusterCache.json'),
+            path.join(target, 'clusterCache.json'),
             JSON.stringify(cache, null, 4)
         )
     } catch (e) {
@@ -61,7 +62,8 @@ module.exports.writeCache = (cache, loc) => {
 
 module.exports.loadCache = loc => {
     try {
-        const cache = fs.readFileSync(path.join(loc, 'clusterCache.json'))
+        const source = path.dirname(loc)
+        const cache = fs.readFileSync(path.join(source, 'clusterCache.json'))
         return JSON.parse(cache)
     } catch (e) {
         return {}
