@@ -32,6 +32,10 @@ const run = async function(argv) {
     }
 
     const cache = loadCache(cacheLocation)
+    reporter.debug(
+        `cached configuration for cluster ${composeProjectName}`,
+        cache
+    )
 
     const resolvedVersion = dhis2Version || cache.dhis2Version || name
     const resolvedImage = substituteVersion(
