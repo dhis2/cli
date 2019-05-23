@@ -12,7 +12,9 @@ const run = async function({ dhis2Version, ...argv }) {
         dbVersion,
     } = resolveConfiguration(argv, {}, cluster)
 
+    const composeProjectName = makeComposeProject(name)
     const cacheLocation = await initDockerComposeCache({
+        composeProjectName,
         cache: argv.getCache(),
         dockerComposeRepository,
         dockerComposeDirectory,

@@ -48,6 +48,26 @@ module.exports.initDockerComposeCache = async ({
     return cache.getCacheLocation(cachePath)
 }
 
+module.exports.writeCache = (cache, loc) => {
+    try {
+        fs.writeFileSync(
+            path.join(loc, 'clusterCache.json'),
+            JSON.stringify(cache, null, 4)
+        )
+    } catch (e) {
+        reporter.error('Failed to write cache file' + loc, e)
+    }
+}
+
+module.exports.loadCache = loc => {
+    try {
+        const cache = fs.readFileSync(path.join(loc, 'clusterCache.json'))
+        return JSON.parse(cache)
+    } catch (e) {
+        return {}
+    }
+}
+
 module.exports.makeComposeProject = name => `d2-cluster-${name}`
 module.exports.substituteVersion = (string, version) =>
     replacer(string, 'version', version)

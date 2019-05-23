@@ -13,28 +13,34 @@ const run = async function({ service, name, cluster, ...argv }) {
         dockerComposeRepository,
         dockerComposeDirectory,
     } = resolveConfiguration(argv, {}, cluster)
+    const composeProjectName = makeComposeProject(name)
+
     const cacheLocation = await initDockerComposeCache({
+        composeProjectName,
         cache: argv.getCache(),
         dockerComposeRepository,
         dockerComposeDirectory,
         force: false,
     })
+
     if (!cacheLocation) {
         reporter.error('Failed to initialize cache...')
         process.exit(1)
     }
+
     reporter.info(
         `Reading logs from cluster version ${chalk.cyan(name)}${
             service ? ` <${service}>` : ''
         }`
     )
+
     const res = await tryCatchAsync(
         'exec(docker-compose)',
         exec({
             cmd: 'docker-compose',
             args: [
                 '-p',
-                makeComposeProject(name),
+                composeProjectName,
                 '-f',
                 path.join(cacheLocation, 'docker-compose.yml'),
                 'logs',
