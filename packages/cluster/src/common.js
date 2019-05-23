@@ -7,13 +7,14 @@ const defaults = require('./defaults')
 const dockerComposeCacheName = 'd2-cluster-docker-compose-v2'
 
 module.exports.initDockerComposeCache = async ({
+    composeProjectName,
     cache,
     dockerComposeRepository,
     dockerComposeDirectory,
     force,
 }) => {
-    const cacheDir = path.join(dockerComposeCacheName, dockerComposeDirectory)
-    const exists = await cache.exists(cacheDir)
+    const cachePath = path.join(composeProjectName, dockerComposeCacheName, dockerComposeDirectory)
+    const exists = await cache.exists(cachePath)
 
     if (exists && !force) {
         reporter.debug(
@@ -23,6 +24,7 @@ module.exports.initDockerComposeCache = async ({
         reporter.info('Initializing Docker Compose repository...')
 
         try {
+
             const repoDir = await cache.get(
                 dockerComposeRepository,
                 dockerComposeCacheName,
@@ -31,10 +33,10 @@ module.exports.initDockerComposeCache = async ({
                 }
             )
 
-            const created = await cache.exists(cacheDir)
+            const created = await cache.exists(cachePath)
 
             if (created) {
-                reporter.debug(`Cache created at: ${cacheDir}`)
+                reporter.debug(`Cache created at: ${cachePath}`)
             }
         } catch (e) {
             reporter.error('Initialization failed!')
@@ -42,11 +44,10 @@ module.exports.initDockerComposeCache = async ({
         }
     }
 
-    return cache.getCacheLocation(cacheDir)
+    return cache.getCacheLocation(cachePath)
 }
 
-module.exports.makeComposeProject = version => `d2-cluster-${version}`
-
+module.exports.makeComposeProject = name => `d2-cluster-${name}`
 module.exports.substituteVersion = (string, version) =>
     replacer(string, 'version', version)
 

@@ -16,6 +16,7 @@ const run = async function(argv) {
     const cfg = resolveConfiguration(argv, {}, cluster)
 
     const cacheLocation = await initDockerComposeCache({
+        composeProjectName,
         cache: argv.getCache(),
         dockerComposeRepository: cfg.dockerComposeRepository,
         dockerComposeDirectory: cfg.dockerComposeDirectory,
@@ -48,7 +49,7 @@ const run = async function(argv) {
             cmd: 'docker-compose',
             args: [
                 '-p',
-                makeComposeProject(name),
+                composeProjectName,
                 '-f',
                 path.join(cacheLocation, 'docker-compose.yml'),
                 'up',
