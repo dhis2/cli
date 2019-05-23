@@ -1,6 +1,7 @@
 const path = require('path')
+const fs = require('fs')
 
-const { reporter } = require('@dhis2/cli-helpers-engine')
+const { Cache, reporter } = require('@dhis2/cli-helpers-engine')
 
 const defaults = require('./defaults')
 
