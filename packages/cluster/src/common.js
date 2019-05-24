@@ -74,7 +74,7 @@ module.exports.makeEnvironment = (argv = {}, cache = {}, config = {}) => {
 
     // resolve specials...
     const resolvedDhis2Version = resolved.dhis2Version || name
-    const resolvedDatabaseVersion = resolved.dbVersion || name
+    const resolvedDatabaseVersion = resolved.dbVersion || resolvedDhis2Version
     const resolvedContextPath = resolved.customContext ? `/${name}` : ''
 
     const dockerImage = makeDockerImage(

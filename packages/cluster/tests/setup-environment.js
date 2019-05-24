@@ -53,7 +53,7 @@ test('build runtime environment based on args', function(t) {
         DHIS2_CORE_PORT: 8233,
     }
 
-    t.deepEqual(actual, expected, 'default environment')
+    t.deepEqual(actual, expected, 'args environment')
 })
 
 test('build runtime environment based on mixed args and config', function(t) {
@@ -84,5 +84,36 @@ test('build runtime environment based on mixed args and config', function(t) {
         DHIS2_CORE_PORT: 8233,
     }
 
-    t.deepEqual(actual, expected, 'default environment')
+    t.deepEqual(actual, expected, 'args and config environment')
+})
+
+test('build runtime environment based on mixed args, cache, config and defaults', function(t) {
+    t.plan(1)
+
+    const argv = {
+        name: 'mydev',
+    }
+
+    const cache = {
+        customContext: true,
+        image: 'dhis2/core-canary:master-20190523-alpine',
+    }
+
+    const config = {
+        port: 8233,
+        dhis2Version: 'dev',
+    }
+
+    const actual = makeEnvironment(argv, cache, config)
+
+    const expected = {
+        DHIS2_CORE_NAME: 'mydev',
+        DHIS2_CORE_CONTEXT_PATH: '/mydev',
+        DHIS2_CORE_IMAGE: 'dhis2/core-canary:master-20190523-alpine',
+        DHIS2_CORE_VERSION: 'dev',
+        DHIS2_CORE_DB_VERSION: 'dev',
+        DHIS2_CORE_PORT: 8233,
+    }
+
+    t.deepEqual(actual, expected, 'merged environment')
 })
