@@ -69,51 +69,31 @@ function replacer(string, token, value) {
 }
 
 module.exports.makeEnvironment = (argv = {}, cache = {}, config = {}) => {
-    // resolve version for dhis2 and db
-    const resolvedDhis2Version =
-        argv.dhis2Version ||
-        cache.dhis2Version ||
-        config.dhis2Version ||
-        argv.name
-    const resolvedDatabaseVersion =
-        argv.dbVersion ||
-        cache.dbVersion ||
-        config.dbVersion ||
-        resolvedDhis2Version ||
-        argv.name
+    const name = argv.name
+    const resolved = Object.assign({}, defaults, config, cache, argv)
 
-    // resolve the docker image
-    const resolvedChannel =
-        argv.channel || cache.channel || config.channel || defaults.channel
-    const resolvedImage =
-        argv.image || cache.image || config.image || defaults.image
-    const resolvedVariant = argv.variant || cache.variant || config.variant
+    // resolve specials...
+    const resolvedDhis2Version = resolved.dhis2Version || name
+    const resolvedDatabaseVersion = resolved.dbVersion || name
+    const resolvedContextPath = resolved.customContext ? `/${name}` : ''
 
-    const resolvedDockerImage = makeDockerImage(
-        resolvedImage,
+    const dockerImage = makeDockerImage(
+        resolved.image,
         {
-            channel: resolvedChannel,
+            channel: resolved.channel,
             version: resolvedDhis2Version,
         },
-        resolvedVariant
+        resolved.variant
     )
 
-    // resolve runtime port and context
-    const resolvedPort = argv.port || cache.port || config.port || defaults.port
-    const resolvedContext =
-        argv.customContext ||
-        cache.customContext ||
-        config.customContext ||
-        defaults.customContext
-    const resolvedContextPath = resolvedContext ? `/${argv.name}` : ''
-
     const env = {
-        DHIS2_CORE_NAME: argv.name,
+        DHIS2_CORE_NAME: name,
+        DHIS2_CORE_IMAGE: dockerImage,
         DHIS2_CORE_CONTEXT_PATH: resolvedContextPath,
-        DHIS2_CORE_IMAGE: resolvedDockerImage,
+
         DHIS2_CORE_VERSION: resolvedDhis2Version,
         DHIS2_CORE_DB_VERSION: resolvedDatabaseVersion,
-        DHIS2_CORE_PORT: resolvedPort,
+        DHIS2_CORE_PORT: resolved.port,
     }
 
     reporter.debug('Runtime environment\n', env)
