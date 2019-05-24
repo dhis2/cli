@@ -1,6 +1,7 @@
 module.exports = {
     dhis2Version: '',
-    image: 'amcgee/dhis2-core:{version}-alpine',
+    channel: '',
+    image: 'dhis2/core{channel}:{version}',
     port: 8080,
     customContext: false,
     update: false,

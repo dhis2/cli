@@ -5,7 +5,6 @@ const {
     initDockerComposeCache,
     makeComposeProject,
     makeDockerImage,
-    substituteVersion,
 } = require('../common')
 
 const defaults = require('../defaults')
@@ -20,14 +19,24 @@ const run = async function({
     image,
     dhis2Version,
     customContext,
+    variant,
+    channel,
     ...argv
 }) {
     const { cluster } = argv
 
-    const resolvedVersion = dhis2Version || name
-    const resolvedImage = substituteVersion(
-        image || cluster.image || defaults.image,
-        resolvedVersion
+    const resolvedVersion = dhis2Version || cluster.dhis2Version || name
+    const resolvedChannel = channel || cluster.channel || defaults.channel
+    const resolvedImage = image || cluster.image || defaults.image
+    const resolvedVariant = variant || cluster.variant
+
+    const resolvedDockerImage = makeDockerImage(
+        resolvedImage,
+        {
+            channel: resolvedChannel,
+            version: resolvedVersion,
+        },
+        resolvedVariant
     )
 
     const resolvedPort = port || cluster.port || defaults.port
@@ -61,6 +70,16 @@ const run = async function({
 
     reporter.info(`Spinning up cluster ${chalk.cyan(name)}`)
 
+    console.info({
+        DHIS2_CORE_NAME: name,
+        DHIS2_CORE_CONTEXT_PATH: resolvedContextPath,
+        DHIS2_CORE_IMAGE: resolvedDockerImage,
+        DHIS2_CORE_VERSION: resolvedVersion,
+        DHIS2_CORE_PORT: resolvedPort,
+    })
+
+    process.exit(0)
+
     const res = await tryCatchAsync(
         'exec(docker-compose)',
         exec({
@@ -76,7 +95,7 @@ const run = async function({
             env: {
                 DHIS2_CORE_NAME: name,
                 DHIS2_CORE_CONTEXT_PATH: resolvedContextPath,
-                DHIS2_CORE_IMAGE: resolvedImage,
+                DHIS2_CORE_IMAGE: resolvedDockerImage,
                 DHIS2_CORE_VERSION: resolvedVersion,
                 DHIS2_CORE_PORT: resolvedPort,
             },
@@ -98,13 +117,11 @@ module.exports = {
             alias: 'p',
             desc: 'Specify the port on which to expose the DHIS2 instance',
             type: 'integer',
-            default: defaults.port,
         },
         seed: {
             alias: 's',
             desc: 'Seed the detabase from a sql dump',
             type: 'boolean',
-            default: defaults.seed,
         },
         seedFile: {
             desc:
@@ -115,24 +132,28 @@ module.exports = {
             alias: 'u',
             desc: 'Indicate that d2 cluster should re-download cached files',
             type: 'boolean',
-            default: defaults.update,
         },
         image: {
             alias: 'i',
             desc: 'Specify the Docker image to use',
             type: 'string',
-            default: defaults.image,
         },
         dhis2Version: {
             desc: 'Set the DHIS2 version',
             type: 'string',
-            default: defaults.dhis2Version,
+        },
+        channel: {
+            desc: 'Set the release channel to use',
+            type: 'string',
         },
         customContext: {
             alias: 'c',
             desc: 'Serve on a custom context path',
             type: 'boolean',
-            default: defaults.customContext,
+        },
+        variant: {
+            desc: 'Append variant options to the image',
+            type: 'array',
         },
     },
     handler: run,

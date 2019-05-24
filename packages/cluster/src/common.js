@@ -33,8 +33,41 @@ module.exports.initDockerComposeCache = async ({
 }
 
 module.exports.makeComposeProject = version => `d2-cluster-${version}`
-module.exports.makeDockerImage = version => `${version}-alpine`
+
 module.exports.substituteVersion = (string, version) =>
-    string.replace(/{version}/g, version)
+    replacer(string, 'version', version)
+
+module.exports.makeDockerImage = (
+    string = '',
+    substitutes = {},
+    variants = []
+) => {
+    let res = string
+
+    // the stable channel is just dhis2/core, so if the channel is
+    // unspecified or 'stable', we should just strip it out from the
+    // image tag
+    if (!substitutes.channel || substitutes.channel === 'stable') {
+        res = replacer(res, 'channel', '')
+    }
+
+    for (const token in substitutes) {
+        const value =
+            token === 'channel'
+                ? `-${substitutes[token]}` // add a leading '-' to channel
+                : substitutes[token]
+
+        res = replacer(res, token, value)
+    }
+    for (const variant of variants) {
+        res = `${res}-${variant}`
+    }
+    return res
+}
+
+function replacer(string, token, value) {
+    const regexp = new RegExp(`{${token}}`, 'g')
+    return string.replace(regexp, value)
+}
 
 module.exports.getLocalClusters = async () => {}
