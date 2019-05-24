@@ -4,45 +4,29 @@ const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
     makeComposeProject,
-    makeDockerImage,
+    makeEnvironment,
 } = require('../common')
 
 const defaults = require('../defaults')
 const { seed: doSeed } = require('../db')
 
-const run = async function({
-    name,
-    port,
-    seed,
-    seedFile,
-    update,
-    image,
-    dhis2Version,
-    customContext,
-    variant,
-    channel,
-    ...argv
-}) {
-    const { cluster } = argv
+const run = async function(argv) {
+    const {
+        cluster,
+        name,
+        port,
+        seed,
+        seedFile,
+        update,
+        image,
+        dhis2Version,
+        dbVersion,
+        customContext,
+        variant,
+        channel,
+    } = argv
 
-    const resolvedVersion = dhis2Version || cluster.dhis2Version || name
-    const resolvedChannel = channel || cluster.channel || defaults.channel
-    const resolvedImage = image || cluster.image || defaults.image
-    const resolvedVariant = variant || cluster.variant
-
-    const resolvedDockerImage = makeDockerImage(
-        resolvedImage,
-        {
-            channel: resolvedChannel,
-            version: resolvedVersion,
-        },
-        resolvedVariant
-    )
-
-    const resolvedPort = port || cluster.port || defaults.port
-    const resolvedContext =
-        customContext || cluster.customContext || defaults.customContext
-    const resolvedContextPath = resolvedContext ? `/${name}` : ''
+    const runtime = makeEnvironment(argv, {}, cluster)
 
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
@@ -60,7 +44,7 @@ const run = async function({
     if (seed || seedFile) {
         await doSeed({
             cacheLocation,
-            dbVersion: resolvedVersion,
+            dbVersion: resolvedDatabaseVersion,
             name,
             path: seedFile,
             update,
@@ -70,19 +54,10 @@ const run = async function({
 
     reporter.info(`Spinning up cluster ${chalk.cyan(name)}`)
 
-    console.info({
-        DHIS2_CORE_NAME: name,
-        DHIS2_CORE_CONTEXT_PATH: resolvedContextPath,
-        DHIS2_CORE_IMAGE: resolvedDockerImage,
-        DHIS2_CORE_VERSION: resolvedVersion,
-        DHIS2_CORE_PORT: resolvedPort,
-    })
-
-    process.exit(0)
-
     const res = await tryCatchAsync(
         'exec(docker-compose)',
         exec({
+            env: runtime,
             cmd: 'docker-compose',
             args: [
                 '-p',
@@ -92,13 +67,6 @@ const run = async function({
                 'up',
                 '-d',
             ],
-            env: {
-                DHIS2_CORE_NAME: name,
-                DHIS2_CORE_CONTEXT_PATH: resolvedContextPath,
-                DHIS2_CORE_IMAGE: resolvedDockerImage,
-                DHIS2_CORE_VERSION: resolvedVersion,
-                DHIS2_CORE_PORT: resolvedPort,
-            },
             pipe: true,
         })
     )
@@ -140,6 +108,10 @@ module.exports = {
         },
         dhis2Version: {
             desc: 'Set the DHIS2 version',
+            type: 'string',
+        },
+        dbVersion: {
+            desc: 'Set the database version',
             type: 'string',
         },
         channel: {

@@ -1,11 +1,7 @@
 const chalk = require('chalk')
 const path = require('path')
 const { exec, reporter } = require('@dhis2/cli-helpers-engine')
-const {
-    initDockerComposeCache,
-    makeComposeProject,
-    makeDockerImage,
-} = require('../common')
+const { initDockerComposeCache, makeComposeProject } = require('../common')
 
 const defaults = require('../defaults')
 
