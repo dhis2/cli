@@ -116,7 +116,7 @@ module.exports.makeEnvironment = (argv = {}, cache = {}, config = {}) => {
         DHIS2_CORE_PORT: resolvedPort,
     }
 
-    reporter.info('Runtime environment\n', env)
+    reporter.debug('Runtime environment\n', env)
 
     return env
 }
