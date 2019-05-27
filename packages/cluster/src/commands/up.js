@@ -5,6 +5,7 @@ const {
     initDockerComposeCache,
     makeComposeProject,
     makeEnvironment,
+    resolveConfiguration,
 } = require('../common')
 
 const defaults = require('../defaults')
@@ -12,13 +13,11 @@ const { seed: doSeed } = require('../db')
 
 const run = async function(argv) {
     const { cluster, name, seed, seedFile, update } = argv
-
-    const runtime = makeEnvironment(argv, {}, cluster)
+    const cfg = resolveConfiguration(argv, {}, cluster)
 
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
-        dockerComposeRepository:
-            cluster.dockerComposeRepository || defaults.dockerComposeRepository,
+        dockerComposeRepository: cfg.dockerComposeRepository,
         force: update,
     })
 
@@ -30,7 +29,7 @@ const run = async function(argv) {
     if (seed || seedFile) {
         await doSeed({
             cacheLocation,
-            dbVersion: runtime.DHIS2_CORE_DB_VERSION,
+            dbVersion: cfg.dbVersion,
             name,
             path: seedFile,
             update,
@@ -43,7 +42,7 @@ const run = async function(argv) {
     const res = await tryCatchAsync(
         'exec(docker-compose)',
         exec({
-            env: runtime,
+            env: makeEnvironment(cfg),
             cmd: 'docker-compose',
             args: [
                 '-p',
