@@ -44,7 +44,7 @@ const run = async function(argv) {
     if (seed || seedFile) {
         await doSeed({
             cacheLocation,
-            dbVersion: resolvedDatabaseVersion,
+            dbVersion: runtime.DHIS2_CORE_DB_VERSION,
             name,
             path: seedFile,
             update,
