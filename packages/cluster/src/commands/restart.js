@@ -1,16 +1,19 @@
 const chalk = require('chalk')
 const path = require('path')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
-const { initDockerComposeCache, makeComposeProject } = require('../common')
+const {
+    initDockerComposeCache,
+    makeComposeProject,
+    resolveConfiguration,
+} = require('../common')
 
 const defaults = require('../defaults')
 
-const run = async function({ service, name, port, ...argv }) {
+const run = async function({ service, name, port, cluster, ...argv }) {
+    const { dockerComposeRepository } = resolveConfiguration(argv, {}, cluster)
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
-        dockerComposeRepository:
-            argv.cluster.dockerComposeRepository ||
-            defaults.dockerComposeRepository,
+        dockerComposeRepository,
         force: false,
     })
     if (!cacheLocation) {

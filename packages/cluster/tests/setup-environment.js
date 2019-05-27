@@ -1,6 +1,6 @@
 const test = require('tape')
 
-const { makeEnvironment } = require('../src/common.js')
+const { makeEnvironment, resolveConfiguration } = require('../src/common.js')
 
 const defaults = require('../src/defaults.js')
 
@@ -13,7 +13,7 @@ test('build runtime environment based on defaults', function(t) {
     const cache = {}
     const config = {}
 
-    const actual = makeEnvironment(argv, cache, config)
+    const actual = makeEnvironment(resolveConfiguration(argv, cache, config))
 
     const expected = {
         DHIS2_CORE_NAME: 'dev',
@@ -42,7 +42,7 @@ test('build runtime environment based on args', function(t) {
     const cache = {}
     const config = {}
 
-    const actual = makeEnvironment(argv, cache, config)
+    const actual = makeEnvironment(resolveConfiguration(argv, cache, config))
 
     const expected = {
         DHIS2_CORE_NAME: 'dev',
@@ -73,7 +73,7 @@ test('build runtime environment based on mixed args and config', function(t) {
         dbVersion: 'dev',
     }
 
-    const actual = makeEnvironment(argv, cache, config)
+    const actual = makeEnvironment(resolveConfiguration(argv, cache, config))
 
     const expected = {
         DHIS2_CORE_NAME: 'mydev',
@@ -104,7 +104,7 @@ test('build runtime environment based on mixed args, cache, config and defaults'
         dhis2Version: 'dev',
     }
 
-    const actual = makeEnvironment(argv, cache, config)
+    const actual = makeEnvironment(resolveConfiguration(argv, cache, config))
 
     const expected = {
         DHIS2_CORE_NAME: 'mydev',

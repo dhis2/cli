@@ -91,9 +91,7 @@ function resolveConfiguration(argv = {}, cache = {}, config = {}) {
     return resolved
 }
 
-module.exports.makeEnvironment = (argv = {}, cache = {}, config = {}) => {
-    const cfg = resolveConfiguration(argv, cache, config)
-
+module.exports.makeEnvironment = cfg => {
     const env = {
         DHIS2_CORE_NAME: cfg.name,
         DHIS2_CORE_IMAGE: cfg.dockerImage,
