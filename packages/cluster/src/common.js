@@ -98,7 +98,6 @@ module.exports.makeEnvironment = (argv = {}, cache = {}, config = {}) => {
         DHIS2_CORE_NAME: cfg.name,
         DHIS2_CORE_IMAGE: cfg.dockerImage,
         DHIS2_CORE_CONTEXT_PATH: cfg.contextPath,
-
         DHIS2_CORE_VERSION: cfg.dhis2Version,
         DHIS2_CORE_DB_VERSION: cfg.dbVersion,
         DHIS2_CORE_PORT: cfg.port,
