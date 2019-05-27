@@ -11,28 +11,14 @@ const defaults = require('../defaults')
 const { seed: doSeed } = require('../db')
 
 const run = async function(argv) {
-    const {
-        cluster,
-        name,
-        port,
-        seed,
-        seedFile,
-        update,
-        image,
-        dhis2Version,
-        dbVersion,
-        customContext,
-        variant,
-        channel,
-    } = argv
+    const { cluster, name, seed, seedFile, update } = argv
 
     const runtime = makeEnvironment(argv, {}, cluster)
 
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
         dockerComposeRepository:
-            argv.cluster.dockerComposeRepository ||
-            defaults.dockerComposeRepository,
+            cluster.dockerComposeRepository || defaults.dockerComposeRepository,
         force: update,
     })
 
