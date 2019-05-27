@@ -69,10 +69,7 @@ module.exports.seed = async ({
         : await downloadDatabase({
               cache: argv.getCache(),
               dbVersion,
-              url:
-                  url ||
-                  argv.cluster.demoDatabaseURL ||
-                  defaults.demoDatabaseURL,
+              url,
               update,
           })
     await seedFromFile({ cacheLocation, dbFile, dbVersion, name })

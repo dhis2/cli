@@ -28,9 +28,10 @@ const run = async function(argv) {
 
     if (seed || seedFile) {
         await doSeed({
+            name,
             cacheLocation,
             dbVersion: cfg.dbVersion,
-            name,
+            url: cfg.demoDatabaseURL,
             path: seedFile,
             update,
             ...argv,
