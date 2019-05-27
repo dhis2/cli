@@ -6,6 +6,7 @@ const { Cache, reporter } = require('@dhis2/cli-helpers-engine')
 const defaults = require('./defaults')
 
 const dockerComposeCacheName = 'd2-cluster-docker-compose-v2'
+const cacheFile = 'config.json'
 
 module.exports.initDockerComposeCache = async ({
     composeProjectName,
@@ -52,7 +53,7 @@ module.exports.writeCache = (cache, loc) => {
     try {
         const target = path.dirname(loc)
         fs.writeFileSync(
-            path.join(target, 'clusterCache.json'),
+            path.join(target, clusterFile),
             JSON.stringify(cache, null, 4)
         )
     } catch (e) {
@@ -63,7 +64,7 @@ module.exports.writeCache = (cache, loc) => {
 module.exports.loadCache = loc => {
     try {
         const source = path.dirname(loc)
-        const cache = fs.readFileSync(path.join(source, 'clusterCache.json'))
+        const cache = fs.readFileSync(path.join(source, clusterFile))
         return JSON.parse(cache)
     } catch (e) {
         return {}
