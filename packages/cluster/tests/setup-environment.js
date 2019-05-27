@@ -36,7 +36,7 @@ test('build runtime environment based on args', function(t) {
         dhis2Version: '2.33',
         dbVersion: '2.32',
         channel: 'canary',
-        variant: ['jetty', 'slackware'],
+        variant: 'jetty-slackware',
         port: 8233,
     }
     const cache = {}

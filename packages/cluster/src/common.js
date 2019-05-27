@@ -39,7 +39,7 @@ module.exports.makeComposeProject = version => `d2-cluster-${version}`
 module.exports.substituteVersion = (string, version) =>
     replacer(string, 'version', version)
 
-const makeDockerImage = (string = '', substitutes = {}, variants = []) => {
+function makeDockerImage(string = '', substitutes = {}, variant = '') {
     let res = string
 
     // the stable channel is just dhis2/core, so if the channel is
@@ -57,7 +57,8 @@ const makeDockerImage = (string = '', substitutes = {}, variants = []) => {
 
         res = replacer(res, token, value)
     }
-    for (const variant of variants) {
+
+    if (variant) {
         res = `${res}-${variant}`
     }
     return res
@@ -68,32 +69,39 @@ function replacer(string, token, value) {
     return string.replace(regexp, value)
 }
 
-module.exports.makeEnvironment = (argv = {}, cache = {}, config = {}) => {
-    const name = argv.name
+function resolveConfiguration(argv = {}, cache = {}, config = {}) {
     const resolved = Object.assign({}, defaults, config, cache, argv)
 
     // resolve specials...
-    const resolvedDhis2Version = resolved.dhis2Version || name
-    const resolvedDatabaseVersion = resolved.dbVersion || resolvedDhis2Version
-    const resolvedContextPath = resolved.customContext ? `/${name}` : ''
+    resolved.dhis2Version = resolved.dhis2Version || resolved.name
+    resolved.dbVersion = resolved.dbVersion || resolved.dhis2Version
+    resolved.contextPath = resolved.customContext ? `/${resolved.name}` : ''
 
-    const dockerImage = makeDockerImage(
+    resolved.dockerImage = makeDockerImage(
         resolved.image,
         {
             channel: resolved.channel,
-            version: resolvedDhis2Version,
+            version: resolved.dhis2Version,
         },
         resolved.variant
     )
 
-    const env = {
-        DHIS2_CORE_NAME: name,
-        DHIS2_CORE_IMAGE: dockerImage,
-        DHIS2_CORE_CONTEXT_PATH: resolvedContextPath,
+    reporter.debug('Resolved configuration\n', resolved)
 
-        DHIS2_CORE_VERSION: resolvedDhis2Version,
-        DHIS2_CORE_DB_VERSION: resolvedDatabaseVersion,
-        DHIS2_CORE_PORT: resolved.port,
+    return resolved
+}
+
+module.exports.makeEnvironment = (argv = {}, cache = {}, config = {}) => {
+    const cfg = resolveConfiguration(argv, cache, config)
+
+    const env = {
+        DHIS2_CORE_NAME: cfg.name,
+        DHIS2_CORE_IMAGE: cfg.dockerImage,
+        DHIS2_CORE_CONTEXT_PATH: cfg.contextPath,
+
+        DHIS2_CORE_VERSION: cfg.dhis2Version,
+        DHIS2_CORE_DB_VERSION: cfg.dbVersion,
+        DHIS2_CORE_PORT: cfg.port,
     }
 
     reporter.debug('Runtime environment\n', env)
@@ -104,3 +112,4 @@ module.exports.makeEnvironment = (argv = {}, cache = {}, config = {}) => {
 module.exports.getLocalClusters = async () => {}
 
 module.exports.makeDockerImage = makeDockerImage
+module.exports.resolveConfiguration = resolveConfiguration

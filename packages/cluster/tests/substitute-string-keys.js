@@ -51,7 +51,7 @@ test('stable and 2.32.0 with alpine variant', function(t) {
             {
                 version: '2.32.0',
             },
-            ['alpine']
+            'alpine'
         ),
         expected,
         expected
@@ -69,7 +69,7 @@ test('stable and master with tomcat9 and debian-slim variant', function(t) {
             {
                 version: 'master',
             },
-            ['tomcat9', 'debian-slim']
+            'tomcat9-debian-slim'
         ),
         expected,
         expected
@@ -171,7 +171,7 @@ test('canary and 2.32 from date', function(t) {
                 version: '2.32',
                 channel: 'canary',
             },
-            ['20190523']
+            '20190523'
         ),
         expected,
         expected

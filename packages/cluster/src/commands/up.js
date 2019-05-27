@@ -125,7 +125,7 @@ module.exports = {
         },
         variant: {
             desc: 'Append variant options to the image',
-            type: 'array',
+            type: 'string',
         },
     },
     handler: run,
