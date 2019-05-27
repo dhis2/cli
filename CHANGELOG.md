@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/dhis2/cli/compare/v1.2.0...v1.2.1) (2019-05-27)
+
+
+### Bug Fixes
+
+* resolve dockerComposeRepository from defaults if cluster undefined ([#55](https://github.com/dhis2/cli/issues/55)) ([39fc0c7](https://github.com/dhis2/cli/commit/39fc0c7))
+
 # [1.2.0](https://github.com/dhis2/cli/compare/v1.1.0...v1.2.0) (2019-05-27)
 
 
