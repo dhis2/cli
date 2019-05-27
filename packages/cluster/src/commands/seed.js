@@ -1,21 +1,30 @@
 const { reporter } = require('@dhis2/cli-helpers-engine')
-const { initDockerComposeCache, resolveConfiguration } = require('../common')
+const {
+    initClusterCache,
+    initDockerComposeCache,
+    makeEnvironment,
+    resolveConfiguration,
+    loadCache,
+} = require('../common')
 const { seed } = require('../db')
 
 const defaults = require('../defaults')
 
-const run = async function({ dhis2Version, ...argv }) {
-    const { cluster } = argv
+const run = async function(argv) {
+    const { cluster, dhis2Version, name, getCache } = argv
+
+    const clusterCache = await initClusterCache(getCache(), name)
+    const cache = loadCache(clusterCache)
+
     const {
         dockerComposeRepository,
         dockerComposeDirectory,
         dbVersion,
     } = resolveConfiguration(argv, {}, cluster)
 
-    const composeProjectName = makeComposeProject(name)
     const cacheLocation = await initDockerComposeCache({
-        composeProjectName,
-        cache: argv.getCache(),
+        composeProjectName: name,
+        cache: getCache(),
         dockerComposeRepository,
         dockerComposeDirectory,
         force: false,

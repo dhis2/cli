@@ -3,7 +3,6 @@ const path = require('path')
 const { exec, reporter } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
-    makeComposeProject,
     resolveConfiguration,
 } = require('../common')
 
@@ -15,9 +14,8 @@ const run = async function({ name, clean, getCache, cluster, ...argv }) {
         dockerComposeDirectory,
     } = resolveConfiguration(argv, {}, cluster)
 
-    const composeProjectName = makeComposeProject(name)
     const cacheLocation = await initDockerComposeCache({
-        composeProjectName,
+        name,
         cache: getCache(),
         dockerComposeRepository,
         dockerComposeDirectory,
@@ -35,7 +33,7 @@ const run = async function({ name, clean, getCache, cluster, ...argv }) {
             cmd: 'docker-compose',
             args: [
                 '-p',
-                composeProjectName,
+                name,
                 '-f',
                 path.join(cacheLocation, 'docker-compose.yml'),
                 'down',
@@ -46,6 +44,10 @@ const run = async function({ name, clean, getCache, cluster, ...argv }) {
                 DHIS2_CORE_PORT: defaults.port,
             },
         })
+
+        if (clean) {
+            await cleanCache(getCache(), name)
+        }
     } catch (e) {
         reporter.error('Failed to execute docker-compose', e)
         process.exit(1)

@@ -3,7 +3,6 @@ const path = require('path')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
-    makeComposeProject,
     makeEnvironment,
     resolveConfiguration,
     writeCache,
@@ -15,11 +14,13 @@ const { seed: doSeed } = require('../db')
 
 const run = async function(argv) {
     const { cluster, name, seed, seedFile, update } = argv
-    const cfg = resolveConfiguration(argv, {}, cluster)
-    const composeProjectName = makeComposeProject(name)
+
+    const clusterCache = await initClusterCache(argv.getCache(), name)
+    const cache = loadCache(clusterCache)
+    const cfg = resolveConfiguration(argv, cache, cluster)
 
     const cacheLocation = await initDockerComposeCache({
-        composeProjectName,
+        composeProjectName: name,
         cache: argv.getCache(),
         dockerComposeRepository: cfg.dockerComposeRepository,
         dockerComposeDirectory: cfg.dockerComposeDirectory,
@@ -32,10 +33,7 @@ const run = async function(argv) {
     }
 
     const cache = loadCache(cacheLocation)
-    reporter.debug(
-        `cached configuration for cluster ${composeProjectName}`,
-        cache
-    )
+    reporter.debug(`Cached configuration for cluster ${name}`, cache)
 
     const resolvedVersion = dhis2Version || cache.dhis2Version || name
     const resolvedImage = substituteVersion(
@@ -72,7 +70,7 @@ const run = async function(argv) {
             cmd: 'docker-compose',
             args: [
                 '-p',
-                composeProjectName,
+                name,
                 '-f',
                 path.join(cacheLocation, 'docker-compose.yml'),
                 'up',

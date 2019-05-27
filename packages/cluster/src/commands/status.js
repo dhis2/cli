@@ -1,11 +1,10 @@
 const { exec, reporter } = require('@dhis2/cli-helpers-engine')
-const { makeComposeProject } = require('../common')
 
 const run = async function({ name, ...argv }) {
     try {
         await exec({
             cmd: 'docker',
-            args: ['ps', '--filter', `name=${makeComposeProject(name)}`],
+            args: ['ps', '--filter', `name=${name}`],
             pipe: true,
             quiet: !argv.verbose,
         })

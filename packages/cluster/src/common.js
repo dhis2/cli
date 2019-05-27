@@ -71,7 +71,14 @@ module.exports.loadCache = loc => {
     }
 }
 
+<<<<<<< HEAD
 module.exports.makeComposeProject = name => `d2-cluster-${name}`
+=======
+module.exports.cleanCache = async (cache, target) => {
+    await cache.purge(path.join(clusterDir, target))
+}
+
+>>>>>>> fix: shorten the composeProject name after isolation
 module.exports.substituteVersion = (string, version) =>
     replacer(string, 'version', version)
 
@@ -146,3 +153,7 @@ module.exports.getLocalClusters = async () => {}
 
 module.exports.makeDockerImage = makeDockerImage
 module.exports.resolveConfiguration = resolveConfiguration
+<<<<<<< HEAD
+=======
+module.exports.initClusterCache = initClusterCache
+>>>>>>> fix: shorten the composeProject name after isolation
