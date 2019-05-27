@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/dhis2/cli/compare/v1.1.0...v1.2.0) (2019-05-27)
+
+
+### Features
+
+* support official docker images ([#54](https://github.com/dhis2/cli/issues/54)) ([8e2a6da](https://github.com/dhis2/cli/commit/8e2a6da))
+
 # [1.1.0](https://github.com/dhis2/cli/compare/v1.0.5...v1.1.0) (2019-05-23)
 
 
