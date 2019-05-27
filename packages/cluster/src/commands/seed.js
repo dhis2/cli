@@ -41,7 +41,6 @@ module.exports = {
         dhis2Version: {
             desc: 'DHIS2 version to use',
             type: 'string',
-            default: '',
         },
     },
     handler: run,

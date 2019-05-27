@@ -4,6 +4,7 @@ node_js:
 script:
     - echo "Smoke testing d2 executable"
     - ./packages/main/bin/d2 debug system
+    - yarn test
 deploy:
     - provider: script
       skip_cleanup: true

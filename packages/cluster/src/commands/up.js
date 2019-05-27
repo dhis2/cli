@@ -4,42 +4,21 @@ const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
     makeComposeProject,
-    makeDockerImage,
-    substituteVersion,
+    makeEnvironment,
 } = require('../common')
 
 const defaults = require('../defaults')
 const { seed: doSeed } = require('../db')
 
-const run = async function({
-    name,
-    port,
-    seed,
-    seedFile,
-    update,
-    image,
-    dhis2Version,
-    customContext,
-    ...argv
-}) {
-    const { cluster } = argv
+const run = async function(argv) {
+    const { cluster, name, seed, seedFile, update } = argv
 
-    const resolvedVersion = dhis2Version || name
-    const resolvedImage = substituteVersion(
-        image || cluster.image || defaults.image,
-        resolvedVersion
-    )
-
-    const resolvedPort = port || cluster.port || defaults.port
-    const resolvedContext =
-        customContext || cluster.customContext || defaults.customContext
-    const resolvedContextPath = resolvedContext ? `/${name}` : ''
+    const runtime = makeEnvironment(argv, {}, cluster)
 
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
         dockerComposeRepository:
-            argv.cluster.dockerComposeRepository ||
-            defaults.dockerComposeRepository,
+            cluster.dockerComposeRepository || defaults.dockerComposeRepository,
         force: update,
     })
 
@@ -51,7 +30,7 @@ const run = async function({
     if (seed || seedFile) {
         await doSeed({
             cacheLocation,
-            dbVersion: resolvedVersion,
+            dbVersion: runtime.DHIS2_CORE_DB_VERSION,
             name,
             path: seedFile,
             update,
@@ -64,6 +43,7 @@ const run = async function({
     const res = await tryCatchAsync(
         'exec(docker-compose)',
         exec({
+            env: runtime,
             cmd: 'docker-compose',
             args: [
                 '-p',
@@ -73,13 +53,6 @@ const run = async function({
                 'up',
                 '-d',
             ],
-            env: {
-                DHIS2_CORE_NAME: name,
-                DHIS2_CORE_CONTEXT_PATH: resolvedContextPath,
-                DHIS2_CORE_IMAGE: resolvedImage,
-                DHIS2_CORE_VERSION: resolvedVersion,
-                DHIS2_CORE_PORT: resolvedPort,
-            },
             pipe: true,
         })
     )
@@ -96,15 +69,15 @@ module.exports = {
     builder: {
         port: {
             alias: 'p',
-            desc: 'Specify the port on which to expose the DHIS2 instance',
+            desc: `Specify the port on which to expose the DHIS2 instance (default: ${
+                defaults.port
+            })`,
             type: 'integer',
-            default: defaults.port,
         },
         seed: {
             alias: 's',
             desc: 'Seed the detabase from a sql dump',
             type: 'boolean',
-            default: defaults.seed,
         },
         seedFile: {
             desc:
@@ -115,24 +88,34 @@ module.exports = {
             alias: 'u',
             desc: 'Indicate that d2 cluster should re-download cached files',
             type: 'boolean',
-            default: defaults.update,
         },
         image: {
             alias: 'i',
             desc: 'Specify the Docker image to use',
             type: 'string',
-            default: defaults.image,
         },
         dhis2Version: {
             desc: 'Set the DHIS2 version',
             type: 'string',
-            default: defaults.dhis2Version,
+        },
+        dbVersion: {
+            desc: 'Set the database version',
+            type: 'string',
+        },
+        channel: {
+            desc: `Set the release channel to use (default: ${
+                defaults.channel
+            })`,
+            type: 'string',
         },
         customContext: {
             alias: 'c',
             desc: 'Serve on a custom context path',
             type: 'boolean',
-            default: defaults.customContext,
+        },
+        variant: {
+            desc: 'Append variant options to the image',
+            type: 'string',
         },
     },
     handler: run,

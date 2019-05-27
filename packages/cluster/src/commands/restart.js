@@ -1,11 +1,7 @@
 const chalk = require('chalk')
 const path = require('path')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
-const {
-    initDockerComposeCache,
-    makeComposeProject,
-    makeDockerImage,
-} = require('../common')
+const { initDockerComposeCache, makeComposeProject } = require('../common')
 
 const defaults = require('../defaults')
 
@@ -53,9 +49,10 @@ module.exports = {
     builder: {
         port: {
             alias: 'p',
-            desc: 'Specify the port on which to expose the DHIS2 instance',
+            desc: `Specify the port on which to expose the DHIS2 instance (default: ${
+                defaults.port
+            })`,
             type: 'integer',
-            default: defaults.port,
         },
     },
     handler: run,
