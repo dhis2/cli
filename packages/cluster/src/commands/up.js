@@ -103,7 +103,8 @@ module.exports = {
             type: 'string',
         },
         channel: {
-            desc: 'Set the release channel to use (default: stable)',
+            desc:
+                'Set the release channel to use (default: ${defaults.stable})',
             type: 'string',
         },
         customContext: {

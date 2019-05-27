@@ -1,7 +1,7 @@
 module.exports = {
     dhis2Version: '',
     dbVersion: '',
-    channel: '',
+    channel: 'stable',
     image: 'dhis2/core{channel}:{version}',
     port: 8080,
     customContext: false,
