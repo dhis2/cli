@@ -1,3 +1,31 @@
+## [1.2.2](https://github.com/dhis2/cli/compare/v1.2.1...v1.2.2) (2019-05-27)
+
+
+### Bug Fixes
+
+* use the resolved db dump url ([#56](https://github.com/dhis2/cli/issues/56)) ([0f26ad1](https://github.com/dhis2/cli/commit/0f26ad1))
+
+## [1.2.1](https://github.com/dhis2/cli/compare/v1.2.0...v1.2.1) (2019-05-27)
+
+
+### Bug Fixes
+
+* resolve dockerComposeRepository from defaults if cluster undefined ([#55](https://github.com/dhis2/cli/issues/55)) ([39fc0c7](https://github.com/dhis2/cli/commit/39fc0c7))
+
+# [1.2.0](https://github.com/dhis2/cli/compare/v1.1.0...v1.2.0) (2019-05-27)
+
+
+### Features
+
+* support official docker images ([#54](https://github.com/dhis2/cli/issues/54)) ([8e2a6da](https://github.com/dhis2/cli/commit/8e2a6da))
+
+# [1.1.0](https://github.com/dhis2/cli/compare/v1.0.5...v1.1.0) (2019-05-23)
+
+
+### Features
+
+* decouple tag, name, and version ([#46](https://github.com/dhis2/cli/issues/46)) ([28e88e4](https://github.com/dhis2/cli/commit/28e88e4))
+
 ## [1.0.5](https://github.com/dhis2/cli/compare/v1.0.4...v1.0.5) (2019-05-14)
 
 

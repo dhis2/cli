@@ -4,13 +4,15 @@ const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
     makeComposeProject,
-    makeDockerImage,
+    resolveConfiguration,
 } = require('../common')
+const defaults = require('../defaults')
 
-const run = async function({ service, v, ...argv }) {
+const run = async function({ service, name, cluster, ...argv }) {
+    const { dockerComposeRepository } = resolveConfiguration(argv, {}, cluster)
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
-        dockerComposeRepository: argv.cluster.dockerComposeRepository,
+        dockerComposeRepository,
         force: false,
     })
     if (!cacheLocation) {
@@ -18,7 +20,7 @@ const run = async function({ service, v, ...argv }) {
         process.exit(1)
     }
     reporter.info(
-        `Reading logs from cluster version ${chalk.cyan(v)}${
+        `Reading logs from cluster version ${chalk.cyan(name)}${
             service ? ` <${service}>` : ''
         }`
     )
@@ -28,15 +30,15 @@ const run = async function({ service, v, ...argv }) {
             cmd: 'docker-compose',
             args: [
                 '-p',
-                makeComposeProject(v),
+                makeComposeProject(name),
                 '-f',
                 path.join(cacheLocation, 'docker-compose.yml'),
                 'logs',
                 '-f',
             ].concat(service ? [service] : []),
             env: {
-                DHIS2_CORE_TAG: makeDockerImage(v),
-                DHIS2_CORE_PORT: '0000',
+                DHIS2_CORE_NAME: name,
+                DHIS2_CORE_PORT: 8000, // doesn't matter
             },
             pipe: true,
         })
@@ -48,7 +50,7 @@ const run = async function({ service, v, ...argv }) {
 }
 
 module.exports = {
-    command: 'logs <v> [service]',
+    command: 'logs <name> [service]',
     desc: 'Tail the logs from a given service',
     aliases: 'r',
     handler: run,
