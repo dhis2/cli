@@ -4,6 +4,7 @@ const fs = require('fs')
 const utils = require('../../../support/utils')
 const ejs = require('ejs')
 const { reporter } = require('@dhis2/cli-helpers-engine')
+const DHIS2HtmlFormatter = require('./schemaHtmlFormatter')
 
 const {
     schemasFromUrl,
@@ -27,7 +28,7 @@ const Differ = jsondiffpatch.create({
 })
 
 const formatters = {
-    html: jsondiffpatch.formatters.html,
+    html: DHIS2HtmlFormatter,
     console: jsondiffpatch.formatters.console,
 }
 

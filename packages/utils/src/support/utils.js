@@ -36,10 +36,15 @@ function getJSONFile(file) {
     }
 }
 
+function isSHA(str) {
+    return /^[0-9a-f]{7,40}$/i.test(str)
+}
+
 module.exports = {
     isUrl,
     isAbsoluteUrl,
     btoa,
     basicAuthHeader,
     getJSONFile,
+    isSHA,
 }

@@ -86,6 +86,11 @@ async function schemasFromUrl(url, { baseUrl, auth, force, cache }) {
     })
 
     const meta = await asyncRequest(infoUrl, requestOpts)
+    const rev = utils.isSHA(meta.revision)
+    if (!rev) {
+        meta.revision = 'REV-NA'
+        reporter.warn('No revision found')
+    }
     const schemaFileName = `${schemaIdentifier(meta)}.json`
     const loc = await cache.get(schemasUrl, schemaFileName, {
         raw: true,
