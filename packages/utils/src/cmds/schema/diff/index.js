@@ -16,10 +16,11 @@ const {
 
 let cache
 // We use the singular property as an unique identifier for schemas
-// name and type are used for other nested properties, fallback to index
+// name and type are used for other nested properties
+const objectHash = obj =>
+    obj.singular || obj.name || obj.fieldName || obj.type || obj
 const Differ = jsondiffpatch.create({
-    objectHash: obj =>
-        obj.singular || obj.name || obj.type || '$$index:' + index,
+    objectHash,
     propertyFilter: name => name !== 'href' && name !== 'apiEndpoint',
     arrays: {
         detectMove: true,
@@ -57,24 +58,51 @@ async function getSchemas(urlLike, { baseUrl, auth, force }) {
     return schemas
 }
 
+function sortSchemaObject(a, b) {
+    const aHash = objectHash(a)
+    const bHash = objectHash(b)
+    if (aHash < bHash) return -1
+    if (aHash > bHash) return 1
+    return 0
+}
+
+function sortArrayProps(obj) {
+    Object.keys(obj).forEach(key => {
+        const val = obj[key]
+        if (Array.isArray(val)) {
+            const sorted = val.sort(sortSchemaObject)
+            obj[key] = sorted
+        } else if (typeof val === 'object') {
+            sortArrayProps(val)
+        }
+    })
+}
+
 // We are not interersted in indexes, so we convert to an object
 // with 'singular' as hash for schemas
 // This makes the diff more stable, as it has problems with
 // arrays with moved objects (even with objectHash)
-function prepareDiff(left, right) {
-    const leftO = left.reduce((acc, curr) => {
-        acc[curr.singular] = curr
-        return acc
-    }, {})
-    const rightO = right.reduce((acc, curr) => {
-        acc[curr.singular] = curr
-        return acc
-    }, {})
+function prepareDiff(left, right, { sortArrays }) {
+    const setProp = (obj, curr) => {
+        obj[curr.singular] = curr
+        return obj
+    }
+
+    const leftO = left.reduce(setProp, {})
+    const rightO = right.reduce(setProp, {})
+    if (sortArrays) {
+        sortArrayProps(leftO)
+        sortArrayProps(rightO)
+    }
     return [leftO, rightO]
 }
 
-function diff(schemasLeft, schemasRight) {
-    const [left, right] = prepareDiff(schemasLeft.schemas, schemasRight.schemas)
+function diff(schemasLeft, schemasRight, opts) {
+    const [left, right] = prepareDiff(
+        schemasLeft.schemas,
+        schemasRight.schemas,
+        opts
+    )
     const delta = Differ.diff(left, right)
     const meta = {
         left: schemasLeft.meta,
@@ -140,12 +168,22 @@ function generateHtml({ left, delta, meta }) {
     })
 }
 
-async function run({ url1, url2, baseUrl, format, output, ...rest }) {
+async function run({
+    url1,
+    url2,
+    baseUrl,
+    format,
+    output,
+    ignoreArrayOrder,
+    ...rest
+}) {
     cache = rest.getCache()
     const schemasLeft = await getSchemas(url1, { baseUrl, ...rest })
     const schemasRight = await getSchemas(url2, { baseUrl, ...rest })
     //let [left, right] = await Promise.all([prom1, prom2])
-    const { left, delta, meta } = diff(schemasLeft, schemasRight)
+    const { left, delta, meta } = diff(schemasLeft, schemasRight, {
+        sortArrays: ignoreArrayOrder,
+    })
     handleOutput(output, { format, left, delta, meta })
 }
 
@@ -184,6 +222,12 @@ const builder = yargs => {
             default: 'console',
             choices: ['html', 'json', 'console'],
             describe: `Specify the format of the output`,
+        })
+        .option('ignore-array-order', {
+            type: 'boolean',
+            default: false,
+            describe:
+                'Sort all nested arrays in schemas. The order of nested arrays are non-deterministic, which may clutter the diff. Enabling this will prevent most internal array moves, which are probably irrelevant anyway. ',
         })
 }
 module.exports = { builder, handler: run }
