@@ -1,19 +1,24 @@
-const test = require('tape')
+const test = require('tape-await')
 
 const { makeEnvironment, resolveConfiguration } = require('../src/common.js')
 
 const defaults = require('../src/defaults.js')
 
-test('build runtime environment based on defaults', function(t) {
+const cache = obj => ({
+    read: () => JSON.stringify(obj),
+    write: () => {},
+})
+
+test('build runtime environment based on defaults', async function(t) {
     t.plan(1)
 
     const argv = {
         name: 'dev',
+        getCache: () => cache(null),
     }
-    const cache = {}
-    const config = {}
 
-    const actual = makeEnvironment(resolveConfiguration(argv, cache, config))
+    const cfg = await resolveConfiguration(argv)
+    const actual = makeEnvironment(cfg)
 
     const expected = {
         DHIS2_CORE_NAME: 'dev',
@@ -27,7 +32,7 @@ test('build runtime environment based on defaults', function(t) {
     t.deepEqual(actual, expected, 'default environment')
 })
 
-test('build runtime environment based on args', function(t) {
+test('build runtime environment based on args', async function(t) {
     t.plan(1)
 
     const argv = {
@@ -38,11 +43,11 @@ test('build runtime environment based on args', function(t) {
         channel: 'canary',
         variant: 'jetty-slackware',
         port: 8233,
+        getCache: () => cache(null),
     }
-    const cache = {}
-    const config = {}
 
-    const actual = makeEnvironment(resolveConfiguration(argv, cache, config))
+    const cfg = await resolveConfiguration(argv)
+    const actual = makeEnvironment(cfg)
 
     const expected = {
         DHIS2_CORE_NAME: 'dev',
@@ -56,15 +61,8 @@ test('build runtime environment based on args', function(t) {
     t.deepEqual(actual, expected, 'args environment')
 })
 
-test('build runtime environment based on mixed args and config', function(t) {
+test('build runtime environment based on mixed args and config', async function(t) {
     t.plan(1)
-
-    const argv = {
-        name: 'mydev',
-        customContext: true,
-    }
-
-    const cache = {}
 
     const config = {
         dhis2Version: 'master',
@@ -73,7 +71,15 @@ test('build runtime environment based on mixed args and config', function(t) {
         dbVersion: 'dev',
     }
 
-    const actual = makeEnvironment(resolveConfiguration(argv, cache, config))
+    const argv = {
+        name: 'mydev',
+        customContext: true,
+        cluster: config,
+        getCache: () => cache(null),
+    }
+
+    const cfg = await resolveConfiguration(argv)
+    const actual = makeEnvironment(cfg)
 
     const expected = {
         DHIS2_CORE_NAME: 'mydev',
@@ -87,24 +93,26 @@ test('build runtime environment based on mixed args and config', function(t) {
     t.deepEqual(actual, expected, 'args and config environment')
 })
 
-test('build runtime environment based on mixed args, cache, config and defaults', function(t) {
+test('build runtime environment based on mixed args, cache, config and defaults', async function(t) {
     t.plan(1)
-
-    const argv = {
-        name: 'mydev',
-    }
-
-    const cache = {
-        customContext: true,
-        image: 'dhis2/core-canary:master-20190523-alpine',
-    }
 
     const config = {
         port: 8233,
         dhis2Version: 'dev',
     }
 
-    const actual = makeEnvironment(resolveConfiguration(argv, cache, config))
+    const argv = {
+        name: 'mydev',
+        cluster: config,
+        getCache: () =>
+            cache({
+                customContext: true,
+                image: 'dhis2/core-canary:master-20190523-alpine',
+            }),
+    }
+
+    const cfg = await resolveConfiguration(argv)
+    const actual = makeEnvironment(cfg)
 
     const expected = {
         DHIS2_CORE_NAME: 'mydev',
