@@ -44,7 +44,7 @@ module.exports = {
             default: false,
         },
         dbVersion: {
-            desc: 'DHIS2 version to use',
+            desc: 'Version of the Database dump to use',
             type: 'string',
         },
     },
