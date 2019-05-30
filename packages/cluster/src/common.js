@@ -5,7 +5,8 @@ const { Cache, reporter } = require('@dhis2/cli-helpers-engine')
 
 const defaults = require('./defaults')
 
-const dockerComposeCacheName = 'd2-cluster-docker-compose-v2'
+const clusterDir ='clusters'
+const dockerComposeCacheName = 'docker-compose'
 const cacheFile = 'config.json'
 
 module.exports.initDockerComposeCache = async ({
@@ -15,7 +16,13 @@ module.exports.initDockerComposeCache = async ({
     dockerComposeDirectory,
     force,
 }) => {
-    const cachePath = path.join(composeProjectName, dockerComposeCacheName, dockerComposeDirectory)
+    const cachePath = path.join(
+        clusterDir,
+        composeProjectName,
+        dockerComposeCacheName,
+        dockerComposeDirectory
+    )
+
     const exists = await cache.exists(cachePath)
 
     if (exists && !force) {
@@ -49,36 +56,6 @@ module.exports.initDockerComposeCache = async ({
     return cache.getCacheLocation(cachePath)
 }
 
-module.exports.writeCache = (cache, loc) => {
-    try {
-        const target = path.dirname(loc)
-        fs.writeFileSync(
-            path.join(target, clusterFile),
-            JSON.stringify(cache, null, 4)
-        )
-    } catch (e) {
-        reporter.error('Failed to write cache file' + loc, e)
-    }
-}
-
-module.exports.loadCache = loc => {
-    try {
-        const source = path.dirname(loc)
-        const cache = fs.readFileSync(path.join(source, clusterFile))
-        return JSON.parse(cache)
-    } catch (e) {
-        return {}
-    }
-}
-
-<<<<<<< HEAD
-module.exports.makeComposeProject = name => `d2-cluster-${name}`
-=======
-module.exports.cleanCache = async (cache, target) => {
-    await cache.purge(path.join(clusterDir, target))
-}
-
->>>>>>> fix: shorten the composeProject name after isolation
 module.exports.substituteVersion = (string, version) =>
     replacer(string, 'version', version)
 
@@ -112,8 +89,13 @@ function replacer(string, token, value) {
     return string.replace(regexp, value)
 }
 
-function resolveConfiguration(argv = {}, cache = {}, config = {}) {
-    const resolved = Object.assign({}, defaults, config, cache, argv)
+async function resolveConfiguration(argv = {}) {
+    const file = path.join(clusterDir, argv.name, cacheFile)
+    const cache = JSON.parse(await argv.getCache().read(file))
+    const config = argv.cluster
+    const args = argv
+
+    const resolved = Object.assign({}, defaults, config, cache, args)
 
     // resolve specials...
     resolved.dhis2Version = resolved.dhis2Version || resolved.name
@@ -131,8 +113,27 @@ function resolveConfiguration(argv = {}, cache = {}, config = {}) {
 
     reporter.debug('Resolved configuration\n', resolved)
 
+    await argv.getCache().write(
+        file,
+        JSON.stringify(
+            {
+                channel: resolved.channel,
+                dbVersion: resolved.dbVersion,
+                dhis2Version: resolved.dhis2Version,
+                customContext: resolved.customContext,
+                image: resolved.image,
+                port: resolved.port,
+            },
+            null,
+            4
+        )
+    )
+
     return resolved
 }
+
+module.exports.cleanCache = async argv =>
+    await argv.getCache().purge(path.join(clusterDir, argv.name))
 
 module.exports.makeEnvironment = cfg => {
     const env = {
@@ -153,7 +154,3 @@ module.exports.getLocalClusters = async () => {}
 
 module.exports.makeDockerImage = makeDockerImage
 module.exports.resolveConfiguration = resolveConfiguration
-<<<<<<< HEAD
-=======
-module.exports.initClusterCache = initClusterCache
->>>>>>> fix: shorten the composeProject name after isolation

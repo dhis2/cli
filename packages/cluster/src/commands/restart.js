@@ -1,21 +1,23 @@
 const chalk = require('chalk')
 const path = require('path')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
-const { initDockerComposeCache, resolveConfiguration } = require('../common')
+const {
+    initDockerComposeCache,
+    makeEnvironment,
+    resolveConfiguration,
+} = require('../common')
 
 const defaults = require('../defaults')
 
-const run = async function({ service, name, port, cluster, ...argv }) {
-    const {
-        dockerComposeRepository,
-        dockerComposeDirectory,
-    } = resolveConfiguration(argv, {}, cluster)
+const run = async function(argv) {
+    const { name, service } = argv
+    const cfg = await resolveConfiguration(argv)
 
     const cacheLocation = await initDockerComposeCache({
         composeProjectName: name,
         cache: argv.getCache(),
-        dockerComposeRepository,
-        dockerComposeDirectory,
+        dockerComposeRepository: cfg.dockerComposeRepository,
+        dockerComposeDirectory: cfg.dockerComposeDirectory,
         force: false,
     })
     if (!cacheLocation) {
@@ -34,10 +36,7 @@ const run = async function({ service, name, port, cluster, ...argv }) {
                 path.join(cacheLocation, 'docker-compose.yml'),
                 'restart',
             ].concat(service ? [service] : []),
-            env: {
-                DHIS2_CORE_NAME: name,
-                DHIS2_CORE_PORT: port,
-            },
+            env: makeEnvironment(cfg),
             pipe: true,
         })
     )

@@ -4,29 +4,19 @@ const {
     initDockerComposeCache,
     makeEnvironment,
     resolveConfiguration,
-    loadCache,
 } = require('../common')
 const { seed } = require('../db')
 
-const defaults = require('../defaults')
-
 const run = async function(argv) {
-    const { cluster, dhis2Version, name, getCache } = argv
+    const { name, getCache } = argv
 
-    const clusterCache = await initClusterCache(getCache(), name)
-    const cache = loadCache(clusterCache)
-
-    const {
-        dockerComposeRepository,
-        dockerComposeDirectory,
-        dbVersion,
-    } = resolveConfiguration(argv, {}, cluster)
+    const cfg = await resolveConfiguration(argv)
 
     const cacheLocation = await initDockerComposeCache({
         composeProjectName: name,
         cache: getCache(),
-        dockerComposeRepository,
-        dockerComposeDirectory,
+        dockerComposeRepository: cfg.dockerComposeRepository,
+        dockerComposeDirectory: cfg.dockerComposeDirectory,
         force: false,
     })
 
@@ -37,7 +27,8 @@ const run = async function(argv) {
 
     return await seed({
         cacheLocation,
-        dbVersion,
+        dbVersion: cfg.dbVersion,
+        url: cfg.demoDatabaseURL,
         ...argv,
     })
 }
@@ -52,7 +43,7 @@ module.exports = {
             type: 'boolean',
             default: false,
         },
-        dhis2Version: {
+        dbVersion: {
             desc: 'DHIS2 version to use',
             type: 'string',
         },

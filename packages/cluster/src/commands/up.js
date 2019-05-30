@@ -5,23 +5,19 @@ const {
     initDockerComposeCache,
     makeEnvironment,
     resolveConfiguration,
-    writeCache,
-    loadCache,
 } = require('../common')
 
 const defaults = require('../defaults')
 const { seed: doSeed } = require('../db')
 
 const run = async function(argv) {
-    const { cluster, name, seed, seedFile, update } = argv
+    const { name, seed, seedFile, update, getCache } = argv
 
-    const clusterCache = await initClusterCache(argv.getCache(), name)
-    const cache = loadCache(clusterCache)
-    const cfg = resolveConfiguration(argv, cache, cluster)
+    const cfg = await resolveConfiguration(argv)
 
     const cacheLocation = await initDockerComposeCache({
         composeProjectName: name,
-        cache: argv.getCache(),
+        cache: getCache(),
         dockerComposeRepository: cfg.dockerComposeRepository,
         dockerComposeDirectory: cfg.dockerComposeDirectory,
         force: update,
@@ -31,23 +27,6 @@ const run = async function(argv) {
         reporter.error('Failed to initialize cache...')
         process.exit(1)
     }
-
-    const cache = loadCache(cacheLocation)
-    reporter.debug(`Cached configuration for cluster ${name}`, cache)
-
-    const resolvedVersion = dhis2Version || cache.dhis2Version || name
-    const resolvedImage = substituteVersion(
-        image || cache.image || cluster.image || defaults.image,
-        resolvedVersion
-    )
-
-    const resolvedPort = port || cache.port || cluster.port || defaults.port
-    const resolvedContext =
-        customContext ||
-        cache.customContext ||
-        cluster.customContext ||
-        defaults.customContext
-    const resolvedContextPath = resolvedContext ? `/${name}` : ''
 
     if (seed || seedFile) {
         await doSeed({
@@ -83,16 +62,6 @@ const run = async function(argv) {
         reporter.error('Failed to spin up cluster docker-compose cluster')
         process.exit(1)
     }
-
-    writeCache(
-        {
-            contextPath: resolvedContextPath,
-            port: resolvedPort,
-            image: resolvedImage,
-            version: resolvedVersion,
-        },
-        cacheLocation
-    )
 }
 
 module.exports = {
