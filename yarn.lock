@@ -182,6 +182,7 @@
 "@dhis2/cli-helpers-engine@1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@dhis2/cli-helpers-engine/-/cli-helpers-engine-1.3.0.tgz#e12f7a1bfd6223054cf9254e675b2b660b0690a5"
+  integrity sha512-S8Bcl9MbEGadDcJ9kknrXf7WWd+aq7lp4v1mTBBLxgluZyq5tfdJyxsyNxYmk0y2uFWQ+xvnCA7gpl9fEugbsA==
   dependencies:
     chalk "^2.4.2"
     fs-extra "^8.0.1"
