@@ -109,7 +109,6 @@ are important to know about.
 
 - `--db-version`: This matches to the database dumps mentioned in
   [Database dumps](#database-dumps). E.g. `dev` or `2.32`.
-```
 
 So through a combination of these arguments: `channel`, `dhis2-version`,
 and `db-version` we can spin up a cluster.
