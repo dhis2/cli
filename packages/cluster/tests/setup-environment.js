@@ -125,3 +125,43 @@ test('build runtime environment based on mixed args, cache, config and defaults'
 
     t.deepEqual(actual, expected, 'merged environment')
 })
+
+test('build runtime environment based on mixed args, cache, config, custom per-cluster config and defaults', async function(t) {
+    t.plan(1)
+
+    const config = {
+        port: 8233,
+        dhis2Version: 'dev',
+        dbVersion: 'dev',
+        clusters: {
+            mydev: {
+                port: 9999,
+                dhis2Version: 'apa',
+            },
+        },
+    }
+
+    const argv = {
+        name: 'mydev',
+        cluster: config,
+        getCache: () =>
+            cache({
+                customContext: true,
+                image: 'dhis2/core-canary:master-20190523-alpine',
+            }),
+    }
+
+    const cfg = await resolveConfiguration(argv)
+    const actual = makeEnvironment(cfg)
+
+    const expected = {
+        DHIS2_CORE_NAME: 'mydev',
+        DHIS2_CORE_CONTEXT_PATH: '/mydev',
+        DHIS2_CORE_IMAGE: 'dhis2/core-canary:master-20190523-alpine',
+        DHIS2_CORE_VERSION: 'apa',
+        DHIS2_CORE_DB_VERSION: 'dev',
+        DHIS2_CORE_PORT: 9999,
+    }
+
+    t.deepEqual(actual, expected, 'merged environment')
+})

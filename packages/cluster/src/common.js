@@ -91,7 +91,16 @@ function replacer(string, token, value) {
 
 async function resolveConfiguration(argv = {}) {
     const file = path.join(clusterDir, argv.name, cacheFile)
-    const cache = JSON.parse(await argv.getCache().read(file))
+
+    const currentCache = JSON.parse(await argv.getCache().read(file))
+
+    let currentConfig
+    if (argv.cluster && argv.cluster.clusters) {
+        currentConfig = argv.cluster.clusters[argv.name]
+    }
+
+    const cache = Object.assign({}, currentConfig, currentCache)
+
     const config = argv.cluster
     const args = argv
 
