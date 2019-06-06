@@ -100,10 +100,10 @@ pass to `cluster` to customize your environment. If the arguments are
 omitted there is some fallback logic, so even if they are not used, they
 are important to know about.
 
-- `--channel {channel}`: This matches to the Docker Hub repository mentioned above
+- `--channel`: This matches to the Docker Hub repository mentioned above
   in [Release channels](#release-channels). E.g. `dev`.
 
-- `--dhis2-version {ver}`: This matches to the [tag name within a Docker
+- `--dhis2-version`: This matches to the [tag name within a Docker
   Hub repo](#tags). E.g.
   [`2.32`](https://cloud.docker.com/u/dhis2/repository/docker/dhis2/core-dev/tags)
 
