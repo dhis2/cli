@@ -192,14 +192,13 @@
     update-notifier "^3.0.0"
     yargs "^13.1.0"
 
-"@dhis2/cli-helpers-engine@1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-helpers-engine/-/cli-helpers-engine-1.2.1.tgz#9dbe6a0621c741863570113158c68079a520db2f"
+"@dhis2/cli-helpers-engine@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-helpers-engine/-/cli-helpers-engine-1.3.0.tgz#e12f7a1bfd6223054cf9254e675b2b660b0690a5"
   dependencies:
     chalk "^2.4.2"
-    mkdirp "^0.5.1"
+    fs-extra "^8.0.1"
     request "^2.88.0"
-    rimraf "^2.6.3"
     tar "^4.4.8"
     update-notifier "^3.0.0"
     yargs "^13.1.0"
@@ -1809,7 +1808,7 @@ fs-extra@^7.0.0:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
-fs-extra@^8.0.0:
+fs-extra@^8.0.0, fs-extra@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-8.0.1.tgz#90294081f978b1f182f347a440a209154344285b"
   dependencies:
