@@ -12,7 +12,7 @@
     "license": "BSD-3-Clause",
     "devDependencies": {
         "@dhis2/cli-style": "3.2.2",
-        "husky": "^2.0.0",
+        "husky": "^2.4.0",
         "tape": "^4.10.2"
     },
     "husky": {
