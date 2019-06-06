@@ -134,7 +134,7 @@ test('build runtime environment based on mixed args, cache, config, custom per-c
         dhis2Version: 'dev',
         dbVersion: 'dev',
         clusters: {
-            mydev: {
+            '2330': {
                 port: 9999,
                 dhis2Version: 'apa',
             },
@@ -142,7 +142,7 @@ test('build runtime environment based on mixed args, cache, config, custom per-c
     }
 
     const argv = {
-        name: 'mydev',
+        name: '2330',
         cluster: config,
         getCache: () =>
             cache({
@@ -155,8 +155,8 @@ test('build runtime environment based on mixed args, cache, config, custom per-c
     const actual = makeEnvironment(cfg)
 
     const expected = {
-        DHIS2_CORE_NAME: 'mydev',
-        DHIS2_CORE_CONTEXT_PATH: '/mydev',
+        DHIS2_CORE_NAME: '2330',
+        DHIS2_CORE_CONTEXT_PATH: '/2330',
         DHIS2_CORE_IMAGE: 'dhis2/core-canary:master-20190523-alpine',
         DHIS2_CORE_VERSION: 'apa',
         DHIS2_CORE_DB_VERSION: 'dev',
