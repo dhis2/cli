@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/dhis2/cli/compare/v1.2.2...v1.2.3) (2019-06-12)
+
+
+### Bug Fixes
+
+* avoid double parsing of arguments ([#64](https://github.com/dhis2/cli/issues/64)) ([b616152](https://github.com/dhis2/cli/commit/b616152))
+
 ## [1.2.2](https://github.com/dhis2/cli/compare/v1.2.1...v1.2.2) (2019-05-27)
 
 
