@@ -7,6 +7,7 @@ module.exports = {
     customContext: false,
     update: false,
     seed: false,
+    dockerComposeDirectory: 'cluster',
     dockerComposeRepository:
         'https://github.com/dhis2/docker-compose/archive/master.tar.gz',
     demoDatabaseURL:

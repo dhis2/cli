@@ -1,3 +1,5 @@
+const path = require('path')
+
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
 const defaults = require('./defaults')
@@ -7,31 +9,40 @@ const dockerComposeCacheName = 'd2-cluster-docker-compose-v2'
 module.exports.initDockerComposeCache = async ({
     cache,
     dockerComposeRepository,
+    dockerComposeDirectory,
     force,
 }) => {
-    const exists = await cache.exists(dockerComposeCacheName)
+    const cacheDir = path.join(dockerComposeCacheName, dockerComposeDirectory)
+    const exists = await cache.exists(cacheDir)
+
     if (exists && !force) {
         reporter.debug(
             'Skipping docker compose repo initialization, found cached dir'
         )
-        return cache.getCacheLocation(dockerComposeCacheName)
-    }
+    } else {
+        reporter.info('Initializing Docker Compose repository...')
 
-    reporter.info('Initializing Docker Compose repository...')
-    try {
-        return await cache.get(
-            dockerComposeRepository,
-            dockerComposeCacheName,
-            {
-                force: true,
+        try {
+            const repoDir = await cache.get(
+                dockerComposeRepository,
+                dockerComposeCacheName,
+                {
+                    force: true,
+                }
+            )
+
+            const created = await cache.exists(cacheDir)
+
+            if (created) {
+                reporter.debug(`Cache created at: ${cacheDir}`)
             }
-        )
-    } catch (e) {
-        reporter.error('Initialization failed!')
-        return null
+        } catch (e) {
+            reporter.error('Initialization failed!')
+            return null
+        }
     }
 
-    return null
+    return cache.getCacheLocation(cacheDir)
 }
 
 module.exports.makeComposeProject = version => `d2-cluster-${version}`

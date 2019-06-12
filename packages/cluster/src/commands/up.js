@@ -18,6 +18,7 @@ const run = async function(argv) {
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
         dockerComposeRepository: cfg.dockerComposeRepository,
+        dockerComposeDirectory: cfg.dockerComposeDirectory,
         force: update,
     })
 
