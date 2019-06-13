@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/dhis2/cli/compare/v1.2.3...v1.2.4) (2019-06-13)
+
+
+### Bug Fixes
+
+* use dhis2/docker-compose instead of amcgee/dhis2-backend as default ([#61](https://github.com/dhis2/cli/issues/61)) ([85d708f](https://github.com/dhis2/cli/commit/85d708f))
+
 ## [1.2.3](https://github.com/dhis2/cli/compare/v1.2.2...v1.2.3) (2019-06-12)
 
 
