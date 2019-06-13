@@ -6,15 +6,16 @@ const defaults = require('../defaults')
 
 const run = async function({ dhis2Version, ...argv }) {
     const { cluster } = argv
-    const { dockerComposeRepository, dbVersion } = resolveConfiguration(
-        argv,
-        {},
-        cluster
-    )
+    const {
+        dockerComposeRepository,
+        dockerComposeDirectory,
+        dbVersion,
+    } = resolveConfiguration(argv, {}, cluster)
 
     const cacheLocation = await initDockerComposeCache({
         cache: argv.getCache(),
         dockerComposeRepository,
+        dockerComposeDirectory,
         force: false,
     })
 

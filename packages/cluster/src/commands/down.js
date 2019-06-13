@@ -10,10 +10,14 @@ const {
 const defaults = require('../defaults')
 
 const run = async function({ name, clean, getCache, cluster, ...argv }) {
-    const { dockerComposeRepository } = resolveConfiguration(argv, {}, cluster)
+    const {
+        dockerComposeRepository,
+        dockerComposeDirectory,
+    } = resolveConfiguration(argv, {}, cluster)
     const cacheLocation = await initDockerComposeCache({
         cache: getCache(),
         dockerComposeRepository,
+        dockerComposeDirectory,
         force: false,
     })
 
