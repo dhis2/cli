@@ -41,6 +41,10 @@ async function getSchemas(urlLike, { baseUrl, auth, force }) {
         reporter.debug(urlLike, ' is a file')
         schemas = fileContents
     } else {
+        if (!utils.isRelativeUrl(urlLike)) {
+            baseUrl = undefined
+            urlLike = utils.prependHttpProtocol(urlLike)
+        }
         schemas = await schemasFromUrl(urlLike, {
             baseUrl,
             auth,
@@ -205,7 +209,8 @@ const builder = yargs => {
         })
         .option('base-url', {
             alias: 'b',
-            coerce: val => val || (val === '' && defaultRequestOpts.baseUrl),
+            default: defaultRequestOpts.baseUrl,
+            coerce: opt => utils.prependHttpProtocol(opt),
             describe: `BaseUrl to use for downloading schemas. If this is set url1 and url2 should be relative to this url, eg. /dev. [default: ${
                 defaultRequestOpts.baseUrl
             }]`,

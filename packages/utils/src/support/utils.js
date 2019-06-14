@@ -23,6 +23,17 @@ function isAbsoluteUrl(url) {
     return url.indexOf('http://') === 0 || url.indexOf('https://') === 0
 }
 
+function isRelativeUrl(url) {
+    return url.indexOf('/') === 0
+}
+
+function prependHttpProtocol(url) {
+    if (!url.startsWith('http')) {
+        return `https://${url}`
+    }
+    return url
+}
+
 function getJSONFile(file) {
     try {
         const content = fs.readFileSync(file)
@@ -43,6 +54,8 @@ function isSHA(str) {
 module.exports = {
     isUrl,
     isAbsoluteUrl,
+    isRelativeUrl,
+    prependHttpProtocol,
     btoa,
     basicAuthHeader,
     getJSONFile,

@@ -93,7 +93,6 @@ async function schemasFromUrl(url, { baseUrl, auth, force, cache }) {
     }
     const schemaFileName = `${schemaIdentifier(meta)}.json`
     const loc = await cache.get(schemasUrl, schemaFileName, {
-        raw: true,
         requestOpts,
         force,
     })
