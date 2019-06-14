@@ -326,14 +326,14 @@
     parse-github-url "^1.0.1"
     url-join "^4.0.0"
 
-"@semantic-release/npm@^5.0.5", "@semantic-release/npm@^5.1.4":
-  version "5.1.7"
-  resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-5.1.7.tgz#ed3bac977d46294bfd11df7621bb5a9b6d5523be"
+"@semantic-release/npm@^5.0.5", "@semantic-release/npm@^5.1.9":
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-5.1.9.tgz#30d775433c91f32d7365382574aeda3b1422a5df"
   dependencies:
     "@semantic-release/error" "^2.2.0"
     aggregate-error "^3.0.0"
     execa "^1.0.0"
-    fs-extra "^7.0.0"
+    fs-extra "^8.0.0"
     lodash "^4.17.4"
     nerf-dart "^1.0.0"
     normalize-url "^4.0.0"
