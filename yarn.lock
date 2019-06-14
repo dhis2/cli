@@ -237,22 +237,31 @@
     universal-user-agent "^2.1.0"
     url-template "^2.0.8"
 
-"@octokit/request@3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@octokit/request/-/request-3.0.3.tgz#ace63b5ea196cc00ad27f3fbe5c13a9698681ec8"
+"@octokit/request-error@^1.0.1", "@octokit/request-error@^1.0.2":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@octokit/request-error/-/request-error-1.0.4.tgz#15e1dc22123ba4a9a4391914d80ec1e5303a23be"
+  dependencies:
+    deprecation "^2.0.0"
+    once "^1.4.0"
+
+"@octokit/request@^4.0.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@octokit/request/-/request-4.1.1.tgz#614262214f48417b4d3b14e047d09a9c8e2f7a09"
   dependencies:
     "@octokit/endpoint" "^5.1.0"
-    deprecation "^1.0.1"
+    "@octokit/request-error" "^1.0.1"
+    deprecation "^2.0.0"
     is-plain-object "^3.0.0"
     node-fetch "^2.3.0"
     once "^1.4.0"
-    universal-user-agent "^2.0.1"
+    universal-user-agent "^2.1.0"
 
-"@octokit/rest@^16.13.1":
-  version "16.25.5"
-  resolved "https://registry.yarnpkg.com/@octokit/rest/-/rest-16.25.5.tgz#9268afad252f72a1e39553cf87e1aa0493e355de"
+"@octokit/rest@^16.27.0":
+  version "16.28.1"
+  resolved "https://registry.yarnpkg.com/@octokit/rest/-/rest-16.28.1.tgz#a10c3d4fe61e994878d66a4c12b9923b18548236"
   dependencies:
-    "@octokit/request" "3.0.3"
+    "@octokit/request" "^4.0.1"
+    "@octokit/request-error" "^1.0.2"
     atob-lite "^2.0.0"
     before-after-hook "^1.4.0"
     btoa-lite "^1.0.0"
@@ -304,25 +313,25 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@semantic-release/github@^5.1.0", "@semantic-release/github@^5.2.10":
-  version "5.2.10"
-  resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-5.2.10.tgz#bf325f11685d59b864c8946d7d30fcb749d89e37"
+"@semantic-release/github@^5.1.0", "@semantic-release/github@^5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-5.4.0.tgz#b170d1ceb3f682604cb4a2aff39bf5906159c91d"
   dependencies:
-    "@octokit/rest" "^16.13.1"
+    "@octokit/rest" "^16.27.0"
     "@semantic-release/error" "^2.2.0"
-    aggregate-error "^2.0.0"
-    bottleneck "^2.0.1"
+    aggregate-error "^3.0.0"
+    bottleneck "^2.18.1"
     debug "^4.0.0"
     dir-glob "^2.0.0"
-    fs-extra "^7.0.0"
+    fs-extra "^8.0.0"
     globby "^9.0.0"
     http-proxy-agent "^2.1.0"
     https-proxy-agent "^2.2.1"
-    issue-parser "^3.0.0"
+    issue-parser "^4.0.0"
     lodash "^4.17.4"
-    mime "^2.0.3"
-    p-filter "^1.0.0"
-    p-retry "^3.0.0"
+    mime "^2.4.3"
+    p-filter "^2.0.0"
+    p-retry "^4.0.0"
     parse-github-url "^1.0.1"
     url-join "^4.0.0"
 
@@ -390,6 +399,10 @@
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
 
+"@types/retry@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@types/retry/-/retry-0.12.0.tgz#2b35eccfcee7d38cd72ad99232fbd58bffb3c84d"
+
 JSONStream@^1.0.4, JSONStream@^1.3.4, JSONStream@^1.3.5:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.5.tgz#3208c1f08d3a4d99261ab64f92302bc15e111ca0"
@@ -420,13 +433,6 @@ agentkeepalive@^3.4.1:
   resolved "https://registry.yarnpkg.com/agentkeepalive/-/agentkeepalive-3.5.2.tgz#a113924dd3fa24a0bc3b78108c450c2abee00f67"
   dependencies:
     humanize-ms "^1.2.1"
-
-aggregate-error@^2.0.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/aggregate-error/-/aggregate-error-2.2.0.tgz#f54b464db18cc77c907ae084451f39134707134a"
-  dependencies:
-    clean-stack "^2.0.0"
-    indent-string "^3.0.0"
 
 aggregate-error@^3.0.0:
   version "3.0.0"
@@ -663,9 +669,9 @@ bluebird@^3.5.0, bluebird@^3.5.1, bluebird@^3.5.3:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.4.tgz#d6cc661595de30d5b3af5fcedd3c0b3ef6ec5714"
 
-bottleneck@^2.0.1:
-  version "2.18.1"
-  resolved "https://registry.yarnpkg.com/bottleneck/-/bottleneck-2.18.1.tgz#cf7c494d90283ecbe896baa46a1397ae8b3c19d7"
+bottleneck@^2.18.1:
+  version "2.19.1"
+  resolved "https://registry.yarnpkg.com/bottleneck/-/bottleneck-2.19.1.tgz#f7657aed83edff1fa41d438cdbdf3e0931a1d3f0"
 
 boxen@^1.2.1:
   version "1.3.0"
@@ -1317,10 +1323,6 @@ delegates@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
 
-deprecation@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/deprecation/-/deprecation-1.0.1.tgz#2df79b79005752180816b7b6e079cbd80490d711"
-
 deprecation@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/deprecation/-/deprecation-2.0.0.tgz#dd0427cd920c78bc575ec39dab2f22e7c304fb9d"
@@ -1804,14 +1806,6 @@ from2@^2.1.0, from2@^2.3.0:
   dependencies:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
-
-fs-extra@^7.0.0:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
-  dependencies:
-    graceful-fs "^4.1.2"
-    jsonfile "^4.0.0"
-    universalify "^0.1.0"
 
 fs-extra@^8.0.0, fs-extra@^8.0.1:
   version "8.0.1"
@@ -2538,9 +2532,9 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-issue-parser@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/issue-parser/-/issue-parser-3.0.1.tgz#ee8dd677fdb5be64541f81fa5e7267baa271a7ee"
+issue-parser@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/issue-parser/-/issue-parser-4.0.0.tgz#397817323abbb70c7c29cea2ff62448cf83b686c"
   dependencies:
     lodash.capitalize "^4.2.1"
     lodash.escaperegexp "^4.1.2"
@@ -3085,9 +3079,9 @@ mime-types@^2.1.12, mime-types@~2.1.19:
   dependencies:
     mime-db "~1.38.0"
 
-mime@^2.0.3:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.2.tgz#ce5229a5e99ffc313abac806b482c10e7ba6ac78"
+mime@^2.4.3:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.4.tgz#bd7b91135fc6b01cde3e9bae33d659b63d8857e5"
 
 mimic-fn@^1.0.0:
   version "1.2.0"
@@ -3648,11 +3642,11 @@ p-defer@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-defer/-/p-defer-1.0.0.tgz#9f6eb182f6c9aa8cd743004a7d4f96b196b0fb0c"
 
-p-filter@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/p-filter/-/p-filter-1.0.0.tgz#629d317150209c8fd508ba137713ef4bb920e9db"
+p-filter@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/p-filter/-/p-filter-2.1.0.tgz#1b1472562ae7a0f742f0f3d3d3718ea66ff9c09c"
   dependencies:
-    p-map "^1.0.0"
+    p-map "^2.0.0"
 
 p-finally@^1.0.0:
   version "1.0.0"
@@ -3692,18 +3686,19 @@ p-locate@^4.0.0, p-locate@^4.1.0:
   dependencies:
     p-limit "^2.2.0"
 
-p-map@^1.0.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/p-map/-/p-map-1.2.0.tgz#e4e94f311eabbc8633a1e79908165fca26241b6b"
+p-map@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/p-map/-/p-map-2.1.0.tgz#310928feef9c9ecc65b68b17693018a665cea175"
 
 p-reduce@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/p-reduce/-/p-reduce-2.1.0.tgz#09408da49507c6c274faa31f28df334bc712b64a"
 
-p-retry@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/p-retry/-/p-retry-3.0.1.tgz#316b4c8893e2c8dc1cfa891f406c4b422bebf328"
+p-retry@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/p-retry/-/p-retry-4.1.0.tgz#9ce7cef2069e84bf590df3b8ec18d740109338d6"
   dependencies:
+    "@types/retry" "^0.12.0"
     retry "^0.12.0"
 
 p-try@^1.0.0:
@@ -4954,7 +4949,7 @@ unique-string@^1.0.0:
   dependencies:
     crypto-random-string "^1.0.0"
 
-universal-user-agent@^2.0.0, universal-user-agent@^2.0.1, universal-user-agent@^2.1.0:
+universal-user-agent@^2.0.0, universal-user-agent@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/universal-user-agent/-/universal-user-agent-2.1.0.tgz#5abfbcc036a1ba490cb941f8fd68c46d3669e8e4"
   dependencies:
