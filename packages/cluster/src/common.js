@@ -94,11 +94,13 @@ async function resolveConfiguration(argv = {}) {
         currentConfig = argv.cluster.clusters[argv.name]
     }
 
+    // order matters! it defines the precedence of configuration
     const cache = Object.assign({}, currentConfig, currentCache)
 
     const config = argv.cluster
     const args = argv
 
+    // order matters! it defines the precedence of configuration
     const resolved = Object.assign({}, defaults, config, cache, args)
 
     // resolve specials...
