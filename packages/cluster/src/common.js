@@ -5,7 +5,7 @@ const { Cache, reporter } = require('@dhis2/cli-helpers-engine')
 
 const defaults = require('./defaults')
 
-const clusterDir ='clusters'
+const clusterDir = 'clusters'
 const dockerComposeCacheName = 'docker-compose'
 const cacheFile = 'config.json'
 
@@ -16,12 +16,13 @@ module.exports.initDockerComposeCache = async ({
     dockerComposeDirectory,
     force,
 }) => {
-    const cachePath = path.join(
+    const cacheDir = path.join(
         clusterDir,
         composeProjectName,
-        dockerComposeCacheName,
-        dockerComposeDirectory
+        dockerComposeCacheName
     )
+
+    const cachePath = path.join(cacheDir, dockerComposeDirectory)
 
     const exists = await cache.exists(cachePath)
 
@@ -33,14 +34,9 @@ module.exports.initDockerComposeCache = async ({
         reporter.info('Initializing Docker Compose repository...')
 
         try {
-
-            const repoDir = await cache.get(
-                dockerComposeRepository,
-                dockerComposeCacheName,
-                {
-                    force: true,
-                }
-            )
+            await cache.get(dockerComposeRepository, cacheDir, {
+                force: true,
+            })
 
             const created = await cache.exists(cachePath)
 

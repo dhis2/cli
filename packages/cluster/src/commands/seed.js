@@ -1,10 +1,5 @@
 const { reporter } = require('@dhis2/cli-helpers-engine')
-const {
-    initClusterCache,
-    initDockerComposeCache,
-    makeEnvironment,
-    resolveConfiguration,
-} = require('../common')
+const { initDockerComposeCache, resolveConfiguration } = require('../common')
 const { seed } = require('../db')
 
 const run = async function(argv) {
