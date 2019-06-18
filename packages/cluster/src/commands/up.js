@@ -4,6 +4,7 @@ const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
     makeEnvironment,
+    makeComposeProject,
     resolveConfiguration,
 } = require('../common')
 
@@ -49,7 +50,7 @@ const run = async function(argv) {
             cmd: 'docker-compose',
             args: [
                 '-p',
-                name,
+                makeComposeProject(name),
                 '-f',
                 path.join(cacheLocation, 'docker-compose.yml'),
                 'up',

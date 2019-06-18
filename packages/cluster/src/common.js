@@ -162,6 +162,8 @@ module.exports.makeEnvironment = cfg => {
     return env
 }
 
+module.exports.makeComposeProject = name => `d2-cluster-${name}`
+
 module.exports.getLocalClusters = async () => {}
 
 module.exports.makeDockerImage = makeDockerImage

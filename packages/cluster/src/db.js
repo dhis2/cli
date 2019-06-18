@@ -1,4 +1,4 @@
-const { substituteVersion } = require('./common')
+const { substituteVersion, makeComposeProject } = require('./common')
 const chalk = require('chalk')
 const path = require('path')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
@@ -49,7 +49,7 @@ const seedFromFile = async ({ cacheLocation, dbFile, dbVersion, name }) => {
             args: [dbFile],
             pipe: false,
             env: {
-                DOCKER_COMPOSE: `docker-compose -p ${name}`,
+                DOCKER_COMPOSE: `docker-compose -p ${makeComposeProject(name)}`,
             },
         })
     )
