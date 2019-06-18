@@ -87,7 +87,13 @@ function replacer(string, token, value) {
 
 async function resolveConfiguration(argv = {}) {
     const file = path.join(clusterDir, argv.name, cacheFile)
-    const currentCache = JSON.parse(await argv.getCache().read(file))
+
+    let currentCache
+    try {
+        currentCache = JSON.parse(await argv.getCache().read(file))
+    } catch (e) {
+        log.debug('JSON parse of cache file failed', e)
+    }
 
     let currentConfig
     if (argv.cluster && argv.cluster.clusters) {
@@ -138,8 +144,8 @@ async function resolveConfiguration(argv = {}) {
     return resolved
 }
 
-module.exports.cleanCache = async argv =>
-    await argv.getCache().purge(path.join(clusterDir, argv.name))
+module.exports.cleanCache = async ({ cache, name }) =>
+    await cache.purge(path.join(clusterDir, name))
 
 module.exports.makeEnvironment = cfg => {
     const env = {

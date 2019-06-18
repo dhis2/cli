@@ -40,7 +40,10 @@ const run = async function(argv) {
         })
 
         if (clean) {
-            cleanCache(argv)
+            cleanCache({
+                name,
+                cache: getCache(),
+            })
         }
     } catch (e) {
         reporter.error('Failed to execute docker-compose', e)
