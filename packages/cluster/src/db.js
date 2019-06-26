@@ -1,4 +1,4 @@
-const { substituteVersion, makeComposeProject } = require('./common')
+const { makeComposeProject, substituteVersion } = require('./common')
 const chalk = require('chalk')
 const path = require('path')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
