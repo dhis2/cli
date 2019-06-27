@@ -20,7 +20,7 @@
         "@semantic-release/npm": "^5.1.9",
         "@semantic-release/release-notes-generator": "^7.2.1",
         "dhis2-uid": "^0.1.2",
-        "semantic-release": "^15.13.16"
+        "semantic-release": "^15.13.18"
     },
     "publishConfig": {
         "access": "public"
