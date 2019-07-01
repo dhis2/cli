@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/dhis2/cli/compare/v1.2.4...v1.3.0) (2019-07-01)
+
+
+### Features
+
+* decouple configs from cluster ([#53](https://github.com/dhis2/cli/issues/53)) ([e5b40af](https://github.com/dhis2/cli/commit/e5b40af))
+
 ## [1.2.4](https://github.com/dhis2/cli/compare/v1.2.3...v1.2.4) (2019-06-13)
 
 
