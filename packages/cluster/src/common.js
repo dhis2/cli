@@ -92,7 +92,7 @@ async function resolveConfiguration(argv = {}) {
     try {
         currentCache = JSON.parse(await argv.getCache().read(file))
     } catch (e) {
-        log.debug('JSON parse of cache file failed', e)
+        reporter.debug('JSON parse of cache file failed', e)
     }
 
     let currentConfig
