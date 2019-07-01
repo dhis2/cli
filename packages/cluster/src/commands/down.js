@@ -3,21 +3,21 @@ const path = require('path')
 const { exec, reporter } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
-    makeComposeProject,
     resolveConfiguration,
+    makeComposeProject,
+    makeEnvironment,
+    cleanCache,
 } = require('../common')
 
-const defaults = require('../defaults')
+const run = async function(argv) {
+    const { name, clean, getCache } = argv
+    const cfg = await resolveConfiguration(argv)
 
-const run = async function({ name, clean, getCache, cluster, ...argv }) {
-    const {
-        dockerComposeRepository,
-        dockerComposeDirectory,
-    } = resolveConfiguration(argv, {}, cluster)
     const cacheLocation = await initDockerComposeCache({
+        composeProjectName: name,
         cache: getCache(),
-        dockerComposeRepository,
-        dockerComposeDirectory,
+        dockerComposeRepository: cfg.dockerComposeRepository,
+        dockerComposeDirectory: cfg.dockerComposeDirectory,
         force: false,
     })
 
@@ -26,7 +26,7 @@ const run = async function({ name, clean, getCache, cluster, ...argv }) {
         process.exit(1)
     }
 
-    console.log(`Winding down cluster ${chalk.cyan(name)}`)
+    reporter.info(`Winding down cluster ${chalk.cyan(name)}`)
     try {
         await exec({
             cmd: 'docker-compose',
@@ -37,12 +37,15 @@ const run = async function({ name, clean, getCache, cluster, ...argv }) {
                 path.join(cacheLocation, 'docker-compose.yml'),
                 'down',
             ].concat(clean ? ['--volumes'] : []),
-            env: {
-                DHIS2_CORE_IMAGE: defaults.image,
-                DHIS2_CORE_NAME: name,
-                DHIS2_CORE_PORT: defaults.port,
-            },
+            env: makeEnvironment(cfg),
         })
+
+        if (clean) {
+            cleanCache({
+                name,
+                cache: getCache(),
+            })
+        }
     } catch (e) {
         reporter.error('Failed to execute docker-compose', e)
         process.exit(1)

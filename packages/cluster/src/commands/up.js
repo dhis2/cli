@@ -3,8 +3,8 @@ const path = require('path')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
-    makeComposeProject,
     makeEnvironment,
+    makeComposeProject,
     resolveConfiguration,
 } = require('../common')
 
@@ -12,11 +12,13 @@ const defaults = require('../defaults')
 const { seed: doSeed } = require('../db')
 
 const run = async function(argv) {
-    const { cluster, name, seed, seedFile, update } = argv
-    const cfg = resolveConfiguration(argv, {}, cluster)
+    const { name, seed, seedFile, update, getCache } = argv
+
+    const cfg = await resolveConfiguration(argv)
 
     const cacheLocation = await initDockerComposeCache({
-        cache: argv.getCache(),
+        composeProjectName: name,
+        cache: getCache(),
         dockerComposeRepository: cfg.dockerComposeRepository,
         dockerComposeDirectory: cfg.dockerComposeDirectory,
         force: update,
