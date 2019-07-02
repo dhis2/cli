@@ -54,7 +54,8 @@ const run = async function(argv) {
 
 module.exports = {
     command: 'compose <name>',
-    desc: 'Run arbitrary docker-compose commands against a DHIS2 cluster',
+    desc:
+        'Run arbitrary docker-compose commands against a DHIS2 cluster.\nNOTE: pass -- after <name>',
     aliases: 'c',
     handler: run,
 }

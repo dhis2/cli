@@ -56,6 +56,6 @@ const run = async function(argv) {
 module.exports = {
     command: 'logs <name> [service]',
     desc: 'Tail the logs from a given service',
-    aliases: 'r',
+    aliases: 'l',
     handler: run,
 }
