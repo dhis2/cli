@@ -255,12 +255,14 @@ cat ~/.cache/d2/cache/cluster/superfly/config.json
 }
 ```
 
-To purge the `config.json` file you can use:
+This config file is automatically purged when you run `down --clean`.
+
+To manually purge the `config.json` file you can use:
 
 ```bash
-d2 debug cache purge cluster/superfly/config.json
-? Are you sure you want to remove cache item "cluster/superfly/config.json"? Yes
-Purged cache item cluster/superfly/config.json
+d2 debug cache purge clusters/superfly/config.json
+? Are you sure you want to remove cache item "clusters/superfly/config.json"? Yes
+Purged cache item clusters/superfly/config.json
 ```
 
 ### Persistent configuration
