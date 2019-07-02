@@ -13,7 +13,7 @@
     "devDependencies": {
         "@dhis2/cli-style": "3.3.4",
         "husky": "^2.7.0",
-        "tape": "^4.10.2",
+        "tape": "^4.11.0",
         "tape-await": "^0.1.2"
     },
     "husky": {
