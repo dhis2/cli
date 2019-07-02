@@ -31,7 +31,7 @@ const run = async function(argv) {
 
     if (update) {
         reporter.info('Pulling latest Docker images...')
-        await tryCatchAsync(
+        const res = await tryCatchAsync(
             'exec(docker-compose)::pull',
             exec({
                 env: makeEnvironment(cfg),
@@ -46,6 +46,10 @@ const run = async function(argv) {
                 pipe: false,
             })
         )
+        if (res.err) {
+            reporter.error('Failed to pull latest Docker images')
+            process.exit(1)
+        }
     }
 
     if (seed || seedFile) {

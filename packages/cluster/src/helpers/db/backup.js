@@ -1,14 +1,12 @@
-const { makeComposeProject, substituteVersion } = require('../../common')
+const { makeComposeProject } = require('../../common')
 const chalk = require('chalk')
 const path = require('path')
-const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
+const { reporter, exec } = require('@dhis2/cli-helpers-engine')
 
-const doBackup = async ({
-    cacheLocation,
-    composeProject,
-    destinationFile,
-    fat,
-}) => {
+module.exports = async ({ cacheLocation, name, path: dbPath, fat }) => {
+    const destinationFile = path.resolve(dbPath)
+    const composeProject = makeComposeProject(name)
+
     reporter.info(`Backing up database (this may take some time)...`)
     reporter.debug(`Dumping database to ${chalk.bold(destinationFile)}`)
 
@@ -35,18 +33,4 @@ const doBackup = async ({
             DOCKER_COMPOSE: `docker-compose -p ${composeProject}`,
         },
     })
-}
-
-module.exports = async ({ cacheLocation, name, path: dbPath, fat }) => {
-    const destinationFile = path.resolve(dbPath)
-    const composeProject = makeComposeProject(name)
-    await tryCatchAsync(
-        'db::backup',
-        doBackup({
-            cacheLocation,
-            composeProject,
-            destinationFile,
-            fat,
-        })
-    )
 }

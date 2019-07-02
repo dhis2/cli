@@ -1,38 +1,32 @@
 const { makeComposeProject, substituteVersion } = require('../../common')
 const chalk = require('chalk')
 const path = require('path')
-const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
-const defaults = require('../../defaults')
+const { reporter, exec } = require('@dhis2/cli-helpers-engine')
 
-const downloadDatabase = async ({ cache, path, dbVersion, update, url }) => {
-    if (path) {
-        return path.resolve(path)
+const downloadDatabase = async ({ cache, dbVersion, update, url }) => {
+    const ext = '.sql.gz' //dbUrl.endsWith('.gz') ? '.gz' : '.sql'
+    const cacheName = `cluster-db-${dbVersion}${ext}`
+    if (!update && (await cache.exists(cacheName))) {
+        reporter.info(
+            `Found cached database version ${chalk.bold(
+                dbVersion
+            )}, use --update to re-download`
+        )
+        return cache.getCacheLocation(cacheName)
     } else {
-        const ext = '.sql.gz' //dbUrl.endsWith('.gz') ? '.gz' : '.sql'
-        const cacheName = `cluster-db-${dbVersion}${ext}`
-        if (!update && (await cache.exists(cacheName))) {
-            reporter.info(
-                `Found cached database version ${chalk.bold(
-                    dbVersion
-                )}, use --update to re-download`
-            )
-            return cache.getCacheLocation(cacheName)
-        } else {
-            const dbUrl = substituteVersion(url, dbVersion)
-            reporter.info(
-                `Downloading demo database version ${chalk.bold(dbVersion)}...`
-            )
+        const dbUrl = substituteVersion(url, dbVersion)
+        reporter.info(
+            `Downloading demo database version ${chalk.bold(dbVersion)}...`
+        )
 
-            try {
-                return await cache.get(dbUrl, cacheName, {
-                    force: update,
-                    raw: true,
-                })
-            } catch (e) {
-                reporter.error('Failed to fetch demo database')
-                reporter.debugErr(e)
-                return null
-            }
+        try {
+            return await cache.get(dbUrl, cacheName, {
+                force: update,
+                raw: true,
+            })
+        } catch (e) {
+            reporter.debugErr('[downloadDatabase]', e)
+            throw new Error('Failed to fetch demo database')
         }
     }
 }
@@ -41,18 +35,15 @@ const restoreFromFile = async ({ cacheLocation, dbFile, dbVersion, name }) => {
     reporter.info(`Restoring database (this may take some time)...`)
     reporter.debug(`Restoring from database dump ${chalk.bold(dbFile)}`)
 
-    await tryCatchAsync(
-        'exec(seed.sh)',
-        exec({
-            cmd: './scripts/seed.sh',
-            cwd: cacheLocation,
-            args: [dbFile],
-            pipe: false,
-            env: {
-                DOCKER_COMPOSE: `docker-compose -p ${makeComposeProject(name)}`,
-            },
-        })
-    )
+    await exec({
+        cmd: './scripts/seed.sh',
+        cwd: cacheLocation,
+        args: [dbFile],
+        pipe: false,
+        env: {
+            DOCKER_COMPOSE: `docker-compose -p ${makeComposeProject(name)}`,
+        },
+    })
 }
 
 module.exports = async ({
@@ -72,5 +63,6 @@ module.exports = async ({
               url,
               update,
           })
+
     await restoreFromFile({ cacheLocation, dbFile, dbVersion, name })
 }

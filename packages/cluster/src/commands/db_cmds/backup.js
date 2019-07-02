@@ -1,4 +1,4 @@
-const { reporter } = require('@dhis2/cli-helpers-engine')
+const { reporter, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const { initDockerComposeCache, resolveConfiguration } = require('../../common')
 const { backup } = require('../../helpers/db')
 
@@ -20,12 +20,21 @@ const run = async function(argv) {
         process.exit(1)
     }
 
-    return await backup({
-        name,
-        cacheLocation,
-        path,
-        fat,
-    })
+    const res = await tryCatchAsync(
+        'db::backup',
+        backup({
+            name,
+            cacheLocation,
+            path,
+            fat,
+        })
+    )
+
+    if (res.err) {
+        reporter.error('Failed to backup database')
+        reporter.debugErr(res.err)
+        process.exit(1)
+    }
 }
 
 module.exports = {
