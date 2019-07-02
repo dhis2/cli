@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/dhis2/cli/compare/v1.3.0...v1.4.0) (2019-07-02)
+
+
+### Features
+
+* add cluster db commands, update images on up, add compose cmd ([#95](https://github.com/dhis2/cli/issues/95)) ([7dd4fc1](https://github.com/dhis2/cli/commit/7dd4fc1))
+
 # [1.3.0](https://github.com/dhis2/cli/compare/v1.2.4...v1.3.0) (2019-07-01)
 
 
