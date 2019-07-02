@@ -1,8 +1,8 @@
-const { makeComposeProject, substituteVersion } = require('./common')
+const { makeComposeProject, substituteVersion } = require('../../common')
 const chalk = require('chalk')
 const path = require('path')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
-const defaults = require('./defaults')
+const defaults = require('../../defaults')
 
 const downloadDatabase = async ({ cache, path, dbVersion, update, url }) => {
     if (path) {
@@ -37,9 +37,9 @@ const downloadDatabase = async ({ cache, path, dbVersion, update, url }) => {
     }
 }
 
-const seedFromFile = async ({ cacheLocation, dbFile, dbVersion, name }) => {
-    reporter.info(`Seeding database (this may take some time)...`)
-    reporter.debug(`Seeding from database dump ${chalk.bold(dbFile)}`)
+const restoreFromFile = async ({ cacheLocation, dbFile, dbVersion, name }) => {
+    reporter.info(`Restoring database (this may take some time)...`)
+    reporter.debug(`Restoring from database dump ${chalk.bold(dbFile)}`)
 
     await tryCatchAsync(
         'exec(seed.sh)',
@@ -55,7 +55,7 @@ const seedFromFile = async ({ cacheLocation, dbFile, dbVersion, name }) => {
     )
 }
 
-module.exports.seed = async ({
+module.exports = async ({
     cacheLocation,
     dbVersion,
     name,
@@ -72,5 +72,5 @@ module.exports.seed = async ({
               url,
               update,
           })
-    await seedFromFile({ cacheLocation, dbFile, dbVersion, name })
+    await restoreFromFile({ cacheLocation, dbFile, dbVersion, name })
 }

@@ -1,6 +1,6 @@
 const { reporter } = require('@dhis2/cli-helpers-engine')
-const { initDockerComposeCache, resolveConfiguration } = require('../common')
-const { restore } = require('../helpers/db')
+const { initDockerComposeCache, resolveConfiguration } = require('../../common')
+const { restore } = require('../../helpers/db')
 
 const run = async function(argv) {
     const { name, getCache } = argv
@@ -29,11 +29,11 @@ const run = async function(argv) {
 }
 
 module.exports = {
-    command: 'seed <name> [path]',
-    desc: false, // Deprecated, so hide from help
+    command: 'restore <name> [path]',
+    desc: 'Restore the database from a backup',
     builder: {
         update: {
-            alias: '-u',
+            alias: 'u',
             desc: 'Force re-download of cached files',
             type: 'boolean',
             default: false,
