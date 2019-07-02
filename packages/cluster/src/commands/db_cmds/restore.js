@@ -1,6 +1,6 @@
-const { reporter } = require('@dhis2/cli-helpers-engine')
-const { initDockerComposeCache, resolveConfiguration } = require('../common')
-const { restore } = require('../helpers/db')
+const { reporter, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
+const { initDockerComposeCache, resolveConfiguration } = require('../../common')
+const { restore } = require('../../helpers/db')
 
 const run = async function(argv) {
     const { name, getCache } = argv
@@ -20,20 +20,29 @@ const run = async function(argv) {
         process.exit(1)
     }
 
-    return await restore({
-        cacheLocation,
-        dbVersion: cfg.dbVersion,
-        url: cfg.demoDatabaseURL,
-        ...argv,
-    })
+    const rest = await tryCatchAsync(
+        'db::restore',
+        restore({
+            cacheLocation,
+            dbVersion: cfg.dbVersion,
+            url: cfg.demoDatabaseURL,
+            ...argv,
+        })
+    )
+
+    if (res.err) {
+        reporter.error('Failed to restore database')
+        reporter.debugErr(res.err)
+        process.exit(1)
+    }
 }
 
 module.exports = {
-    command: 'seed <name> [path]',
-    desc: false, // Deprecated, so hide from help
+    command: 'restore <name> [path]',
+    desc: 'Restore the database from a backup',
     builder: {
         update: {
-            alias: '-u',
+            alias: 'u',
             desc: 'Force re-download of cached files',
             type: 'boolean',
             default: false,

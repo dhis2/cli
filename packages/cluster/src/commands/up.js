@@ -9,7 +9,7 @@ const {
 } = require('../common')
 
 const defaults = require('../defaults')
-const { seed: doSeed } = require('../db')
+const { restore } = require('../helpers/db')
 
 const run = async function(argv) {
     const { name, seed, seedFile, update, getCache } = argv
@@ -29,8 +29,31 @@ const run = async function(argv) {
         process.exit(1)
     }
 
+    if (update) {
+        reporter.info('Pulling latest Docker images...')
+        const res = await tryCatchAsync(
+            'exec(docker-compose)::pull',
+            exec({
+                env: makeEnvironment(cfg),
+                cmd: 'docker-compose',
+                args: [
+                    '-p',
+                    makeComposeProject(name),
+                    '-f',
+                    path.join(cacheLocation, 'docker-compose.yml'),
+                    'pull',
+                ],
+                pipe: false,
+            })
+        )
+        if (res.err) {
+            reporter.error('Failed to pull latest Docker images')
+            process.exit(1)
+        }
+    }
+
     if (seed || seedFile) {
-        await doSeed({
+        await restore({
             name,
             cacheLocation,
             dbVersion: cfg.dbVersion,

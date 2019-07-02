@@ -1,9 +1,9 @@
-const { reporter } = require('@dhis2/cli-helpers-engine')
-const { initDockerComposeCache, resolveConfiguration } = require('../common')
-const { restore } = require('../helpers/db')
+const { reporter, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
+const { initDockerComposeCache, resolveConfiguration } = require('../../common')
+const { backup } = require('../../helpers/db')
 
 const run = async function(argv) {
-    const { name, getCache } = argv
+    const { name, getCache, path, fat } = argv
 
     const cfg = await resolveConfiguration(argv)
 
@@ -20,27 +20,31 @@ const run = async function(argv) {
         process.exit(1)
     }
 
-    return await restore({
-        cacheLocation,
-        dbVersion: cfg.dbVersion,
-        url: cfg.demoDatabaseURL,
-        ...argv,
-    })
+    const res = await tryCatchAsync(
+        'db::backup',
+        backup({
+            name,
+            cacheLocation,
+            path,
+            fat,
+        })
+    )
+
+    if (res.err) {
+        reporter.error('Failed to backup database')
+        reporter.debugErr(res.err)
+        process.exit(1)
+    }
 }
 
 module.exports = {
-    command: 'seed <name> [path]',
-    desc: false, // Deprecated, so hide from help
+    command: 'backup <name> <path>',
+    desc: 'Backup the database to a file',
     builder: {
-        update: {
-            alias: '-u',
+        fat: {
             desc: 'Force re-download of cached files',
             type: 'boolean',
             default: false,
-        },
-        dbVersion: {
-            desc: 'Version of the Database dump to use',
-            type: 'string',
         },
     },
     handler: run,
