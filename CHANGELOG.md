@@ -1,3 +1,19 @@
+# [2.0.0](https://github.com/dhis2/cli/compare/v1.4.0...v2.0.0) (2019-07-15)
+
+
+### chore
+
+* prepare 2.0 of d2 ([#100](https://github.com/dhis2/cli/issues/100)) ([52d4f00](https://github.com/dhis2/cli/commit/52d4f00))
+
+
+### BREAKING CHANGES
+
+* Remove deprecated `d2-cluster seed` command, and update `d2-style` to 4.1.0.
+
+- For changelog of what has changed with cli-style, see https://github.com/dhis2/cli-style/blob/master/CHANGELOG.md#breaking-changes for a list of changes.
+
+- `d2-cluster seed` has been deprecated in favour of `d2-cluster db restore`, see `d2 cluster db --help` for more information on usage.
+
 # [1.4.0](https://github.com/dhis2/cli/compare/v1.3.0...v1.4.0) (2019-07-02)
 
 
