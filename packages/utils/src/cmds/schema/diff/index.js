@@ -11,7 +11,7 @@ const {
     writeOutput,
     schemaDiffIdentifier,
     defaultOpts,
-    defaultRequestOpts,
+    resolveConfig,
 } = require('../')
 
 let cache
@@ -36,14 +36,13 @@ const formatters = {
 async function getSchemas(urlLike, { baseUrl, auth, force }) {
     let schemas
     let fileContents
-
     if ((fileContents = utils.getJSONFile(urlLike))) {
         reporter.debug(urlLike, ' is a file')
         schemas = fileContents
     } else {
         if (!utils.isRelativeUrl(urlLike)) {
             baseUrl = undefined
-            urlLike = utils.prependHttpProtocol(urlLike)
+            urlLike = utils.prependHttpsProtocol(urlLike)
         }
         schemas = await schemasFromUrl(urlLike, {
             baseUrl,
@@ -172,48 +171,58 @@ function generateHtml({ left, delta, meta }) {
     })
 }
 
-async function run({
-    url1,
-    url2,
-    baseUrl,
-    format,
-    output,
-    ignoreArrayOrder,
-    ...rest
-}) {
-    cache = rest.getCache()
-    const schemasLeft = await getSchemas(url1, { baseUrl, ...rest })
-    const schemasRight = await getSchemas(url2, { baseUrl, ...rest })
+async function run(args) {
+    cache = args.getCache()
+    const {
+        baseUrl,
+        leftUrl,
+        rightUrl,
+        authLeft,
+        authRight,
+        force,
+        format,
+        output,
+        ignoreArrayOrder,
+    } = resolveConfig(args)
+
+    const schemasLeft = await getSchemas(leftUrl, {
+        baseUrl,
+        auth: authLeft,
+        force,
+    })
+    const schemasRight = await getSchemas(rightUrl, {
+        baseUrl,
+        auth: authRight,
+        force,
+    })
     //let [left, right] = await Promise.all([prom1, prom2])
     const { left, delta, meta } = diff(schemasLeft, schemasRight, {
         sortArrays: ignoreArrayOrder,
     })
-    handleOutput(output, { format, left, delta, meta })
+    handleOutput(output, {
+        format,
+        left,
+        delta,
+        meta,
+    })
 }
 
 const builder = yargs => {
     yargs
-        .positional('url1', {
+        .positional('leftUrl', {
             type: 'string',
-            describe: `the url to the running DHIS2 server, should have schemas available relative to this at ${
-                defaultOpts.schemasEndpoint
-            }
+            describe: `the url to the running DHIS2 server, should have schemas available relative to this at ${defaultOpts.schemasEndpoint}
             Can also be a JSON-file with schemas. See schema fetch`,
         })
-        .positional('url2', {
+        .positional('rightUrl', {
             type: 'string',
-            describe: `the url to another running DHIS2 server, should have schemas available relative to this at ${
-                defaultOpts.schemasEndpoint
-            }
-            Can also be a JSON-file with schemas. See schema fetch`,
+            describe: `the url to another running DHIS2 server, should have schemas available relative to this at ${defaultOpts.schemasEndpoint}
+            Can also be a JSON-file with schemas. See "utils schema fetch"`,
         })
         .option('base-url', {
             alias: 'b',
-            default: defaultRequestOpts.baseUrl,
-            coerce: opt => utils.prependHttpProtocol(opt),
-            describe: `BaseUrl to use for downloading schemas. If this is set url1 and url2 should be relative to this url, eg. /dev. [default: ${
-                defaultRequestOpts.baseUrl
-            }]`,
+            coerce: opt => utils.prependHttpsProtocol(opt),
+            describe: `BaseUrl to use for downloading schemas. If this is set leftServer and rightServer should be relative to this url, eg. /dev.`,
             type: 'string',
         })
         .option('output', {

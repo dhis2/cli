@@ -14,7 +14,6 @@ const defaultOpts = {
 }
 
 const defaultRequestOpts = {
-    baseUrl: 'https://play.dhis2.org',
     headers: {
         'x-requested-with': 'XMLHttpRequest',
         Authorization: utils.basicAuthHeader(
@@ -50,12 +49,32 @@ function asyncRequest(url, opts) {
     })
 }
 
-async function getAuthHeader(url, { auth }) {
-    let username, password
-    if (auth) {
-        ;[username, password] = auth.split(':')
+function resolveConfig(args) {
+    if (!args.utils && !args.utils.schema) {
+        return args
     }
-    if (auth === '') {
+    const config = args.utils.schema
+    return {
+        ...args,
+        ...config,
+        auth: args.auth || authFromConf(config),
+        authLeft: args.auth || authFromConf(config, config.leftServer),
+        authRight: args.auth || authFromConf(config, config.rightServer),
+    }
+}
+
+function authFromConf(conf = {}, serverConfig = {}) {
+    const auth = {
+        username: serverConfig.username || conf.username,
+        password: serverConfig.password || conf.password,
+    }
+    if (auth.username && auth.password) return auth
+    return true
+}
+
+async function getAuthHeader(url, { auth }) {
+    let { username, password } = auth
+    if (auth === true) {
         ;({ username, password } = await prompt([
             {
                 type: 'input',
@@ -84,7 +103,6 @@ async function schemasFromUrl(url, { baseUrl, auth, force, cache }) {
     requestOpts.headers.Authorization = await getAuthHeader(url, {
         auth,
     })
-
     const meta = await asyncRequest(infoUrl, requestOpts)
     const rev = utils.isSHA(meta.revision)
     if (!rev) {
@@ -128,4 +146,6 @@ module.exports = {
     prompt,
     defaultOpts,
     defaultRequestOpts,
+    authFromConf,
+    resolveConfig,
 }

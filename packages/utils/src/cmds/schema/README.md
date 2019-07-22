@@ -7,11 +7,13 @@ Utility tools that operate on DHIS2-schemas.
 
 ## Diff
 
-Diffs DHIS2-schemas. Can use running DHIS2 instances as input, which will download the schemas and diff these. This is useful to show changes between versions / revisions. Can also use files from the [*fetch*](#fetch)-command.
+Diffs DHIS2-schemas. Can use running DHIS2 instances as input, which will download the schemas and diff these, providing a a variety of [formats](#--format). This is useful to show changes between versions / revisions. Can also use files from the [*fetch*](#fetch)-command.
 
 ### Usage
 
 #### Examples
+**Note** that these examples assume that you have setup the [configuration](#configuration)-file with `baseUrl: https://play.dhis2.org`
+
 Basic usage; downloads schemas from the [play](https://play.dhis2.org/)-server and outputs a format akin to `git diff` to the terminal.
 ```bash
 d2 utils schema diff /2.31 /2.32dev
@@ -21,14 +23,18 @@ Output a html file with the version and revision in the filename to the current 
 d2 utils schema diff /2.31 /2.32dev --format html -o | xargs open
 ```
 
+**Note** that to use relative urls they must start with `/`. If not, the url will be assumed to be absolute and the request will fail
+
 Use absolute URLs. Output html-file to home/Documents directory.
 ```bash
 d2 utils schema diff https://birk.dev/master https://play.dhis2.org/dev/ --format html -o ~/Documents/
 ```
 
-The server returns non-deterministic ordering of arrays. The arrays can be sorted before diffing, which will prevent most irrelevant array-moves.
+### Options
 
-#### Options
+##### --auth
+If true a prompt will ask for username and password for each server.
+Note that you can still provide authentication from `config.js`. If the flag is omitted or `--auth=false` credentials from `config.js` will be read. Note that the prompt is shown if no credentials can be resolved from the [configuration](#configuration)-file.
 
 ##### --output, -o          
 Specify the location of the output. If used as a flag (no arguments) a
@@ -46,6 +52,34 @@ Specify the format of the output. Can be one of `["html", "json", "console"]`.
 JSON is the raw output of [jsondiffpatch](https://github.com/benjamine/jsondiffpatch/blob/master/docs/arrays.md), see the [delta format](https://github.com/benjamine/jsondiffpatch/blob/master/docs/deltas.md) for information about this format.
 
 Default: console.
+
+##### --ignore-array-order
+The server returns non-deterministic ordering of arrays. Enabling this will prevent most internal array moves, which are probably irrelevant anyway.
+
+### Configuration
+
+Many of the above options may be provided through the `d2` configuration file, which by default is located at `~/.config/d2/config.js`. This file is namespaced by command, an example of such a file:
+```
+module.exports = {
+    utils: {
+        schema: {
+            username: 'admin',
+            password: 'district',
+            baseUrl: 'https://play.dhis2.org',
+            rightServer: {
+                username: 'system',
+                password: 'System123',
+            },
+        }
+    },
+}
+```
+
+Authorization is handled in the following way:
+ - Per-server configuration (e.g. leftServer) is read first, if either password or username are non-existant or blank, the `schema`-level are used.
+ - If `schema`-level configuration is blank, an interactive prompt for username and password will be shown. 
+
+ In the example configuration file above, `leftServer` will use schema-level credentials (admin, district), while `rightServer` will use `john, district`, 
 
 ## Fetch
 

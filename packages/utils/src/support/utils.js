@@ -27,7 +27,7 @@ function isRelativeUrl(url) {
     return url.indexOf('/') === 0
 }
 
-function prependHttpProtocol(url) {
+function prependHttpsProtocol(url) {
     if (!url.startsWith('http')) {
         return `https://${url}`
     }
@@ -55,7 +55,7 @@ module.exports = {
     isUrl,
     isAbsoluteUrl,
     isRelativeUrl,
-    prependHttpProtocol,
+    prependHttpsProtocol,
     btoa,
     basicAuthHeader,
     getJSONFile,

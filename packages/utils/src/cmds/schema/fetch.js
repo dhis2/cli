@@ -1,8 +1,15 @@
-const { schemasFromUrl, writeOutput, schemaIdentifier } = require('./index.js')
+const {
+    schemasFromUrl,
+    writeOutput,
+    schemaIdentifier,
+    authFromConf,
+    resolveConfig,
+} = require('./index.js')
 const { reporter } = require('@dhis2/cli-helpers-engine')
-
-const handler = async ({ url, output = false, force, auth, ...rest }) => {
+const { prependHttpsProtocol } = require('../../support/utils')
+const handler = async ({ url, output = false, force, ...rest }) => {
     const cache = rest.getCache()
+    ;({ auth } = resolveConfig(rest))
     const schemasWithMeta = await schemasFromUrl(url, { auth, force, cache })
     const defaultName = `${schemaIdentifier(schemasWithMeta.meta)}.json`
     const out = JSON.stringify(schemasWithMeta)
@@ -19,6 +26,9 @@ const command = {
     describe:
         'Fetch schema from a running DHIS2 server. Can be used to feed into "schema diff".',
     builder: {
+        url: {
+            coerce: opt => prependHttpsProtocol(opt),
+        },
         output: {
             alias: 'o',
             type: 'string',
