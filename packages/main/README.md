@@ -51,5 +51,5 @@ Bootstrap a new DHIS2 cli module
 Spin up a DHIS2 server installation on port 8082 with default seeded [Sierra Leone demo database](https://github.com/dhis2/dhis2-demo-db) (requires [Docker](https://www.docker.com/products/docker-desktop))
 
 ```sh
-> d2 cluster up dev --port 8082 --seed
+> d2 cluster up 2.32.0 --port 8082 --seed --db-version 2.32
 ```

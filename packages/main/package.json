@@ -1,6 +1,6 @@
 {
     "name": "@dhis2/cli",
-    "version": "1.2.2",
+    "version": "2.0.0",
     "description": "A command line interface for DHIS2 development workflows",
     "main": "src/index.js",
     "author": "Austin McGee <austin@dhis2.org>",
@@ -12,15 +12,15 @@
         "node": ">=8.6"
     },
     "dependencies": {
-        "@dhis2/cli-app": "1.2.2",
-        "@dhis2/cli-cluster": "1.2.2",
-        "@dhis2/cli-create": "1.2.2",
+        "@dhis2/cli-app": "2.0.0",
+        "@dhis2/cli-cluster": "2.0.0",
+        "@dhis2/cli-create": "2.0.0",
         "@dhis2/cli-helpers-engine": "1.3.0",
-        "@dhis2/cli-style": "3.3.1",
-        "@dhis2/cli-utils": "1.2.2",
+        "@dhis2/cli-style": "4.1.1",
+        "@dhis2/cli-utils": "2.0.0",
         "cli-table3": "^0.5.1",
         "envinfo": "^7.0.0",
-        "inquirer": "^6.2.0"
+        "inquirer": "^6.5.0"
     },
     "bin": {
         "d2": "bin/d2"

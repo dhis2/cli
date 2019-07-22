@@ -1,40 +1,56 @@
+const path = require('path')
+const fs = require('fs')
+
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
 const defaults = require('./defaults')
 
-const dockerComposeCacheName = 'd2-cluster-docker-compose-v2'
+const clusterDir = 'clusters'
+const dockerComposeCacheName = 'docker-compose'
+const cacheFile = 'config.json'
 
 module.exports.initDockerComposeCache = async ({
+    composeProjectName,
     cache,
     dockerComposeRepository,
+    dockerComposeDirectory,
     force,
 }) => {
-    const exists = await cache.exists(dockerComposeCacheName)
+    const cacheDir = path.join(
+        clusterDir,
+        composeProjectName,
+        dockerComposeCacheName
+    )
+
+    const cachePath = path.join(cacheDir, dockerComposeDirectory)
+
+    const exists = await cache.exists(cachePath)
+
     if (exists && !force) {
         reporter.debug(
             'Skipping docker compose repo initialization, found cached dir'
         )
-        return cache.getCacheLocation(dockerComposeCacheName)
-    }
+    } else {
+        reporter.info('Initializing Docker Compose repository...')
 
-    reporter.info('Initializing Docker Compose repository...')
-    try {
-        return await cache.get(
-            dockerComposeRepository,
-            dockerComposeCacheName,
-            {
+        try {
+            await cache.get(dockerComposeRepository, cacheDir, {
                 force: true,
+            })
+
+            const created = await cache.exists(cachePath)
+
+            if (created) {
+                reporter.debug(`Cache created at: ${cachePath}`)
             }
-        )
-    } catch (e) {
-        reporter.error('Initialization failed!')
-        return null
+        } catch (e) {
+            reporter.error('Initialization failed!')
+            return null
+        }
     }
 
-    return null
+    return cache.getCacheLocation(cachePath)
 }
-
-module.exports.makeComposeProject = version => `d2-cluster-${version}`
 
 module.exports.substituteVersion = (string, version) =>
     replacer(string, 'version', version)
@@ -69,8 +85,29 @@ function replacer(string, token, value) {
     return string.replace(regexp, value)
 }
 
-function resolveConfiguration(argv = {}, cache = {}, config = {}) {
-    const resolved = Object.assign({}, defaults, config, cache, argv)
+async function resolveConfiguration(argv = {}) {
+    const file = path.join(clusterDir, argv.name, cacheFile)
+
+    let currentCache
+    try {
+        currentCache = JSON.parse(await argv.getCache().read(file))
+    } catch (e) {
+        reporter.debug('JSON parse of cache file failed', e)
+    }
+
+    let currentConfig
+    if (argv.cluster && argv.cluster.clusters) {
+        currentConfig = argv.cluster.clusters[argv.name]
+    }
+
+    // order matters! it defines the precedence of configuration
+    const cache = Object.assign({}, currentConfig, currentCache)
+
+    const config = argv.cluster
+    const args = argv
+
+    // order matters! it defines the precedence of configuration
+    const resolved = Object.assign({}, defaults, config, cache, args)
 
     // resolve specials...
     resolved.dhis2Version = resolved.dhis2Version || resolved.name
@@ -88,8 +125,27 @@ function resolveConfiguration(argv = {}, cache = {}, config = {}) {
 
     reporter.debug('Resolved configuration\n', resolved)
 
+    await argv.getCache().write(
+        file,
+        JSON.stringify(
+            {
+                channel: resolved.channel,
+                dbVersion: resolved.dbVersion,
+                dhis2Version: resolved.dhis2Version,
+                customContext: resolved.customContext,
+                image: resolved.image,
+                port: resolved.port,
+            },
+            null,
+            4
+        )
+    )
+
     return resolved
 }
+
+module.exports.cleanCache = async ({ cache, name }) =>
+    await cache.purge(path.join(clusterDir, name))
 
 module.exports.makeEnvironment = cfg => {
     const env = {
@@ -105,6 +161,8 @@ module.exports.makeEnvironment = cfg => {
 
     return env
 }
+
+module.exports.makeComposeProject = name => `d2-cluster-${name}`
 
 module.exports.getLocalClusters = async () => {}
 

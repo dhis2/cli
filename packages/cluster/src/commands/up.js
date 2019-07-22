@@ -3,21 +3,24 @@ const path = require('path')
 const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
-    makeComposeProject,
     makeEnvironment,
+    makeComposeProject,
     resolveConfiguration,
 } = require('../common')
 
 const defaults = require('../defaults')
-const { seed: doSeed } = require('../db')
+const { restore } = require('../helpers/db')
 
 const run = async function(argv) {
-    const { cluster, name, seed, seedFile, update } = argv
-    const cfg = resolveConfiguration(argv, {}, cluster)
+    const { name, seed, seedFile, update, getCache } = argv
+
+    const cfg = await resolveConfiguration(argv)
 
     const cacheLocation = await initDockerComposeCache({
-        cache: argv.getCache(),
+        composeProjectName: name,
+        cache: getCache(),
         dockerComposeRepository: cfg.dockerComposeRepository,
+        dockerComposeDirectory: cfg.dockerComposeDirectory,
         force: update,
     })
 
@@ -26,8 +29,31 @@ const run = async function(argv) {
         process.exit(1)
     }
 
+    if (update) {
+        reporter.info('Pulling latest Docker images...')
+        const res = await tryCatchAsync(
+            'exec(docker-compose)::pull',
+            exec({
+                env: makeEnvironment(cfg),
+                cmd: 'docker-compose',
+                args: [
+                    '-p',
+                    makeComposeProject(name),
+                    '-f',
+                    path.join(cacheLocation, 'docker-compose.yml'),
+                    'pull',
+                ],
+                pipe: false,
+            })
+        )
+        if (res.err) {
+            reporter.error('Failed to pull latest Docker images')
+            process.exit(1)
+        }
+    }
+
     if (seed || seedFile) {
-        await doSeed({
+        await restore({
             name,
             cacheLocation,
             dbVersion: cfg.dbVersion,
@@ -69,9 +95,7 @@ module.exports = {
     builder: {
         port: {
             alias: 'p',
-            desc: `Specify the port on which to expose the DHIS2 instance (default: ${
-                defaults.port
-            })`,
+            desc: `Specify the port on which to expose the DHIS2 instance (default: ${defaults.port})`,
             type: 'integer',
         },
         seed: {
@@ -103,9 +127,7 @@ module.exports = {
             type: 'string',
         },
         channel: {
-            desc: `Set the release channel to use (default: ${
-                defaults.channel
-            })`,
+            desc: `Set the release channel to use (default: ${defaults.channel})`,
             type: 'string',
         },
         customContext: {

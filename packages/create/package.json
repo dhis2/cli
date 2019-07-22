@@ -3,7 +3,7 @@
     "bin": {
         "d2-create": "./bin/d2-create"
     },
-    "version": "1.2.2",
+    "version": "2.0.0",
     "main": "src/index.js",
     "author": "Austin McGee <austin@dhis2.org>",
     "license": "BSD-3-Clause",
@@ -11,9 +11,9 @@
     "dependencies": {
         "@dhis2/cli-helpers-engine": "1.3.0",
         "chalk": "^2.4.2",
-        "fs-extra": "^8.0.0",
+        "fs-extra": "^8.1.0",
         "handlebars": "^4.1.0",
-        "inquirer": "^6.2.2"
+        "inquirer": "^6.5.0"
     },
     "publishConfig": {
         "access": "public"

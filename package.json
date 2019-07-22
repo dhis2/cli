@@ -1,5 +1,5 @@
 {
-    "version": "1.2.2",
+    "version": "2.0.0",
     "private": true,
     "workspaces": [
         "packages/*"
@@ -11,15 +11,9 @@
     ],
     "license": "BSD-3-Clause",
     "devDependencies": {
-        "@dhis2/cli-style": "3.3.1",
-        "husky": "^2.4.0",
-        "tape": "^4.10.2"
-    },
-    "husky": {
-        "hooks": {
-            "commit-msg": "d2-style commit check",
-            "pre-commit": "d2-style js apply"
-        }
+        "@dhis2/cli-style": "4.1.1",
+        "tape": "^4.11.0",
+        "tape-await": "^0.1.2"
     },
     "scripts": {
         "test": "tape packages/**/tests/*.js"

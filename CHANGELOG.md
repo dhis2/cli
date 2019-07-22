@@ -1,3 +1,47 @@
+# [2.0.0](https://github.com/dhis2/cli/compare/v1.4.0...v2.0.0) (2019-07-15)
+
+
+### chore
+
+* prepare 2.0 of d2 ([#100](https://github.com/dhis2/cli/issues/100)) ([52d4f00](https://github.com/dhis2/cli/commit/52d4f00))
+
+
+### BREAKING CHANGES
+
+* Remove deprecated `d2-cluster seed` command, and update `d2-style` to 4.1.0.
+
+- For changelog of what has changed with cli-style, see https://github.com/dhis2/cli-style/blob/master/CHANGELOG.md#breaking-changes for a list of changes.
+
+- `d2-cluster seed` has been deprecated in favour of `d2-cluster db restore`, see `d2 cluster db --help` for more information on usage.
+
+# [1.4.0](https://github.com/dhis2/cli/compare/v1.3.0...v1.4.0) (2019-07-02)
+
+
+### Features
+
+* add cluster db commands, update images on up, add compose cmd ([#95](https://github.com/dhis2/cli/issues/95)) ([7dd4fc1](https://github.com/dhis2/cli/commit/7dd4fc1))
+
+# [1.3.0](https://github.com/dhis2/cli/compare/v1.2.4...v1.3.0) (2019-07-01)
+
+
+### Features
+
+* decouple configs from cluster ([#53](https://github.com/dhis2/cli/issues/53)) ([e5b40af](https://github.com/dhis2/cli/commit/e5b40af))
+
+## [1.2.4](https://github.com/dhis2/cli/compare/v1.2.3...v1.2.4) (2019-06-13)
+
+
+### Bug Fixes
+
+* use dhis2/docker-compose instead of amcgee/dhis2-backend as default ([#61](https://github.com/dhis2/cli/issues/61)) ([85d708f](https://github.com/dhis2/cli/commit/85d708f))
+
+## [1.2.3](https://github.com/dhis2/cli/compare/v1.2.2...v1.2.3) (2019-06-12)
+
+
+### Bug Fixes
+
+* avoid double parsing of arguments ([#64](https://github.com/dhis2/cli/issues/64)) ([b616152](https://github.com/dhis2/cli/commit/b616152))
+
 ## [1.2.2](https://github.com/dhis2/cli/compare/v1.2.1...v1.2.2) (2019-05-27)
 
 
