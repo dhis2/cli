@@ -9,17 +9,11 @@ const { reporter } = require('@dhis2/cli-helpers-engine')
 const defaultOpts = {
     schemasEndpoint: '/api/schemas.json',
     infoEndpoint: '/api/system/info.json',
-    username: 'admin',
-    password: 'district',
 }
 
 const defaultRequestOpts = {
     headers: {
         'x-requested-with': 'XMLHttpRequest',
-        Authorization: utils.basicAuthHeader(
-            defaultOpts.username,
-            defaultOpts.password
-        ),
     },
     json: true,
 }
@@ -80,20 +74,18 @@ async function getAuthHeader(url, { auth }) {
                 type: 'input',
                 name: 'username',
                 message: `Username for ${url}`,
-                default: defaultOpts.username,
             },
             {
                 type: 'password',
                 name: 'password',
                 message: `Password for ${url}`,
-                default: defaultOpts.password,
                 mask: true,
             },
         ]))
     }
     return username && password
         ? utils.basicAuthHeader(username, password)
-        : defaultRequestOpts.headers.Authorization
+        : undefined
 }
 
 async function schemasFromUrl(url, { baseUrl, auth, force, cache }) {
@@ -126,7 +118,7 @@ function writeOutput(loc, output, { defaultName }) {
     try {
         isDir = fs.statSync(loc).isDirectory()
     } catch (e) {
-        isDir = false
+        isDir = false //sanity
     }
     if (loc === '' || loc === true || isDir) {
         loc = path.join(isDir ? loc : '', defaultName)

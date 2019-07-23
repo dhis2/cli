@@ -58,7 +58,7 @@ The server returns non-deterministic ordering of arrays. Enabling this will prev
 
 ### Configuration
 
-Many of the above options may be provided through the `d2` configuration file, which by default is located at `~/.config/d2/config.js`. This file is namespaced by command, an example of such a file:
+Many of the above options may be provided through the `d2` configuration file, which by default is located at `~/.config/d2/config.js`. This is especially useful for credentials. The file is namespaced by command, an example of such a file:
 ```
 module.exports = {
     utils: {
