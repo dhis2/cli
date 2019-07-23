@@ -12,10 +12,11 @@ const handler = async ({ urls, output = false, force, ...rest }) => {
     const cache = rest.getCache()
     ;({ auth, baseUrl } = resolveConfig(rest))
 
-    for (const url of urls) {
+    for (let url of urls) {
         let bUrl = baseUrl
         if (!isRelativeUrl(url)) {
             bUrl = undefined
+            url = prependHttpsProtocol(url)
         }
         // this should probably be Promise.all(), but that causes problems with
         // credentials-prompt
@@ -45,9 +46,6 @@ const command = {
     builder: {
         urls: {
             type: 'array',
-            coerce: urls => {
-                return urls.map(url => prependHttpsProtocol(url))
-            },
         },
         output: {
             alias: 'o',
@@ -57,8 +55,8 @@ const command = {
         },
         'base-url': {
             alias: 'b',
-            coerce: opt => utils.prependHttpsProtocol(opt),
-            describe: `BaseUrl to use for downloading schemas. If this is set, all urls should be relative to this eg. /dev.`,
+            coerce: opt => prependHttpsProtocol(opt),
+            describe: `BaseUrl to use for downloading schemas. If this is set, urls that are relative (starts with /) will be appended to this url. eg. /dev.`,
             type: 'string',
         },
     },
