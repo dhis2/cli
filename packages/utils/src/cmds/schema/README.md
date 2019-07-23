@@ -53,6 +53,9 @@ JSON is the raw output of [jsondiffpatch](https://github.com/benjamine/jsondiffp
 
 Default: console.
 
+##### --base-url, -b  
+Base-Url to use for downloading schemas. If this is set leftServer and rightServer should be relative to this url, eg. /dev. Note the leading slash for the relative urls.
+
 ##### --ignore-array-order
 The server returns non-deterministic ordering of arrays. Enabling this will prevent most internal array moves, which are probably irrelevant anyway.
 
@@ -85,3 +88,48 @@ Authorization is handled in the following way:
 
 Fetches schemas from a _running_ DHIS2 instance. The schemas are compatible with the *diff*-command.
 
+
+### Usage
+
+```
+d2-utils schema fetch <urls...> [opts]
+```
+
+Fetch supports multiple urls at the same time. These can be a combination of relative and absolute urls if baseUrl is set. Note that `--output` will in this case always resolve to the directory part of the output-path.
+
+#### Examples
+
+Downloads schemas relative to working directory with auto-generated name. 
+```
+d2 utils schema fetch https://play.dhis2.org/dev -o
+```
+
+Combination of relative and absolute urls. Note that the protocol is not needed. `https` is prepended if the urls does *not* start with `/`. This is the reason why it's important to start relative urls with `/`.
+
+```
+d2 utils schema fetch https://play.dhis2.org/dev birk.dev/master /2.32 --base-url play.dhis2.org -o
+```
+
+##### With Diff command
+
+It's possible to use a one-liner to download the schemas and pipe this file location to the [diff](#diff)-command. The following example will download the schemas to the current working directory, while downloading `2.31` schemas and diffing these. Output is an html file in the current directory.
+```
+d2 utils schema fetch https://play.dhis2.org/dev -o | xargs d2 utils schema diff /2.31 -o --format html
+```
+
+
+### Configuration
+
+Configuration is mostly identical to the Diff command. However, options are only read from the `schema`-object. This is mostly useful for credentials and `base-url`. 
+
+
+### Options
+
+##### --auth
+See [auth](#--auth)
+
+##### --output, -o
+See [output](#--output). In addition, if multiple urls are given, the path will be resolved to the [directory-path](https://nodejs.org/api/path.html#path_path_dirname_path).
+
+##### --base-url, -b
+Base-Url to use for downloading schemas. If this is set, urls that are relative (starts with `/`) will be appended to this url. eg. /dev. Note the leading slash for the relative urls.
