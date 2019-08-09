@@ -12,7 +12,7 @@ const command = namespace('schema', {
             .option('auth', {
                 type: 'boolean',
                 default: false,
-                describe: `Prompt credentials for each server.`,
+                describe: `Force prompt for credentials for each server. If false, credentials will be read from the config-file.`,
             })
             .commandDir('schema'),
 })

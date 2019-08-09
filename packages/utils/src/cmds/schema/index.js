@@ -44,7 +44,7 @@ function asyncRequest(url, opts) {
 }
 
 function resolveConfig(args) {
-    if (!args.utils && !args.utils.schema) {
+    if (!args.utils || !args.utils.schema) {
         return args
     }
     const config = args.utils.schema
@@ -67,8 +67,8 @@ function authFromConf(conf = {}, serverConfig = {}) {
 }
 
 async function getAuthHeader(url, { auth }) {
-    let { username, password } = auth
-    if (auth === true) {
+    let username, password
+    if (!auth || auth === true) {
         ;({ username, password } = await prompt([
             {
                 type: 'input',
@@ -82,6 +82,8 @@ async function getAuthHeader(url, { auth }) {
                 mask: true,
             },
         ]))
+    } else {
+        ;({ username, password } = auth)
     }
     return username && password
         ? utils.basicAuthHeader(username, password)
