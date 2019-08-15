@@ -142,6 +142,12 @@ exports.builder = {
         type: 'boolean',
         default: 'false',
     },
+
+    deleteOldFiles: {
+        describe:
+            'Delete the old files that were transformed (will only delete files specified with the `--language` option when present)',
+        type: 'boolean',
+    },
 }
 exports.handler = argv => {
     const inDirExists = fs.existsSync(argv.inDir)
@@ -339,4 +345,25 @@ exports.handler = argv => {
     }
 
     argv.verbose && log.debug('Creating translation files :: Done')
+
+    if (argv.deleteOldFiles) {
+        translationFiles.forEach(file => {
+            const language = file.replace(/i18n_module_|.properties/g, '')
+
+            if (
+                !languagesToTransform.length ||
+                languagesToTransform.indexOf(language) !== -1
+            ) {
+                try {
+                    const filePathToDelete = path.join(argv.inDir, file)
+                    fs.unlinkSync(filePathToDelete)
+                    argv.verbose && log.debug(`Deleted old file:`)
+                    argv.verbose && log.debug(`"${filePathToDelete}"`)
+                } catch (e) {
+                    log.error('Could not delete old translation file')
+                    log.error(e.message)
+                }
+            }
+        })
+    }
 }
