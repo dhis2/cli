@@ -138,6 +138,7 @@ exports.builder = {
             'Appends the new contents to existing translation files, can only be used when not using `--override-existing-files`',
         type: 'boolean',
         default: 'false',
+        conflicts: 'overrideExistingFiles',
     },
 
     logMissingKeys: {
