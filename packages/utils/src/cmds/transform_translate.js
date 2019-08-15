@@ -127,13 +127,6 @@ exports.builder = {
         default: TRANSLATION_IN_DIR,
     },
 
-    createOutDir: {
-        describe:
-            'Create the output dir if not existing, use `--no-create-out-dir` to exit with 1 when folder does not exist',
-        type: 'boolean',
-        default: 'true',
-    },
-
     overrideExistingFiles: {
         describe: 'Overriding the contents of existing translation files',
         type: 'boolean',
@@ -180,11 +173,8 @@ exports.handler = argv => {
         argv.verbose && log.debug(`Input directory exists ("${argv.inDir}")`)
     }
 
-    if (argv.noCreateOutDir && !outDirExists) {
-        log.error(`Output directory does not exist ("${argv.outDir}")`)
-        process.exit(1)
-    } else if (!argv.noCreateOutDir && !outDirExists) {
-        argv.verbose && log.debug(`Creating output dir: ${argv.outDir}`)
+    if (!outDirExists) {
+        log.debug(`Creating output dir: ${argv.outDir}`)
         fs.mkdirSync(argv.outDir, { recursive: true })
     } else {
         argv.verbose && log.debug('Output dir already exists, skip creating it')
