@@ -1,3 +1,15 @@
+/**
+ * Example usage:
+ *
+ * d2-utils transform_translate \
+ *   --in-dir ~/development/dhis2/maintenance-app/src/i18n \
+ *   --out-dir ~/development/dhis2/project-doom/i18n \
+ *   --override-existing-files \
+ *   --app-name maintenance-app \
+ *   --languages fr,ar \
+ *   --delete-old-files \
+ *   --log-missing-keys
+ */
 const path = require('path')
 const fs = require('fs')
 const log = require('@dhis2/cli-helpers-engine').reporter
