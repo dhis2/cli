@@ -18,8 +18,8 @@ const CONSUMING_ROOT = path.join(process.cwd())
 const TRANSLATION_IN_DIR = path.join(CONSUMING_ROOT, 'src/i18n')
 const TRANSLATION_OUT_DIR = path.join(CONSUMING_ROOT, 'i18n')
 
+const LENGTH_TO_SPLIT_LINE_AT = 77
 const fileIsOldTranslationFile = fileName => fileName.match(/\.properties$/)
-
 const appNamePattern = new RegExp('[a-z]+(-[a-z]+)?-app')
 
 /**
@@ -29,21 +29,22 @@ const appNamePattern = new RegExp('[a-z]+(-[a-z]+)?-app')
  * The translation needs to be split by whitespaces first in order to create the
  * correct structure of the new translation
  */
-const splitTranslation = (originalTranslation, translation) => {
-    const newParts = translation.split(' ').reduce((parts, curSplit) => {
+const splitTranslation = translation =>
+    translation.split(' ').reduce((parts, curSplit) => {
         const latestPart = parts[parts.length - 1]
         const latestPartEscaped = escape(latestPart)
         const curSplitEscaped = escape(curSplit)
 
         if (
             parts.length > 0 &&
-            latestPartEscaped.length + curSplitEscaped.length < 77
+            latestPartEscaped.length + curSplitEscaped.length <
+                LENGTH_TO_SPLIT_LINE_AT
         ) {
             parts[parts.length - 1] += ` ${curSplit}`
             return parts
         }
 
-        if (curSplitEscaped.length < 77) {
+        if (curSplitEscaped.length < LENGTH_TO_SPLIT_LINE_AT) {
             parts.push(curSplit)
             return parts
         }
@@ -54,9 +55,6 @@ const splitTranslation = (originalTranslation, translation) => {
 
         return parts
     }, [])
-
-    return newParts
-}
 
 const getTemplateMainLanguage = () => `
 msgid ""
@@ -316,27 +314,21 @@ exports.handler = argv => {
                             : languageTranslations[key]
 
                     newContents += '\n\n'
-                    if (originalTranslation.length < 77) {
+                    if (originalTranslation.length < LENGTH_TO_SPLIT_LINE_AT) {
                         newContents += `msgid "${originalTranslation}"\n`
                     } else {
                         newContents += `msgid ""\n`
-                        const newLines = splitTranslation(
-                            '',
-                            originalTranslation
-                        )
+                        const newLines = splitTranslation(originalTranslation)
                         newLines.forEach(translationPart => {
                             newContents += `"${unescape(translationPart)}"\n`
                         })
                     }
 
-                    if (translation.length < 77) {
+                    if (translation.length < LENGTH_TO_SPLIT_LINE_AT) {
                         newContents += `msgstr "${translation}"`
                     } else {
                         newContents += `msgstr ""\n`
-                        const newLines = splitTranslation(
-                            originalTranslation,
-                            translation
-                        )
+                        const newLines = splitTranslation(translation)
                         newLines.forEach(translationPart => {
                             newContents += `"${unescape(translationPart)}"\n`
                         })
