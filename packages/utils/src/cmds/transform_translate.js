@@ -91,7 +91,7 @@ exports.describe = 'Transform old translation file style to new style'
 exports.builder = {
     appName: {
         describe:
-            'The name of the app, must be lower case, use dashes instead of whitespaces and be prefixed with "-app". Normally this should the url part of the github repo (maintenance app => "maintenance-app")',
+            'The name of the app, must be lower case, use dashes instead of whitespaces and be postfixed with "-app". Normally this should the url part of the github repo (maintenance app => "maintenance-app")',
         type: 'string',
     },
 
