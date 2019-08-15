@@ -171,14 +171,14 @@ exports.handler = argv => {
         log.error(`Input directory does not exist ("${argv.inDir}")`)
         process.exit(1)
     } else {
-        argv.verbose && log.debug(`Input directory exists ("${argv.inDir}")`)
+        log.debug(`Input directory exists ("${argv.inDir}")`)
     }
 
     if (!outDirExists) {
         log.debug(`Creating output dir: ${argv.outDir}`)
         fs.mkdirSync(argv.outDir, { recursive: true })
     } else {
-        argv.verbose && log.debug('Output dir already exists, skip creating it')
+        log.info('Output dir already exists, skip creating it')
     }
 
     const translationFiles = fs
@@ -200,8 +200,7 @@ exports.handler = argv => {
         process.exit(1)
     }
 
-    argv.verbose &&
-        log.debug('Extracting key/value pairs from translation files')
+    log.debug('Extracting key/value pairs from translation files')
     const translations = translationFiles.reduce((mappings, file) => {
         const language = file.replace(/i18n_module_|.properties/g, '')
         const contents = fs.readFileSync(path.join(argv.inDir, file), {
@@ -261,17 +260,17 @@ exports.handler = argv => {
                 fs.existsSync(newLanguageFilePath) &&
                 !argv.appendToExistingFiles
             ) {
-                console.log('')
-                log.debug(
+                log.print('')
+                log.print(
                     `Creating translation file for "${language}" :: Skipped`
                 )
-                log.debug(
+                log.print(
                     `Translation file ("${newLanguageFilePath}") already exists.`
                 )
-                log.debug(
+                log.print(
                     `If you want to append the translations, use the "--append-to-existing-files" option.`
                 )
-                log.debug(
+                log.print(
                     `If you want to override the existing files, use the "--override-existing-files" option`
                 )
 
@@ -287,7 +286,7 @@ exports.handler = argv => {
                 if (languageTranslations.hasOwnProperty(key)) {
                     if (!translations[argv.primaryLanguage][key]) {
                         argv.logMissingKeys &&
-                            log.debug(
+                            log.info(
                                 `Original translation missing for key "${key}" of language "${language}"`
                             )
                         continue
@@ -323,19 +322,16 @@ exports.handler = argv => {
                 }
             }
 
-            argv.verbose &&
-                log.debug(
-                    `${
-                        shouldAppendContents ? 'Appending' : 'Writing'
-                    } to "${newLanguageFilePath}"`
-                )
+            log.info(
+                `${
+                    shouldAppendContents ? 'Appending' : 'Writing'
+                } to "${newLanguageFilePath}"`
+            )
             fs.writeFileSync(newLanguageFilePath, newContents, {
                 flag: shouldAppendContents ? 'a' : 'w',
             })
         }
     }
-
-    argv.verbose && log.debug('Creating translation files :: Done')
 
     if (argv.deleteOldFiles) {
         translationFiles.forEach(file => {
@@ -348,8 +344,8 @@ exports.handler = argv => {
                 try {
                     const filePathToDelete = path.join(argv.inDir, file)
                     fs.unlinkSync(filePathToDelete)
-                    argv.verbose && log.debug(`Deleted old file:`)
-                    argv.verbose && log.debug(`"${filePathToDelete}"`)
+                    log.debug(`Deleted old file:`)
+                    log.debug(`"${filePathToDelete}"`)
                 } catch (e) {
                     log.error('Could not delete old translation file')
                     log.error(e.message)
