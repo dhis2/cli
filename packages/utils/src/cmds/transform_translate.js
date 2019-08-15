@@ -93,6 +93,7 @@ exports.builder = {
         describe:
             'The name of the app, must be lower case, use dashes instead of whitespaces and be postfixed with "-app". Normally this should the url part of the github repo (maintenance app => "maintenance-app")',
         type: 'string',
+        required: true,
     },
 
     primaryLanguage: {
@@ -165,11 +166,6 @@ exports.handler = argv => {
     const languagesToTransform = argv.languages
         ? argv.languages.split(/,\s*/)
         : []
-
-    if (!argv.appName) {
-        log.error(`You need to provied an app name`)
-        process.exit(1)
-    }
 
     if (!appNamePattern.test(argv.appName)) {
         log.error(exports.builder.appName.describe)
