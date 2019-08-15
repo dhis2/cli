@@ -91,6 +91,12 @@ exports.builder = {
         default: 'en',
     },
 
+    languages: {
+        describe:
+            'A comma separated list of languages to create files for, when omitted, all are used',
+        type: 'string',
+    },
+
     deleteOld: {
         describe:
             'Deletes the old translation files, use `--no-delete-old` to keep the old files',
@@ -140,6 +146,9 @@ exports.builder = {
 exports.handler = argv => {
     const inDirExists = fs.existsSync(argv.inDir)
     const outDirExists = fs.existsSync(argv.outDir)
+    const languagesToTransform = argv.languages
+        ? argv.languages.split(/,\s*/)
+        : []
 
     if (!argv.appName) {
         log.error(`You need to provied an app name`)
@@ -199,6 +208,15 @@ exports.handler = argv => {
             .split('\n')
             .filter(line => line !== '' && !line[0].match(/\s*#/))
 
+        if (
+            languagesToTransform.length &&
+            // Primary language needed to build other translation files
+            language !== argv.primaryLanguage &&
+            languagesToTransform.indexOf(language) === -1
+        ) {
+            return mappings
+        }
+
         mappings[language] = lines.reduce((mapping, line) => {
             const [key, ...textParts] = line.split('=')
             const text = textParts.join('=')
@@ -212,6 +230,13 @@ exports.handler = argv => {
 
     for (const language in translations) {
         if (translations.hasOwnProperty(language)) {
+            if (
+                languagesToTransform.length &&
+                languagesToTransform.indexOf(language) === -1
+            ) {
+                continue
+            }
+
             const newLanguageFileName =
                 language === argv.primaryLanguage
                     ? `${language}.pot`
