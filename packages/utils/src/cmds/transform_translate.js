@@ -33,7 +33,6 @@ const TRANSLATION_OUT_DIR = path.join(CONSUMING_ROOT, 'i18n')
 const CREATION_DATE = new Date().toISOString()
 
 const fileIsOldTranslationFile = fileName => fileName.match(/\.properties$/)
-const appNamePattern = new RegExp('[a-z]+(-[a-z]+)?-app')
 
 exports.command = 'transform_translate'
 exports.describe = 'Transform old translation file style to new style'
@@ -79,14 +78,12 @@ exports.builder = {
     overrideExistingFiles: {
         describe: 'Overriding the contents of existing translation files',
         type: 'boolean',
-        default: 'false',
     },
 
     appendToExistingFiles: {
         describe:
             'Appends the new contents to existing translation files, can only be used when not using `--override-existing-files`',
         type: 'boolean',
-        default: 'false',
         conflicts: 'overrideExistingFiles',
     },
 
@@ -132,6 +129,7 @@ exports.handler = ({
 
     log.info('Extracting key/value pairs from translation files')
     const translations = generateTranslationMappings({
+        inDir,
         primaryLanguage: primaryLanguage,
         languagesToTransform,
         translationFiles,
@@ -142,6 +140,7 @@ exports.handler = ({
         outDir,
         appName,
         translations,
+        CREATION_DATE,
         logMissingKeys,
         primaryLanguage,
         languagesToTransform,

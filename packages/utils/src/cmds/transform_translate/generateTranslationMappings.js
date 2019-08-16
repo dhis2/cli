@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 
 /**
  * @param {Object} args
@@ -8,13 +9,14 @@ const fs = require('fs')
  * @return {Object}
  */
 const generateTranslationMappings = ({
+    inDir,
     translationFiles,
     languagesToTransform,
     primaryLanguage,
 }) =>
     translationFiles.reduce((mappings, file) => {
         const language = file.replace(/i18n_module_|.properties/g, '')
-        const contents = fs.readFileSync(path.join(argv.inDir, file), {
+        const contents = fs.readFileSync(path.join(inDir, file), {
             encoding: 'utf8',
         })
         const lines = contents
@@ -24,7 +26,7 @@ const generateTranslationMappings = ({
         if (
             languagesToTransform.length &&
             // Primary language needed to build other translation files
-            language !== argv.primaryLanguage &&
+            language !== primaryLanguage &&
             languagesToTransform.indexOf(language) === -1
         ) {
             return mappings

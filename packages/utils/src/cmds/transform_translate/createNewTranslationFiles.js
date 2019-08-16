@@ -15,6 +15,7 @@ const {
  * @param {Object} args
  * @param {string} args.outDir
  * @param {string} args.appName
+ * @param {Object} args.creationDate
  * @param {Object} args.translations
  * @param {boolean} args.logMissingKeys
  * @param {string} args.primaryLanguage
@@ -27,6 +28,7 @@ const createNewTranslationFiles = ({
     outDir,
     appName,
     translations,
+    creationDate,
     logMissingKeys,
     primaryLanguage,
     languagesToTransform,
@@ -74,8 +76,12 @@ const createNewTranslationFiles = ({
             } else if (!fs.existsSync(newLanguageFilePath)) {
                 newContents +=
                     language === primaryLanguage
-                        ? getTemplateMainLanguage()
-                        : getTemplateAlternativeLanguage(appName, language)
+                        ? getTemplateMainLanguage(creationDate)
+                        : getTemplateAlternativeLanguage(
+                              appName,
+                              language,
+                              creationDate
+                          )
             }
 
             for (const key in languageTranslations) {
