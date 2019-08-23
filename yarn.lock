@@ -2039,6 +2039,13 @@ hosted-git-info@^2.1.4, hosted-git-info@^2.6.0, hosted-git-info@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
 
+hosted-git-info@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-3.0.0.tgz#dd8af49cd01e73cc8e61ba13e217a772fd4ecd2d"
+  integrity sha512-zYSx1cP4MLsvKtTg8DF/PI6e6FHZ3wcawcTGsrLU2TM+UfD4jmSrn2wdQT16TFbH3lO4PIdjLG0E+cuYDgFD9g==
+  dependencies:
+    lru-cache "^5.1.1"
+
 http-cache-semantics@^3.8.1:
   version "3.8.1"
   resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-3.8.1.tgz#39b0e16add9b605bf0a9ef3d9daaf4843b4cacd2"
@@ -4212,10 +4219,10 @@ safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, 
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
-semantic-release@^15.13.19:
-  version "15.13.19"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.13.19.tgz#d1d05b3516fb8701d81f4e6b9be42bafffef13cb"
-  integrity sha512-6eqqAmzGaJWgP5R5IkWIQK9is+cWUp/A+pwzxf/YaG1hJv1eD25klUP7Y0fedsPOxxI8eLuDUVlEs7U8SOlK0Q==
+semantic-release@^15.13.24:
+  version "15.13.24"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.13.24.tgz#f0b9544427d059ba5e3c89ac1545234130796be7"
+  integrity sha512-OPshm6HSp+KmZP9dUv1o3MRILDgOeHYWPI+XSpQRERMri7QkaEiIPkZzoNm2d6KDeFDnp03GphQQS4+Zfo+x/Q==
   dependencies:
     "@semantic-release/commit-analyzer" "^6.1.0"
     "@semantic-release/error" "^2.2.0"
@@ -4232,8 +4239,8 @@ semantic-release@^15.13.19:
     get-stream "^5.0.0"
     git-log-parser "^1.2.0"
     hook-std "^2.0.0"
-    hosted-git-info "^2.7.1"
-    lodash "^4.17.4"
+    hosted-git-info "^3.0.0"
+    lodash "^4.17.15"
     marked "^0.7.0"
     marked-terminal "^3.2.0"
     p-locate "^4.0.0"
@@ -4242,7 +4249,7 @@ semantic-release@^15.13.19:
     resolve-from "^5.0.0"
     semver "^6.0.0"
     signale "^1.2.1"
-    yargs "^13.1.0"
+    yargs "^14.0.0"
 
 semver-compare@^1.0.0:
   version "1.0.0"
@@ -5053,6 +5060,23 @@ yargs@^13.1.0, yargs@^13.3.0:
   integrity sha512-2eehun/8ALW8TLoIl7MVaRUrg+yCnenu8B4kBlRxj3GJGDKU1Og7sMXPNm1BYyM1DOJmTZ4YeN/Nwxv+8XJsUA==
   dependencies:
     cliui "^5.0.0"
+    find-up "^3.0.0"
+    get-caller-file "^2.0.1"
+    require-directory "^2.1.1"
+    require-main-filename "^2.0.0"
+    set-blocking "^2.0.0"
+    string-width "^3.0.0"
+    which-module "^2.0.0"
+    y18n "^4.0.0"
+    yargs-parser "^13.1.1"
+
+yargs@^14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-14.0.0.tgz#ba4cacc802b3c0b3e36a9e791723763d57a85066"
+  integrity sha512-ssa5JuRjMeZEUjg7bEL99AwpitxU/zWGAGpdj0di41pOEmJti8NR6kyUIJBkR78DTYNPZOU08luUo0GTHuB+ow==
+  dependencies:
+    cliui "^5.0.0"
+    decamelize "^1.2.0"
     find-up "^3.0.0"
     get-caller-file "^2.0.1"
     require-directory "^2.1.1"
