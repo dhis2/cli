@@ -4,6 +4,35 @@ const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const { makeComposeProject, listClusters } = require('../common')
 const Table = require('cli-table3')
 
+const getStatus = async cluster =>
+    // TODO: check the status of the other services, not just `core`
+    await exec({
+        cmd: 'docker',
+        args: [
+            'ps',
+            '--filter',
+            `name=${makeComposeProject(cluster.name)}_core`,
+            '--format',
+            '{{.Status}}',
+        ],
+        pipe: false,
+        captureOut: true,
+    })
+
+const formatStatus = status => {
+    status = status.trim()
+
+    if (status.length === 0) {
+        return chalk.grey('Down')
+    } else if (/\(Paused\)$/.test(status)) {
+        return chalk.cyan(status)
+    } else if (/^Up \d+/.test(status)) {
+        return chalk.green(status)
+    } else {
+        return chalk.yellow(status)
+    }
+}
+
 const run = async function(argv) {
     const clusters = await listClusters(argv)
 
@@ -20,29 +49,8 @@ const run = async function(argv) {
 
     await Promise.all(
         clusters.map(async cluster => {
-            let status = await exec({
-                cmd: 'docker',
-                args: [
-                    'ps',
-                    '--filter',
-                    `name=${makeComposeProject(cluster.name)}_core`,
-                    '--format',
-                    '{{.Status}}',
-                ],
-                pipe: false,
-                captureOut: true,
-            })
-
-            if (status.length === 0) {
-                status = chalk.grey('Down')
-            } else if (/\(Paused\)/.test(status)) {
-                status = chalk.cyan(status)
-            } else if (/$Up \d+/.test(status)) {
-                status = chalk.green(status)
-            } else {
-                status = chalk.yellow(status)
-            }
-            cluster.status = status
+            const status = await getStatus(cluster)
+            cluster.status = formatStatus(status)
         })
     )
 
@@ -53,7 +61,7 @@ const run = async function(argv) {
             cluster.channel,
             cluster.dhis2Version,
             cluster.dbVersion,
-            cluster.status.trim(),
+            cluster.status,
         ])
     )
 
