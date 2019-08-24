@@ -141,6 +141,18 @@
     update-notifier "^3.0.0"
     yargs "^13.1.0"
 
+"@dhis2/cli-helpers-engine@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-helpers-engine/-/cli-helpers-engine-1.4.0.tgz#6371bce3017a5bc0c2b8ea84b77f253d75b8771e"
+  integrity sha512-2WLWJ5DcIiECmUlX2ChU2Wbqe/iJ42nDPQGjQXK1YzryNdnXyftUjJRwrLYWwaKGmWzfnPvpu8tvp+Yjysl78A==
+  dependencies:
+    chalk "^2.4.2"
+    fs-extra "^8.0.1"
+    request "^2.88.0"
+    tar "^4.4.8"
+    update-notifier "^3.0.0"
+    yargs "^13.1.0"
+
 "@dhis2/cli-style@4.1.1":
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@dhis2/cli-style/-/cli-style-4.1.1.tgz#0d7da6684bb1b506a741c6ce020b5030c3132322"
@@ -3505,7 +3517,6 @@ npm@^6.10.3:
     cmd-shim "^3.0.3"
     columnify "~1.5.4"
     config-chain "^1.1.12"
-    debuglog "*"
     detect-indent "~5.0.0"
     detect-newline "^2.1.0"
     dezalgo "~1.0.3"
@@ -3520,7 +3531,6 @@ npm@^6.10.3:
     has-unicode "~2.0.1"
     hosted-git-info "^2.8.2"
     iferr "^1.0.2"
-    imurmurhash "*"
     infer-owner "^1.0.4"
     inflight "~1.0.6"
     inherits "^2.0.4"
@@ -3539,14 +3549,8 @@ npm@^6.10.3:
     libnpx "^10.2.0"
     lock-verify "^2.1.0"
     lockfile "^1.0.4"
-    lodash._baseindexof "*"
     lodash._baseuniq "~4.6.0"
-    lodash._bindcallback "*"
-    lodash._cacheindexof "*"
-    lodash._createcache "*"
-    lodash._getnative "*"
     lodash.clonedeep "~4.5.0"
-    lodash.restparam "*"
     lodash.union "~4.6.0"
     lodash.uniq "~4.5.0"
     lodash.without "~4.4.0"
