@@ -10,6 +10,7 @@ const getStatus = async cluster =>
         cmd: 'docker',
         args: [
             'ps',
+            '-a', // Include stopped containers
             '--filter',
             `name=${makeComposeProject(cluster.name)}_core`,
             '--format',
@@ -28,6 +29,8 @@ const formatStatus = status => {
         return chalk.cyan(status)
     } else if (/^Up/.test(status)) {
         return chalk.green(status)
+    } else if (/^Exited/.test(status)) {
+        return chalk.red(status)
     } else {
         return chalk.yellow(status)
     }
