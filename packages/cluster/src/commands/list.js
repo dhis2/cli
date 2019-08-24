@@ -26,7 +26,7 @@ const formatStatus = status => {
         return chalk.grey('Down')
     } else if (/\(Paused\)$/.test(status)) {
         return chalk.cyan(status)
-    } else if (/^Up \d+/.test(status)) {
+    } else if (/^Up/.test(status)) {
         return chalk.green(status)
     } else {
         return chalk.yellow(status)
