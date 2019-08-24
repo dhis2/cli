@@ -1,0 +1,76 @@
+const chalk = require('chalk')
+const path = require('path')
+const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
+const { makeComposeProject, listClusters } = require('../common')
+const Table = require('cli-table3')
+
+const getStatus = async cluster =>
+    // TODO: check the status of the other services, not just `core`
+    await exec({
+        cmd: 'docker',
+        args: [
+            'ps',
+            '--filter',
+            `name=${makeComposeProject(cluster.name)}_core`,
+            '--format',
+            '{{.Status}}',
+        ],
+        pipe: false,
+        captureOut: true,
+    })
+
+const formatStatus = status => {
+    status = status.trim()
+
+    if (status.length === 0) {
+        return chalk.grey('Down')
+    } else if (/\(Paused\)$/.test(status)) {
+        return chalk.cyan(status)
+    } else if (/^Up \d+/.test(status)) {
+        return chalk.green(status)
+    } else {
+        return chalk.yellow(status)
+    }
+}
+
+const run = async function(argv) {
+    const clusters = await listClusters(argv)
+
+    const table = new Table({
+        head: [
+            'Name',
+            'Port',
+            'Channel',
+            'DHIS2 Version',
+            'DB Version',
+            'Status',
+        ],
+    })
+
+    await Promise.all(
+        clusters.map(async cluster => {
+            const status = await getStatus(cluster)
+            cluster.status = formatStatus(status)
+        })
+    )
+
+    clusters.forEach(cluster =>
+        table.push([
+            chalk.blue(cluster.name),
+            cluster.port,
+            cluster.channel,
+            cluster.dhis2Version,
+            cluster.dbVersion,
+            cluster.status,
+        ])
+    )
+
+    reporter.print(table)
+}
+
+module.exports = {
+    command: 'list',
+    desc: 'List all active cluster configurations',
+    aliases: 'ls',
+    handler: run,
+}
