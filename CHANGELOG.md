@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/dhis2/cli/compare/v2.0.0...v2.1.0) (2019-08-24)
+
+
+### Features
+
+* add `cluster list` command ([#118](https://github.com/dhis2/cli/issues/118)) ([b3b1e6d](https://github.com/dhis2/cli/commit/b3b1e6d))
+
 # [2.0.0](https://github.com/dhis2/cli/compare/v1.4.0...v2.0.0) (2019-07-15)
 
 
