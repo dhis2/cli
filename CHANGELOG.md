@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/dhis2/cli/compare/v2.1.0...v2.1.1) (2019-08-25)
+
+
+### Bug Fixes
+
+* improve cluster list formatting ([#119](https://github.com/dhis2/cli/issues/119)) ([8b6411c](https://github.com/dhis2/cli/commit/8b6411c))
+
 # [2.1.0](https://github.com/dhis2/cli/compare/v2.0.0...v2.1.0) (2019-08-24)
 
 
