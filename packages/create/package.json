@@ -3,7 +3,7 @@
     "bin": {
         "d2-create": "./bin/d2-create"
     },
-    "version": "2.1.0",
+    "version": "2.1.2",
     "main": "src/index.js",
     "author": "Austin McGee <austin@dhis2.org>",
     "license": "BSD-3-Clause",
