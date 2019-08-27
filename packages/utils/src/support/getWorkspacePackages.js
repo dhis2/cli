@@ -18,8 +18,8 @@ const getWorkspacePackages = async packageFile => {
                 workspaces = rootPackage.workspaces
             } else {
                 workspaces = rootPackage.workspaces.packages
-                if (!workspaces || !workspaces.isArray(workspaces)) {
-                    reporter.debug(
+                if (!workspaces || !Array.isArray(workspaces)) {
+                    reporter.warn(
                         '[release::getWorkspacePackage] Invalid workspaces key-value in root package.json'
                     )
                     return []
@@ -35,7 +35,7 @@ const getWorkspacePackages = async packageFile => {
             )
         }
     } catch (e) {
-        reporter.debug(
+        reporter.warn(
             '[release::getWorkspacePackage] Failed to load root package.json',
             e
         )
