@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/dhis2/cli/compare/v2.1.1...v2.1.2) (2019-08-27)
+
+
+### Bug Fixes
+
+* missing import ([06d22bc](https://github.com/dhis2/cli/commit/06d22bc))
+
 ## [2.1.1](https://github.com/dhis2/cli/compare/v2.1.0...v2.1.1) (2019-08-25)
 
 

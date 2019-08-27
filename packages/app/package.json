@@ -3,7 +3,7 @@
     "bin": {
         "d2-app": "./bin/d2-app"
     },
-    "version": "2.1.1",
+    "version": "2.1.2",
     "main": "src/index.js",
     "author": "Austin McGee <austin@dhis2.org>",
     "contributors": [
