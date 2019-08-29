@@ -102,9 +102,9 @@ const handler = async ({ publish }) => {
         env: {
             ...process.env,
             GIT_AUTHOR_NAME: '@dhis2-bot',
-            GIT_AUTHOR_EMAIL: 'ci@dhis2.org',
+            GIT_AUTHOR_EMAIL: 'apps@dhis2.org',
             GIT_COMMITTER_NAME: '@dhis2-bot',
-            GIT_COMMITTER_EMAIL: 'ci@dhis2.org',
+            GIT_COMMITTER_EMAIL: 'apps@dhis2.org',
             NPM_CONFIG_ALLOW_SAME_VERSION: 'true', // Ensure we still publish even though we've already updated the pacakge versions
         },
     }
