@@ -1,3 +1,31 @@
+## [2.1.3](https://github.com/dhis2/cli/compare/v2.1.2...v2.1.3) (2019-08-27)
+
+
+### Bug Fixes
+
+* properly handle workspaces.packages arrays ([1a5929a](https://github.com/dhis2/cli/commit/1a5929a))
+
+## [2.1.2](https://github.com/dhis2/cli/compare/v2.1.1...v2.1.2) (2019-08-27)
+
+
+### Bug Fixes
+
+* missing import ([06d22bc](https://github.com/dhis2/cli/commit/06d22bc))
+
+## [2.1.1](https://github.com/dhis2/cli/compare/v2.1.0...v2.1.1) (2019-08-25)
+
+
+### Bug Fixes
+
+* improve cluster list formatting ([#119](https://github.com/dhis2/cli/issues/119)) ([8b6411c](https://github.com/dhis2/cli/commit/8b6411c))
+
+# [2.1.0](https://github.com/dhis2/cli/compare/v2.0.0...v2.1.0) (2019-08-24)
+
+
+### Features
+
+* add `cluster list` command ([#118](https://github.com/dhis2/cli/issues/118)) ([b3b1e6d](https://github.com/dhis2/cli/commit/b3b1e6d))
+
 # [2.0.0](https://github.com/dhis2/cli/compare/v1.4.0...v2.0.0) (2019-07-15)
 
 
