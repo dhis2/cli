@@ -4,16 +4,20 @@ const handlebars = require('handlebars')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 const chalk = require('chalk')
 
-const walkDir = (rootDir, fn) => {
+const textExtensionsRegex = /txt|md|html|[jt]s(x?)|rtf|csv|json/
+
+const walkDir = async (rootDir, fn) => {
     const children = fs.readdirSync(rootDir)
-    children.forEach(child => {
-        const childPath = path.join(rootDir, child)
-        if (fs.statSync(childPath).isDirectory()) {
-            walkDir(childPath, fn)
-        } else {
-            fn(childPath)
-        }
-    })
+    return Promise.all(
+        children.map(async child => {
+            const childPath = path.join(rootDir, child)
+            if (fs.statSync(childPath).isDirectory()) {
+                return await walkDir(childPath, fn)
+            } else {
+                return await fn(childPath)
+            }
+        })
+    )
 }
 
 const replacePathVariables = (initialPath, data) => {
@@ -26,22 +30,26 @@ const replacePathVariables = (initialPath, data) => {
 const writeTemplate = (inFile, outFile, data) => {
     const hbs = fs.readFileSync(inFile, 'utf8')
     const template = handlebars.compile(hbs)
-    let dest = replacePathVariables(outFile, data)
+    const dest = replacePathVariables(outFile, data)
 
     reporter.debug(`Installing ${dest} from ${inFile}`)
     fs.ensureDirSync(path.dirname(dest))
     fs.writeFileSync(dest, template(data))
 }
 
-const installTemplate = (type, outDir, data) => {
-    const rootDir = path.join(__dirname, '../templates', type)
-    reporter.debug(`Installing template ${chalk.bold(type)}`)
-    reporter.debug('  outDir:', outDir)
-    reporter.debug('  data:  ', data)
-    walkDir(rootDir, p => {
-        const outPath = path.join(outDir, path.relative(rootDir, p))
-        writeTemplate(p, outPath, data)
+const installTemplate = async (src, dest, data) => {
+    await walkDir(src, p => {
+        const outPath = path.join(dest, path.relative(src, p))
+        if (textExtensionsRegex.test(path.extname(p))) {
+            writeTemplate(p, outPath, data)
+        } else {
+            fs.copyFileSync(p, outPath)
+        }
+        // if (fs.accessSync(p, fs.X_OK)) {
+        //     fs.chmodSync(outPath, 'rwx')
+        // }
     })
 }
 
 module.exports = installTemplate
+module.exports.walkDir = walkDir
