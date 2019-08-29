@@ -12,7 +12,7 @@
  */
 const path = require('path')
 const fs = require('fs')
-const log = require('@dhis2/cli-helpers-engine').reporter
+const { log, namespace } = require('@dhis2/cli-helpers-engine')
 
 const {
     checkRequirements,
@@ -34,9 +34,9 @@ const CREATION_DATE = new Date().toISOString()
 
 const fileIsOldTranslationFile = fileName => fileName.match(/\.properties$/)
 
-exports.command = 'transform_translate'
-exports.describe = 'Transform old translation file style to new style'
-exports.builder = {
+const command = 'transform_translate'
+const describe = 'Transform old translation file style to new style'
+const builder = {
     appName: {
         describe:
             'The name of the app, must be lower case, use dashes instead of whitespaces and be postfixed with "-app". Normally this should the url part of the github repo (maintenance app => "maintenance-app")',
@@ -101,7 +101,7 @@ exports.builder = {
     },
 }
 
-exports.handler = ({
+const handler = ({
     inDir,
     outDir,
     appName,
@@ -156,3 +156,10 @@ exports.handler = ({
         })
     }
 }
+
+module.exports = namespace('i18n', {
+    command,
+    describe,
+    builder,
+    handler,
+})
