@@ -34,8 +34,6 @@ const CREATION_DATE = new Date().toISOString()
 
 const fileIsOldTranslationFile = fileName => fileName.match(/\.properties$/)
 
-const command = 'transform_translate'
-const describe = 'Transform old translation file style to new style'
 const builder = {
     appName: {
         describe:
@@ -157,9 +155,13 @@ const handler = ({
     }
 }
 
-module.exports = namespace('i18n', {
-    command,
-    describe,
+const modernize = {
+    describe: 'Transform old translation file style to new style',
     builder,
     handler,
+}
+
+module.exports = namespace('i18n', {
+    description: 'Handle translations in apps',
+    commands: { modernize },
 })
