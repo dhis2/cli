@@ -130,10 +130,10 @@ const handler = ({
 
     reporter.info('Creating new translation files')
     createNewTranslationFiles({
+        creationDate: CREATION_DATE,
         outDir,
         pootlePath,
         translations,
-        CREATION_DATE,
         logMissingKeys,
         primaryLanguage,
         languagesToTransform,
