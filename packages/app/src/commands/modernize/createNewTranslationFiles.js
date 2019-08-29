@@ -73,7 +73,10 @@ const createNewTranslationFiles = ({
                 )
 
                 continue
-            } else if (!fs.existsSync(newLanguageFilePath)) {
+            } else if (
+                overrideExistingFiles ||
+                !fs.existsSync(newLanguageFilePath)
+            ) {
                 newContents +=
                     language === primaryLanguage
                         ? getTemplateMainLanguage(creationDate)
