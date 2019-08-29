@@ -1,7 +1,7 @@
 /**
  * Example usage:
  *
- * d2-utils transform_translate \
+ * d2-utils modernize \
  *   --in-dir ~/development/dhis2/maintenance-app/src/i18n \
  *   --out-dir ~/development/dhis2/project-doom/i18n \
  *   --override-existing-files \
@@ -16,16 +16,16 @@ const { log, namespace } = require('@dhis2/cli-helpers-engine')
 
 const {
     checkRequirements,
-} = require('./transform_translate/checkRequirements.js')
+} = require('./modernize/checkRequirements.js')
 const {
     deleteLegacyFiles,
-} = require('./transform_translate/deleteLegacyFiles.js')
+} = require('./modernize/deleteLegacyFiles.js')
 const {
     generateTranslationMappings,
-} = require('./transform_translate/generateTranslationMappings.js')
+} = require('./modernize/generateTranslationMappings.js')
 const {
     createNewTranslationFiles,
-} = require('./transform_translate/createNewTranslationFiles.js')
+} = require('./modernize/createNewTranslationFiles.js')
 
 const CONSUMING_ROOT = path.join(process.cwd())
 const TRANSLATION_IN_DIR = path.join(CONSUMING_ROOT, 'src/i18n')
