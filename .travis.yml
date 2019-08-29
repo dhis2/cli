@@ -1,23 +1,23 @@
 language: node_js
 node_js:
-    - lts/*
+- lts/*
 script:
-    - echo "Smoke testing d2 executable"
-    - ./packages/main/bin/d2 debug system
-    - yarn test
+- echo "Smoke testing d2 executable"
+- "./packages/main/bin/d2 debug system"
+- yarn test
 deploy:
-    - provider: script
-      skip_cleanup: true
-      script:
-          - ./packages/utils/bin/d2-utils release --publish npm
-      on:
-          tags: false
-          branch: master
+- provider: script
+  skip_cleanup: true
+  script:
+  - "./packages/utils/bin/d2-utils release --publish npm"
+  on:
+    tags: false
+    branch: master
 env:
-    global:
-        - GIT_AUTHOR_NAME=@dhis2-bot
-        - GIT_AUTHOR_EMAIL=ci@dhis2.org
-        - GIT_COMMITTER_NAME=@dhis2-bot
-        - GIT_COMMITTER_EMAIL=ci@dhis2.org
-        - secure: CxBl9xFgVQhl/xFj8G9WrWKGcIB5cmdwYsSohmes2xvJZJ/2wDSC0PjewSk3BWT9CxiZ6Hv36S/54TL3q6xRsMl2GKawLtVkuozFtJd42G8wqrXVylQvix7HjgiYpPPK68sYnrV0Q3/9DK4StXYFr4JBWcgZ0pKL9KaaY7BeKMFkahRiVqa4yhTIZm1V1o6CYyQ4CKy+ZipDp9Igy+VNjSY6waTifQ5EuvL8DnETdtbp/tngUHbdXoNT+H4RQvd1f9ChRncUYlk6jTiBdGd5aN/ag0O1GY5SPQJJ4K/dyiQdbNUIb345z2tJjwr+FaUTm/fU6j+riZIs2sJ9oFlGylGokPSZQgozCtJTiP5JIP3uHtu3K9Tw/md/a1uZ8dIoCIQQoR8rx/zwlWpAVKs+ZudrNQKtnGiJ58qr5EezPuXQrMQAh+cMMkYfVRpdFv/c4yq/7SU1nK6y93gJnqw6I01nn4wNK77impIhdpwDTGbsrUdIeMojDb+VOoo3llwkeV9gRKquLZpKW1b/TXU9IQ/Icw+bN8SAnY6vqKxbg3vdBGrs9amYBIJGXxKxBZjYa+MnQiP/ipRpm3EDLn8XXiVS+VZSTCbr1cuEmJQPllTOV9c2Ov0Ie0KcBpevzfQ2p2uH+zYMSzE7+hkoQht2o+bVrSfiHqgSup8pAnYVmX4=
-        - secure: OVdVE/sQMl0kLT4SvKFr6yVlGGC6DiQyMdUjZM4tjfh/pMNVLm8EmMccnoUSfnuDjp7lU87gbjauVP4qbMBl2j9ZBBisRAArZgf4jJ3W9H+kQGrQB8COxgWXp85mVO3qvCbbNTOCQXKPiR51kEHV4xxPcbQzLNz9endqi6zyfOGdes4kEJY/gWX+TAtYMstHVUVN097S0bLMW6xjeodlnulcEzw2LFAXSDtGj1xtjkE6XrqBIIqIR2eW/gKwiB+WGLscn9pZln1I1F2upGSE/KVBzvFk02aV5md/2PkJLtYYRxrI5LwqRvKf0FazUfsjG2BlkSV7pGySvBeLeTz2hTvOjUjXM+w5VjpL00Qor9q20p+qXe31sS7dGr8Pk6vsXMsDljvEgi32k1VuumaU2RfgPYMFtH+gYam7SIchg8A/XtWQnL5hOybc7ceVM09uRUPBtEWAy6Wn5bczt6nTsXOmfcpYH+PMnIoStG+A/636nkEDTy30k2mOa3PW+Yjh7a8jOk+yHClvoZANw3cqKjL83lW5cP/LdWe3LT5UjSUjk9hd1ndEWAUbOBEAG6MACJniF9YuwGe25JJMHArOS+pGIM3AuZsBC5lXSnALMjH2Bqfgjuhcn+djWXEvTJGr5kCwchgtqlARWUh0J5B1nwx48jvUnCyyniReKdR6n5k=
+  global:
+  - GIT_AUTHOR_NAME=@dhis2-bot
+  - GIT_AUTHOR_EMAIL=apps@dhis2.org
+  - GIT_COMMITTER_NAME=@dhis2-bot
+  - GIT_COMMITTER_EMAIL=apps@dhis2.org
+  - secure: WMu2f5d2AkwYMZEisCtMfc5rSrV8TcMmom2qvaDLk2+2AHcupWUXZWPv8NUJnYYdtqmfoS7pTFz0TmIQ7i+XVK4HDnxE+ksq/byXn0UNj9p8OB6c8RsJJqSL7c8HT1k6yQxseKnPHRE6jTiVXIgq3SkY32bYGgB7ZmxNTcjmmmPhmvXYJzfgIsM2b5hA/FW1sDtnLXFS9F6GLgF9p99eNP810zBrtxcGcXFuRhNpLv9IGJd4QSh4NsKak+4z/w8L+oaWbF0FUAJY5MjelL99lIPG5M6RIdoxAWLDbw2a568lsrGr7CuMzZz/Z0gXWWta5KRoB66YRpDdtZtY3Qh4PWlMKPONy7RcTr3XX7tDykh1EXHwiYyfSNlqBO/TWsK5bC9gbjM+q+jNR6SDudVIqSHGjrev/x9P0eFF/W7hGd6/0zMkz7BJWYfSkiLLNzkk6wtiHBvk3gh9bCgmIhn2c6N8HDFKTd70PJ2lFZBfhu1O2NEVH7W4KFFXNj8JgIUps9KmIjpfSilYBJNHGH0UAZdzQEijG8shtM2y/RBvysnByLJxrSnqSAeJPx7CfTam3Q0QWIwa5TIuIzWJSTwtYv5PY+Y6EzL0LhLaFB4vg+66e+zha6E1oZPfOKFWdJkt7Kl++IQegIsVFRKqei61rkP9Fx7gu82hRKXz1ljLb9o=
+  - secure: EnTJ5emmdlkHgpv3akmLaWMuILqKlXKi3XxtCsYDuMmb4gfPTP6ubpFzrHi82cF23NDhljgedpvEZ8omdxZolk8mYqX0dPq6FTLr49OIf7GdE9vPeqPbq1YKDesXuI6iuvCBCkDmgWErMdmF0NTmwd24W6M3CmsJ7q38v31c7gNyjWu7sX4qiLO1o5WnxLXZ7DBfljJd79trdAaCebHb2Vfz7u16kpMT+w77BlVueFiCTqLQe8BZ0SnMOB/hKmBbPMx/qZ6czp/EXCWdFj/xzN7yJoF23xiTSMHtnfSjQmQTJVQPCfJKi5VvCQe2r2jyeg2Q6JbyBW27Y7BUMaAs9cE38Sr34xzzQghLSbiQehUxTHn+RbV9t1FKMOezx4jmgxLtLvJ9+gmZOzosgoOt9iZc4Jw1kon3mRhi9G7YD066+hUaObKNDYGfIomWrnZWPDARELunNBLiHhS+eBg+gJT19xuaELciFToG+/GWUP00ww+PhzrvmI5YeYY+tCpnkY08fMIRbn2c51XTpCxDScH7xVDAYL0M3+PkcfUboAmRTBWc7KlUzAJcarPgb/w/78vkLeOQNC64VySJH3X9AjBTwybgf2T8oIezIOuNIToxam4rNqtZmLo8K+IvufHMh6wZyEbj3ZZKewvLlK6e8kxo6IPmQB+NFUe8MLtk1Zo=
