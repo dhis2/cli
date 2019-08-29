@@ -164,7 +164,15 @@ module.exports.makeEnvironment = cfg => {
 
 module.exports.makeComposeProject = name => `d2-cluster-${name}`
 
-module.exports.getLocalClusters = async () => {}
+module.exports.listClusters = async argv => {
+    const cache = argv.getCache()
+
+    const stat = await cache.stat(clusterDir)
+    const promises = Object.keys(stat.children)
+        .filter(name => cache.exists(path.join(clusterDir, name)))
+        .map(name => resolveConfiguration({ name, getCache: argv.getCache }))
+    return await Promise.all(promises)
+}
 
 module.exports.makeDockerImage = makeDockerImage
 module.exports.resolveConfiguration = resolveConfiguration
