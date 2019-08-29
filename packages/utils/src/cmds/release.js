@@ -116,9 +116,7 @@ const handler = async ({ publish }) => {
             const { lastRelease, commits, nextRelease, releases } = result
 
             reporter.info(
-                `Published ${nextRelease.type} release version ${
-                    nextRelease.version
-                } containing ${commits.length} commits.`
+                `Published ${nextRelease.type} release version ${nextRelease.version} containing ${commits.length} commits.`
             )
 
             if (lastRelease.version) {
@@ -127,9 +125,7 @@ const handler = async ({ publish }) => {
 
             for (const release of releases) {
                 reporter.info(
-                    `The release was published with plugin "${
-                        release.pluginName
-                    }".`
+                    `The release was published with plugin "${release.pluginName}".`
                 )
             }
         } else {
