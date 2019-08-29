@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const log = require('@dhis2/cli-helpers-engine').reporter
+const { reporter } = require('@dhis2/cli-helpers-engine')
 
 const {
     getTemplateMainLanguage,
@@ -58,17 +58,17 @@ const createNewTranslationFiles = ({
                 fs.existsSync(newLanguageFilePath) &&
                 !appendToExistingFiles
             ) {
-                log.print('')
-                log.print(
+                reporter.print('')
+                reporter.print(
                     `Creating translation file for "${language}" :: Skipped`
                 )
-                log.print(
+                reporter.print(
                     `Translation file ("${newLanguageFilePath}") already exists.`
                 )
-                log.print(
+                reporter.print(
                     `If you want to append the translations, use the "--append-to-existing-files" option.`
                 )
-                log.print(
+                reporter.print(
                     `If you want to override the existing files, use the "--override-existing-files" option`
                 )
 
@@ -88,7 +88,7 @@ const createNewTranslationFiles = ({
                 if (languageTranslations.hasOwnProperty(key)) {
                     if (!translations[primaryLanguage][key]) {
                         logMissingKeys &&
-                            log.info(
+                            reporter.info(
                                 `Original translation missing for key "${key}" of language "${language}"`
                             )
                         continue
@@ -130,7 +130,7 @@ const createNewTranslationFiles = ({
                 fs.existsSync(newLanguageFilePath) &&
                 appendToExistingFiles
 
-            log.info(
+            reporter.info(
                 `${
                     shouldAppendContents ? 'Appending' : 'Writing'
                 } to "${newLanguageFilePath}"`

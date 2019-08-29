@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const log = require('@dhis2/cli-helpers-engine').reporter
+const { reporter } = require('@dhis2/cli-helpers-engine')
 
 /**
  * @param {Object} args
@@ -20,17 +20,17 @@ const checkRequirements = ({
     const outDirExists = fs.existsSync(outDir)
 
     if (!inDirExists) {
-        log.error(`Input directory does not exist ("${inDir}")`)
+        reporter.error(`Input directory does not exist ("${inDir}")`)
         process.exit(1)
     } else {
-        log.debug(`Input directory exists ("${inDir}")`)
+        reporter.debug(`Input directory exists ("${inDir}")`)
     }
 
     if (!outDirExists) {
-        log.debug(`Creating output dir: ${outDir}`)
+        reporter.debug(`Creating output dir: ${outDir}`)
         fs.mkdirSync(outDir, { recursive: true })
     } else {
-        log.info('Output dir already exists, skip creating it')
+        reporter.info('Output dir already exists, skip creating it')
     }
 
     const mainTranslationFile = translationFiles.find(file =>
@@ -39,7 +39,7 @@ const checkRequirements = ({
     const mainTranslationFilePath = path.join(inDir, mainTranslationFile)
 
     if (!fs.existsSync(mainTranslationFilePath)) {
-        log.error(
+        reporter.error(
             `Main language file must exist ("${path.join(
                 inDir,
                 mainTranslationFile

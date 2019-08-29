@@ -12,7 +12,9 @@
  */
 const path = require('path')
 const fs = require('fs')
-const { log, namespace } = require('@dhis2/cli-helpers-engine')
+
+const { namespace } = require('@dhis2/cli-helpers-engine')
+const { reporter } = require('@dhis2/cli-helpers-engine')
 
 const { checkRequirements } = require('./modernize/checkRequirements.js')
 const { deleteLegacyFiles } = require('./modernize/deleteLegacyFiles.js')
@@ -110,7 +112,7 @@ const handler = ({
         .readdirSync(inDir)
         .filter(fileIsOldTranslationFile)
 
-    log.info('Checking requirements')
+    reporter.info('Checking requirements')
     checkRequirements({
         inDir,
         outDir,
@@ -118,7 +120,7 @@ const handler = ({
         translationFiles,
     })
 
-    log.info('Extracting key/value pairs from translation files')
+    reporter.info('Extracting key/value pairs from translation files')
     const translations = generateTranslationMappings({
         inDir,
         primaryLanguage: primaryLanguage,
@@ -126,7 +128,7 @@ const handler = ({
         translationFiles,
     })
 
-    log.info('Creating new translation files')
+    reporter.info('Creating new translation files')
     createNewTranslationFiles({
         outDir,
         pootlePath,
@@ -140,7 +142,7 @@ const handler = ({
     })
 
     if (deleteOldFiles) {
-        log.info('Deleting legacy files')
+        reporter.info('Deleting legacy files')
         deleteLegacyFiles({
             translationFiles,
             languagesToTransform,

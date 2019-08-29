@@ -1,5 +1,5 @@
 const fs = require('fs')
-const log = require('@dhis2/cli-helpers-engine').reporter
+const { reporter } = require('@dhis2/cli-helpers-engine')
 
 /**
  * @param {Object} args
@@ -18,11 +18,11 @@ const deleteLegacyFiles = ({ translationFiles, languagesToTransform }) => {
             try {
                 const filePathToDelete = path.join(inDir, file)
                 fs.unlinkSync(filePathToDelete)
-                log.debug(`Deleted old file:`)
-                log.debug(`"${filePathToDelete}"`)
+                reporter.debug(`Deleted old file:`)
+                reporter.debug(`"${filePathToDelete}"`)
             } catch (e) {
-                log.error('Could not delete old translation file')
-                log.error(e.message)
+                reporter.error('Could not delete old translation file')
+                reporter.error(e.message)
             }
         }
     })
