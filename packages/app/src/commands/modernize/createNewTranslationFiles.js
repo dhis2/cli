@@ -14,7 +14,7 @@ const {
 /**
  * @param {Object} args
  * @param {string} args.outDir
- * @param {string} args.appName
+ * @param {string} args.pootlePath
  * @param {Object} args.creationDate
  * @param {Object} args.translations
  * @param {boolean} args.logMissingKeys
@@ -26,7 +26,7 @@ const {
  */
 const createNewTranslationFiles = ({
     outDir,
-    appName,
+    pootlePath,
     translations,
     creationDate,
     logMissingKeys,
@@ -78,9 +78,9 @@ const createNewTranslationFiles = ({
                     language === primaryLanguage
                         ? getTemplateMainLanguage(creationDate)
                         : getTemplateAlternativeLanguage(
-                              appName,
                               language,
-                              creationDate
+                              creationDate,
+                              pootlePath
                           )
             }
 

@@ -12,17 +12,28 @@ const getTemplateMainLanguage = creationDate => {
         .replace('###REVISION_DATE###', creationDate)
 }
 
-const getTemplateAlternativeLanguage = (appName, language, creationDate) => {
+const addPootlePath = (pootlePath, template) => {
+    if (!pootlePath) {
+        return template.replace(/"X-Pootle.*"\n/g, '')
+    }
+
+    return template.replace('###POOTLE_PATH###', pootlePath)
+}
+
+const getTemplateAlternativeLanguage = (language, creationDate, pootlePath) => {
     const template = fs.readFileSync(
         path.join(__dirname, 'alternative_language.template'),
         { encoding: 'utf8' }
     )
 
-    return template
-        .replace('###APP_NAME###', appName)
+    const withRequiredInfo = template
         .replace('###LANGUAGE###', language)
         .replace('###CREATION_DATE###', creationDate)
         .replace('###REVISION_DATE###', creationDate)
+
+    const withPootlePath = addPootlePath(pootlePath, withRequiredInfo)
+
+    return withPootlePath
 }
 
 module.exports = {

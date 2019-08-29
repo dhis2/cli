@@ -2,13 +2,10 @@ const fs = require('fs')
 const path = require('path')
 const log = require('@dhis2/cli-helpers-engine').reporter
 
-const appNamePattern = new RegExp('[a-z]+(-[a-z]+)?-app')
-
 /**
  * @param {Object} args
  * @param {string} args.inDir
  * @param {string} args.outDir
- * @param {string} args.appName
  * @param {string} args.primaryLanguage
  * @param {string[]} args.translationFiles
  * @return {void}
@@ -16,18 +13,11 @@ const appNamePattern = new RegExp('[a-z]+(-[a-z]+)?-app')
 const checkRequirements = ({
     inDir,
     outDir,
-    appName,
     primaryLanguage,
     translationFiles,
 }) => {
     const inDirExists = fs.existsSync(inDir)
     const outDirExists = fs.existsSync(outDir)
-
-    if (!appNamePattern.test(appName)) {
-        log.error(exports.builder.appName.describe)
-        log.error(`Received: ${appName}`)
-        process.exit(1)
-    }
 
     if (!inDirExists) {
         log.error(`Input directory does not exist ("${inDir}")`)

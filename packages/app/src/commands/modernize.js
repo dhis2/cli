@@ -14,12 +14,8 @@ const path = require('path')
 const fs = require('fs')
 const { log, namespace } = require('@dhis2/cli-helpers-engine')
 
-const {
-    checkRequirements,
-} = require('./modernize/checkRequirements.js')
-const {
-    deleteLegacyFiles,
-} = require('./modernize/deleteLegacyFiles.js')
+const { checkRequirements } = require('./modernize/checkRequirements.js')
+const { deleteLegacyFiles } = require('./modernize/deleteLegacyFiles.js')
 const {
     generateTranslationMappings,
 } = require('./modernize/generateTranslationMappings.js')
@@ -35,13 +31,6 @@ const CREATION_DATE = new Date().toISOString()
 const fileIsOldTranslationFile = fileName => fileName.match(/\.properties$/)
 
 const builder = {
-    appName: {
-        describe:
-            'The name of the app, must be lower case, use dashes instead of whitespaces and be postfixed with "-app". Normally this should the url part of the github repo (maintenance app => "maintenance-app")',
-        type: 'string',
-        required: true,
-    },
-
     primaryLanguage: {
         describe: 'Primary language',
         type: 'string',
@@ -97,13 +86,18 @@ const builder = {
             'Delete the old files that were transformed (will only delete files specified with the `--language` option when present)',
         type: 'boolean',
     },
+
+    pootlePath: {
+        describe: 'Set the path for the pootle server',
+        type: 'string',
+    },
 }
 
 const handler = ({
     inDir,
     outDir,
-    appName,
     languages,
+    pootlePath,
     deleteOldFiles,
     logMissingKeys,
     primaryLanguage,
@@ -120,7 +114,6 @@ const handler = ({
     checkRequirements({
         inDir,
         outDir,
-        appName,
         primaryLanguage,
         translationFiles,
     })
@@ -136,7 +129,7 @@ const handler = ({
     log.info('Creating new translation files')
     createNewTranslationFiles({
         outDir,
-        appName,
+        pootlePath,
         translations,
         CREATION_DATE,
         logMissingKeys,
