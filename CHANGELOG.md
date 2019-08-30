@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/dhis2/cli/compare/v2.1.3...v2.2.0) (2019-08-29)
+
+
+### Features
+
+* add support for d2-app-scripts and d2-utils-docsite ([#121](https://github.com/dhis2/cli/issues/121)) ([4b39415](https://github.com/dhis2/cli/commit/4b39415))
+
 ## [2.1.3](https://github.com/dhis2/cli/compare/v2.1.2...v2.1.3) (2019-08-27)
 
 
