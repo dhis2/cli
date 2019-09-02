@@ -1,7 +1,7 @@
 /**
  * Example usage:
  *
- * d2-utils modernize \
+ * d2-app i18n modernize \
  *   --in-dir ~/development/dhis2/maintenance-app/src/i18n \
  *   --out-dir ~/development/dhis2/project-doom/i18n \
  *   --override-existing-files \
@@ -12,18 +12,18 @@
  */
 const path = require('path')
 const fs = require('fs')
+const chalk = require('chalk')
 
-const { namespace } = require('@dhis2/cli-helpers-engine')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
-const { checkRequirements } = require('./modernize/checkRequirements.js')
-const { deleteLegacyFiles } = require('./modernize/deleteLegacyFiles.js')
+const { checkRequirements } = require('../../helpers/modernize/checkRequirements.js')
+const { deleteLegacyFiles } = require('../../helpers/modernize/deleteLegacyFiles.js')
 const {
     generateTranslationMappings,
-} = require('./modernize/generateTranslationMappings.js')
+} = require('../../helpers/modernize/generateTranslationMappings.js')
 const {
     createNewTranslationFiles,
-} = require('./modernize/createNewTranslationFiles.js')
+} = require('../../helpers/modernize/createNewTranslationFiles.js')
 
 const CONSUMING_ROOT = path.join(process.cwd())
 const TRANSLATION_IN_DIR = path.join(CONSUMING_ROOT, 'src/i18n')
@@ -108,6 +108,11 @@ const handler = ({
 }) => {
     const languagesToTransform = languages ? languages.split(/,\s*/) : []
 
+    if (!fs.existsSync(inDir) || !fs.statSync(inDir).isDirectory()) {
+        reporter.error(`Input path ${chalk.bold(path.relative(process.cwd(), inDir))} does not exist or is not a directory`)
+        process.exit(1)
+    }
+
     const translationFiles = fs
         .readdirSync(inDir)
         .filter(fileIsOldTranslationFile)
@@ -150,13 +155,9 @@ const handler = ({
     }
 }
 
-const modernize = {
+module.exports = {
+    command: 'modernize',
     describe: 'Transform old translation file style to new style',
     builder,
     handler,
 }
-
-module.exports = namespace('i18n', {
-    description: 'Handle translations in apps',
-    commands: { modernize },
-})
