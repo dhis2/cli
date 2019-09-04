@@ -5,7 +5,7 @@
  *   --in-dir ~/development/dhis2/maintenance-app/src/i18n \
  *   --out-dir ~/development/dhis2/project-doom/i18n \
  *   --override-existing-files \
- *   --app-name maintenance-app \
+ *   --pootle-path "/app/import-export-app/" \
  *   --languages fr,ar \
  *   --delete-old-files \
  *   --log-missing-keys
@@ -16,8 +16,12 @@ const chalk = require('chalk')
 
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
-const { checkRequirements } = require('../../helpers/modernize/checkRequirements.js')
-const { deleteLegacyFiles } = require('../../helpers/modernize/deleteLegacyFiles.js')
+const {
+    checkRequirements,
+} = require('../../helpers/modernize/checkRequirements.js')
+const {
+    deleteLegacyFiles,
+} = require('../../helpers/modernize/deleteLegacyFiles.js')
 const {
     generateTranslationMappings,
 } = require('../../helpers/modernize/generateTranslationMappings.js')
@@ -109,7 +113,11 @@ const handler = ({
     const languagesToTransform = languages ? languages.split(/,\s*/) : []
 
     if (!fs.existsSync(inDir) || !fs.statSync(inDir).isDirectory()) {
-        reporter.error(`Input path ${chalk.bold(path.relative(process.cwd(), inDir))} does not exist or is not a directory`)
+        reporter.error(
+            `Input path ${chalk.bold(
+                path.relative(process.cwd(), inDir)
+            )} does not exist or is not a directory`
+        )
         process.exit(1)
     }
 
