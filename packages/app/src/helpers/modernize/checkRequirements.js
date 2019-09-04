@@ -1,26 +1,24 @@
 const fs = require('fs')
 const path = require('path')
+const chalk = require('chalk')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
 /**
- * @param {Object} args
- * @param {string} args.inDir
- * @param {string} args.outDir
- * @param {string} args.primaryLanguage
- * @param {string[]} args.translationFiles
+ * @param {string} inDir
+ * @param {string} outDir
  * @return {void}
  */
-const checkRequirements = ({
-    inDir,
-    outDir,
-    primaryLanguage,
-    translationFiles,
-}) => {
-    const inDirExists = fs.existsSync(inDir)
-    const outDirExists = fs.existsSync(outDir)
+const checkIODirectories = (inDir, outDir) => {
+    const inDirExists = fs.existsSync(inDir) && fs.statSync(inDir).isDirectory()
+    const outDirExists =
+        fs.existsSync(outDir) && fs.statSync(outDir).isDirectory()
 
     if (!inDirExists) {
-        reporter.error(`Input directory does not exist ("${inDir}")`)
+        reporter.error(
+            `Input path ${chalk.bold(
+                path.relative(process.cwd(), inDir)
+            )} does not exist or is not a directory`
+        )
         process.exit(1)
     } else {
         reporter.debug(`Input directory exists ("${inDir}")`)
@@ -32,7 +30,19 @@ const checkRequirements = ({
     } else {
         reporter.info('Output dir already exists, skip creating it')
     }
+}
 
+/**
+ * @param {string} inDir
+ * @param {string} primaryLanguage
+ * @param {string[]} translationFiles
+ * @return {void}
+ */
+const checkMainTranslationFilePresent = (
+    inDir,
+    primaryLanguage,
+    translationFiles
+) => {
     const mainTranslationFile = translationFiles.find(file =>
         file.match(`i18n_module_${primaryLanguage}.properties`)
     )
@@ -50,5 +60,6 @@ const checkRequirements = ({
 }
 
 module.exports = {
-    checkRequirements,
+    checkIODirectories,
+    checkMainTranslationFilePresent,
 }

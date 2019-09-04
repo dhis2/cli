@@ -1,36 +1,38 @@
 /**
- * Example usage:
+ * @example
  *
- * d2-utils modernize \
+ * npx -p @dhis2/cli d2-app i18n modernize \
  *   --in-dir ~/development/dhis2/maintenance-app/src/i18n \
  *   --out-dir ~/development/dhis2/project-doom/i18n \
  *   --override-existing-files \
- *   --app-name maintenance-app \
+ *   --pootle-path "/app/import-export-app/" \
  *   --languages fr,ar \
  *   --delete-old-files \
  *   --log-missing-keys
  */
 const path = require('path')
 const fs = require('fs')
+const chalk = require('chalk')
 
-const { namespace } = require('@dhis2/cli-helpers-engine')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
-const { checkRequirements } = require('./modernize/checkRequirements.js')
-const { deleteLegacyFiles } = require('./modernize/deleteLegacyFiles.js')
+const {
+    getTranslationFileNames,
+} = require('../../helpers/modernize/getTranslationFileNames.js')
+const {
+    deleteLegacyFiles,
+} = require('../../helpers/modernize/deleteLegacyFiles.js')
 const {
     generateTranslationMappings,
-} = require('./modernize/generateTranslationMappings.js')
+} = require('../../helpers/modernize/generateTranslationMappings.js')
 const {
     createNewTranslationFiles,
-} = require('./modernize/createNewTranslationFiles.js')
+} = require('../../helpers/modernize/createNewTranslationFiles.js')
 
 const CONSUMING_ROOT = path.join(process.cwd())
 const TRANSLATION_IN_DIR = path.join(CONSUMING_ROOT, 'src/i18n')
 const TRANSLATION_OUT_DIR = path.join(CONSUMING_ROOT, 'i18n')
 const CREATION_DATE = new Date().toISOString()
-
-const fileIsOldTranslationFile = fileName => fileName.match(/\.properties$/)
 
 const builder = {
     primaryLanguage: {
@@ -108,16 +110,11 @@ const handler = ({
 }) => {
     const languagesToTransform = languages ? languages.split(/,\s*/) : []
 
-    const translationFiles = fs
-        .readdirSync(inDir)
-        .filter(fileIsOldTranslationFile)
-
-    reporter.info('Checking requirements')
-    checkRequirements({
+    reporter.info('Checking requirements and get legacy translation file names')
+    const translationFiles = getTranslationFileNames({
         inDir,
         outDir,
         primaryLanguage,
-        translationFiles,
     })
 
     reporter.info('Extracting key/value pairs from translation files')
@@ -128,7 +125,11 @@ const handler = ({
         translationFiles,
     })
 
-    reporter.info('Creating new translation files')
+    reporter.info(
+        `${
+            appendToExistingFiles ? 'Appending to' : 'Creating new'
+        } translation files`
+    )
     createNewTranslationFiles({
         creationDate: CREATION_DATE,
         outDir,
@@ -150,13 +151,9 @@ const handler = ({
     }
 }
 
-const modernize = {
+module.exports = {
+    command: 'modernize',
     describe: 'Transform old translation file style to new style',
     builder,
     handler,
 }
-
-module.exports = namespace('i18n', {
-    description: 'Handle translations in apps',
-    commands: { modernize },
-})
