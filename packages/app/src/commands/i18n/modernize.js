@@ -54,18 +54,6 @@ const builder = {
         default: 'true',
     },
 
-    outDir: {
-        describe: 'Output directory for new translation files',
-        type: 'string',
-        default: TRANSLATION_OUT_DIR,
-    },
-
-    inDir: {
-        describe: 'Input directory where old translation files can be found',
-        type: 'string',
-        default: TRANSLATION_IN_DIR,
-    },
-
     overrideExistingFiles: {
         describe: 'Overriding the contents of existing translation files',
         type: 'boolean',
@@ -98,8 +86,8 @@ const builder = {
 }
 
 const handler = ({
-    inDir,
-    outDir,
+    inDir = TRANSLATION_IN_DIR,
+    outDir = TRANSLATION_OUT_DIR,
     languages,
     pootlePath,
     deleteOldFiles,
@@ -152,7 +140,7 @@ const handler = ({
 }
 
 module.exports = {
-    command: 'modernize',
+    command: 'modernize [inDir] [outDir]',
     describe: 'Transform old translation file style to new style',
     builder,
     handler,
