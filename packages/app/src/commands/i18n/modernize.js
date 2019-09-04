@@ -1,7 +1,7 @@
 /**
- * Example usage:
+ * @example
  *
- * d2-app i18n modernize \
+ * npx -p @dhis2/cli d2-app i18n modernize \
  *   --in-dir ~/development/dhis2/maintenance-app/src/i18n \
  *   --out-dir ~/development/dhis2/project-doom/i18n \
  *   --override-existing-files \
