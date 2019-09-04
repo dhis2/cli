@@ -17,8 +17,8 @@ const chalk = require('chalk')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
 const {
-    checkRequirements,
-} = require('../../helpers/modernize/checkRequirements.js')
+    getTranslationFileNames,
+} = require('../../helpers/modernize/getTranslationFileNames.js')
 const {
     deleteLegacyFiles,
 } = require('../../helpers/modernize/deleteLegacyFiles.js')
@@ -33,8 +33,6 @@ const CONSUMING_ROOT = path.join(process.cwd())
 const TRANSLATION_IN_DIR = path.join(CONSUMING_ROOT, 'src/i18n')
 const TRANSLATION_OUT_DIR = path.join(CONSUMING_ROOT, 'i18n')
 const CREATION_DATE = new Date().toISOString()
-
-const fileIsOldTranslationFile = fileName => fileName.match(/\.properties$/)
 
 const builder = {
     primaryLanguage: {
@@ -112,25 +110,11 @@ const handler = ({
 }) => {
     const languagesToTransform = languages ? languages.split(/,\s*/) : []
 
-    if (!fs.existsSync(inDir) || !fs.statSync(inDir).isDirectory()) {
-        reporter.error(
-            `Input path ${chalk.bold(
-                path.relative(process.cwd(), inDir)
-            )} does not exist or is not a directory`
-        )
-        process.exit(1)
-    }
-
-    const translationFiles = fs
-        .readdirSync(inDir)
-        .filter(fileIsOldTranslationFile)
-
-    reporter.info('Checking requirements')
-    checkRequirements({
+    reporter.info('Checking requirements and get legacy translation file names')
+    const translationFiles = getTranslationFileNames({
         inDir,
         outDir,
         primaryLanguage,
-        translationFiles,
     })
 
     reporter.info('Extracting key/value pairs from translation files')
@@ -141,7 +125,11 @@ const handler = ({
         translationFiles,
     })
 
-    reporter.info('Creating new translation files')
+    reporter.info(
+        `${
+            appendToExistingFiles ? 'Appending to' : 'Creating new'
+        } translation files`
+    )
     createNewTranslationFiles({
         creationDate: CREATION_DATE,
         outDir,
