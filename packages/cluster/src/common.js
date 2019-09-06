@@ -162,7 +162,11 @@ module.exports.makeEnvironment = cfg => {
     return env
 }
 
-module.exports.makeComposeProject = name => `d2-cluster-${name}`
+// This has to match the normalization done by docker-compose to reliably get container statuses
+//   from https://github.com/docker/compose/blob/c8279bc4db56f49cf2e2b80c8734ced1c418b856/compose/cli/command.py#L154
+const normalizeName = name => name.replace(/[^-_a-z0-9]/g, '')
+
+module.exports.makeComposeProject = name => `d2-cluster-${normalizeName(name)}`
 
 module.exports.listClusters = async argv => {
     const cache = argv.getCache()
