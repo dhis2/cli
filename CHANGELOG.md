@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/dhis2/cli/compare/v2.2.0...v2.2.1) (2019-09-06)
+
+
+### Bug Fixes
+
+* correctly normalize compose project name ([#129](https://github.com/dhis2/cli/issues/129)) ([12129e7](https://github.com/dhis2/cli/commit/12129e7))
+
 # [2.2.0](https://github.com/dhis2/cli/compare/v2.1.3...v2.2.0) (2019-08-29)
 
 
