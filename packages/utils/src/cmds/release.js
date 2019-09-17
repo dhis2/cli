@@ -133,6 +133,7 @@ const handler = async ({ publish }) => {
         }
     } catch (err) {
         reporter.error(`The automated release failed with ${err}`)
+        process.exit(1)
     }
 }
 

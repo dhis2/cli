@@ -54,9 +54,7 @@ module.exports = {
     builder: {
         port: {
             alias: 'p',
-            desc: `Specify the port on which to expose the DHIS2 instance (default: ${
-                defaults.port
-            })`,
+            desc: `Specify the port on which to expose the DHIS2 instance (default: ${defaults.port})`,
             type: 'integer',
         },
     },
