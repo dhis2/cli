@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/dhis2/cli/compare/v2.2.2...v2.3.0) (2019-09-17)
+
+
+### Features
+
+* schema differ ([#43](https://github.com/dhis2/cli/issues/43)) ([c46e343](https://github.com/dhis2/cli/commit/c46e343)), closes [#51](https://github.com/dhis2/cli/issues/51)
+
 ## [2.2.2](https://github.com/dhis2/cli/compare/v2.2.1...v2.2.2) (2019-09-17)
 
 
