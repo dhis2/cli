@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/dhis2/cli/compare/v2.2.1...v2.2.2) (2019-09-17)
+
+
+### Bug Fixes
+
+* don't swallow release command errors ([#131](https://github.com/dhis2/cli/issues/131)) ([8a09d32](https://github.com/dhis2/cli/commit/8a09d32))
+
 ## [2.2.1](https://github.com/dhis2/cli/compare/v2.2.0...v2.2.1) (2019-09-06)
 
 
