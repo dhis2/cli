@@ -102,9 +102,9 @@ const handler = async ({ publish }) => {
         env: {
             ...process.env,
             GIT_AUTHOR_NAME: '@dhis2-bot',
-            GIT_AUTHOR_EMAIL: 'ci@dhis2.org',
+            GIT_AUTHOR_EMAIL: 'apps@dhis2.org',
             GIT_COMMITTER_NAME: '@dhis2-bot',
-            GIT_COMMITTER_EMAIL: 'ci@dhis2.org',
+            GIT_COMMITTER_EMAIL: 'apps@dhis2.org',
             NPM_CONFIG_ALLOW_SAME_VERSION: 'true', // Ensure we still publish even though we've already updated the pacakge versions
         },
     }
@@ -116,9 +116,7 @@ const handler = async ({ publish }) => {
             const { lastRelease, commits, nextRelease, releases } = result
 
             reporter.info(
-                `Published ${nextRelease.type} release version ${
-                    nextRelease.version
-                } containing ${commits.length} commits.`
+                `Published ${nextRelease.type} release version ${nextRelease.version} containing ${commits.length} commits.`
             )
 
             if (lastRelease.version) {
@@ -127,9 +125,7 @@ const handler = async ({ publish }) => {
 
             for (const release of releases) {
                 reporter.info(
-                    `The release was published with plugin "${
-                        release.pluginName
-                    }".`
+                    `The release was published with plugin "${release.pluginName}".`
                 )
             }
         } else {
@@ -137,6 +133,7 @@ const handler = async ({ publish }) => {
         }
     } catch (err) {
         reporter.error(`The automated release failed with ${err}`)
+        process.exit(1)
     }
 }
 
