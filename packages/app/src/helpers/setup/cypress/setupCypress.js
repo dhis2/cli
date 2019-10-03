@@ -14,10 +14,10 @@ const setupCypress = rootDir => {
     mkdir(rootDir, 'cypress/support')
     mkdir(rootDir, 'cypress/plugins')
 
-    write(rootDir, `cypress/fixtures/.gitkeep`)
-    write(rootDir, `cypress/support/index.js`)
-    write(rootDir, `cypress/plugins/index.js`)
-    write(rootDir, `cypress.json`)
+    write({ rootDir, filePath: `cypress/fixtures/.gitkeep` })
+    write({ rootDir, filePath: `cypress/support/index.js` })
+    write({ rootDir, filePath: `cypress/plugins/index.js` })
+    write({ rootDir, filePath: `cypress.json` })
 }
 
 module.exports = setupCypress

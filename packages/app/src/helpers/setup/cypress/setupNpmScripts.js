@@ -7,7 +7,7 @@ const copy = require('./copy')
 const { TEMPLATE_PATH } = require('./constants')
 
 const setupNpmScripts = rootDir => {
-    const scriptTargetDir = path.join(`${rootDir}/scripts`)
+    const scriptTargetDir = path.join(rootDir, 'scripts')
     const scriptTargetDirExists = fs.existsSync(scriptTargetDir)
 
     if (!scriptTargetDirExists) {

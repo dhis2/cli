@@ -3,6 +3,7 @@ const setupCypress = require('../../helpers/setup/cypress/setupCypress')
 const setupCucumber = require('../../helpers/setup/cypress/setupCucumber')
 const setupTestFiles = require('../../helpers/setup/cypress/setupTestFiles')
 const setupNpmScripts = require('../../helpers/setup/cypress/setupNpmScripts')
+const extendGitIgnore = require('../../helpers/setup/cypress/extendGitIgnore')
 
 const builder = {
     noCypress: {
@@ -19,6 +20,10 @@ const builder = {
     },
     noNpmScript: {
         describe: 'Do not setup npm script',
+        type: 'boolean',
+    },
+    noGitignore: {
+        describe: 'Do not write/append to .gitignore',
         type: 'boolean',
     },
 }
@@ -44,6 +49,11 @@ const handler = args => {
     if (!args.noNpmScript) {
         reporter.info('Setting up npm script')
         setupNpmScripts(rootDir)
+    }
+
+    if (!args.noGitignore) {
+        reporter.info('Adding entries to .gitignore')
+        extendGitIgnore(rootDir)
     }
 }
 

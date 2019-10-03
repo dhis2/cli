@@ -31,7 +31,11 @@ const setupCucumber = rootDir => {
         rootDir,
         'cypress/integration/common/login.js'
     )
-    write(rootDir, 'cypress/support/index.js', 'import "./login.js"')
+    write({
+        rootDir,
+        filePath: 'cypress/support/index.js',
+        content: 'import "./login.js"',
+    })
 }
 
 module.exports = setupCucumber
