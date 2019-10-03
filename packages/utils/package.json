@@ -18,7 +18,7 @@
         "@semantic-release/commit-analyzer": "^6.3.0",
         "@semantic-release/git": "^7.0.16",
         "@semantic-release/github": "^5.4.3",
-        "@semantic-release/npm": "^5.1.15",
+        "@semantic-release/npm": "^5.2.0",
         "@semantic-release/release-notes-generator": "^7.3.0",
         "dhis2-uid": "^0.1.2",
         "ejs": "^2.7.1",
