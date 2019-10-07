@@ -1,3 +1,17 @@
+## [2.3.1](https://github.com/dhis2/cli/compare/v2.3.0...v2.3.1) (2019-09-27)
+
+
+### Bug Fixes
+
+* bump @dhis2/cli-app-scripts from 1.3.1 to 1.4.4 ([#145](https://github.com/dhis2/cli/issues/145)) ([d10842f](https://github.com/dhis2/cli/commit/d10842f))
+
+# [2.3.0](https://github.com/dhis2/cli/compare/v2.2.2...v2.3.0) (2019-09-17)
+
+
+### Features
+
+* schema differ ([#43](https://github.com/dhis2/cli/issues/43)) ([c46e343](https://github.com/dhis2/cli/commit/c46e343)), closes [#51](https://github.com/dhis2/cli/issues/51)
+
 ## [2.2.2](https://github.com/dhis2/cli/compare/v2.2.1...v2.2.2) (2019-09-17)
 
 
