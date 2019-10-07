@@ -6,23 +6,23 @@ const setupNpmScripts = require('../../helpers/setup/cypress/setupNpmScripts')
 const extendGitIgnore = require('../../helpers/setup/cypress/extendGitIgnore')
 
 const builder = {
-    noCypress: {
+    ignoreCypress: {
         describe: 'Do not setup cypress related packages, folders and files',
         type: 'boolean',
     },
-    noCucumber: {
+    ignoreCucumber: {
         describe: 'Do not setup cucumber related packages, folders and files',
         type: 'boolean',
     },
-    noTestFiles: {
+    ignoreTestFiles: {
         describe: 'Setup sample files to test the setup',
         type: 'boolean',
     },
-    noNpmScript: {
+    ignoreNpmScript: {
         describe: 'Do not setup npm script',
         type: 'boolean',
     },
-    noGitignore: {
+    ignoreGitignore: {
         describe: 'Do not write/append to .gitignore',
         type: 'boolean',
     },
@@ -31,27 +31,27 @@ const builder = {
 const handler = args => {
     const rootDir = args.rootDir || process.cwd()
 
-    if (!args.noCypress) {
+    if (!args.ignoreCypress) {
         reporter.info('Setting up cypress')
         setupCypress(rootDir)
     }
 
-    if (!args.noCucumber) {
+    if (!args.ignoreCucumber) {
         reporter.info('Setting up cucumber')
         setupCucumber(rootDir)
     }
 
-    if (!args.noTestFiles) {
+    if (!args.ignoreTestFiles) {
         reporter.info('Setting up test feature')
         setupTestFiles(rootDir)
     }
 
-    if (!args.noNpmScript) {
+    if (!args.ignoreNpmScript) {
         reporter.info('Setting up npm script')
         setupNpmScripts(rootDir)
     }
 
-    if (!args.noGitignore) {
+    if (!args.ignoreGitignore) {
         reporter.info('Adding entries to .gitignore')
         extendGitIgnore(rootDir)
     }
