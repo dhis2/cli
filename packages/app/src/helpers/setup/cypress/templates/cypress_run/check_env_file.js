@@ -12,51 +12,68 @@ const read = (...args) =>
         rl.question(...args, resolve)
     })
 
-const ENV_FILE_PATH = path.join(__dirname, '../../', 'cypress.env.json')
+const DEFAULT_ENV_FILE_PATH = path.join(__dirname, '../../', 'cypress.env.json')
 
-const requiredEnvVars = {
+const REQUIRED_ENV_VARS = {
     LOGIN_USERNAME: '',
     LOGIN_PASSWORD: '',
-    LOGIN_URL: 'localhost: 8000',
+    LOGIN_URL: 'localhost:8000',
     APP_URL: 'localhost:3000',
 }
 
-const getExistingEnvVars = () => {
-    const fileContents = fs.readfileSync(ENV_FILE_PATH, { enconding: 'utf8' })
+const getExistingEnvVars = envFilePath => {
+    const fileContents = fs.readFileSync(envFilePath, { enconding: 'utf8' })
+    let envVars = {}
 
     try {
-        const envVars = JSON.parse(fileContents)
+        envVars = JSON.parse(fileContents)
     } catch (e) {
-        reporter.error("Couldn't parse cypress.env.json")
-        reporter.error(e.message)
-        process.exit(0)
+        console.error("Couldn't parse cypress.env.json")
+        console.error(e.message)
+        process.exit(1)
     }
 
     return envVars
 }
 
-const requestMissingInformation = missingEnvVars => {
-    const valueQuestion = missingEnvVars.map(envVar => {
-        const defaultValue = requiredEnvVars[envVar]
-            ? ` ${requiredEnvVars[envVar]}`
-            : ''
-
-        let value = ''
-        do {
-            read(`Please provide the value for ${envVar}${defaultValue}`).then(
-                answer => {
-                    if (answer === '' && requiredEnvVars[envVar]) {
-                        value = [envVar, requiredEnvVars[envVar]]
-                    } else if (answer !== '') {
-                        value = [envVar, answer]
-                    }
-                }
-            )
-        } while (!value)
-    })
+const requestInformationForEnvVar = ({ resolve, defaultValue, envVar }) => {
+    read(`Please provide the value for ${envVar}${defaultValue}\n`).then(
+        answer => {
+            if (answer === '' && REQUIRED_ENV_VARS[envVar]) {
+                resolve([envVar, REQUIRED_ENV_VARS[envVar]])
+            } else if (answer !== '') {
+                resolve([envVar, answer])
+            } else {
+                requestInformationForEnvVar({ resolve, defaultValue, envVar })
+            }
+        }
+    )
 }
 
-const writeMissingInformation = (existingEnvVars, answerRequests) => {
+const requestMissingInformation = missingEnvVars => {
+    return missingEnvVars.reduce((process, envVar) => {
+        return process.then(answers => {
+            const defaultValue = REQUIRED_ENV_VARS[envVar]
+                ? ` (${REQUIRED_ENV_VARS[envVar]})`
+                : ''
+
+            return new Promise(resolve => {
+                const customResolve = answer => resolve([...answers, answer])
+                requestInformationForEnvVar({
+                    resolve: customResolve,
+                    defaultValue,
+                    envVar,
+                })
+            })
+        })
+    }, Promise.resolve([]))
+}
+
+const writeMissingInformation = ({
+    existingEnvVars,
+    answerRequests,
+    envFilePath,
+}) => {
     return answerRequests.then(answers => {
         const valuesObject = answers.reduce(
             (curValuesObject, [envVar, value]) => ({
@@ -66,39 +83,45 @@ const writeMissingInformation = (existingEnvVars, answerRequests) => {
             existingEnvVars
         )
 
-        fs.writeFileSync(ENV_FILE_PATH, JSON.stringify(valuesObject, null, 4))
+        fs.writeFileSync(envFilePath, JSON.stringify(valuesObject, null, 4))
 
         return valuesObject
     })
 }
 
-const addMissingEnvVars = () => {
-    const existingEnvVars = getExistingEnvVars()
-    const missingEnvVars = Object.keys(existingEnvVars).filter(
-        envVar => !!envVar[envVar]
+const addMissingEnvVars = envFilePath => {
+    const existingEnvVars = getExistingEnvVars(envFilePath)
+    const missingEnvVars = Object.keys(REQUIRED_ENV_VARS).filter(
+        envVar => !(envVar in existingEnvVars)
     )
-    const answerRequests = Promise.all(
-        requestMissingInformation(missingEnvVars)
-    )
+    const answerRequests = requestMissingInformation(missingEnvVars)
 
-    return writeMissingInformation(existingEnvVars, answerRequests)
+    return writeMissingInformation({
+        existingEnvVars,
+        answerRequests,
+        envFilePath,
+    })
 }
 
-const createEnvFile = () => {
-    const missingEnvVars = Object.keys(requiredEnvVars)
-    const answerRequests = Promise.all(
-        requestMissingInformation(missingEnvVars)
-    )
+const createEnvFile = envFilePath => {
+    const missingEnvVars = Object.keys(REQUIRED_ENV_VARS)
+    const answerRequests = requestMissingInformation(missingEnvVars)
 
-    return writeMissingInformation({}, answerRequests)
+    return writeMissingInformation({
+        existingEnvVars: {},
+        answerRequests,
+        envFilePath,
+    })
 }
 
-const checkEnvFile = () => {
-    if (!fs.fileExistsSync(ENV_FILE_PATH)) {
-        return createEnvFile().then(() => rl.close())
-    }
+const checkEnvFile = customEnvFilePath => {
+    const envFilePath = customEnvFilePath || DEFAULT_ENV_FILE_PATH
 
-    return addMissingEnvVars().then(() => rl.close())
+    const job = !fs.existsSync(envFilePath)
+        ? createEnvFile(envFilePath)
+        : addMissingEnvVars(envFilePath)
+
+    return job.then(() => rl.close())
 }
 
 module.exports = checkEnvFile
