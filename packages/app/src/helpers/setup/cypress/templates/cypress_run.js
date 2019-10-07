@@ -1,6 +1,11 @@
-import { runProcesses } from './cypress_run/run_processes'
-import { checkEnvFile } from './cypress_run/check_env_file'
+const { runApp, runCypress } = require('./cypress_run/run_processes')
+const checkEnvFile = require('./cypress_run/check_env_file')
 
-const cypressRun = () => {
-    checkEnvFile().then(runProcesses)
-}
+checkEnvFile()
+    .then(() => console.info('Starting application'))
+    .then(runApp)
+
+    .then(() => console.info('Application started, starting cypress'))
+    .then(runCypress)
+
+    .catch(console.error)

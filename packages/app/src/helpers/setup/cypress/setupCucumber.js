@@ -36,6 +36,24 @@ const setupCucumber = rootDir => {
         filePath: 'cypress/support/index.js',
         content: 'import "./login.js"',
     })
+
+    const packageJson = JSON.parse(
+        fs.readFileSync(path.join(rootDir, 'package.json'), {
+            enconding: 'utf8',
+        })
+    )
+
+    const packageJsonWithScripts = {
+        ...packageJson,
+        'cypress-cucumber-preprocessor': {
+            nonGlobalStepDefinitions: true,
+        },
+    }
+
+    fs.writeFileSync(
+        path.join(rootDir, 'package.json'),
+        JSON.stringify(packageJsonWithScripts, null, 2)
+    )
 }
 
 module.exports = setupCucumber

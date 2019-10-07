@@ -1,63 +1,62 @@
 const fs = require('fs')
 const path = require('path')
-const { exec } = require('child_process')
+const { spawn } = require('child_process')
 
-const envFiles = [
-    '.env.develoment.local',
-    '.env.develoment',
-    '.env.local',
-    '.env',
-]
+const runApp = () => {
+    return new Promise((resolve, reject) => {
+        const cypressEnvVars = JSON.parse(
+            fs.readFileSync(path.join(process.cwd(), 'cypress.env.json'), {
+                enconding: 'utf8',
+            })
+        )
 
-const waitOn = path.join(__dirname, '..', 'node_modules', '.bin', 'wait-on')
-const cypress = path.join(__dirname, '..', 'node_modules', '.bin', 'cypress')
-const concurrently = path.join(
-    __dirname,
-    '../..',
-    'node_modules/.bin',
-    'concurrently'
-)
+        const execution = spawn('yarn', ['start'], {
+            cwd: process.cwd(),
+            env: {
+                ...process.env,
+                REACT_APP_DHIS2_BASE_URL: cypressEnvVars.LOGIN_URL,
+            },
+        })
 
-const getBaseUrl = () => {
-    if (process.env.REACT_APP_DHIS2_BASE_URL) {
-        return process.env.REACT_APP_DHIS2_BASE_URL
-    }
+        execution.stdout.on('data', data => {
+            const message = data.toString()
 
-    for (let i = 0, l = envFiles.length; i < l; ++i) {
-        const envPath = path.join(__dirname, '../..', envFiles[i])
-
-        if (fs.fileExistsSync(envPath)) {
-            const envContent = fs.readfileSync(envPath, { encoding: 'utf8' })
-            const envValues = JSON.parse(envContent)
-
-            if (envValues.REACT_APP_DHIS2_BASE_URL) {
-                return envValues.REACT_APP_DHIS2_BASE_URL
+            if (message.match(/Compiled successfully/)) {
+                resolve()
             }
-        }
-    }
 
-    return 'http://localhost:8000'
-}
+            if (message.match(/Compiled with warnings/)) {
+                resolve()
+            }
 
-const runProcesses = () => {
-    const execution = exec(`
-        ${concurrently} '\
-            yarn start' '\
-            ${waitOn} http://localhost:3000 && \
-            ${cypress} run \
-                -b chromium \
-                --env LOGIN_URL=${getBaseUrl()} \
-            '
-    `)
+            if (message.match(/^Something is already running on port/)) {
+                reject(message)
+                execution.kill('SIGKILL')
+            }
 
-    execution.stdout.on('data', data => {
-        const res = data.toString()
+            if (message.match(/Failed to compile/)) {
+                reject(message)
+                execution.kill('SIGKILL')
+            }
+        })
 
-        if (res.match(/.*cypress run .* exited with code 0/)) {
-            console.log('DONE!')
-            process.exit(0)
-        }
+        process.on('SIGINT', () => {
+            execution.kill('SIGKILL')
+            process.exit()
+        })
     })
 }
 
-module.exports = runProcesses
+const runCypress = () => {
+    const execution = spawn('yarn', ['cypress:open'], {
+        cwd: process.cwd(),
+        stdio: [process.stdin, process.stdout, process.stderr],
+    })
+
+    process.on('SIGINT', () => {
+        execution.kill('SIGKILL')
+        process.exit()
+    })
+}
+
+module.exports = { runApp, runCypress }
