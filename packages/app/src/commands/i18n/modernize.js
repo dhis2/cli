@@ -2,8 +2,8 @@
  * @example
  *
  * npx -p @dhis2/cli d2-app i18n modernize \
- *   --in-dir ~/development/dhis2/maintenance-app/src/i18n \
- *   --out-dir ~/development/dhis2/project-doom/i18n \
+ *   ~/development/dhis2/maintenance-app/src/i18n # inDir \
+ *   ~/development/dhis2/project-doom/i18n # outDir \
  *   --override-existing-files \
  *   --pootle-path "/app/import-export-app/" \
  *   --languages fr,ar \
