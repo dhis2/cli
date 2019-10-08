@@ -1,13 +1,13 @@
 const { reporter } = require('@dhis2/cli-helpers-engine')
-const fs = require('fs')
 const path = require('path')
-const execSync = require('./execSync')
-const mkdir = require('./mkdir')
-const write = require('./write')
 
-const setupCypress = rootDir => {
+const execSync = require('../..//execSync')
+const mkdir = require('../../fs/mkdir')
+const write = require('../../fs/write')
+
+const setupCypress = (rootDir, verbose) => {
     reporter.debug('Installing cypress node module')
-    execSync(`cd ${rootDir} && yarn add -D cypress`)
+    execSync(`cd ${rootDir} && yarn add -D cypress`, verbose)
 
     mkdir(rootDir, 'cypress/fixtures')
     mkdir(rootDir, 'cypress/integration')

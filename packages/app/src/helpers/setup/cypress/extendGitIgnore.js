@@ -1,7 +1,6 @@
 const { reporter } = require('@dhis2/cli-helpers-engine')
-const fs = require('fs')
 const path = require('path')
-const write = require('./write')
+const write = require('../../fs/write')
 
 const extendGitIgnore = rootDir => {
     write({

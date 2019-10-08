@@ -30,15 +30,16 @@ const builder = {
 
 const handler = args => {
     const rootDir = args.rootDir || process.cwd()
+    const { verbose } = args
 
     if (!args.ignoreCypress) {
         reporter.info('Setting up cypress')
-        setupCypress(rootDir)
+        setupCypress(rootDir, verbose)
     }
 
     if (!args.ignoreCucumber) {
         reporter.info('Setting up cucumber')
-        setupCucumber(rootDir)
+        setupCucumber(rootDir, verbose)
     }
 
     if (!args.ignoreTestFiles) {
