@@ -1,3 +1,15 @@
+# [2.4.0](https://github.com/dhis2/cli/compare/v2.3.1...v2.4.0) (2019-10-09)
+
+
+### Bug Fixes
+
+* **deps:** bump @dhis2/cli-style from 4.1.2 to 4.1.3 ([#157](https://github.com/dhis2/cli/issues/157)) [skip ci] ([957fd62](https://github.com/dhis2/cli/commit/957fd62))
+
+
+### Features
+
+* **deps:** bump @dhis2/cli-app-scripts from 1.4.4 to 1.5.3 ([#156](https://github.com/dhis2/cli/issues/156)) ([2ae6bf7](https://github.com/dhis2/cli/commit/2ae6bf7))
+
 ## [2.3.1](https://github.com/dhis2/cli/compare/v2.3.0...v2.3.1) (2019-09-27)
 
 
