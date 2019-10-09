@@ -964,15 +964,15 @@
   dependencies:
     find-up "^4.0.0"
 
-"@dhis2/app-runtime@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@dhis2/app-runtime/-/app-runtime-2.0.1.tgz#a230924116b43352bf07a46f5085f76be36d0707"
-  integrity sha512-+Rmw+QshbgiBielN7UH4VXfEeSnSj1N3d4HGqf3iekyUXCNdpZX2bD9QrH43KvdfH+lDp71Uh7y3FKEhzSbRLA==
+"@dhis2/app-runtime@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@dhis2/app-runtime/-/app-runtime-2.0.2.tgz#f156f8e337cdd9dc9ca67857252e7e2cdae21569"
+  integrity sha512-rt2PZYZHwOq7qkkyczLYBgfReaENwauxx8iaTimTwdJrAXRUPkbhjlor63/00XgAY95tsZL7nMK7x3TwiSUfpQ==
 
-"@dhis2/cli-app-scripts@^1.4.4":
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-app-scripts/-/cli-app-scripts-1.4.4.tgz#2ae8839357ab453e026b54741f43446b9d7c9bb4"
-  integrity sha512-jvr3a8PGBiWsLZ8QvH1i1/OECgzi+4OAPXN/u7MWISj6qHEaDGbaYhnohoEpyfNgYBtzYooM1MWXRj5n7XOdZg==
+"@dhis2/cli-app-scripts@^1.5.3":
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-app-scripts/-/cli-app-scripts-1.5.3.tgz#0145acb89fec91162b48aeb27f89eb7b0e4e1a06"
+  integrity sha512-vnYEvviXXYq4zrbRRcYpa/N/mbcBJa/FGubAg2/kjenrYCNUfU+cyO488NoTlmEkpm/dnBo6JiYxn6pogx5sDA==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/plugin-proposal-class-properties" "^7.4.4"
@@ -980,7 +980,7 @@
     "@babel/preset-env" "^7.6.2"
     "@babel/preset-react" "^7.0.0"
     "@babel/preset-typescript" "^7.6.0"
-    "@dhis2/app-runtime" "^2.0.1"
+    "@dhis2/app-runtime" "^2.0.2"
     "@dhis2/cli-helpers-engine" "^1.4.2"
     "@dhis2/d2-i18n" "^1.0.5"
     "@dhis2/ui-core" "^3.11.0"
@@ -992,7 +992,7 @@
     dotenv-expand "^5.1.0"
     fs-extra "^8.1.0"
     gaze "^1.1.3"
-    handlebars "^4.3.1"
+    handlebars "^4.3.3"
     i18next-conv "^9"
     i18next-scanner "^2.10.3"
     jest-cli "^24.9.0"
@@ -4743,7 +4743,7 @@ gulp-sort@^2.0.0:
   dependencies:
     through2 "^2.0.1"
 
-handlebars@^4.1.0, handlebars@^4.1.2, handlebars@^4.3.1, handlebars@^4.4.3:
+handlebars@^4.1.0, handlebars@^4.1.2, handlebars@^4.3.3, handlebars@^4.4.3:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.4.3.tgz#180bae52c1d0e9ec0c15d7e82a4362d662762f6e"
   integrity sha512-B0W4A2U1ww3q7VVthTKfh+epHx+q4mCt6iK+zEAzbMBpWQAwxCeKxEGpj/1oQTpzPXDNSOG7hmG14TsISH50yw==
