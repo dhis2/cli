@@ -81,8 +81,11 @@ const handler = async ({ publish }) => {
         },
     ]
 
+    const deferPlugin = require('../support/semantic-release-defer-release')
+
     // Order matters here!
     const plugins = [
+        deferPlugin,
         '@semantic-release/commit-analyzer',
         '@semantic-release/release-notes-generator',
         updateDepsPlugin,
