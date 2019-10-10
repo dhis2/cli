@@ -7,11 +7,9 @@ const analyzeCommits = (config = {}, context) => {
     const defer = /\[defer release\]/gi
 
     if (message.match(defer)) {
-        throw new SemanticReleaseError(
-            'Defer the release',
-            'EDEFERRELEASE',
-            `This release has been deferred by commit ${commit.short}`
-        )
+        logger.warn(`This release has been deferred by commit ${commit.short}`)
+        logger.complete('Halting release process...')
+        process.exit(0)
     }
 }
 
