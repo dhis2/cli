@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/dhis2/cli/compare/v2.4.0...v2.5.0) (2019-10-16)
+
+
+### Features
+
+* allow defer-release keyword in commit messages ([#161](https://github.com/dhis2/cli/issues/161)) ([ef6b385](https://github.com/dhis2/cli/commit/ef6b385))
+
 # [2.4.0](https://github.com/dhis2/cli/compare/v2.3.1...v2.4.0) (2019-10-09)
 
 
