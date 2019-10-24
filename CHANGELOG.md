@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/dhis2/cli/compare/v2.5.0...v2.6.0) (2019-10-24)
+
+
+### Features
+
+* add i18n modernize to create new translation files from old ones ([#113](https://github.com/dhis2/cli/issues/113)) ([4e52e32](https://github.com/dhis2/cli/commit/4e52e32))
+
 # [2.5.0](https://github.com/dhis2/cli/compare/v2.4.0...v2.5.0) (2019-10-16)
 
 
