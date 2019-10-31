@@ -16,7 +16,7 @@
         "@dhis2/cli-utils-docsite": "^1.1.1",
         "@semantic-release/changelog": "^3.0.4",
         "@semantic-release/commit-analyzer": "^6.3.2",
-        "@semantic-release/git": "^7.0.16",
+        "@semantic-release/git": "^7.0.17",
         "@semantic-release/github": "^5.5.5",
         "@semantic-release/npm": "^5.2.0",
         "@semantic-release/release-notes-generator": "^7.3.2",
