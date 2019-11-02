@@ -24,7 +24,7 @@
         "ejs": "^2.7.1",
         "inquirer": "^6.3.1",
         "jsondiffpatch": "^0.3.11",
-        "semantic-release": "^15.13.28"
+        "semantic-release": "^15.13.29"
     },
     "publishConfig": {
         "access": "public"
