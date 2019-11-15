@@ -171,6 +171,9 @@ module.exports.makeComposeProject = name => `d2-cluster-${normalizeName(name)}`
 module.exports.listClusters = async argv => {
     const cache = argv.getCache()
 
+    const exists = await cache.exists(clusterDir)
+    if (!exists) return []
+
     const stat = await cache.stat(clusterDir)
     const promises = Object.keys(stat.children)
         .filter(name => cache.exists(path.join(clusterDir, name)))
