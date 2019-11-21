@@ -1,3 +1,10 @@
+## [2.6.1](https://github.com/dhis2/cli/compare/v2.6.0...v2.6.1) (2019-11-21)
+
+
+### Bug Fixes
+
+* **deps:** bump @dhis2/cli-app-scripts from 1.5.5 to 1.5.9 ([#195](https://github.com/dhis2/cli/issues/195)) ([35f9487](https://github.com/dhis2/cli/commit/35f9487))
+
 # [2.6.0](https://github.com/dhis2/cli/compare/v2.5.0...v2.6.0) (2019-10-24)
 
 
