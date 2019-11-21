@@ -21,7 +21,7 @@
         "@semantic-release/npm": "^5.3.4",
         "@semantic-release/release-notes-generator": "^7.3.4",
         "dhis2-uid": "^0.1.2",
-        "ejs": "^2.7.2",
+        "ejs": "^2.7.4",
         "inquirer": "^6.3.1",
         "jsondiffpatch": "^0.3.11",
         "semantic-release": "^15.13.31"
