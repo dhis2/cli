@@ -1,3 +1,36 @@
+## [2.6.1](https://github.com/dhis2/cli/compare/v2.6.0...v2.6.1) (2019-11-21)
+
+
+### Bug Fixes
+
+* **deps:** bump @dhis2/cli-app-scripts from 1.5.5 to 1.5.9 ([#195](https://github.com/dhis2/cli/issues/195)) ([35f9487](https://github.com/dhis2/cli/commit/35f9487))
+
+# [2.6.0](https://github.com/dhis2/cli/compare/v2.5.0...v2.6.0) (2019-10-24)
+
+
+### Features
+
+* add i18n modernize to create new translation files from old ones ([#113](https://github.com/dhis2/cli/issues/113)) ([4e52e32](https://github.com/dhis2/cli/commit/4e52e32))
+
+# [2.5.0](https://github.com/dhis2/cli/compare/v2.4.0...v2.5.0) (2019-10-16)
+
+
+### Features
+
+* allow defer-release keyword in commit messages ([#161](https://github.com/dhis2/cli/issues/161)) ([ef6b385](https://github.com/dhis2/cli/commit/ef6b385))
+
+# [2.4.0](https://github.com/dhis2/cli/compare/v2.3.1...v2.4.0) (2019-10-09)
+
+
+### Bug Fixes
+
+* **deps:** bump @dhis2/cli-style from 4.1.2 to 4.1.3 ([#157](https://github.com/dhis2/cli/issues/157)) [skip ci] ([957fd62](https://github.com/dhis2/cli/commit/957fd62))
+
+
+### Features
+
+* **deps:** bump @dhis2/cli-app-scripts from 1.4.4 to 1.5.3 ([#156](https://github.com/dhis2/cli/issues/156)) ([2ae6bf7](https://github.com/dhis2/cli/commit/2ae6bf7))
+
 ## [2.3.1](https://github.com/dhis2/cli/compare/v2.3.0...v2.3.1) (2019-09-27)
 
 
