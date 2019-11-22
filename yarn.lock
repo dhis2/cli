@@ -1020,7 +1020,7 @@
     rollup-plugin-visualizer "^3.2.2"
     styled-jsx "^3.2.2"
 
-"@dhis2/cli-helpers-engine@1.4.2", "@dhis2/cli-helpers-engine@^1.4.1":
+"@dhis2/cli-helpers-engine@1.4.2":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@dhis2/cli-helpers-engine/-/cli-helpers-engine-1.4.2.tgz#91f8f928616a23e9f9cab10e7364ef3210565f05"
   integrity sha512-mAdL/z5eo8DuO3CdtP6XNBEkGkP4bVCFvoHdmyCapV2sxbMUdlKvNUSzyOcVDVJD3imuo+BH80T8lToP88z9CA==
@@ -1043,17 +1043,6 @@
     tar "^4.4.8"
     update-notifier "^3.0.0"
     yargs "^13.1.0"
-
-"@dhis2/cli-helpers-template@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-helpers-template/-/cli-helpers-template-1.0.1.tgz#69c65fe496a509c0dd76349a1ed1d242c6f5d354"
-  integrity sha512-VBtRxlPNq1ecCrW+xKW7mqTicUtqiVf/m3SJ24kZq+27fZuMF6vToDOIpMAWiHt0Xa+ITEiTarouZrc51BOESA==
-  dependencies:
-    "@dhis2/cli-helpers-engine" "^1.4.1"
-    chalk "^2.4.2"
-    fs-extra "^8.1.0"
-    handlebars "^4.1.2"
-    isbinaryfile "^4.0.2"
 
 "@dhis2/cli-helpers-template@^1.0.2":
   version "1.0.2"
