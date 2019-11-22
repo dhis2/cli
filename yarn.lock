@@ -976,10 +976,10 @@
   resolved "https://registry.yarnpkg.com/@dhis2/app-runtime/-/app-runtime-2.0.4.tgz#9ae202fef3313094aef33a3e38d2c6c5d799c808"
   integrity sha512-w5+C/fHSsuF0am5Tpvz53+tigEZzfz9ahkjXH3BiWxGVxwZGtdHjWfso1T5bJRiKhDTgf76TxIsQiC11W20WyA==
 
-"@dhis2/cli-app-scripts@^1.5.9":
-  version "1.5.9"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-app-scripts/-/cli-app-scripts-1.5.9.tgz#84fe5d1b207ffc905fe542b36c4bce319549cbdc"
-  integrity sha512-RitSgJqa/HA3ljaTWfIOLTC6fc53U+bnyeRs9ht3Gc3ev6jG+Xwe2/NjmxboaFosj3LkltjXX0+zEqgens2DVw==
+"@dhis2/cli-app-scripts@^1.5.10":
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-app-scripts/-/cli-app-scripts-1.5.10.tgz#4da8c9d3c9ed57d73f83eb07de93e08540fe4106"
+  integrity sha512-QH55f0TJGyEerOgyZm83ZWnLfnZ3jXCqUWvxHApjZqoJC3wyG+6DYN4mbLqFl9DS/1Qwyu1JQlY2pOdY8CONGw==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/plugin-proposal-class-properties" "^7.4.4"
@@ -988,12 +988,11 @@
     "@babel/preset-react" "^7.0.0"
     "@babel/preset-typescript" "^7.6.0"
     "@dhis2/app-runtime" "^2.0.4"
-    "@dhis2/cli-helpers-engine" "^1.4.2"
+    "@dhis2/cli-helpers-engine" "^1.5.0"
     "@dhis2/d2-i18n" "^1.0.5"
     "@dhis2/ui-core" "^3.11.0"
     archiver "^3.1.1"
     babel-jest "^24.9.0"
-    chalk "^2.4.2"
     classnames "^2.2.6"
     detect-port "^1.3.0"
     dotenv "^8.1.0"
@@ -1018,10 +1017,10 @@
     rollup-plugin-node-resolve "^5.0.1"
     rollup-plugin-postcss "^2.0.3"
     rollup-plugin-replace "^2.2.0"
-    rollup-plugin-visualizer "^2.6.0"
+    rollup-plugin-visualizer "^3.2.2"
     styled-jsx "^3.2.2"
 
-"@dhis2/cli-helpers-engine@1.4.2", "@dhis2/cli-helpers-engine@^1.4.1", "@dhis2/cli-helpers-engine@^1.4.2":
+"@dhis2/cli-helpers-engine@1.4.2", "@dhis2/cli-helpers-engine@^1.4.1":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@dhis2/cli-helpers-engine/-/cli-helpers-engine-1.4.2.tgz#91f8f928616a23e9f9cab10e7364ef3210565f05"
   integrity sha512-mAdL/z5eo8DuO3CdtP6XNBEkGkP4bVCFvoHdmyCapV2sxbMUdlKvNUSzyOcVDVJD3imuo+BH80T8lToP88z9CA==
@@ -7379,6 +7378,11 @@ nan@^2.12.1:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
 
+nanoid@^2.1.6:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.7.tgz#d775e3e7c6470bbaaae3da9a647a80e228e0abf7"
+  integrity sha512-fmS3qwDldm4bE01HCIRqNk+f255CNjnAoeV3Zzzv0KemObHKqYgirVaZA9DtKcjogicWjYcHkJs4D5A8CjnuVQ==
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://registry.yarnpkg.com/nanomatch/-/nanomatch-1.2.13.tgz#b87a8aa4fc0de8fe6be88895b38983ff265bd119"
@@ -7973,7 +7977,7 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
-open@^6.3.0:
+open@^6.0.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/open/-/open-6.4.0.tgz#5c13e96d0dc894686164f18965ecfe889ecfc8a9"
   integrity sha512-IFenVPgF70fSm1keSd2iDBIDIBZkroLeuffXq+wKTzTJlBpesFWojV9lb8mzOfaAzM1sr7HQHuO0vtV0zYekGg==
@@ -9621,15 +9625,17 @@ rollup-plugin-replace@^2.2.0:
     magic-string "^0.25.2"
     rollup-pluginutils "^2.6.0"
 
-rollup-plugin-visualizer@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-visualizer/-/rollup-plugin-visualizer-2.6.0.tgz#a5a1110848347bb00b18ee3a0582fb1b541fa511"
-  integrity sha512-9HjvKAKUNqlcpLszA14njiQJgi+5rZSdMJymKXpFncHMBRPPCRh9jmKzZHqhoq5c1K/+Tjo9flMUcgdlPD397Q==
+rollup-plugin-visualizer@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-visualizer/-/rollup-plugin-visualizer-3.2.2.tgz#a175ffae34226fda249e2bbc44acb812853d8709"
+  integrity sha512-PTXnuVh/WBGDOW7Mnk24q9VvclmbH0A6cbXynO1nPytru+RJ2IgTjKMhrpjuiQmevwi6JUcb9bEhhCauYQTmig==
   dependencies:
     mkdirp "^0.5.1"
-    open "^6.3.0"
+    nanoid "^2.1.6"
+    open "^6.0.0"
     pupa "^2.0.0"
     source-map "^0.7.3"
+    yargs "^15.0.0"
 
 rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.6.0:
   version "2.8.2"
@@ -11529,7 +11535,7 @@ yargs@^14.0.0:
     y18n "^4.0.0"
     yargs-parser "^13.1.1"
 
-yargs@^15.0.1:
+yargs@^15.0.0, yargs@^15.0.1:
   version "15.0.2"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-15.0.2.tgz#4248bf218ef050385c4f7e14ebdf425653d13bd3"
   integrity sha512-GH/X/hYt+x5hOat4LMnCqMd8r5Cv78heOMIJn1hr7QPPBqfeC6p89Y78+WB9yGDvfpCvgasfmWLzNzEioOUD9Q==
