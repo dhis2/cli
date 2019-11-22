@@ -9,9 +9,8 @@
     "license": "BSD-3-Clause",
     "private": false,
     "dependencies": {
-        "@dhis2/cli-helpers-engine": "1.4.2",
+        "@dhis2/cli-helpers-engine": "^1.5.0",
         "@dhis2/cli-helpers-template": "^1.0.1",
-        "chalk": "^2.4.2",
         "fs-extra": "^8.1.0",
         "handlebars": "^4.4.2",
         "inquirer": "^7.0.0"

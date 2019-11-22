@@ -1,5 +1,4 @@
-const { reporter } = require('@dhis2/cli-helpers-engine')
-const chalk = require('chalk')
+const { reporter, chalk } = require('@dhis2/cli-helpers-engine')
 
 const buildApp = async ({ name, ...argv }) => {
     reporter.info(

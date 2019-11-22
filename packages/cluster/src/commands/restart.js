@@ -1,6 +1,10 @@
-const chalk = require('chalk')
 const path = require('path')
-const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
+const {
+    reporter,
+    exec,
+    tryCatchAsync,
+    chalk,
+} = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
     makeComposeProject,

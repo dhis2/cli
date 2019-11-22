@@ -1,6 +1,4 @@
-const chalk = require('chalk')
-const path = require('path')
-const { reporter, exec, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
+const { reporter, exec, chalk } = require('@dhis2/cli-helpers-engine')
 const { makeComposeProject, listClusters } = require('../common')
 const Table = require('cli-table3')
 
