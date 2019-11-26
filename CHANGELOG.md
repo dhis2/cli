@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/dhis2/cli/compare/v2.6.1...v2.7.0) (2019-11-26)
+
+
+### Features
+
+* upgrade @dhis2/cli-style to 5.0.2, don't auto-format code in pre-commit hook ([#208](https://github.com/dhis2/cli/issues/208)) ([c2f8eea](https://github.com/dhis2/cli/commit/c2f8eea))
+
 ## [2.6.1](https://github.com/dhis2/cli/compare/v2.6.0...v2.6.1) (2019-11-21)
 
 
