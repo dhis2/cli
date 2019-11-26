@@ -1,22 +1,21 @@
 {
-    "name": "@dhis2/cli-create",
-    "bin": {
-        "d2-create": "./bin/d2-create"
-    },
-    "version": "2.6.1",
-    "main": "src/index.js",
-    "author": "Austin McGee <austin@dhis2.org>",
-    "license": "BSD-3-Clause",
-    "private": false,
-    "dependencies": {
-        "@dhis2/cli-helpers-engine": "1.4.2",
-        "@dhis2/cli-helpers-template": "^1.0.1",
-        "chalk": "^3.0.0",
-        "fs-extra": "^8.1.0",
-        "handlebars": "^4.5.3",
-        "inquirer": "^7.0.0"
-    },
-    "publishConfig": {
-        "access": "public"
-    }
+  "name": "@dhis2/cli-create",
+  "bin": {
+    "d2-create": "./bin/d2-create"
+  },
+  "version": "2.6.1",
+  "main": "src/index.js",
+  "author": "Austin McGee <austin@dhis2.org>",
+  "license": "BSD-3-Clause",
+  "private": false,
+  "dependencies": {
+    "@dhis2/cli-helpers-engine": "^1.5.0",
+    "@dhis2/cli-helpers-template": "^1.0.2",
+    "fs-extra": "^8.1.0",
+    "handlebars": "^4.5.3",
+    "inquirer": "^7.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

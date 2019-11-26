@@ -98,7 +98,9 @@ const handler = ({
 }) => {
     const languagesToTransform = languages ? languages.split(/,\s*/) : []
 
-    reporter.info('Checking requirements and getting legacy translation file names')
+    reporter.info(
+        'Checking requirements and getting legacy translation file names'
+    )
     const translationFiles = getTranslationFileNames({
         inDir,
         outDir,

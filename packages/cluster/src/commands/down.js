@@ -1,6 +1,5 @@
-const chalk = require('chalk')
 const path = require('path')
-const { exec, reporter } = require('@dhis2/cli-helpers-engine')
+const { exec, reporter, chalk } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
     resolveConfiguration,

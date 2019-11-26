@@ -1,6 +1,4 @@
-const fs = require('fs')
-const chalk = require('chalk')
-const { reporter } = require('@dhis2/cli-helpers-engine')
+const { reporter, chalk } = require('@dhis2/cli-helpers-engine')
 const inquirer = require('inquirer')
 const Table = require('cli-table3')
 
