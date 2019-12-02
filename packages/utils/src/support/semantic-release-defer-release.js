@@ -1,7 +1,15 @@
 const SemanticReleaseError = require('@semantic-release/error')
 
-const analyzeCommits = (config = {}, context) => {
+const analyzeCommits = (config, context) => {
     const { logger, commits } = context
+
+    if (commits.length === 0) {
+        throw new SemanticReleaseError(
+            'No commits to analyze',
+            'ENOCOMMITS',
+            'At least one commit needs to be passed to semantic-release-defer-release'
+        )
+    }
 
     const { message, commit } = commits[0]
     const defer = /\[defer[ -]release\]/gi
