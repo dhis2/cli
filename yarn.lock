@@ -1066,10 +1066,10 @@
   resolved "https://registry.yarnpkg.com/@dhis2/app-runtime/-/app-runtime-2.0.4.tgz#9ae202fef3313094aef33a3e38d2c6c5d799c808"
   integrity sha512-w5+C/fHSsuF0am5Tpvz53+tigEZzfz9ahkjXH3BiWxGVxwZGtdHjWfso1T5bJRiKhDTgf76TxIsQiC11W20WyA==
 
-"@dhis2/cli-app-scripts@^1.5.10":
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-app-scripts/-/cli-app-scripts-1.5.10.tgz#4da8c9d3c9ed57d73f83eb07de93e08540fe4106"
-  integrity sha512-QH55f0TJGyEerOgyZm83ZWnLfnZ3jXCqUWvxHApjZqoJC3wyG+6DYN4mbLqFl9DS/1Qwyu1JQlY2pOdY8CONGw==
+"@dhis2/cli-app-scripts@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-app-scripts/-/cli-app-scripts-3.0.2.tgz#f80927656ea0371e8c34931830da2f705fdb4d69"
+  integrity sha512-Lgej0fMDpwPUIudUWd0l0pmIxOWPc4kMAcWrwPjblZYE9IbCQrrlJwiQxuaU0p1BVJZcOLgXzaftsu1NKQ6wkw==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/plugin-proposal-class-properties" "^7.4.4"
@@ -1080,9 +1080,10 @@
     "@dhis2/app-runtime" "^2.0.4"
     "@dhis2/cli-helpers-engine" "^1.5.0"
     "@dhis2/d2-i18n" "^1.0.5"
-    "@dhis2/ui-core" "^3.11.0"
+    "@dhis2/ui-core" "^4.1.1"
     archiver "^3.1.1"
     babel-jest "^24.9.0"
+    chokidar "^3.3.0"
     classnames "^2.2.6"
     detect-port "^1.3.0"
     dotenv "^8.1.0"
@@ -1175,19 +1176,20 @@
     i18next "^10.3"
     moment "^2.24.0"
 
-"@dhis2/prop-types@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/prop-types/-/prop-types-1.1.0.tgz#6144470f336fbcf0fd9142c5ea402d03dfb92c2a"
-  integrity sha512-hHbkoqEbi7vcWcJG1VdBkjKBUFZGWj7VRkwr2GvRU3g1j7AXW5WzsrGGgd/4ejK4nQMardlkZmCrzw7+mkTcRg==
-
-"@dhis2/ui-core@^3.11.0":
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/ui-core/-/ui-core-3.11.0.tgz#eb74e229192d53e26087f5f344abbbd5417ea1fd"
-  integrity sha512-d3iFXDSe9+BTvl70LlSfz3S+Ec+l7fNz+Qh8T7EcOg+MAKUEA1tNjRp+B5Fh8A6LElXWc1CMkJYcDZNcO285vQ==
+"@dhis2/prop-types@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@dhis2/prop-types/-/prop-types-1.5.0.tgz#7e69919f66698be373dd21940a8a770234ded6a1"
+  integrity sha512-dueFkkAMOIMbXiU7Mhr3Y+DBRyOd/rHA+5/IDiYWN1xttlUTSuGZLQ5AnJ7osBicEhx+qElaGbTdRYQj3SMBtA==
   dependencies:
-    "@dhis2/prop-types" "^1.1.0"
+    prop-types "^15"
+
+"@dhis2/ui-core@^4.1.1":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@dhis2/ui-core/-/ui-core-4.5.0.tgz#562ba8c4d0ac8f0827ce226bd76ca13d435b06f1"
+  integrity sha512-dIHUN1Bn2apFuDQ7li3clJz+B/avnrVpVQ13T9x/yky8edbDX0bn1+j+vAter52RD3oCQv6nrVHndbybyylYiw==
+  dependencies:
+    "@dhis2/prop-types" "^1.5.0"
     classnames "^2.2.6"
-    styled-jsx "^3.2.2"
 
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
@@ -8981,7 +8983,7 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
