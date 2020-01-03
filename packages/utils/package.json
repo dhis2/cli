@@ -23,7 +23,7 @@
         "dhis2-uid": "^0.1.2",
         "ejs": "^3.0.1",
         "inquirer": "^7.0.1",
-        "jsondiffpatch": "^0.4.0",
+        "jsondiffpatch": "^0.4.1",
         "semantic-release": "^15.14.0"
     },
     "publishConfig": {
