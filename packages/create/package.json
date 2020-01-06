@@ -13,7 +13,7 @@
         "@dhis2/cli-helpers-template": "^1.0.2",
         "fs-extra": "^8.1.0",
         "handlebars": "^4.5.3",
-        "inquirer": "^7.0.1"
+        "inquirer": "^7.0.2"
     },
     "publishConfig": {
         "access": "public"
