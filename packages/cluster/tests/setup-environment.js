@@ -27,6 +27,7 @@ test('build runtime environment based on defaults', async function(t) {
         DHIS2_CORE_VERSION: 'dev',
         DHIS2_CORE_DB_VERSION: 'dev',
         DHIS2_CORE_PORT: defaults.port,
+        DHIS2_CORE_CONFIG: undefined,
     }
 
     t.deepEqual(actual, expected, 'default environment')
@@ -56,6 +57,7 @@ test('build runtime environment based on args', async function(t) {
         DHIS2_CORE_VERSION: '2.33',
         DHIS2_CORE_DB_VERSION: '2.32',
         DHIS2_CORE_PORT: 8233,
+        DHIS2_CORE_CONFIG: undefined,
     }
 
     t.deepEqual(actual, expected, 'args environment')
@@ -88,6 +90,7 @@ test('build runtime environment based on mixed args and config', async function(
         DHIS2_CORE_VERSION: 'master',
         DHIS2_CORE_DB_VERSION: 'dev',
         DHIS2_CORE_PORT: 8233,
+        DHIS2_CORE_CONFIG: undefined,
     }
 
     t.deepEqual(actual, expected, 'args and config environment')
@@ -121,6 +124,7 @@ test('build runtime environment based on mixed args, cache, config and defaults'
         DHIS2_CORE_VERSION: 'dev',
         DHIS2_CORE_DB_VERSION: 'dev',
         DHIS2_CORE_PORT: 8233,
+        DHIS2_CORE_CONFIG: undefined,
     }
 
     t.deepEqual(actual, expected, 'merged environment')
@@ -161,6 +165,7 @@ test('build runtime environment based on mixed args, cache, config, custom per-c
         DHIS2_CORE_VERSION: 'apa',
         DHIS2_CORE_DB_VERSION: 'dev',
         DHIS2_CORE_PORT: 9999,
+        DHIS2_CORE_CONFIG: undefined,
     }
 
     t.deepEqual(actual, expected, 'merged environment')

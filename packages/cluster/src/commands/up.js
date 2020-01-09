@@ -104,7 +104,7 @@ module.exports = {
         },
         seed: {
             alias: 's',
-            desc: 'Seed the detabase from a sql dump',
+            desc: 'Seed the database from a sql dump',
             type: 'boolean',
         },
         seedFile: {
@@ -124,6 +124,11 @@ module.exports = {
         },
         dhis2Version: {
             desc: 'Set the DHIS2 version',
+            type: 'string',
+        },
+        dhis2Config: {
+            desc:
+                'Path to a custom DHIS2 configuration file to use (dhis.conf)',
             type: 'string',
         },
         dbVersion: {
