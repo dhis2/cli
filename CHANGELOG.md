@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/dhis2/cli/compare/v2.7.0...v2.8.0) (2020-01-09)
+
+
+### Features
+
+* **cluster:** add option to pass in path to custom dhis.conf ([#236](https://github.com/dhis2/cli/issues/236)) ([80f4cd5](https://github.com/dhis2/cli/commit/80f4cd5))
+
 # [2.7.0](https://github.com/dhis2/cli/compare/v2.6.1...v2.7.0) (2019-11-26)
 
 
