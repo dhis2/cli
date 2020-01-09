@@ -126,6 +126,11 @@ module.exports = {
             desc: 'Set the DHIS2 version',
             type: 'string',
         },
+        dhis2Config: {
+            desc:
+                'Path to a custom DHIS2 configuration file to use (dhis.conf)',
+            type: 'string',
+        },
         dbVersion: {
             desc: 'Set the database version',
             type: 'string',

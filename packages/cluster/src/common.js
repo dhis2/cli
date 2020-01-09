@@ -1,5 +1,4 @@
 const path = require('path')
-const fs = require('fs')
 
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
@@ -132,6 +131,7 @@ async function resolveConfiguration(argv = {}) {
                 channel: resolved.channel,
                 dbVersion: resolved.dbVersion,
                 dhis2Version: resolved.dhis2Version,
+                dhis2Config: resolved.dhis2Config,
                 customContext: resolved.customContext,
                 image: resolved.image,
                 port: resolved.port,
@@ -155,6 +155,7 @@ module.exports.makeEnvironment = cfg => {
         DHIS2_CORE_VERSION: cfg.dhis2Version,
         DHIS2_CORE_DB_VERSION: cfg.dbVersion,
         DHIS2_CORE_PORT: cfg.port,
+        DHIS2_CORE_CONFIG: cfg.dhis2Config,
     }
 
     reporter.debug('Runtime environment\n', env)
