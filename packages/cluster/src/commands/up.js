@@ -104,7 +104,7 @@ module.exports = {
         },
         seed: {
             alias: 's',
-            desc: 'Seed the detabase from a sql dump',
+            desc: 'Seed the database from a sql dump',
             type: 'boolean',
         },
         seedFile: {
