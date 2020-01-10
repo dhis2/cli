@@ -22,7 +22,7 @@
         "@semantic-release/release-notes-generator": "^7.3.5",
         "dhis2-uid": "^0.1.2",
         "ejs": "^3.0.1",
-        "inquirer": "^7.0.1",
+        "inquirer": "^7.0.3",
         "jsondiffpatch": "^0.4.1",
         "semantic-release": "^16.0.0"
     },
