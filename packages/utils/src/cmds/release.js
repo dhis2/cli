@@ -95,8 +95,9 @@ const handler = async ({ publish }) => {
         '@semantic-release/github',
     ]
 
+    // `options` and `config` should be made configurable
     const options = {
-        branch: 'master',
+        branches: 'master',
         version: 'v${version}',
         plugins: plugins.filter(n => !!n),
     }
@@ -108,7 +109,7 @@ const handler = async ({ publish }) => {
             GIT_AUTHOR_EMAIL: 'apps@dhis2.org',
             GIT_COMMITTER_NAME: '@dhis2-bot',
             GIT_COMMITTER_EMAIL: 'apps@dhis2.org',
-            NPM_CONFIG_ALLOW_SAME_VERSION: 'true', // Ensure we still publish even though we've already updated the pacakge versions
+            NPM_CONFIG_ALLOW_SAME_VERSION: 'true', // Ensure we still publish even though we've already updated the package versions
         },
     }
 
