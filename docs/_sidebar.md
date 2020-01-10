@@ -1,0 +1,13 @@
+-   [**Getting Started**](getting-started)
+-   [**Commands**](commands)
+-   -   [`d2`](commands/d2)
+-   -   `d2 app`
+-   -   -   [`d2 app scripts`↗️](https://platform.dhis2.nu/#/scripts ':ignore')
+-   -   [`d2 cluster`](commands/d2-cluster)
+-   -   `d2 create`
+-   -   -   `d2 create app`
+-   -   [`d2 style`↗️](https://cli-style.dhis2.nu ':ignore')
+-   -   `d2 utils`
+-   -   -   [`d2 utils docsite`↗️](https://cli-utils-docsite.dhis2.nu ':ignore')
+-   &nbsp;
+-   [Changelog](CHANGELOG)
