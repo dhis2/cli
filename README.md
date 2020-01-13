@@ -7,11 +7,13 @@ A unified CLI for DHIS2 development workflows.
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![Greenkeeper badge](https://badges.greenkeeper.io/dhis2/cli.svg)](https://greenkeeper.io/)
 
+Docs are available at [https://cli.dhis2.nu](cli.dhis2.nu).
+
 | Alias            | Executable       | Package                     | Source                                                                      | Version                                                                                                                           |
 | ---------------- | ---------------- | --------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | d2               | d2               | @dhis2/cli                  | [./packages/main](packages/main)                                            | [![npm](https://img.shields.io/npm/v/@dhis2/cli.svg)](https://www.npmjs.com/package/@dhis2/cli)                                   |
 | d2 app           | d2-app           | @dhis2/cli-app              | [./packages/app](./packages/app)                                            | [![npm](https://img.shields.io/npm/v/@dhis2/cli-app.svg)](https://www.npmjs.com/package/@dhis2/cli-app)                           |
-| d2 app scripts   | d2-app-scripts   | @dhis2/cli-app-scripts      | [dhis2/app-platform](https://github.com/dhis2/app-platform/tree/master/cli)             | [![npm](https://img.shields.io/npm/v/@dhis2/cli-app-scripts.svg)](https://www.npmjs.com/package/@dhis2/cli-app-scripts)           |
+| d2 app scripts   | d2-app-scripts   | @dhis2/cli-app-scripts      | [dhis2/app-platform](https://github.com/dhis2/app-platform/tree/master/cli) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-app-scripts.svg)](https://www.npmjs.com/package/@dhis2/cli-app-scripts)           |
 | d2 cluster       | d2-cluster       | @dhis2/cli-cluster          | [./packages/cluster](./packages/cluster)                                    | [![npm](https://img.shields.io/npm/v/@dhis2/cli-cluster.svg)](https://www.npmjs.com/package/@dhis2/cli-cluster)                   |
 | d2 create        | d2-create        | @dhis2/cli-create           | [./packages/create](./packages/create)                                      | [![npm](https://img.shields.io/npm/v/@dhis2/cli-create.svg)](https://www.npmjs.com/package/@dhis2/cli-create)                     |
 | d2 create app    | d2-create-app    | @dhis2/create-app           | [./packages/create-app](./packages/create-app)                              | [![npm](https://img.shields.io/npm/v/@dhis2/create-app.svg)](https://www.npmjs.com/package/@dhis2/create-app)                     |
