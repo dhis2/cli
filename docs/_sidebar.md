@@ -4,6 +4,11 @@
 -   -   `d2 app`
 -   -   -   [`d2 app scripts`↗️](https://platform.dhis2.nu/#/scripts ':ignore')
 -   -   [`d2 cluster`](commands/d2-cluster)
+-   -   -   Examples
+-   -   -   -   [Use a stable version](recipes/stable)
+-   -   -   -   [Use a development version](recipes/development)
+-   -   -   -   [Use a custom Docker image](recipes/custom-image)
+-   -   -   -   [Use a custom `dhis.conf`](recipes/custom-dhis-config)
 -   -   `d2 create`
 -   -   -   `d2 create app`
 -   -   [`d2 style`↗️](https://cli-style.dhis2.nu ':ignore')
