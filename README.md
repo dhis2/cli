@@ -7,7 +7,7 @@ A unified CLI for DHIS2 development workflows.
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![Greenkeeper badge](https://badges.greenkeeper.io/dhis2/cli.svg)](https://greenkeeper.io/)
 
-Docs are available at [https://cli.dhis2.nu](cli.dhis2.nu).
+Docs are available at [cli.dhis2.nu](https://cli.dhis2.nu).
 
 | Alias            | Executable       | Package                     | Source                                                                      | Version                                                                                                                           |
 | ---------------- | ---------------- | --------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
