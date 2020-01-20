@@ -1,3 +1,10 @@
+## [2.8.1](https://github.com/dhis2/cli/compare/v2.8.0...v2.8.1) (2020-01-20)
+
+
+### Bug Fixes
+
+* **docs:** format link correctly ([#255](https://github.com/dhis2/cli/issues/255)) ([8626546](https://github.com/dhis2/cli/commit/8626546))
+
 # [2.8.0](https://github.com/dhis2/cli/compare/v2.7.0...v2.8.0) (2020-01-09)
 
 
