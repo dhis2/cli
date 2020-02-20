@@ -19,7 +19,7 @@
         "@semantic-release/git": "^8.0.0",
         "@semantic-release/github": "^6.0.1",
         "@semantic-release/npm": "^6.0.0",
-        "@semantic-release/release-notes-generator": "^7.3.5",
+        "@semantic-release/release-notes-generator": "^9.0.0",
         "dhis2-uid": "^0.1.2",
         "ejs": "^3.0.1",
         "inquirer": "^7.0.4",
