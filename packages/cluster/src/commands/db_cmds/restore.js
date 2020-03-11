@@ -20,7 +20,7 @@ const run = async function(argv) {
         process.exit(1)
     }
 
-    const rest = await tryCatchAsync(
+    const res = await tryCatchAsync(
         'db::restore',
         restore({
             cacheLocation,

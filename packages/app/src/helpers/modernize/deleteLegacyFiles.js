@@ -1,4 +1,5 @@
 const fs = require('fs')
+
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
 /**
@@ -16,7 +17,7 @@ const deleteLegacyFiles = ({ translationFiles, languagesToTransform }) => {
             languagesToTransform.indexOf(language) !== -1
         ) {
             try {
-                const filePathToDelete = path.join(inDir, file)
+                const filePathToDelete = file
                 fs.unlinkSync(filePathToDelete)
                 reporter.debug(`Deleted old file:`)
                 reporter.debug(`"${filePathToDelete}"`)

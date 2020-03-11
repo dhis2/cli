@@ -21,17 +21,17 @@ const verifyConditions = (config = {}, context) => {
         throw new AggregateError(errors)
     }
 
-    validPackages.forEach(package => {
-        package.label = package.json.name || '<unnamed>'
+    validPackages.forEach(pkg => {
+        pkg.label = pkg.json.name || '<unnamed>'
         if (!silent) {
-            logger.log(`Package ${package.label} found at ${package.path}`)
+            logger.log(`Package ${pkg.label} found at ${pkg.path}`)
         }
     })
 
     context.packages = validPackages
 }
 
-const replaceDependencies = (pkg, listNames, packageNames, version) => {
+const replaceDependencies = ({ pkg, listNames, packageNames, version }) => {
     const dependencies = []
     packageNames.forEach(packageName => {
         listNames.forEach(listName => {
@@ -55,38 +55,34 @@ const prepare = (config, context) => {
         ? nextRelease.version
         : `^${nextRelease.version}`
 
-    const names = packages.map(package => package.json.name).filter(n => n)
-    packages.forEach(package => {
-        const pkgJson = package.json
-        const relativePath = path.relative(context.cwd, package.path)
+    const names = packages.map(pkg => pkg.json.name).filter(n => n)
+    packages.forEach(pkg => {
+        const pkgJson = pkg.json
+        const relativePath = path.relative(context.cwd, pkg.path)
 
         if (updatePackageVersion) {
             pkgJson.version = nextRelease.version
             if (!silent) {
                 logger.log(
-                    `Updated version to ${nextRelease.version} for package ${
-                        package.label
-                    } at ${relativePath}`
+                    `Updated version to ${nextRelease.version} for package ${pkg.label} at ${relativePath}`
                 )
             }
         }
 
-        replaceDependencies(
-            pkgJson,
-            ['dependencies', 'devDependencies', 'peerDependencies'],
-            names,
-            targetVersion
-        ).forEach(
+        replaceDependencies({
+            pkg: pkgJson,
+            listNames: ['dependencies', 'devDependencies', 'peerDependencies'],
+            packageNames: names,
+            version: targetVersion,
+        }).forEach(
             dep =>
                 !silent &&
                 logger.log(
-                    `Upgraded dependency ${dep}@${targetVersion} for ${
-                        package.label
-                    } at ${relativePath}`
+                    `Upgraded dependency ${dep}@${targetVersion} for ${pkg.label} at ${relativePath}`
                 )
         )
         fs.writeFileSync(
-            package.path,
+            pkg.path,
             JSON.stringify(pkgJson, undefined, tabSpaces) + '\n'
         )
     })

@@ -11,8 +11,6 @@
  *   --log-missing-keys
  */
 const path = require('path')
-const fs = require('fs')
-const chalk = require('chalk')
 
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
