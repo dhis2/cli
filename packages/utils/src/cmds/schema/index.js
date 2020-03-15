@@ -1,6 +1,5 @@
 const fs = require('fs')
 const path = require('path')
-const { namespace } = require('@dhis2/cli-helpers-engine')
 const utils = require('../../support/utils')
 const request = require('request')
 const inquirer = require('inquirer')
@@ -25,7 +24,7 @@ const schemaDiffIdentifier = (info1, info2) =>
     `${schemaIdentifier(info1)}__${schemaIdentifier(info2)}`
 
 function asyncRequest(url, opts) {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
         request.get(url, opts, (err, res, body) => {
             if (err || res.statusCode > 299) {
                 reporter.error('Request', url, 'failed to fetch')

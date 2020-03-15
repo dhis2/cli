@@ -10,7 +10,7 @@ const path = require('path')
 
 const handler = async ({ urls, output = false, force, ...rest }) => {
     const cache = rest.getCache()
-    ;({ auth, baseUrl } = resolveConfig(rest))
+    const { auth, baseUrl } = resolveConfig(rest)
 
     for (let url of urls) {
         let bUrl = baseUrl

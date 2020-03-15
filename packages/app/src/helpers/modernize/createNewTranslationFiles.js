@@ -36,7 +36,7 @@ const createNewTranslationFiles = ({
     appendToExistingFiles,
 }) => {
     for (const language in translations) {
-        if (translations.hasOwnProperty(language)) {
+        if (Object.prototype.hasOwnProperty.call(translations, language)) {
             if (
                 languagesToTransform.length &&
                 languagesToTransform.indexOf(language) === -1
@@ -88,7 +88,12 @@ const createNewTranslationFiles = ({
             }
 
             for (const key in languageTranslations) {
-                if (languageTranslations.hasOwnProperty(key)) {
+                if (
+                    Object.prototype.hasOwnProperty.call(
+                        languageTranslations,
+                        key
+                    )
+                ) {
                     if (!translations[primaryLanguage][key]) {
                         logMissingKeys &&
                             reporter.info(
