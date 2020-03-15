@@ -3,31 +3,6 @@
 
 ### Bug Fixes
 
-* **release:** cannot use squash/rebase when using dist channels in semantic-release ([1f994fb](https://github.com/dhis2/cli/commit/1f994fb))
-* release with the internal changes, not the npm package ([2e17226](https://github.com/dhis2/cli/commit/2e17226))
-
-
-### Features
-
-* **release:** support distribution tags and custom release user info ([#292](https://github.com/dhis2/cli/issues/292)) ([17496d1](https://github.com/dhis2/cli/commit/17496d1))
-
-# [2.9.0](https://github.com/dhis2/cli/compare/v2.8.1...v2.9.0) (2020-03-15)
-
-
-### Bug Fixes
-
-* release with the internal changes, not the npm package ([2e17226](https://github.com/dhis2/cli/commit/2e17226))
-
-
-### Features
-
-* **release:** support distribution tags and custom release user info ([#292](https://github.com/dhis2/cli/issues/292)) ([17496d1](https://github.com/dhis2/cli/commit/17496d1))
-
-# [2.9.0](https://github.com/dhis2/cli/compare/v2.8.1...v2.9.0) (2020-03-15)
-
-
-### Bug Fixes
-
 * release with the internal changes, not the npm package ([6763800](https://github.com/dhis2/cli/commit/6763800))
 
 
