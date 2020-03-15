@@ -1,3 +1,10 @@
+## [2.9.1](https://github.com/dhis2/cli/compare/v2.9.0...v2.9.1) (2020-03-15)
+
+
+### Bug Fixes
+
+* **release:** fix changelog ([f6b7a0d](https://github.com/dhis2/cli/commit/f6b7a0d))
+
 # [2.9.0](https://github.com/dhis2/cli/compare/v2.8.1...v2.9.0) (2020-03-15)
 
 
