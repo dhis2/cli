@@ -42,6 +42,6 @@ jobs:
               run: yarn test
 
             - name: Publish to NPM
-              run: npx @dhis2/cli-utils release --publish npm
+              run: ./packages/main/bin/d2 utils release --publish npm
         env:
             CI: true
