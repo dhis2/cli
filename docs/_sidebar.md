@@ -13,6 +13,7 @@
 -   -   -   `d2 create app`
 -   -   [`d2 style`↗️](https://cli-style.dhis2.nu ':ignore')
 -   -   `d2 utils`
+-   -   [`d2 utils release`](commands/d2-utils-release)
 -   -   -   [`d2 utils docsite`↗️](https://cli-utils-docsite.dhis2.nu ':ignore')
 -   &nbsp;
 -   [Changelog](CHANGELOG)

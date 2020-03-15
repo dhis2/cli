@@ -1,4 +1,4 @@
-const run = ({ _, $0, raw, ...argv }) => {
+const run = ({ raw, ...argv }) => {
     const out = JSON.stringify(argv, undefined, raw ? undefined : 2)
     console.log(out)
 }

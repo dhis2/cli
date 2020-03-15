@@ -95,20 +95,18 @@ const handler = async ({ publish }) => {
         '@semantic-release/github',
     ]
 
-    // `options` and `config` should be made configurable
+    /* rely on defaults for configuration, except for plugins as they
+     * need to be custom.
+     *
+     * https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md
+     */
     const options = {
-        branches: 'master',
-        version: 'v${version}',
         plugins: plugins.filter(n => !!n),
     }
 
     const config = {
         env: {
             ...process.env,
-            GIT_AUTHOR_NAME: '@dhis2-bot',
-            GIT_AUTHOR_EMAIL: 'apps@dhis2.org',
-            GIT_COMMITTER_NAME: '@dhis2-bot',
-            GIT_COMMITTER_EMAIL: 'apps@dhis2.org',
             NPM_CONFIG_ALLOW_SAME_VERSION: 'true', // Ensure we still publish even though we've already updated the package versions
         },
     }

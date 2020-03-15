@@ -30,7 +30,7 @@ const downloadDatabase = async ({ cache, dbVersion, update, url }) => {
     }
 }
 
-const restoreFromFile = async ({ cacheLocation, dbFile, dbVersion, name }) => {
+const restoreFromFile = async ({ cacheLocation, dbFile, name }) => {
     reporter.info(`Restoring database (this may take some time)...`)
     reporter.debug(`Restoring from database dump ${chalk.bold(dbFile)}`)
 
@@ -63,5 +63,5 @@ module.exports = async ({
               update,
           })
 
-    await restoreFromFile({ cacheLocation, dbFile, dbVersion, name })
+    await restoreFromFile({ cacheLocation, dbFile, name })
 }

@@ -51,19 +51,15 @@ const run = async function(argv) {
     await Promise.all(
         clusters.map(async cluster => {
             const status = await getStatus(cluster)
-            cluster.status = formatStatus(status)
+            table.push([
+                chalk.blue(cluster.name),
+                cluster.port,
+                cluster.channel,
+                cluster.dhis2Version,
+                cluster.dbVersion,
+                formatStatus(status),
+            ])
         })
-    )
-
-    clusters.forEach(cluster =>
-        table.push([
-            chalk.blue(cluster.name),
-            cluster.port,
-            cluster.channel,
-            cluster.dhis2Version,
-            cluster.dbVersion,
-            cluster.status,
-        ])
     )
 
     reporter.print(table)

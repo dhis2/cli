@@ -1,6 +1,4 @@
-const SemanticReleaseError = require('@semantic-release/error')
-
-const analyzeCommits = (config = {}, context) => {
+const analyzeCommits = (config, context) => {
     const { logger, commits } = context
 
     const { message, commit } = commits[0]
