@@ -9,7 +9,7 @@
     ],
     "license": "BSD-3-Clause",
     "engines": {
-        "node": ">=8.6"
+        "node": ">=10"
     },
     "dependencies": {
         "@dhis2/cli-app": "2.9.1",
