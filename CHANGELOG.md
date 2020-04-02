@@ -1,3 +1,20 @@
+# [3.0.0](https://github.com/dhis2/cli/compare/v2.9.1...v3.0.0) (2020-04-02)
+
+
+### chore
+
+* require node >=10 ([ee2a64b](https://github.com/dhis2/cli/commit/ee2a64b))
+
+
+### Features
+
+* **utils:** add cypress subcommand ([96c5b86](https://github.com/dhis2/cli/commit/96c5b86))
+
+
+### BREAKING CHANGES
+
+* Require Node version 10 or later.
+
 ## [2.9.1](https://github.com/dhis2/cli/compare/v2.9.0...v2.9.1) (2020-03-15)
 
 
