@@ -155,7 +155,9 @@ module.exports.makeEnvironment = cfg => {
         DHIS2_CORE_VERSION: cfg.dhis2Version,
         DHIS2_CORE_DB_VERSION: cfg.dbVersion,
         DHIS2_CORE_PORT: cfg.port,
-        DHIS2_CORE_CONFIG: cfg.dhis2Config,
+    }
+    if (cfg.dhis2Config) {
+        env.DHIS2_CORE_CONFIG = cfg.dhis2Config
     }
 
     reporter.debug('Runtime environment\n', env)
