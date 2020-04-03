@@ -3,7 +3,7 @@
     "bin": {
         "d2-utils": "./bin/d2-utils"
     },
-    "version": "3.0.1",
+    "version": "3.0.2",
     "main": "src/index.js",
     "author": "Viktor Varland <viktor@dhis2.org>",
     "contributors": [

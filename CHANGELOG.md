@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/dhis2/cli/compare/v3.0.1...v3.0.2) (2020-04-03)
+
+
+### Bug Fixes
+
+* don't set DHIS2_CORE_CONFIG to undefined, it needs to be unset ([21b467a](https://github.com/dhis2/cli/commit/21b467a))
+
 ## [3.0.1](https://github.com/dhis2/cli/compare/v3.0.0...v3.0.1) (2020-04-03)
 
 
