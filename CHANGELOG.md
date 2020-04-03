@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/dhis2/cli/compare/v3.0.0...v3.0.1) (2020-04-03)
+
+
+### Bug Fixes
+
+* **release:** avoid picking a prop from undefined ([5e9f48e](https://github.com/dhis2/cli/commit/5e9f48e))
+
 # [3.0.0](https://github.com/dhis2/cli/compare/v2.9.1...v3.0.0) (2020-04-02)
 
 
