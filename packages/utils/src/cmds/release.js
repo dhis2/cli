@@ -117,11 +117,13 @@ const handler = async ({ publish }) => {
         if (result) {
             const { lastRelease, commits, nextRelease, releases } = result
 
-            reporter.info(
-                `Published ${nextRelease.type} release version ${nextRelease.version} containing ${commits.length} commits.`
-            )
+            if (nextRelease) {
+                reporter.info(
+                    `Published ${nextRelease.type} release version ${nextRelease.version} containing ${commits.length} commits.`
+                )
+            }
 
-            if (lastRelease.version) {
+            if (lastRelease) {
                 reporter.info(`The last release was "${lastRelease.version}".`)
             }
 
