@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/dhis2/cli/compare/v3.0.2...v3.0.3) (2020-04-06)
+
+
+### Bug Fixes
+
+* add cli-table3 as d2-cluster dependency ([bd84e12](https://github.com/dhis2/cli/commit/bd84e12))
+
 ## [3.0.2](https://github.com/dhis2/cli/compare/v3.0.1...v3.0.2) (2020-04-03)
 
 
