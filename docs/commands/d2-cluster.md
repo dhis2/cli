@@ -8,8 +8,8 @@ While you can install and run `d2-cluster` from `@dhis2/cli-cluster`,
 the preferred entrypoint is the root `d2` CLI. To install the `d2` CLI:
 
 ```bash
-# Download and run commands in-line, no installation necessary
-npx @dhis2/cli-cluster --help
+yarn global add @dhis2/cli
+d2 cluster --help
 ```
 
 Depending on your installation method, the following examples which use
