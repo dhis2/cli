@@ -11,5 +11,5 @@ module.exports = {
     dockerComposeRepository:
         'https://github.com/dhis2/docker-compose/archive/master.tar.gz',
     demoDatabaseURL:
-        'https://github.com/dhis2/dhis2-demo-db/blob/master/sierra-leone/{version}/dhis2-db-sierra-leone.sql.gz?raw=true',
+        'https://databases.dhis2.org/sierra-leone/{version}/dhis2-db-sierra-leone.sql.gz'
 }
