@@ -1,3 +1,10 @@
+## [3.0.4](https://github.com/dhis2/cli/compare/v3.0.3...v3.0.4) (2020-05-05)
+
+
+### Bug Fixes
+
+* use new location for sample database downloads ([#327](https://github.com/dhis2/cli/issues/327)) ([d571de4](https://github.com/dhis2/cli/commit/d571de4))
+
 ## [3.0.3](https://github.com/dhis2/cli/compare/v3.0.2...v3.0.3) (2020-04-06)
 
 
