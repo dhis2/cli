@@ -2359,10 +2359,10 @@
     semver "^7.1.3"
     yargs "^15.3.1"
 
-"@dhis2/cli-utils-cypress@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-utils-cypress/-/cli-utils-cypress-2.0.0.tgz#ffbe123f280e109b6dec663d3b506b29eb930438"
-  integrity sha512-k8H9i+6hHKUYFdhU1rDNEPZJhZTpxd/2FlYNT544klaL44W7h7prZn1Yah5suM2ciD9sDgW6YOu0EsVd+ivpTQ==
+"@dhis2/cli-utils-cypress@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-utils-cypress/-/cli-utils-cypress-2.1.0.tgz#04da8cae9638bbca4474bed4013b264eb875a780"
+  integrity sha512-O+BIzsFt3OfLbrIV2ddkyBwUguj+pWwXwSKhWjFKUSDWIhYiATDAfnjq5noU7Ogom3qKcLP4CKQRFKIYeCLpNQ==
   dependencies:
     "@dhis2/cli-helpers-engine" "^1.5.0"
     cross-spawn "^7.0.1"
