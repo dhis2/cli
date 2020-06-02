@@ -34,8 +34,8 @@ DHIS2.
 For our Docker images, that means that we have one repo on Docker Hub
 per channel:
 
--   Stable: https://cloud.docker.com/u/dhis2/repository/docker/dhis2/core
--   Dev: https://cloud.docker.com/u/dhis2/repository/docker/dhis2/core-dev
+-   Stable: https://hub.docker.com/r/dhis2/core
+-   Dev: https://hub.docker.com/r/dhis2/core-dev
 
 ## Tags
 
@@ -103,7 +103,7 @@ are important to know about.
 
 -   `--dhis2-version`: This matches to the [tag name within a Docker
     Hub repo](#tags). E.g.
-    [`2.32`](https://cloud.docker.com/u/dhis2/repository/docker/dhis2/core-dev/tags)
+    [`2.32`](https://hub.docker.com/r/dhis2/core-dev/tags)
 
 -   `--db-version`: This matches to the database dumps mentioned in
     [Database dumps](#database-dumps). E.g. `dev` or `2.32`.
