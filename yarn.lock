@@ -2371,24 +2371,10 @@
     fs-extra "^8.1.0"
     inquirer "^7.0.4"
 
-"@dhis2/cli-utils-docsite@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-utils-docsite/-/cli-utils-docsite-1.3.0.tgz#62be0cfc0223f7cd766d8bb24248f21082e038c0"
-  integrity sha512-A5bpLawOa/+GuCj4BnqlOTA14tpKVPY7ShIAKFgmStW+SnE1XFZqhjs16ADWsnhG0M/2jFiaGjen9MGpmj3FGw==
-  dependencies:
-    "@dhis2/cli-helpers-engine" "^1.5.0"
-    "@dhis2/cli-helpers-template" "^1.0.2"
-    chokidar "^3.3.1"
-    front-matter "^3.1.0"
-    fs-extra "^8.1.0"
-    jsdoc-to-markdown "^5.0.3"
-    live-server "^1.2.1"
-    match-all "^1.2.5"
-
-"@dhis2/cli-utils-docsite@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-utils-docsite/-/cli-utils-docsite-2.0.0.tgz#e9a4a0796598a1f363def9278551c2684c5e30f9"
-  integrity sha512-qxE+BPZr019StXr6qfLQAECz8xc9cy3wwterL4PsKHMDOgMaLVp7OCKRot3Vm+NwEA+t/ATwduShYm2GQjW41Q==
+"@dhis2/cli-utils-docsite@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-utils-docsite/-/cli-utils-docsite-2.0.2.tgz#41823b3ff4813d4b94fe95281ba8fbfda7f8dae7"
+  integrity sha512-q2XZMss0oHERS0m9/5nZgD0UU9WGXGf81bf+csNNCMNav+cYIWqvdIIwB9dPaScBbPFCKjnT8/eBj+QlbvuLSA==
   dependencies:
     "@dhis2/cli-helpers-engine" "^1.5.0"
     "@dhis2/cli-helpers-template" "^1.0.2"
