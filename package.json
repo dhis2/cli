@@ -20,5 +20,11 @@
         "build:docs": "d2-utils-docsite build ./docs -o ./dist",
         "start": "d2-utils-docsite serve ./docs -o ./dist",
         "test": "tape packages/**/tests/*.js"
+    },
+    "d2": {
+        "docsite": {
+            "name": "DHIS2 CLI",
+            "description": "A unified CLI for DHIS2 development workflows."
+        }
     }
 }
