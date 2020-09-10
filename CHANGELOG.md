@@ -1,3 +1,10 @@
+## [3.0.5](https://github.com/dhis2/cli/compare/v3.0.4...v3.0.5) (2020-09-10)
+
+
+### Bug Fixes
+
+* **deps:** bump @dhis2/cli-app-scripts from 4.0.0 to 5.2.0 ([#367](https://github.com/dhis2/cli/issues/367)) ([bc9eceb](https://github.com/dhis2/cli/commit/bc9eceb))
+
 ## [3.0.4](https://github.com/dhis2/cli/compare/v3.0.3...v3.0.4) (2020-05-05)
 
 
