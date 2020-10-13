@@ -11,7 +11,7 @@
     ],
     "license": "BSD-3-Clause",
     "devDependencies": {
-        "@dhis2/cli-style": "^6.0.0",
+        "@dhis2/cli-style": "^7.1.0",
         "@dhis2/cli-utils-docsite": "^2.0.2",
         "tape": "^4.13.2",
         "tape-await": "^0.1.2"
