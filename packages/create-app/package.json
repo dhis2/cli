@@ -8,7 +8,7 @@
     "license": "BSD-3-Clause",
     "dependencies": {
         "@dhis2/cli-create": "3.0.5",
-        "@dhis2/cli-helpers-engine": "^2.0.0"
+        "@dhis2/cli-helpers-engine": "^2.0.1"
     },
     "bin": "./bin/d2-create-app",
     "publishConfig": {

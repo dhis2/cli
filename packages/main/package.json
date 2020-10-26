@@ -15,7 +15,7 @@
         "@dhis2/cli-app": "3.0.5",
         "@dhis2/cli-cluster": "3.0.5",
         "@dhis2/cli-create": "3.0.5",
-        "@dhis2/cli-helpers-engine": "^2.0.0",
+        "@dhis2/cli-helpers-engine": "^2.0.1",
         "@dhis2/cli-style": "^7.0.0",
         "@dhis2/cli-utils": "3.0.5",
         "cli-table3": "^0.6.0",
