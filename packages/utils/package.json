@@ -3,7 +3,7 @@
     "bin": {
         "d2-utils": "./bin/d2-utils"
     },
-    "version": "3.0.4",
+    "version": "3.0.5",
     "main": "src/index.js",
     "author": "Viktor Varland <viktor@dhis2.org>",
     "contributors": [
@@ -15,7 +15,7 @@
         "@dhis2/cli-helpers-engine": "^2.0.0",
         "@dhis2/cli-utils-cypress": "^2.0.0",
         "@dhis2/cli-utils-docsite": "^2.0.2",
-        "@semantic-release/changelog": "^5.0.0",
+        "@semantic-release/changelog": "^5.0.1",
         "@semantic-release/commit-analyzer": "^8.0.1",
         "@semantic-release/git": "^9.0.0",
         "@semantic-release/github": "^7.0.5",
@@ -25,7 +25,7 @@
         "ejs": "^3.0.1",
         "inquirer": "^7.1.0",
         "jsondiffpatch": "^0.4.1",
-        "semantic-release": "^17.0.4"
+        "semantic-release": "^17.2.0"
     },
     "publishConfig": {
         "access": "public"
