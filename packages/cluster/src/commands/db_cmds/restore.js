@@ -2,7 +2,7 @@ const { reporter, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const { initDockerComposeCache, resolveConfiguration } = require('../../common')
 const { restore } = require('../../helpers/db')
 
-const run = async function(argv) {
+const run = async function (argv) {
     const { name, getCache } = argv
 
     const cfg = await resolveConfiguration(argv)

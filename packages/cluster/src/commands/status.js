@@ -1,7 +1,7 @@
 const { exec, reporter } = require('@dhis2/cli-helpers-engine')
 const { makeComposeProject } = require('../common')
 
-const run = async function({ name, ...argv }) {
+const run = async function ({ name, ...argv }) {
     try {
         await exec({
             cmd: 'docker',

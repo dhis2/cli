@@ -34,7 +34,7 @@ const formatStatus = status => {
     }
 }
 
-const run = async function(argv) {
+const run = async function (argv) {
     const clusters = await listClusters(argv)
 
     const table = new Table({

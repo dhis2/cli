@@ -9,7 +9,7 @@ const cache = obj => ({
     write: () => {},
 })
 
-test('build runtime environment based on defaults', async function(t) {
+test('build runtime environment based on defaults', async function (t) {
     t.plan(1)
 
     const argv = {
@@ -32,7 +32,7 @@ test('build runtime environment based on defaults', async function(t) {
     t.deepEqual(actual, expected, 'default environment')
 })
 
-test('build runtime environment based on args', async function(t) {
+test('build runtime environment based on args', async function (t) {
     t.plan(1)
 
     const argv = {
@@ -61,7 +61,7 @@ test('build runtime environment based on args', async function(t) {
     t.deepEqual(actual, expected, 'args environment')
 })
 
-test('build runtime environment based on mixed args and config', async function(t) {
+test('build runtime environment based on mixed args and config', async function (t) {
     t.plan(1)
 
     const config = {
@@ -93,7 +93,7 @@ test('build runtime environment based on mixed args and config', async function(
     t.deepEqual(actual, expected, 'args and config environment')
 })
 
-test('build runtime environment based on mixed args, cache, config and defaults', async function(t) {
+test('build runtime environment based on mixed args, cache, config and defaults', async function (t) {
     t.plan(1)
 
     const config = {
@@ -126,7 +126,7 @@ test('build runtime environment based on mixed args, cache, config and defaults'
     t.deepEqual(actual, expected, 'merged environment')
 })
 
-test('build runtime environment based on mixed args, cache, config, custom per-cluster config and defaults', async function(t) {
+test('build runtime environment based on mixed args, cache, config, custom per-cluster config and defaults', async function (t) {
     t.plan(1)
 
     const config = {
@@ -134,7 +134,7 @@ test('build runtime environment based on mixed args, cache, config, custom per-c
         dhis2Version: 'dev',
         dbVersion: 'dev',
         clusters: {
-            '2330': {
+            2330: {
                 port: 9999,
                 dhis2Version: 'apa',
             },

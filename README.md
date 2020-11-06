@@ -43,7 +43,6 @@ Anything following the action verb is either a positional argument or a flag (if
 |                  |                  | @dhis2/cli-helpers-engine   | [dhis2/cli-helpers-engine](https://github.com/dhis2/cli-helpers-engine)     | [![npm](https://img.shields.io/npm/v/@dhis2/cli-helpers-engine.svg)](https://www.npmjs.com/package/@dhis2/cli-helpers-engine)     |
 |                  |                  | @dhis2/cli-helpers-template | [dhis2/cli-helpers-template](https://github.com/dhis2/cli-helpers-template) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-helpers-template.svg)](https://www.npmjs.com/package/@dhis2/cli-helpers-template) |
 
-
 ## Report an issue
 
 The issue tracker can be found in [DHIS2 JIRA](https://jira.dhis2.org)

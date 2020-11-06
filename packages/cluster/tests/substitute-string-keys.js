@@ -6,7 +6,7 @@ const defaults = require('../src/defaults')
 
 const template = defaults.image
 
-test('replace {version} key with a value', function(t) {
+test('replace {version} key with a value', function (t) {
     t.plan(1)
 
     const string = 'somethingwitha{version}key'
@@ -17,7 +17,7 @@ test('replace {version} key with a value', function(t) {
     t.equal(result, 'somethingwitha2.31.1key', 'replace {version} with 2.31.1')
 })
 
-test('stable and 2.31.4', function(t) {
+test('stable and 2.31.4', function (t) {
     t.plan(2)
 
     const expected = 'dhis2/core:2.31.4'
@@ -40,7 +40,7 @@ test('stable and 2.31.4', function(t) {
     )
 })
 
-test('stable and 2.32.0 with alpine variant', function(t) {
+test('stable and 2.32.0 with alpine variant', function (t) {
     t.plan(1)
 
     const expected = 'dhis2/core:2.32.0-alpine'
@@ -58,7 +58,7 @@ test('stable and 2.32.0 with alpine variant', function(t) {
     )
 })
 
-test('stable and master with tomcat9 and debian-slim variant', function(t) {
+test('stable and master with tomcat9 and debian-slim variant', function (t) {
     t.plan(1)
 
     const expected = 'dhis2/core:master-tomcat9-debian-slim'
@@ -76,7 +76,7 @@ test('stable and master with tomcat9 and debian-slim variant', function(t) {
     )
 })
 
-test('stable and 2.32.0', function(t) {
+test('stable and 2.32.0', function (t) {
     t.plan(2)
 
     const expected = 'dhis2/core:2.32.0'
@@ -99,7 +99,7 @@ test('stable and 2.32.0', function(t) {
     )
 })
 
-test('dev and master', function(t) {
+test('dev and master', function (t) {
     t.plan(1)
 
     const expected = 'dhis2/core-dev:master'
@@ -114,7 +114,7 @@ test('dev and master', function(t) {
     )
 })
 
-test('dev and 2.32', function(t) {
+test('dev and 2.32', function (t) {
     t.plan(1)
 
     const expected = 'dhis2/core-dev:2.32'
@@ -129,7 +129,7 @@ test('dev and 2.32', function(t) {
     )
 })
 
-test('canary and master', function(t) {
+test('canary and master', function (t) {
     t.plan(1)
 
     const expected = 'dhis2/core-canary:master'
@@ -144,7 +144,7 @@ test('canary and master', function(t) {
     )
 })
 
-test('canary and 2.32', function(t) {
+test('canary and 2.32', function (t) {
     t.plan(1)
 
     const expected = 'dhis2/core-canary:2.32'
@@ -159,7 +159,7 @@ test('canary and 2.32', function(t) {
     )
 })
 
-test('canary and 2.32 from date', function(t) {
+test('canary and 2.32 from date', function (t) {
     t.plan(1)
 
     const expected = 'dhis2/core-canary:2.32-20190523'

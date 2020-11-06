@@ -14,7 +14,7 @@ const {
 
 const defaults = require('../defaults')
 
-const run = async function(argv) {
+const run = async function (argv) {
     const { name, service } = argv
     const cfg = await resolveConfiguration(argv)
 

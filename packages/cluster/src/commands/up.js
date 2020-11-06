@@ -15,7 +15,7 @@ const {
 const defaults = require('../defaults')
 const { restore } = require('../helpers/db')
 
-const run = async function(argv) {
+const run = async function (argv) {
     const { name, seed, seedFile, update, getCache } = argv
 
     const cfg = await resolveConfiguration(argv)

@@ -8,7 +8,7 @@ const {
     cleanCache,
 } = require('../common')
 
-const run = async function(argv) {
+const run = async function (argv) {
     const { name, clean, getCache } = argv
     const cfg = await resolveConfiguration(argv)
 

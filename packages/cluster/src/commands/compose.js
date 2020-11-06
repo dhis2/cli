@@ -8,7 +8,7 @@ const {
     resolveConfiguration,
 } = require('../common')
 
-const run = async function(argv) {
+const run = async function (argv) {
     const { name, _ } = argv
     const cfg = await resolveConfiguration(argv)
 

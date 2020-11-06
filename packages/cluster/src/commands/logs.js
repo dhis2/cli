@@ -12,7 +12,7 @@ const {
     resolveConfiguration,
 } = require('../common')
 
-const run = async function(argv) {
+const run = async function (argv) {
     const { service, name } = argv
     const cfg = await resolveConfiguration(argv)
 
