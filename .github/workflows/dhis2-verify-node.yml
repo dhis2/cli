@@ -51,7 +51,9 @@ jobs:
                   key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
             - name: Lint
-              run: yarn lint
+              run: |
+                  yarn d2-style js check
+                  yarn d2-style text check
 
     test:
         runs-on: ubuntu-latest
