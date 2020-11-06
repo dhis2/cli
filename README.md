@@ -42,3 +42,16 @@ Anything following the action verb is either a positional argument or a flag (if
 | d2 utils cypress | d2-utils-cypress | @dhis2/cli-utils-cypress    | [dhis2/cli-utils-cypress](https://github.com/dhis2/cli-utils-cypress)       | [![npm](https://img.shields.io/npm/v/@dhis2/cli-utils-docsite.svg)](https://www.npmjs.com/package/@dhis2/cli-utils-cypress)       |
 |                  |                  | @dhis2/cli-helpers-engine   | [dhis2/cli-helpers-engine](https://github.com/dhis2/cli-helpers-engine)     | [![npm](https://img.shields.io/npm/v/@dhis2/cli-helpers-engine.svg)](https://www.npmjs.com/package/@dhis2/cli-helpers-engine)     |
 |                  |                  | @dhis2/cli-helpers-template | [dhis2/cli-helpers-template](https://github.com/dhis2/cli-helpers-template) | [![npm](https://img.shields.io/npm/v/@dhis2/cli-helpers-template.svg)](https://www.npmjs.com/package/@dhis2/cli-helpers-template) |
+
+
+## Report an issue
+
+The issue tracker can be found in [DHIS2 JIRA](https://jira.dhis2.org)
+under the [CLI](https://jira.dhis2.org/projects/CLI) project.
+
+Deeplinks:
+
+-   [Bug](https://jira.dhis2.org/secure/CreateIssueDetails!init.jspa?pid=10703&issuetype=10006&components=11021)
+-   [New Feature](https://jira.dhis2.org/secure/CreateIssueDetails!init.jspa?pid=10703&issuetype=10005&components=11021)
+-   [Improvement](https://jira.dhis2.org/secure/CreateIssueDetails!init.jspa?pid=10703&issuetype=10002&components=11021)
+-   [Task](https://jira.dhis2.org/secure/CreateIssueDetails!init.jspa?pid=10703&issuetype=10003&components=11021)
