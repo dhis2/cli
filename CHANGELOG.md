@@ -1,3 +1,10 @@
+## [3.0.6](https://github.com/dhis2/cli/compare/v3.0.5...v3.0.6) (2020-11-06)
+
+
+### Bug Fixes
+
+* cut release to finish migration to jira ([2c671d7](https://github.com/dhis2/cli/commit/2c671d7))
+
 ## [3.0.5](https://github.com/dhis2/cli/compare/v3.0.4...v3.0.5) (2020-09-10)
 
 
