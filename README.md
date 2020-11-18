@@ -48,9 +48,8 @@ Anything following the action verb is either a positional argument or a flag (if
 The issue tracker can be found in [DHIS2 JIRA](https://jira.dhis2.org)
 under the [CLI](https://jira.dhis2.org/projects/CLI) project.
 
-Deeplinks:
+Deep links:
 
 -   [Bug](https://jira.dhis2.org/secure/CreateIssueDetails!init.jspa?pid=10703&issuetype=10006&components=11021)
--   [New Feature](https://jira.dhis2.org/secure/CreateIssueDetails!init.jspa?pid=10703&issuetype=10005&components=11021)
--   [Improvement](https://jira.dhis2.org/secure/CreateIssueDetails!init.jspa?pid=10703&issuetype=10002&components=11021)
+-   [Feature](https://jira.dhis2.org/secure/CreateIssueDetails!init.jspa?pid=10703&issuetype=10300&components=11021)
 -   [Task](https://jira.dhis2.org/secure/CreateIssueDetails!init.jspa?pid=10703&issuetype=10003&components=11021)
