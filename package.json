@@ -7,7 +7,8 @@
     "repository": "https://github.com/dhis2/cli",
     "author": "Austin McGee <austin@dhis2.org>",
     "contributors": [
-        "Viktor Varland <viktor@dhis2.org>"
+        "Viktor Varland <viktor@dhis2.org>",
+        "Christos Paschalidis <christos@dhis2.org>"
     ],
     "license": "BSD-3-Clause",
     "devDependencies": {

@@ -12,6 +12,19 @@ understanding how that tool operates is helpful.
 Simply put, every time a commit appears on the `master` branch, the
 fully automated release process begins, and the commit is released.
 
+In detail when a commit that utilizes semantic release appears on `master` the following will happen:
+
+1. A Github release similar to [this one](https://github.com/dhis2/usage-analytics-app/releases)
+   will be created.
+
+2. The `CHANGELOG.md` file will be updated. An example can be found
+   [here](https://github.com/dhis2/usage-analytics-app/blob/master/CHANGELOG.md).
+   _The first release will automatically create a `CHANGELOG.md` in the root directory of your repository._
+
+3. The versions in the `package.json` will be updated as well.
+
+4. And finally it will push the relevant tags.
+
 # Advanced usage
 
 ## Distribution channels
