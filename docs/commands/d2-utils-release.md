@@ -15,7 +15,7 @@ fully automated release process begins, and the commit is released.
 In detail when a commit that utilizes semantic release appears on `master` the following will happen:
 
 1. A Github release similar to [this one](https://github.com/dhis2/usage-analytics-app/releases)
-   will be created.
+   will be published.
 
 2. The `CHANGELOG.md` file will be updated. An example can be found
    [here](https://github.com/dhis2/usage-analytics-app/blob/master/CHANGELOG.md).
