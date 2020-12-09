@@ -21,9 +21,25 @@ In detail when a commit that utilizes semantic release appears on `master` the f
    [here](https://github.com/dhis2/usage-analytics-app/blob/master/CHANGELOG.md).
    _The first release will automatically create a `CHANGELOG.md` in the root directory of your repository._
 
-3. The versions in the `package.json` will be updated as well.
+3. The versions in the `package.json` will be updated as well. This does also apply to `yarn` monorepos.
+   The release command will update the version in the `package.json` for all the workspaces to the same, new version.
 
 4. And finally it will push the relevant tags.
+
+You can optionally publish to `npm` using the `release` command. For that, you will need to include the
+following in your `package.json`.
+
+```
+{
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}
+```
+
+This is [a package.json](https://github.com/dhis2/ui/blob/master/packages/core/package.json) from one of our
+libraries which automatically gets published to `npm` every time a `release` takes place.
 
 # Advanced usage
 
