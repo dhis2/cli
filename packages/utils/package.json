@@ -3,7 +3,7 @@
     "bin": {
         "d2-utils": "./bin/d2-utils"
     },
-    "version": "3.0.6",
+    "version": "3.1.0",
     "main": "src/index.js",
     "author": "Viktor Varland <viktor@dhis2.org>",
     "contributors": [
@@ -13,6 +13,7 @@
     "private": false,
     "dependencies": {
         "@dhis2/cli-helpers-engine": "^2.0.0",
+        "@dhis2/cli-utils-codemods": "^1.0.0",
         "@dhis2/cli-utils-cypress": "^2.0.0",
         "@dhis2/cli-utils-docsite": "^2.0.2",
         "@semantic-release/changelog": "^5.0.1",

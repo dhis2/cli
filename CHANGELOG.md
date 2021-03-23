@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/dhis2/cli/compare/v3.0.6...v3.1.0) (2021-02-02)
+
+
+### Features
+
+* **codemods:** add d2-utils-codemods ([#397](https://github.com/dhis2/cli/issues/397)) ([0afbfe8](https://github.com/dhis2/cli/commit/0afbfe8))
+
 ## [3.0.6](https://github.com/dhis2/cli/compare/v3.0.5...v3.0.6) (2020-11-06)
 
 
