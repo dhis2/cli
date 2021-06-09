@@ -3,6 +3,9 @@
     "bin": {
         "d2-utils": "./bin/d2-utils"
     },
+    "engines": {
+        "node": ">=12"
+    },
     "version": "3.1.0",
     "main": "src/index.js",
     "author": "Viktor Varland <viktor@dhis2.org>",
@@ -22,6 +25,7 @@
         "@semantic-release/github": "^7.0.5",
         "@semantic-release/npm": "^7.0.5",
         "@semantic-release/release-notes-generator": "^9.0.1",
+        "semantic-release-jira-releases": "0.7.2",
         "dhis2-uid": "^0.1.2",
         "ejs": "^3.0.1",
         "inquirer": "^7.1.0",

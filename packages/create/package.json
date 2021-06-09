@@ -3,6 +3,9 @@
     "bin": {
         "d2-create": "./bin/d2-create"
     },
+    "engines": {
+        "node": ">=12"
+    },
     "version": "3.1.0",
     "main": "src/index.js",
     "author": "Austin McGee <austin@dhis2.org>",
