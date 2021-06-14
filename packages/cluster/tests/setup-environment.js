@@ -1,7 +1,5 @@
 const test = require('tape-await')
-
 const { makeEnvironment, resolveConfiguration } = require('../src/common.js')
-
 const defaults = require('../src/defaults.js')
 
 const cache = obj => ({

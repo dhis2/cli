@@ -1,5 +1,5 @@
-const envInfo = require('envinfo')
 const { reporter } = require('@dhis2/cli-helpers-engine')
+const envInfo = require('envinfo')
 
 const run = async () => {
     const info = await envInfo.run(

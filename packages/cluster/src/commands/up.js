@@ -11,7 +11,6 @@ const {
     makeComposeProject,
     resolveConfiguration,
 } = require('../common')
-
 const defaults = require('../defaults')
 const { restore } = require('../helpers/db')
 
@@ -108,8 +107,7 @@ module.exports = {
             type: 'boolean',
         },
         seedFile: {
-            desc:
-                'The location of the sql dump to use when seeding that database',
+            desc: 'The location of the sql dump to use when seeding that database',
             type: 'string',
         },
         update: {
@@ -127,8 +125,7 @@ module.exports = {
             type: 'string',
         },
         dhis2Config: {
-            desc:
-                'Path to a custom DHIS2 configuration file to use (dhis.conf)',
+            desc: 'Path to a custom DHIS2 configuration file to use (dhis.conf)',
             type: 'string',
         },
         dbVersion: {

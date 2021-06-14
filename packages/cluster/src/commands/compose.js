@@ -1,5 +1,5 @@
-const path = require('path')
 const { spawn } = require('child_process')
+const path = require('path')
 const { reporter, tryCatchAsync } = require('@dhis2/cli-helpers-engine')
 const {
     initDockerComposeCache,
@@ -54,8 +54,7 @@ const run = async function (argv) {
 
 module.exports = {
     command: 'compose <name>',
-    desc:
-        'Run arbitrary docker-compose commands against a DHIS2 cluster.\nNOTE: pass -- after <name>',
+    desc: 'Run arbitrary docker-compose commands against a DHIS2 cluster.\nNOTE: pass -- after <name>',
     aliases: 'c',
     handler: run,
 }

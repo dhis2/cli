@@ -11,12 +11,10 @@
  *   --log-missing-keys
  */
 const path = require('path')
-
 const { reporter } = require('@dhis2/cli-helpers-engine')
-
 const {
-    getTranslationFileNames,
-} = require('../../helpers/modernize/getTranslationFileNames.js')
+    createNewTranslationFiles,
+} = require('../../helpers/modernize/createNewTranslationFiles.js')
 const {
     deleteLegacyFiles,
 } = require('../../helpers/modernize/deleteLegacyFiles.js')
@@ -24,8 +22,8 @@ const {
     generateTranslationMappings,
 } = require('../../helpers/modernize/generateTranslationMappings.js')
 const {
-    createNewTranslationFiles,
-} = require('../../helpers/modernize/createNewTranslationFiles.js')
+    getTranslationFileNames,
+} = require('../../helpers/modernize/getTranslationFileNames.js')
 
 const CONSUMING_ROOT = path.join(process.cwd())
 const TRANSLATION_IN_DIR = path.join(CONSUMING_ROOT, 'src/i18n')

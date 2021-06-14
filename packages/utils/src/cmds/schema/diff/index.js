@@ -1,11 +1,8 @@
-const path = require('path')
-const jsondiffpatch = require('jsondiffpatch')
 const fs = require('fs')
-const utils = require('../../../support/utils')
-const ejs = require('ejs')
+const path = require('path')
 const { reporter } = require('@dhis2/cli-helpers-engine')
-const DHIS2HtmlFormatter = require('./schemaHtmlFormatter')
-
+const ejs = require('ejs')
+const jsondiffpatch = require('jsondiffpatch')
 const {
     schemasFromUrl,
     writeOutput,
@@ -13,6 +10,8 @@ const {
     defaultOpts,
     resolveConfig,
 } = require('../')
+const utils = require('../../../support/utils')
+const DHIS2HtmlFormatter = require('./schemaHtmlFormatter')
 
 let cache
 // We use the singular property as an unique identifier for schemas
