@@ -1,12 +1,12 @@
+const path = require('path')
+const { reporter } = require('@dhis2/cli-helpers-engine')
+const { prependHttpsProtocol, isRelativeUrl } = require('../../support/utils')
 const {
     schemasFromUrl,
     writeOutput,
     schemaIdentifier,
     resolveConfig,
 } = require('./index.js')
-const { reporter } = require('@dhis2/cli-helpers-engine')
-const { prependHttpsProtocol, isRelativeUrl } = require('../../support/utils')
-const path = require('path')
 
 const handler = async ({ urls, output = false, force, ...rest }) => {
     const cache = rest.getCache()

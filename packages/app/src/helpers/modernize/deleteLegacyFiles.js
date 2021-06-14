@@ -1,5 +1,4 @@
 const fs = require('fs')
-
 const { reporter } = require('@dhis2/cli-helpers-engine')
 
 /**

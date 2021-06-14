@@ -1,17 +1,20 @@
 {
     "name": "@dhis2/cli-cluster",
-    "version": "3.1.0",
+    "version": "4.0.0",
     "description": "D2 CLI module for managing DHIS2 development clusters",
     "main": "src/index.js",
     "repository": "https://github.com/dhis2/cli",
     "author": "Austin McGee <austin@dhis2.org>",
     "license": "BSD-3-Clause",
     "dependencies": {
-        "@dhis2/cli-helpers-engine": "^2.0.0",
+        "@dhis2/cli-helpers-engine": "^3.0.0",
         "cli-table3": "^0.6.0"
     },
     "bin": {
         "d2-cluster": "./bin/d2-cluster"
+    },
+    "engines": {
+        "node": ">=12"
     },
     "publishConfig": {
         "access": "public"

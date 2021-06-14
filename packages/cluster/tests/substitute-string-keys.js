@@ -1,7 +1,5 @@
 const test = require('tape')
-
 const { makeDockerImage, substituteVersion } = require('../src/common.js')
-
 const defaults = require('../src/defaults')
 
 const template = defaults.image

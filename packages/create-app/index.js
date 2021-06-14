@@ -1,5 +1,5 @@
-const { groupGlobalOptions } = require('@dhis2/cli-helpers-engine')
 const create = require('@dhis2/cli-create')
+const { groupGlobalOptions } = require('@dhis2/cli-helpers-engine')
 
 module.exports = {
     command: 'create [type]',

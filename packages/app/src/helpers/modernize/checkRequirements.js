@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
-const chalk = require('chalk')
 const { reporter } = require('@dhis2/cli-helpers-engine')
+const chalk = require('chalk')
 
 /**
  * @param {string} inDir

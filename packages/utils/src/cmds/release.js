@@ -1,6 +1,6 @@
-const { reporter } = require('@dhis2/cli-helpers-engine')
 const { existsSync } = require('fs')
 const path = require('path')
+const { reporter } = require('@dhis2/cli-helpers-engine')
 const semanticRelease = require('semantic-release')
 const getWorkspacePackages = require('../support/getWorkspacePackages')
 

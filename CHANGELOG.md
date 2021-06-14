@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/dhis2/cli/compare/v3.1.0...v4.0.0) (2021-06-14)
+
+
+### chore
+
+* remove node 10 support ([c35761e](https://github.com/dhis2/cli/commit/c35761e))
+
+
+### BREAKING CHANGES
+
+* New minimum version for NodeJS is 12.x.
+
 # [3.1.0](https://github.com/dhis2/cli/compare/v3.0.6...v3.1.0) (2021-02-02)
 
 

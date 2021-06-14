@@ -1,5 +1,5 @@
-const URL = require('url').URL
 const fs = require('fs')
+const URL = require('url').URL
 
 function isUrl(url) {
     try {

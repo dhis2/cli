@@ -1,6 +1,6 @@
-const { generateCode, generateCodes } = require('dhis2-uid')
 const log = require('@dhis2/cli-helpers-engine').reporter
 const namespace = require('@dhis2/cli-helpers-engine').namespace
+const { generateCode, generateCodes } = require('dhis2-uid')
 
 const generateCmd = {
     command: 'generate [limit]',

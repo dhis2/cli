@@ -1,6 +1,6 @@
-const { makeComposeProject } = require('../../common')
 const path = require('path')
 const { reporter, exec, chalk } = require('@dhis2/cli-helpers-engine')
+const { makeComposeProject } = require('../../common')
 
 module.exports = async ({ cacheLocation, name, path: dbPath, fat }) => {
     const destinationFile = path.resolve(dbPath)
