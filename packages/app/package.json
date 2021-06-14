@@ -3,6 +3,9 @@
     "bin": {
         "d2-app": "./bin/d2-app"
     },
+    "engines": {
+        "node": ">=12"
+    },
     "version": "3.1.0",
     "main": "src/index.js",
     "author": "Austin McGee <austin@dhis2.org>",
@@ -12,8 +15,8 @@
     "license": "BSD-3-Clause",
     "private": false,
     "dependencies": {
-        "@dhis2/cli-app-scripts": "^5.2.0",
-        "@dhis2/cli-helpers-engine": "^2.0.0"
+        "@dhis2/cli-app-scripts": "^7.0.0",
+        "@dhis2/cli-helpers-engine": "^3.0.0"
     },
     "publishConfig": {
         "access": "public"

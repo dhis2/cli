@@ -1,6 +1,6 @@
 const { reporter, chalk } = require('@dhis2/cli-helpers-engine')
-const inquirer = require('inquirer')
 const Table = require('cli-table3')
+const inquirer = require('inquirer')
 
 const printStats = (table, name, stats) => {
     const nameColor = stats.isDirectory() ? chalk.blue : chalk.green

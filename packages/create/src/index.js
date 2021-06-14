@@ -1,7 +1,6 @@
 const path = require('path')
 const { reporter, chalk } = require('@dhis2/cli-helpers-engine')
 const { installTemplate } = require('@dhis2/cli-helpers-template')
-
 const cliBuilder = require('./builders/cliBuilder')
 
 const handler = async ({ type, name, ...argv }) => {

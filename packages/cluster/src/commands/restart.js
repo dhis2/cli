@@ -11,7 +11,6 @@ const {
     makeEnvironment,
     resolveConfiguration,
 } = require('../common')
-
 const defaults = require('../defaults')
 
 const run = async function (argv) {

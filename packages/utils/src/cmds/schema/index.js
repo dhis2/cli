@@ -1,9 +1,9 @@
 const fs = require('fs')
 const path = require('path')
-const utils = require('../../support/utils')
-const request = require('request')
-const inquirer = require('inquirer')
 const { reporter } = require('@dhis2/cli-helpers-engine')
+const inquirer = require('inquirer')
+const request = require('request')
+const utils = require('../../support/utils')
 
 const defaultOpts = {
     schemasEndpoint: '/api/schemas.json',

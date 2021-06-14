@@ -7,11 +7,14 @@
     "author": "Austin McGee <austin@dhis2.org>",
     "license": "BSD-3-Clause",
     "dependencies": {
-        "@dhis2/cli-helpers-engine": "^2.0.0",
+        "@dhis2/cli-helpers-engine": "^3.0.0",
         "cli-table3": "^0.6.0"
     },
     "bin": {
         "d2-cluster": "./bin/d2-cluster"
+    },
+    "engines": {
+        "node": ">=12"
     },
     "publishConfig": {
         "access": "public"
