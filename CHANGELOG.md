@@ -1,3 +1,11 @@
+## [4.0.1](https://github.com/dhis2/cli/compare/v4.0.0...v4.0.1) (2021-06-14)
+
+
+### Bug Fixes
+
+* **deps:** update cli-style to work in non-project context ([adf329e](https://github.com/dhis2/cli/commit/adf329e))
+* **utils:** include cypress utilities ([df0e5ce](https://github.com/dhis2/cli/commit/df0e5ce))
+
 # [4.0.0](https://github.com/dhis2/cli/compare/v3.1.0...v4.0.0) (2021-06-14)
 
 
