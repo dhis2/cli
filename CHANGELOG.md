@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/dhis2/cli/compare/v4.0.1...v4.0.2) (2021-06-16)
+
+
+### Bug Fixes
+
+* **semantic-release:** pin version to 16 ([254b55c](https://github.com/dhis2/cli/commit/254b55c))
+
 ## [4.0.1](https://github.com/dhis2/cli/compare/v4.0.0...v4.0.1) (2021-06-14)
 
 
