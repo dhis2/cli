@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/dhis2/cli/compare/v4.0.2...v4.0.3) (2021-06-23)
+
+
+### Bug Fixes
+
+* **release:** always update package.json version ([97fbfd6](https://github.com/dhis2/cli/commit/97fbfd6))
+
 ## [4.0.2](https://github.com/dhis2/cli/compare/v4.0.1...v4.0.2) (2021-06-16)
 
 
