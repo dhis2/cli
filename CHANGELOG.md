@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/dhis2/cli/compare/v4.0.3...v4.0.4) (2021-06-23)
+
+
+### Bug Fixes
+
+* **utils:** manage versions on private packages when not publishing to npm ([1a305f9](https://github.com/dhis2/cli/commit/1a305f9))
+
 ## [4.0.3](https://github.com/dhis2/cli/compare/v4.0.2...v4.0.3) (2021-06-23)
 
 
