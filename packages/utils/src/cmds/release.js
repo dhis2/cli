@@ -27,7 +27,7 @@ function publisher(target = '', packages) {
         }
 
         default: {
-            return packages.filter(packageIsPublishable).map(pkgJsonPath => {
+            return packages.map(pkgJsonPath => {
                 return [
                     '@semantic-release/npm',
                     {
