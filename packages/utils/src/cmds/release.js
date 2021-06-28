@@ -26,6 +26,37 @@ function publisher(target = '', packages) {
             })
         }
 
+        case 'app-hub': {
+            return packages
+                .map(pkgJsonPath => {
+                    return [
+                        [
+                            '@semantic-release/npm',
+                            {
+                                pkgRoot: path.dirname(pkgJsonPath),
+                                npmPublish: false,
+                            },
+                        ],
+                        [
+                            '@semantic-release/exec',
+                            {
+                                verifyConditionsCmd:
+                                    '[ -f ' +
+                                    path.join(
+                                        path.dirname(pkgJsonPath),
+                                        'd2.config.js'
+                                    ) +
+                                    ' ] || exit 1',
+                                publishCmd:
+                                    'npx --no-install d2-app-scripts publish --cwd ' +
+                                    path.dirname(pkgJsonPath),
+                            },
+                        ],
+                    ]
+                })
+                .reduce((a, b) => a.concat(b))
+        }
+
         default: {
             return packages.map(pkgJsonPath => {
                 return [
