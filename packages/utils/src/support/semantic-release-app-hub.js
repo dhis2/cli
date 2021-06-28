@@ -21,6 +21,14 @@ exports.verifyConditions = (config, context) => {
 
     const d2Config = require(configPath)
 
+    if (d2Config.type === 'lib') {
+        throw new SemanticReleaseError(
+            'App Hub does not support publishing libraries.',
+            'EAPPHUBSUPPORT',
+            "The type in d2.config.js must not be 'lib'"
+        )
+    }
+
     if (!d2Config.id) {
         throw new SemanticReleaseError(
             "'id' field missing from d2.config.js",
@@ -59,6 +67,8 @@ exports.publish = async (config, context) => {
         apikey: env.APP_HUB_TOKEN,
         id: d2Config.id,
         minDHIS2Version: d2Config.minDHIS2Version,
+        baseUrl: 'https://apps.dhis2.org',
+        channel: 'stable',
     })
 }
 
