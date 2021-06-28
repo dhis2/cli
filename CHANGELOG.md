@@ -1,3 +1,10 @@
+# [4.1.0-alpha.4](https://github.com/dhis2/cli/compare/v4.1.0-alpha.3...v4.1.0-alpha.4) (2021-06-28)
+
+
+### Bug Fixes
+
+* **release:** pass in neccessary configs that cannot be inferred ([1a3ce15](https://github.com/dhis2/cli/commit/1a3ce15))
+
 # [4.1.0-alpha.3](https://github.com/dhis2/cli/compare/v4.1.0-alpha.2...v4.1.0-alpha.3) (2021-06-28)
 
 
