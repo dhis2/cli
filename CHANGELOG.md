@@ -1,3 +1,11 @@
+# [4.1.0-alpha.5](https://github.com/dhis2/cli/compare/v4.1.0-alpha.4...v4.1.0-alpha.5) (2021-06-28)
+
+
+### Bug Fixes
+
+* **deps:** update alpha deps to app-scripts ([7d24dfc](https://github.com/dhis2/cli/commit/7d24dfc))
+* **release:** build app before publish ([3db46dd](https://github.com/dhis2/cli/commit/3db46dd))
+
 # [4.1.0-alpha.4](https://github.com/dhis2/cli/compare/v4.1.0-alpha.3...v4.1.0-alpha.4) (2021-06-28)
 
 

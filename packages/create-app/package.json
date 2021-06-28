@@ -1,13 +1,13 @@
 {
     "name": "@dhis2/create-app",
-    "version": "4.1.0-alpha.4",
+    "version": "4.1.0-alpha.5",
     "description": "D2 frontend application bootstrapping inspired by create-react-app",
     "main": "index.js",
     "repository": "https://github.com/dhis2/cli",
     "author": "Austin McGee <austin@dhis2.org>",
     "license": "BSD-3-Clause",
     "dependencies": {
-        "@dhis2/cli-create": "4.1.0-alpha.4",
+        "@dhis2/cli-create": "4.1.0-alpha.5",
         "@dhis2/cli-helpers-engine": "^3.0.0"
     },
     "bin": "./bin/d2-create-app",
