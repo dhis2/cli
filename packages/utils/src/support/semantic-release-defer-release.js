@@ -2,7 +2,7 @@ const analyzeCommits = (config, context) => {
     const { logger, commits } = context
 
     const { message, commit } = commits[0]
-    const defer = /\[defer[ -]release\]/gi
+    const defer = /\[(defer|skip)[ -]release\]/gi
 
     if (message.match(defer)) {
         logger.warn(`This release has been deferred by commit ${commit.short}`)
