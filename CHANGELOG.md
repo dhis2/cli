@@ -1,3 +1,10 @@
+# [4.1.0-alpha.3](https://github.com/dhis2/cli/compare/v4.1.0-alpha.2...v4.1.0-alpha.3) (2021-06-28)
+
+
+### Bug Fixes
+
+* **release:** lowercase apikey variable ([a9e50f9](https://github.com/dhis2/cli/commit/a9e50f9))
+
 # [4.1.0-alpha.2](https://github.com/dhis2/cli/compare/v4.1.0-alpha.1...v4.1.0-alpha.2) (2021-06-28)
 
 
