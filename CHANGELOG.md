@@ -1,3 +1,10 @@
+# [4.1.0-alpha.6](https://github.com/dhis2/cli/compare/v4.1.0-alpha.5...v4.1.0-alpha.6) (2021-06-28)
+
+
+### Bug Fixes
+
+* **release:** use exec to build before publish to app hub ([581f003](https://github.com/dhis2/cli/commit/581f003))
+
 # [4.1.0-alpha.5](https://github.com/dhis2/cli/compare/v4.1.0-alpha.4...v4.1.0-alpha.5) (2021-06-28)
 
 
