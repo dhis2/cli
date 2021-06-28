@@ -56,7 +56,7 @@ exports.publish = async (config, context) => {
 
     await publishAppHub({
         cwd: pkgRoot,
-        apiKey: env.APP_HUB_TOKEN,
+        apikey: env.APP_HUB_TOKEN,
         id: d2Config.id,
         minDHIS2Version: d2Config.minDHIS2Version,
     })
