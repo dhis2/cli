@@ -1,10 +1,9 @@
 const fs = require('fs')
 const path = require('path')
-const { buildCommand, publishCommand } = require('@dhis2/cli-app-scripts')
+const { publishCommand } = require('@dhis2/cli-app-scripts')
 const SemanticReleaseError = require('@semantic-release/error')
 
 const { handler: publishAppHub } = publishCommand
-const { handler: buildApp } = buildCommand
 
 exports.verifyConditions = (config, context) => {
     const { env } = context
@@ -62,12 +61,6 @@ exports.publish = async (config, context) => {
     const d2Config = require(path.join(config.pkgRoot, 'd2.config.js'))
     const { pkgRoot } = config
     const { env } = context
-
-    await buildApp({
-        cwd: pkgRoot,
-        mode: 'production',
-        verify: true,
-    })
 
     await publishAppHub({
         cwd: pkgRoot,

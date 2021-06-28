@@ -40,6 +40,13 @@ function publisher(target = '', packages) {
                             },
                         ],
                         [
+                            '@semantic-release/exec',
+                            {
+                                publishCmd:
+                                    'yarn install --frozen-lockfile && yarn d2-app-scripts build',
+                            },
+                        ],
+                        [
                             appHubPlugin,
                             {
                                 pkgRoot: path.dirname(pkgJsonPath),
