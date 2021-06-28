@@ -1,3 +1,10 @@
+# [4.1.0-alpha.1](https://github.com/dhis2/cli/compare/v4.0.4...v4.1.0-alpha.1) (2021-06-28)
+
+
+### Features
+
+* **release:** support app-hub publish ([615d783](https://github.com/dhis2/cli/commit/615d783))
+
 ## [4.0.4](https://github.com/dhis2/cli/compare/v4.0.3...v4.0.4) (2021-06-23)
 
 
