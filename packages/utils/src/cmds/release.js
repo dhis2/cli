@@ -14,6 +14,8 @@ const packageIsPublishable = pkgJsonPath => {
 }
 
 function publisher(target = '', packages) {
+    const appHubPlugin = require('../support/semantic-release-app-hub.js')
+
     switch (target.toLowerCase()) {
         case 'npm': {
             return packages.filter(packageIsPublishable).map(pkgJsonPath => {
@@ -24,6 +26,28 @@ function publisher(target = '', packages) {
                     },
                 ]
             })
+        }
+
+        case 'app-hub': {
+            return packages
+                .map(pkgJsonPath => {
+                    return [
+                        [
+                            '@semantic-release/npm',
+                            {
+                                pkgRoot: path.dirname(pkgJsonPath),
+                                npmPublish: false,
+                            },
+                        ],
+                        [
+                            appHubPlugin,
+                            {
+                                pkgRoot: path.dirname(pkgJsonPath),
+                            },
+                        ],
+                    ]
+                })
+                .reduce((a, b) => a.concat(b))
         }
 
         default: {
