@@ -42,7 +42,7 @@ function publisher(target = '', packages) {
                         [
                             '@semantic-release/exec',
                             {
-                                publishCmd:
+                                prepareCmd:
                                     'yarn install --frozen-lockfile && yarn d2-app-scripts build',
                             },
                         ],
