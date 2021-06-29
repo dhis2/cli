@@ -68,7 +68,12 @@ exports.publish = async (config, context) => {
     logger.log(pkg)
 
     const fileVersion = pkg.version
-    const file = `dhis2-${d2Config.name}-${fileVersion}.zip`
+    const file = path.join(
+        pkgRoot,
+        'build',
+        'bundle',
+        `dhis2-${d2Config.name}-${fileVersion}.zip`
+    )
 
     await publishAppHub({
         cwd: pkgRoot,
