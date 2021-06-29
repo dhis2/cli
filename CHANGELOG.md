@@ -1,3 +1,10 @@
+# [4.1.0-alpha.7](https://github.com/dhis2/cli/compare/v4.1.0-alpha.6...v4.1.0-alpha.7) (2021-06-29)
+
+
+### Bug Fixes
+
+* **release:** run exec as prepareCmd ([2fb0ac5](https://github.com/dhis2/cli/commit/2fb0ac5))
+
 # [4.1.0-alpha.6](https://github.com/dhis2/cli/compare/v4.1.0-alpha.5...v4.1.0-alpha.6) (2021-06-28)
 
 
