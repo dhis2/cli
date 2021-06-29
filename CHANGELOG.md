@@ -1,3 +1,10 @@
+# [4.1.0-alpha.12](https://github.com/dhis2/cli/compare/v4.1.0-alpha.11...v4.1.0-alpha.12) (2021-06-29)
+
+
+### Bug Fixes
+
+* **release:** specify full path to file ([735561a](https://github.com/dhis2/cli/commit/735561a))
+
 # [4.1.0-alpha.11](https://github.com/dhis2/cli/compare/v4.1.0-alpha.10...v4.1.0-alpha.11) (2021-06-29)
 
 
