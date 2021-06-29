@@ -1,3 +1,10 @@
+# [4.1.0-alpha.8](https://github.com/dhis2/cli/compare/v4.1.0-alpha.7...v4.1.0-alpha.8) (2021-06-29)
+
+
+### Bug Fixes
+
+* **release:** include baseDir when building ([ac5f3f9](https://github.com/dhis2/cli/commit/ac5f3f9))
+
 # [4.1.0-alpha.7](https://github.com/dhis2/cli/compare/v4.1.0-alpha.6...v4.1.0-alpha.7) (2021-06-29)
 
 
