@@ -1,3 +1,10 @@
+# [4.1.0-alpha.10](https://github.com/dhis2/cli/compare/v4.1.0-alpha.9...v4.1.0-alpha.10) (2021-06-29)
+
+
+### Bug Fixes
+
+* **release:** pass in app id ([6d71522](https://github.com/dhis2/cli/commit/6d71522))
+
 # [4.1.0-alpha.9](https://github.com/dhis2/cli/compare/v4.1.0-alpha.8...v4.1.0-alpha.9) (2021-06-29)
 
 
