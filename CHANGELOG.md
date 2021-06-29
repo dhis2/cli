@@ -1,3 +1,10 @@
+# [4.1.0-alpha.13](https://github.com/dhis2/cli/compare/v4.1.0-alpha.12...v4.1.0-alpha.13) (2021-06-29)
+
+
+### Bug Fixes
+
+* **release:** use the next version from semantic-release ([fd6f5de](https://github.com/dhis2/cli/commit/fd6f5de))
+
 # [4.1.0-alpha.12](https://github.com/dhis2/cli/compare/v4.1.0-alpha.11...v4.1.0-alpha.12) (2021-06-29)
 
 
