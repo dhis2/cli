@@ -14,8 +14,6 @@ const packageIsPublishable = pkgJsonPath => {
 }
 
 function publisher(target = '', packages) {
-    const appHubPlugin = require('../support/semantic-release-app-hub.js')
-
     switch (target.toLowerCase()) {
         case 'npm': {
             return packages.filter(packageIsPublishable).map(pkgJsonPath => {
@@ -48,7 +46,7 @@ function publisher(target = '', packages) {
                             },
                         ],
                         [
-                            appHubPlugin,
+                            require('../support/semantic-release-app-hub.js'),
                             {
                                 pkgRoot: path.dirname(pkgJsonPath),
                             },
@@ -134,6 +132,9 @@ const handler = async ({ publish }) => {
         gitPlugin,
         '@semantic-release/github',
     ]
+
+    reporter.debug('Order of plugins')
+    reporter.debug(plugins)
 
     /* rely on defaults for configuration, except for plugins as they
      * need to be custom.
