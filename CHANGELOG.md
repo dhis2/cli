@@ -1,3 +1,10 @@
+# [4.1.0-alpha.9](https://github.com/dhis2/cli/compare/v4.1.0-alpha.8...v4.1.0-alpha.9) (2021-06-29)
+
+
+### Bug Fixes
+
+* **release:** manually construct filename to publish ([be88c10](https://github.com/dhis2/cli/commit/be88c10))
+
 # [4.1.0-alpha.8](https://github.com/dhis2/cli/compare/v4.1.0-alpha.7...v4.1.0-alpha.8) (2021-06-29)
 
 
