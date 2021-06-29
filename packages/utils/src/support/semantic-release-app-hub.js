@@ -59,7 +59,7 @@ exports.verifyConditions = (config, context) => {
 
 exports.publish = async (config, context) => {
     const { pkgRoot } = config
-    const { env, logger } = context
+    const { env, logger, nextRelease } = context
 
     const d2Config = require(path.join(pkgRoot, 'd2.config.js'))
     const pkg = require(path.join(pkgRoot, 'package.json'))
@@ -67,7 +67,7 @@ exports.publish = async (config, context) => {
     logger.log(d2Config)
     logger.log(pkg)
 
-    const fileVersion = pkg.version
+    const fileVersion = nextRelease.version
     const file = path.join(
         pkgRoot,
         'build',
