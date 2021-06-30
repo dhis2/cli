@@ -38,17 +38,11 @@ function publisher(target = '', packages) {
                             },
                         ],
                         [
-                            '@semantic-release/exec',
-                            {
-                                prepareCmd:
-                                    'yarn install --frozen-lockfile && yarn d2-app-scripts build --cwd ' +
-                                    path.dirname(pkgJsonPath),
-                            },
-                        ],
-                        [
                             require('../support/semantic-release-app-hub.js'),
                             {
                                 pkgRoot: path.dirname(pkgJsonPath),
+                                baseUrl: 'https://apps.dhis2.org',
+                                channel: 'stable',
                             },
                         ],
                     ]

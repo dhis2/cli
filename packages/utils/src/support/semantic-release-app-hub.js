@@ -58,32 +58,14 @@ exports.verifyConditions = (config, context) => {
 // exports.addChannel = (config, context) => {}
 
 exports.publish = async (config, context) => {
-    const { pkgRoot } = config
-    const { env, logger, nextRelease } = context
-
-    const d2Config = require(path.join(pkgRoot, 'd2.config.js'))
-    const pkg = require(path.join(pkgRoot, 'package.json'))
-
-    logger.log(d2Config)
-    logger.log(pkg)
-
-    const fileVersion = nextRelease.version
-    const file = path.join(
-        pkgRoot,
-        'build',
-        'bundle',
-        `dhis2-${d2Config.name}-${fileVersion}.zip`
-    )
+    const { pkgRoot, baseUrl, channel } = config
+    const { env } = context
 
     await publishAppHub({
         cwd: pkgRoot,
         apikey: env.APP_HUB_TOKEN,
-        appId: d2Config.id,
-        minDHIS2Version: d2Config.minDHIS2Version,
-        baseUrl: 'https://apps.dhis2.org',
-        channel: 'stable',
-        file,
-        fileVersion,
+        baseUrl,
+        channel,
     })
 }
 
