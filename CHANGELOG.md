@@ -1,3 +1,10 @@
+# [4.1.0-alpha.14](https://github.com/dhis2/cli/compare/v4.1.0-alpha.13...v4.1.0-alpha.14) (2021-06-30)
+
+
+### Bug Fixes
+
+* **release:** make app-hub plugin more configurable ([070cda6](https://github.com/dhis2/cli/commit/070cda6))
+
 # [4.1.0-alpha.13](https://github.com/dhis2/cli/compare/v4.1.0-alpha.12...v4.1.0-alpha.13) (2021-06-29)
 
 
