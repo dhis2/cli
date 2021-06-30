@@ -1,3 +1,10 @@
+# [4.1.0-alpha.17](https://github.com/dhis2/cli/compare/v4.1.0-alpha.16...v4.1.0-alpha.17) (2021-06-30)
+
+
+### Bug Fixes
+
+* **release:** re-read package.json in case it changed ([4132ddc](https://github.com/dhis2/cli/commit/4132ddc))
+
 # [4.1.0-alpha.16](https://github.com/dhis2/cli/compare/v4.1.0-alpha.15...v4.1.0-alpha.16) (2021-06-30)
 
 
