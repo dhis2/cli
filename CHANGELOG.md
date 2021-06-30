@@ -1,3 +1,10 @@
+# [4.1.0-alpha.20](https://github.com/dhis2/cli/compare/v4.1.0-alpha.19...v4.1.0-alpha.20) (2021-06-30)
+
+
+### Bug Fixes
+
+* **deps:** update to latest beta of app-scripts ([56a5380](https://github.com/dhis2/cli/commit/56a5380))
+
 # [4.1.0-alpha.19](https://github.com/dhis2/cli/compare/v4.1.0-alpha.18...v4.1.0-alpha.19) (2021-06-30)
 
 
