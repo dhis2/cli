@@ -1,3 +1,10 @@
+# [4.1.0-alpha.19](https://github.com/dhis2/cli/compare/v4.1.0-alpha.18...v4.1.0-alpha.19) (2021-06-30)
+
+
+### Bug Fixes
+
+* **release:** build path, do not read :facepalm: ([b4e89a0](https://github.com/dhis2/cli/commit/b4e89a0))
+
 # [4.1.0-alpha.18](https://github.com/dhis2/cli/compare/v4.1.0-alpha.17...v4.1.0-alpha.18) (2021-06-30)
 
 
