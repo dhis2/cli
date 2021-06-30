@@ -10,7 +10,19 @@ exports.verifyConditions = (config, context) => {
     const { pkgRoot } = config
     const { env } = context
 
+    // make sure to read the file from disk since it will have changed
+    // in a previous external step (semantic-release/npm), and if we use
+    // require here we get a cached result.
     const packagePath = fs.readJsonSync(pkgRoot, 'package.json')
+
+    if (!fs.existsSync(packagePath)) {
+        throw new SemanticReleaseError(
+            `Failed to locate package.json file, does it exist in ${pkgRoot}?`,
+            'EMISSINGPACKAGE',
+            'package.json is necessary to automatically publish to the App Hub'
+        )
+    }
+
     const configPath = path.join(pkgRoot, 'd2.config.js')
 
     if (!fs.existsSync(configPath)) {
@@ -18,14 +30,6 @@ exports.verifyConditions = (config, context) => {
             `Failed to locate d2.config.js file, does it exist in ${pkgRoot}?`,
             'EMISSINGD2CONFIG',
             'd2.config.js is necessary to automatically publish to the App Hub'
-        )
-    }
-
-    if (!fs.existsSync(packagePath)) {
-        throw new SemanticReleaseError(
-            `Failed to locate package.json file, does it exist in ${pkgRoot}?`,
-            'EMISSINGPACKAGE',
-            'package.json is necessary to automatically publish to the App Hub'
         )
     }
 
@@ -72,6 +76,10 @@ exports.publish = async (config, context) => {
     const { env, nextRelease } = context
 
     const packagePath = path.join(pkgRoot, 'package.json')
+
+    // make sure to read the file from disk since it will have changed
+    // in a previous external step (semantic-release/npm), and if we use
+    // require here we get a cached result.
     const pkg = fs.readJsonSync(packagePath)
 
     if (semver.lt(pkg.version, nextRelease.version)) {

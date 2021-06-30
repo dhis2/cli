@@ -1,6 +1,6 @@
-const { existsSync } = require('fs')
 const path = require('path')
 const { reporter } = require('@dhis2/cli-helpers-engine')
+const { existsSync } = require('fs-extra')
 const semanticRelease = require('semantic-release')
 const getWorkspacePackages = require('../support/getWorkspacePackages')
 
@@ -65,8 +65,6 @@ function publisher(target = '', packages) {
 }
 
 const handler = async ({ publish }) => {
-    // set up the plugins and filter out any undefined elements
-
     const rootPackageFile = path.join(process.cwd(), 'package.json')
     const packages = [
         rootPackageFile,
