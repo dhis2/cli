@@ -1,3 +1,10 @@
+# [4.1.0-alpha.16](https://github.com/dhis2/cli/compare/v4.1.0-alpha.15...v4.1.0-alpha.16) (2021-06-30)
+
+
+### Bug Fixes
+
+* **release:** throw if the versions are wrong ([fc157e5](https://github.com/dhis2/cli/commit/fc157e5))
+
 # [4.1.0-alpha.15](https://github.com/dhis2/cli/compare/v4.1.0-alpha.14...v4.1.0-alpha.15) (2021-06-30)
 
 
