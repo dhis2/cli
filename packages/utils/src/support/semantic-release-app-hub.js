@@ -1,7 +1,7 @@
-const fs = require('fs')
 const path = require('path')
 const { publishCommand } = require('@dhis2/cli-app-scripts')
 const SemanticReleaseError = require('@semantic-release/error')
+const fs = require('fs-extra')
 const semver = require('semver')
 
 const { handler: publishAppHub } = publishCommand
@@ -10,7 +10,7 @@ exports.verifyConditions = (config, context) => {
     const { pkgRoot } = config
     const { env } = context
 
-    const packagePath = path.join(pkgRoot, 'package.json')
+    const packagePath = fs.readJsonSync(pkgRoot, 'package.json')
     const configPath = path.join(pkgRoot, 'd2.config.js')
 
     if (!fs.existsSync(configPath)) {
@@ -72,7 +72,7 @@ exports.publish = async (config, context) => {
     const { env, nextRelease } = context
 
     const packagePath = path.join(pkgRoot, 'package.json')
-    const pkg = require(packagePath)
+    const pkg = fs.readJsonSync(packagePath)
 
     if (semver.lt(pkg.version, nextRelease.version)) {
         throw new SemanticReleaseError(

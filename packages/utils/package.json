@@ -28,6 +28,7 @@
         "@semantic-release/release-notes-generator": "^9.0.1",
         "dhis2-uid": "^0.1.2",
         "ejs": "^3.0.1",
+        "fs-extra": "^10.0.0",
         "inquirer": "^7.1.0",
         "jsondiffpatch": "^0.4.1",
         "semantic-release": "^16.0.4",
