@@ -2,14 +2,16 @@ const fs = require('fs')
 const path = require('path')
 const { publishCommand } = require('@dhis2/cli-app-scripts')
 const SemanticReleaseError = require('@semantic-release/error')
+const semver = require('semver')
 
 const { handler: publishAppHub } = publishCommand
 
 exports.verifyConditions = (config, context) => {
-    const { env } = context
     const { pkgRoot } = config
+    const { env, nextRelease } = context
 
     const configPath = path.join(pkgRoot, 'd2.config.js')
+    const packagePath = path.join(pkgRoot, 'package.json')
 
     if (!fs.existsSync(configPath)) {
         throw new SemanticReleaseError(
@@ -20,6 +22,24 @@ exports.verifyConditions = (config, context) => {
     }
 
     const d2Config = require(configPath)
+
+    if (!fs.existsSync(packagePath)) {
+        throw new SemanticReleaseError(
+            `Failed to locate package.json file, does it exist in ${pkgRoot}?`,
+            'EMISSINGPACKAGE',
+            'package.json is necessary to automatically publish to the App Hub'
+        )
+    }
+
+    const pkg = require(packagePath)
+
+    if (semver.lt(pkg.version, nextRelease.version)) {
+        throw new SemanticReleaseError(
+            `Wrong version detected in ${packagePath}, expected ${nextRelease.version} but got ${pkg.version}.`,
+            'EPACKAGEVERSION',
+            'The version in package.json should be updated to the next release version before publishing.'
+        )
+    }
 
     if (d2Config.type === 'lib') {
         throw new SemanticReleaseError(

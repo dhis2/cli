@@ -30,7 +30,8 @@
         "ejs": "^3.0.1",
         "inquirer": "^7.1.0",
         "jsondiffpatch": "^0.4.1",
-        "semantic-release": "^16.0.4"
+        "semantic-release": "^16.0.4",
+        "semver": "^7.3.5"
     },
     "publishConfig": {
         "access": "public"
