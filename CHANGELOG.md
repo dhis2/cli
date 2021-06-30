@@ -1,3 +1,10 @@
+# [4.1.0-alpha.18](https://github.com/dhis2/cli/compare/v4.1.0-alpha.17...v4.1.0-alpha.18) (2021-06-30)
+
+
+### Bug Fixes
+
+* **release:** add comment to why we read json manually ([084f5e5](https://github.com/dhis2/cli/commit/084f5e5))
+
 # [4.1.0-alpha.17](https://github.com/dhis2/cli/compare/v4.1.0-alpha.16...v4.1.0-alpha.17) (2021-06-30)
 
 
