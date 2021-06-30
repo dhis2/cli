@@ -10,10 +10,7 @@ exports.verifyConditions = (config, context) => {
     const { pkgRoot } = config
     const { env } = context
 
-    // make sure to read the file from disk since it will have changed
-    // in a previous external step (semantic-release/npm), and if we use
-    // require here we get a cached result.
-    const packagePath = fs.readJsonSync(pkgRoot, 'package.json')
+    const packagePath = path.join(pkgRoot, 'package.json')
 
     if (!fs.existsSync(packagePath)) {
         throw new SemanticReleaseError(
