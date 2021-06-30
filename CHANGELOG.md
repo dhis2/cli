@@ -1,3 +1,10 @@
+# [4.1.0-alpha.15](https://github.com/dhis2/cli/compare/v4.1.0-alpha.14...v4.1.0-alpha.15) (2021-06-30)
+
+
+### Bug Fixes
+
+* **release:** add check for package version before publishing ([8a13217](https://github.com/dhis2/cli/commit/8a13217))
+
 # [4.1.0-alpha.14](https://github.com/dhis2/cli/compare/v4.1.0-alpha.13...v4.1.0-alpha.14) (2021-06-30)
 
 
