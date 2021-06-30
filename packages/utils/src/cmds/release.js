@@ -120,15 +120,12 @@ const handler = async ({ publish }) => {
         deferPlugin,
         '@semantic-release/commit-analyzer',
         '@semantic-release/release-notes-generator',
-        updateDepsPlugin,
+        ...(updateDepsPlugin ? [updateDepsPlugin] : []),
         changelogPlugin,
         ...publisher(publish, packages),
         gitPlugin,
         '@semantic-release/github',
     ]
-
-    reporter.debug('Order of plugins')
-    reporter.debug(plugins)
 
     /* rely on defaults for configuration, except for plugins as they
      * need to be custom.
@@ -136,7 +133,7 @@ const handler = async ({ publish }) => {
      * https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md
      */
     const options = {
-        plugins: plugins.filter(n => !!n),
+        plugins,
     }
 
     const config = {
