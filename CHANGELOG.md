@@ -1,3 +1,10 @@
+## [4.0.5](https://github.com/dhis2/cli/compare/v4.0.4...v4.0.5) (2021-07-05)
+
+
+### Bug Fixes
+
+* **deps:** update semantic-release dependencies ([a3d6aef](https://github.com/dhis2/cli/commit/a3d6aefda0dcd6792dce92149ba79d6aeecab040))
+
 ## [4.0.4](https://github.com/dhis2/cli/compare/v4.0.3...v4.0.4) (2021-06-23)
 
 
