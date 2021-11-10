@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/dhis2/cli/compare/v4.0.5...v4.1.0) (2021-11-10)
+
+
+### Features
+
+* **deps:** bump @dhis2/cli-app-scripts from 7.1.0 to 8.3.0 [defer release] ([#508](https://github.com/dhis2/cli/issues/508)) ([288039e](https://github.com/dhis2/cli/commit/288039e5e0f2cea1ce20627871a38668f75fe77b))
+
 ## [4.0.5](https://github.com/dhis2/cli/compare/v4.0.4...v4.0.5) (2021-07-05)
 
 
