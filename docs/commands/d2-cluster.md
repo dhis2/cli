@@ -109,7 +109,7 @@ d2 cluster down {name}
 
 #### Command `down --clean`
 
-This command destroys all data volumes as well as ephemeral containers: 
+This command brings down a cluster and cleans up after itself. This destroys all containers and volumes associated with the cluster. For example, this means that the attached database will be wiped so it is useful when you want to remove a cluster entirely.
 
 ```bash
 d2 cluster down {name} --clean 
