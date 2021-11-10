@@ -93,7 +93,7 @@ name of the cluster to operate on, which can be anything you like, like
 
 ### Command `up`
 
-This command spins up a new cluster: 
+This command spins up a new cluster:
 
 ```bash
 d2 cluster up {name}
@@ -101,7 +101,7 @@ d2 cluster up {name}
 
 ### Command `down`
 
-This command destroys a running container: 
+This command destroys a running container:
 
 ```bash
 d2 cluster down {name}
@@ -112,7 +112,7 @@ d2 cluster down {name}
 This command brings down a cluster and cleans up after itself. This destroys all containers and volumes associated with the cluster. For example, this means that the attached database will be wiped so it is useful when you want to remove a cluster entirely.
 
 ```bash
-d2 cluster down {name} --clean 
+d2 cluster down {name} --clean
 ```
 
 ## Arguments
