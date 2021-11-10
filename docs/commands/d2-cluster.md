@@ -120,7 +120,7 @@ To avoid having to pass in all arguments over and over when using the
 configuration per cluster in a `config.json` file.
 
 ```bash
-d2 debug cache list cluster/2.32.0
+d2 debug cache list clusters/2.32.0
 ┌────────────────┬──────┬─────────────────────┐
 │ Name           │ Size │ Modified            │
 ├────────────────┼──────┼─────────────────────┤
@@ -133,7 +133,7 @@ d2 debug cache list cluster/2.32.0
 And it looks like this:
 
 ```bash
-cat ~/.cache/d2/cache/cluster/2.32.0/config.json
+cat ~/.cache/d2/cache/clusters/2.32.0/config.json
 {
     "channel": "dev",
     "dbVersion": "2.32",
@@ -164,7 +164,7 @@ The second time you run `up superfly` it will use the configuration from
 the first run:
 
 ```bash
-cat ~/.cache/d2/cache/cluster/superfly/config.json
+cat ~/.cache/d2/cache/clusters/superfly/config.json
 {
     "channel": "dev",
     "dbVersion": "2.31",
@@ -212,7 +212,7 @@ module.exports = {
 d2 cluster up superfly
 
 # saves the configuration to `config.json`
-cat ~/.cache/d2/cache/cluster/superfly/config.json
+cat ~/.cache/d2/cache/clusters/superfly/config.json
 {
     "channel": "dev",
     "dbVersion": "2.31",
@@ -230,7 +230,7 @@ for a cluster as well:
 # port is 9999 in ~/.config/d2/config.js:clusters.superfly.port
 d2 cluster up superfly --port 8888
 
-# port is saved as 8888 in ~/.cache/d2/cache/cluster/superfly/config.json:port
+# port is saved as 8888 in ~/.cache/d2/cache/clusters/superfly/config.json:port
 ```
 
 Now for each subsequence `down` and `up` command, the cached config will
