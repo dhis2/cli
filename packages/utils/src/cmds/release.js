@@ -27,7 +27,15 @@ function publisher(target = '', packages) {
         }
 
         default: {
-            return [undefined]
+            return packages.map(pkgJsonPath => {
+                return [
+                    '@semantic-release/npm',
+                    {
+                        pkgRoot: path.dirname(pkgJsonPath),
+                        npmPublish: false,
+                    },
+                ]
+            })
         }
     }
 }

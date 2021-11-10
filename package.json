@@ -1,5 +1,5 @@
 {
-    "version": "4.0.0",
+    "version": "4.0.5",
     "private": true,
     "workspaces": [
         "packages/*"
@@ -11,7 +11,7 @@
     ],
     "license": "BSD-3-Clause",
     "devDependencies": {
-        "@dhis2/cli-style": "^9.0.0",
+        "@dhis2/cli-style": "^9.0.1",
         "@dhis2/cli-utils-docsite": "^3.0.0",
         "tape": "^4.13.2",
         "tape-await": "^0.1.2"

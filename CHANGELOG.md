@@ -1,3 +1,39 @@
+## [4.0.5](https://github.com/dhis2/cli/compare/v4.0.4...v4.0.5) (2021-07-05)
+
+
+### Bug Fixes
+
+* **deps:** update semantic-release dependencies ([a3d6aef](https://github.com/dhis2/cli/commit/a3d6aefda0dcd6792dce92149ba79d6aeecab040))
+
+## [4.0.4](https://github.com/dhis2/cli/compare/v4.0.3...v4.0.4) (2021-06-23)
+
+
+### Bug Fixes
+
+* **utils:** manage versions on private packages when not publishing to npm ([1a305f9](https://github.com/dhis2/cli/commit/1a305f9))
+
+## [4.0.3](https://github.com/dhis2/cli/compare/v4.0.2...v4.0.3) (2021-06-23)
+
+
+### Bug Fixes
+
+* **release:** always update package.json version ([97fbfd6](https://github.com/dhis2/cli/commit/97fbfd6))
+
+## [4.0.2](https://github.com/dhis2/cli/compare/v4.0.1...v4.0.2) (2021-06-16)
+
+
+### Bug Fixes
+
+* **semantic-release:** pin version to 16 ([254b55c](https://github.com/dhis2/cli/commit/254b55c))
+
+## [4.0.1](https://github.com/dhis2/cli/compare/v4.0.0...v4.0.1) (2021-06-14)
+
+
+### Bug Fixes
+
+* **deps:** update cli-style to work in non-project context ([adf329e](https://github.com/dhis2/cli/commit/adf329e))
+* **utils:** include cypress utilities ([df0e5ce](https://github.com/dhis2/cli/commit/df0e5ce))
+
 # [4.0.0](https://github.com/dhis2/cli/compare/v3.1.0...v4.0.0) (2021-06-14)
 
 
