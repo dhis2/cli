@@ -99,7 +99,7 @@ function transformArrayToObject(array, hashKey) {
             )
             hash = index
         }
-        acc[curr[hashKey]] = curr
+        acc[hash] = curr
         return acc
     }, {})
 }
