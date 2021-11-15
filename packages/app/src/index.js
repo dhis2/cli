@@ -1,9 +1,13 @@
-const { namespace } = require('@dhis2/cli-helpers-engine')
+const { namespace, loadModule } = require('@dhis2/cli-helpers-engine')
 
 module.exports = namespace('app', {
     description: 'Front-end application and library commands',
     builder: yargs => {
-        yargs.command(require('@dhis2/cli-app-scripts'))
+        const loader = loadModule({
+            parentModule: __filename,
+        })
+
+        yargs.command(loader('@dhis2/cli-app-scripts'))
         yargs.commandDir('commands')
     },
 })
