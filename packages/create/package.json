@@ -12,7 +12,7 @@
     "license": "BSD-3-Clause",
     "private": false,
     "dependencies": {
-        "@dhis2/cli-helpers-engine": "^3.0.0",
+        "@dhis2/cli-helpers-engine": "^3.1.0",
         "@dhis2/cli-helpers-template": "^3.0.0",
         "fs-extra": "^9.0.0",
         "handlebars": "^4.7.3",
