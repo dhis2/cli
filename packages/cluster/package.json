@@ -7,7 +7,7 @@
     "author": "Austin McGee <austin@dhis2.org>",
     "license": "BSD-3-Clause",
     "dependencies": {
-        "@dhis2/cli-helpers-engine": "^3.0.0",
+        "@dhis2/cli-helpers-engine": "^3.1.0",
         "cli-table3": "^0.6.0"
     },
     "bin": {
