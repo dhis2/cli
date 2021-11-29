@@ -1,3 +1,16 @@
+# [4.2.0](https://github.com/dhis2/cli/compare/v4.1.0...v4.2.0) (2021-11-29)
+
+
+### Bug Fixes
+
+* **deps:** bump @dhis2/cli-utils-docsite from 3.0.0 to 3.1.2 [defer release] ([#468](https://github.com/dhis2/cli/issues/468)) ([6c3a69d](https://github.com/dhis2/cli/commit/6c3a69d852dc57aad7714e50da3492dbf39a5c67))
+
+
+### Features
+
+* **cli:** prefer project-local tools ([50e1eae](https://github.com/dhis2/cli/commit/50e1eaec3c3107e2134386589efca68f5ecb8965))
+* **deps:** bump @dhis2/cli-utils-cypress from 8.0.1 to 9.0.1 [defer release] ([#513](https://github.com/dhis2/cli/issues/513)) ([ea03992](https://github.com/dhis2/cli/commit/ea0399223feb6e344124c806ee79eae3f6fb85ce))
+
 # [4.1.0](https://github.com/dhis2/cli/compare/v4.0.5...v4.1.0) (2021-11-10)
 
 
