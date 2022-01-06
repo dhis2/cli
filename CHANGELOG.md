@@ -1,3 +1,10 @@
+## [4.2.1](https://github.com/dhis2/cli/compare/v4.2.0...v4.2.1) (2022-01-06)
+
+
+### Bug Fixes
+
+* **main:** bump cli-helpers-engine to fix undefined project root issue ([#522](https://github.com/dhis2/cli/issues/522)) ([b869c72](https://github.com/dhis2/cli/commit/b869c72bf3557d02ea5204b155bd991dc3e51cec))
+
 # [4.2.0](https://github.com/dhis2/cli/compare/v4.1.0...v4.2.0) (2021-11-29)
 
 
