@@ -1,3 +1,10 @@
+## [4.2.2](https://github.com/dhis2/cli/compare/v4.2.1...v4.2.2) (2022-01-10)
+
+
+### Bug Fixes
+
+* bump cli-helpers-engine for all packages ([#524](https://github.com/dhis2/cli/issues/524)) ([f651b4a](https://github.com/dhis2/cli/commit/f651b4a4db4136155760347027c9dea0ed1a642e))
+
 ## [4.2.1](https://github.com/dhis2/cli/compare/v4.2.0...v4.2.1) (2022-01-06)
 
 
