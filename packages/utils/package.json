@@ -30,7 +30,7 @@
         "inquirer": "^7.1.0",
         "jsondiffpatch": "^0.4.1",
         "semantic-release": "^17.4.4",
-        "tape": "^4.13.2"
+        "tape": "^4.15.0"
     },
     "publishConfig": {
         "access": "public"
