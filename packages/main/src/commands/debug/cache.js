@@ -33,18 +33,18 @@ const parse = async ({ item = '/', getCache }) => {
     }
 }
 
-const builder = yargs => {
+const builder = (yargs) => {
     yargs.command(
         'location [item]',
         'Get the filesystem location of a cache item',
         {},
-        async argv => {
+        async (argv) => {
             const { loc } = await parse(argv)
             reporter.print(loc)
         }
     )
 
-    yargs.command('list [item]', 'List cache items', {}, async argv => {
+    yargs.command('list [item]', 'List cache items', {}, async (argv) => {
         const { item, cache, exists } = await parse(argv)
         if (!exists) {
             reporter.info(`Cached item ${chalk.bold(item)} does not exist`)
@@ -55,7 +55,7 @@ const builder = yargs => {
             head: ['Name', 'Size', 'Modified'],
         })
         if (stat.children) {
-            Object.keys(stat.children).forEach(name => {
+            Object.keys(stat.children).forEach((name) => {
                 printStats(table, name, stat.children[name])
             })
         } else {
@@ -64,19 +64,24 @@ const builder = yargs => {
         reporter.print(table)
     })
 
-    yargs.command('status [item]', 'Get cache item status', {}, async argv => {
-        const { item, exists, loc } = await parse(argv)
-        reporter.print('CACHE STATUS')
-        reporter.print(
-            `\t${chalk.green.bold(item)}\t\t${
-                exists
-                    ? `${chalk.blue.bold('EXISTS')}`
-                    : chalk.red.bold('DOES NOT EXIST')
-            }\t@ ${loc}`
-        )
-    })
+    yargs.command(
+        'status [item]',
+        'Get cache item status',
+        {},
+        async (argv) => {
+            const { item, exists, loc } = await parse(argv)
+            reporter.print('CACHE STATUS')
+            reporter.print(
+                `\t${chalk.green.bold(item)}\t\t${
+                    exists
+                        ? `${chalk.blue.bold('EXISTS')}`
+                        : chalk.red.bold('DOES NOT EXIST')
+                }\t@ ${loc}`
+            )
+        }
+    )
 
-    yargs.command('purge [item]', 'Purge cache item', {}, async argv => {
+    yargs.command('purge [item]', 'Purge cache item', {}, async (argv) => {
         const { item, isRoot, exists, cache } = await parse(argv)
         if (!exists) {
             reporter.info(`Cached item ${chalk.bold(item)} does not exist`)

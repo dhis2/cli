@@ -19,12 +19,12 @@ const defaultRequestOpts = {
 
 const prompt = inquirer.createPromptModule({ output: process.stderr })
 
-const schemaIdentifier = info => `${info.version}_${info.revision}`
+const schemaIdentifier = (info) => `${info.version}_${info.revision}`
 const schemaDiffIdentifier = (info1, info2) =>
     `${schemaIdentifier(info1)}__${schemaIdentifier(info2)}`
 
 function asyncRequest(url, opts) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
         request.get(url, opts, (err, res, body) => {
             if (err || res.statusCode > 299) {
                 reporter.error('Request', url, 'failed to fetch')
@@ -61,7 +61,9 @@ function authFromConf(conf = {}, serverConfig = {}) {
         username: serverConfig.username || conf.username,
         password: serverConfig.password || conf.password,
     }
-    if (auth.username && auth.password) return auth
+    if (auth.username && auth.password) {
+        return auth
+    }
     return true
 }
 

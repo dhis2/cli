@@ -2,7 +2,7 @@ const { namespace } = require('@dhis2/cli-helpers-engine')
 
 const command = namespace('schema', {
     desc: 'Utils for schema operations',
-    builder: yargs =>
+    builder: (yargs) =>
         yargs
             .option('force', {
                 type: 'boolean',

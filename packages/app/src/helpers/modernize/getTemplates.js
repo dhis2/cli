@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const getTemplateMainLanguage = creationDate => {
+const getTemplateMainLanguage = (creationDate) => {
     const template = fs.readFileSync(
         path.join(__dirname, 'main_language.template'),
         { encoding: 'utf8' }

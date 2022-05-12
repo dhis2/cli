@@ -8,7 +8,7 @@ const { reporter } = require('@dhis2/cli-helpers-engine')
  * @returns {void}
  */
 const deleteLegacyFiles = ({ translationFiles, languagesToTransform }) => {
-    translationFiles.forEach(file => {
+    translationFiles.forEach((file) => {
         const language = file.replace(/i18n_module_|.properties/g, '')
 
         if (
