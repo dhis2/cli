@@ -1,6 +1,6 @@
 const { reporter, exec, chalk } = require('@dhis2/cli-helpers-engine')
 const Table = require('cli-table3')
-const { makeComposeProject, listClusters } = require('../common')
+const { makeComposeProject, listClusters } = require('../common.js')
 
 const getStatus = async (cluster) =>
     // TODO: check the status of the other services, not just `core`

@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const SemanticReleaseError = require('@semantic-release/error')
 const AggregateError = require('aggregate-error')
-const normalizeAndValidatePackages = require('./normalizeAndValidatePackages')
+const normalizeAndValidatePackages = require('./normalizeAndValidatePackages.js')
 
 const verifyConditions = (config = {}, context) => {
     const { silent, packages } = config
