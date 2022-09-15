@@ -1,6 +1,7 @@
 const path = require('path')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 const defaults = require('./defaults')
+const { customContext } = require('./defaults')
 
 const clusterDir = 'clusters'
 const dockerComposeCacheName = 'docker-compose'
@@ -109,7 +110,7 @@ async function resolveConfiguration(argv = {}) {
     // resolve specials...
     resolved.dhis2Version = resolved.dhis2Version || resolved.name
     resolved.dbVersion = resolved.dbVersion || resolved.dhis2Version
-    resolved.contextPath = resolved.customContext ? `/${resolved.name}` : ''
+    resolved.contextPath = resolveCustomContextPath(resolved)
 
     resolved.dockerImage = makeDockerImage(
         resolved.image,
@@ -121,7 +122,6 @@ async function resolveConfiguration(argv = {}) {
     )
 
     reporter.debug('Resolved configuration\n', resolved)
-
     await argv.getCache().write(
         file,
         JSON.stringify(
@@ -161,6 +161,14 @@ module.exports.makeEnvironment = cfg => {
     reporter.debug('Runtime environment\n', env)
 
     return env
+}
+
+const resolveCustomContextPath = (resolved) => {
+    let contextPath = resolved.customContext
+    if (customContext === '') {
+        contextPath = resolved.name
+    }
+    return contextPath ? `/${contextPath}` : ''
 }
 
 // This has to match the normalization done by docker-compose to reliably get container statuses
