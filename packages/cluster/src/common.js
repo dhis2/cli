@@ -1,7 +1,6 @@
 const path = require('path')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 const defaults = require('./defaults')
-const { customContext } = require('./defaults')
 
 const clusterDir = 'clusters'
 const dockerComposeCacheName = 'docker-compose'
@@ -166,7 +165,7 @@ module.exports.makeEnvironment = cfg => {
 
 const resolveCustomContextPath = resolved => {
     let contextPath = resolved.customContext
-    if (customContext === '') {
+    if (contextPath === '' || contextPath === true) {
         contextPath = resolved.name
     }
     return contextPath ? `/${contextPath}` : ''
