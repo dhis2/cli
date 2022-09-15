@@ -122,6 +122,7 @@ async function resolveConfiguration(argv = {}) {
     )
 
     reporter.debug('Resolved configuration\n', resolved)
+
     await argv.getCache().write(
         file,
         JSON.stringify(
@@ -163,7 +164,7 @@ module.exports.makeEnvironment = cfg => {
     return env
 }
 
-const resolveCustomContextPath = (resolved) => {
+const resolveCustomContextPath = resolved => {
     let contextPath = resolved.customContext
     if (customContext === '') {
         contextPath = resolved.name
