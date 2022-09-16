@@ -36,7 +36,9 @@ const formatStatus = status => {
 
 const run = async function (argv) {
     const clusters = await listClusters(argv)
-
+    const anyCustomContext = clusters.some(
+        cluster => cluster.contextPath !== ''
+    )
     const table = new Table({
         head: [
             'Name',
@@ -45,20 +47,22 @@ const run = async function (argv) {
             'DHIS2 Version',
             'DB Version',
             'Status',
-        ],
+        ].concat(anyCustomContext ? 'Context Path' : []),
     })
 
     await Promise.all(
         clusters.map(async cluster => {
             const status = await getStatus(cluster)
-            table.push([
-                chalk.blue(cluster.name),
-                cluster.port,
-                cluster.channel,
-                cluster.dhis2Version,
-                cluster.dbVersion,
-                formatStatus(status),
-            ])
+            table.push(
+                [
+                    chalk.blue(cluster.name),
+                    cluster.port,
+                    cluster.channel,
+                    cluster.dhis2Version,
+                    cluster.dbVersion,
+                    formatStatus(status),
+                ].concat(anyCustomContext ? cluster.contextPath : [])
+            )
         })
     )
 

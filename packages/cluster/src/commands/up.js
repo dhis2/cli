@@ -138,8 +138,8 @@ module.exports = {
         },
         customContext: {
             alias: 'c',
-            desc: 'Serve on a custom context path',
-            type: 'boolean',
+            desc: 'Serve on a custom context path. If used as a flag, the name of the cluster will be used.',
+            type: 'string',
         },
         variant: {
             desc: 'Append variant options to the image',

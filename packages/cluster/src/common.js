@@ -109,7 +109,7 @@ async function resolveConfiguration(argv = {}) {
     // resolve specials...
     resolved.dhis2Version = resolved.dhis2Version || resolved.name
     resolved.dbVersion = resolved.dbVersion || resolved.dhis2Version
-    resolved.contextPath = resolved.customContext ? `/${resolved.name}` : ''
+    resolved.contextPath = resolveCustomContextPath(resolved)
 
     resolved.dockerImage = makeDockerImage(
         resolved.image,
@@ -161,6 +161,14 @@ module.exports.makeEnvironment = cfg => {
     reporter.debug('Runtime environment\n', env)
 
     return env
+}
+
+const resolveCustomContextPath = resolved => {
+    let contextPath = resolved.customContext
+    if (contextPath === '' || contextPath === true) {
+        contextPath = resolved.name
+    }
+    return contextPath ? `/${contextPath}` : ''
 }
 
 // This has to match the normalization done by docker-compose to reliably get container statuses
