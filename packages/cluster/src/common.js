@@ -130,6 +130,7 @@ async function resolveConfiguration(argv = {}) {
                 dbVersion: resolved.dbVersion,
                 dhis2Version: resolved.dhis2Version,
                 dhis2Config: resolved.dhis2Config,
+                dhis2Home: resolved.dhis2Home,
                 customContext: resolved.customContext,
                 image: resolved.image,
                 port: resolved.port,
@@ -151,6 +152,7 @@ module.exports.makeEnvironment = cfg => {
         DHIS2_CORE_IMAGE: cfg.dockerImage,
         DHIS2_CORE_CONTEXT_PATH: cfg.contextPath,
         DHIS2_CORE_VERSION: cfg.dhis2Version,
+        DHIS2_HOME: cfg.dhis2Home,
         DHIS2_CORE_DB_VERSION: cfg.dbVersion,
         DHIS2_CORE_PORT: cfg.port,
     }
