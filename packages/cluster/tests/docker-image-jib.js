@@ -11,7 +11,6 @@ test(`DHIS2 versions with Docker image containing /opt/dhis2`, async function (t
         '2.38.2.0',
         '2.38.2.1',
         '2.37.9',
-        '2.37.8.2',
     ]
     t.plan(versions.length)
 
