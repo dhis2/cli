@@ -1,4 +1,3 @@
-const test = require('tape-await')
 const { makeEnvironment, resolveConfiguration } = require('../src/common.js')
 const defaults = require('../src/defaults.js')
 
@@ -7,9 +6,7 @@ const cache = obj => ({
     write: () => {},
 })
 
-test('build runtime environment based on defaults', async function (t) {
-    t.plan(1)
-
+test('build runtime environment based on defaults', async function () {
     const argv = {
         name: '2.39.0',
         getCache: () => cache(null),
@@ -28,12 +25,10 @@ test('build runtime environment based on defaults', async function (t) {
         DHIS2_CORE_PORT: defaults.port,
     }
 
-    t.deepEqual(actual, expected, 'default environment')
+    expect(actual).toEqual(expected)
 })
 
-test('build runtime environment based on args', async function (t) {
-    t.plan(1)
-
+test('build runtime environment based on args', async function () {
     const argv = {
         name: 'dev',
         customContext: true,
@@ -58,12 +53,10 @@ test('build runtime environment based on args', async function (t) {
         DHIS2_CORE_PORT: 8233,
     }
 
-    t.deepEqual(actual, expected, 'args environment')
+    expect(actual).toEqual(expected)
 })
 
-test('build runtime environment based on mixed args and config', async function (t) {
-    t.plan(1)
-
+test('build runtime environment based on mixed args and config', async function () {
     const config = {
         dhis2Version: 'master',
         port: 8233,
@@ -91,12 +84,10 @@ test('build runtime environment based on mixed args and config', async function 
         DHIS2_CORE_PORT: 8233,
     }
 
-    t.deepEqual(actual, expected, 'args and config environment')
+    expect(actual).toEqual(expected)
 })
 
-test('build runtime environment based on mixed args, cache, config and defaults', async function (t) {
-    t.plan(1)
-
+test('build runtime environment based on mixed args, cache, config and defaults', async function () {
     const config = {
         port: 8233,
         dhis2Version: 'master',
@@ -125,12 +116,10 @@ test('build runtime environment based on mixed args, cache, config and defaults'
         DHIS2_CORE_PORT: 8233,
     }
 
-    t.deepEqual(actual, expected, 'merged environment')
+    expect(actual).toEqual(expected)
 })
 
-test('build runtime environment based on mixed args, cache, config, custom per-cluster config and defaults', async function (t) {
-    t.plan(1)
-
+test('build runtime environment based on mixed args, cache, config, custom per-cluster config and defaults', async function () {
     const config = {
         port: 8233,
         dhis2Version: 'master',
@@ -166,5 +155,5 @@ test('build runtime environment based on mixed args, cache, config, custom per-c
         DHIS2_CORE_PORT: 9999,
     }
 
-    t.deepEqual(actual, expected, 'merged environment')
+    expect(actual).toEqual(expected)
 })
