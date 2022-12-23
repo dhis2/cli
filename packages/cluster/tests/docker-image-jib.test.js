@@ -9,7 +9,6 @@ test.each([
     '2.38.2.0',
     '2.38.2.1',
     '2.37.9',
-    '2.37.8.2',
 ])('Docker image for DHIS2 %s contains /opt/dhis2', function (version) {
     expect(dockerImageUsingJib(version)).toBeTruthy()
 })

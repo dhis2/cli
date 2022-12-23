@@ -97,7 +97,7 @@ function dhis2Home(version) {
 }
 
 /*
- * Docker images for releases starting from 2.39.0, 2.38.2, 2.37.8.2 or 2.37.9
+ * Docker images for releases starting from 2.39.0, 2.38.2, 2.37.9
  * (not released at the time this was written) do not create directory
  * /DHIS2_home anymore. See https://github.com/dhis2/dhis2-core/pull/11981
  * Instead /opt/dhis2 is created which is the default location used by DHIS2.
@@ -130,10 +130,7 @@ function dockerImageUsingJib(version) {
     } else if (major == 38) {
         return minor >= 2
     } else if (major == 37) {
-        if (minor >= 9 || (minor == 8 && patch >= 2)) {
-            return true
-        }
-        return false
+        return minor >= 9
     } else {
         return false
     }
