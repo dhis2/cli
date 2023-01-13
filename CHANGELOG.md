@@ -1,3 +1,10 @@
+## [4.2.3](https://github.com/dhis2/cli/compare/v4.2.2...v4.2.3) (2023-01-13)
+
+
+### Bug Fixes
+
+* set DHIS2_HOME env var to /DHIS2_home for images pre-Jib ([4e8ce2b](https://github.com/dhis2/cli/commit/4e8ce2b00e4e8f5069ae37c2f685bef31733f0cf))
+
 ## [4.2.2](https://github.com/dhis2/cli/compare/v4.2.1...v4.2.2) (2022-01-10)
 
 
