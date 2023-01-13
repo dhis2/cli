@@ -59,7 +59,7 @@ test('stable and 2.32.0 with alpine variant', function (t) {
 test('stable and master with tomcat9 and debian-slim variant', function (t) {
     t.plan(1)
 
-    const expected = 'dhis2/core:master-tomcat9-debian-slim'
+    const expected = 'dhis2/core:latest-tomcat9-debian-slim'
 
     t.equal(
         makeDockerImage(
@@ -100,7 +100,7 @@ test('stable and 2.32.0', function (t) {
 test('dev and master', function (t) {
     t.plan(1)
 
-    const expected = 'dhis2/core-dev:master'
+    const expected = 'dhis2/core-dev:latest'
 
     t.equal(
         makeDockerImage(template, {
@@ -130,7 +130,7 @@ test('dev and 2.32', function (t) {
 test('canary and master', function (t) {
     t.plan(1)
 
-    const expected = 'dhis2/core-canary:master'
+    const expected = 'dhis2/core-canary:latest'
 
     t.equal(
         makeDockerImage(template, {

@@ -1,4 +1,5 @@
 module.exports = {
+    dhis2Home: '/opt/dhis2',
     dhis2Version: '',
     dbVersion: '',
     channel: 'stable',
