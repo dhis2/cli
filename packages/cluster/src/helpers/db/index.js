@@ -1,2 +1,2 @@
-module.exports.backup = require('./backup')
-module.exports.restore = require('./restore')
+module.exports.backup = require('./backup.js')
+module.exports.restore = require('./restore.js')

@@ -2,7 +2,7 @@ const { namespace, createModuleLoader } = require('@dhis2/cli-helpers-engine')
 
 const command = namespace('utils', {
     desc: 'Utils for miscellaneous operations',
-    builder: yargs => {
+    builder: (yargs) => {
         const loader = createModuleLoader({
             parentModule: __filename,
         })

@@ -2,9 +2,9 @@ const fs = require('fs')
 const {
     checkIODirectories,
     checkMainTranslationFilePresent,
-} = require('./checkRequirements')
+} = require('./checkRequirements.js')
 
-const fileIsOldTranslationFile = fileName => fileName.match(/\.properties$/)
+const fileIsOldTranslationFile = (fileName) => fileName.match(/\.properties$/)
 
 /**
  * @param {Object} args

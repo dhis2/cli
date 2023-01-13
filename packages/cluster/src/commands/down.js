@@ -6,7 +6,7 @@ const {
     makeComposeProject,
     makeEnvironment,
     cleanCache,
-} = require('../common')
+} = require('../common.js')
 
 const run = async function (argv) {
     const { name, clean, getCache } = argv

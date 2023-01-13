@@ -3,24 +3,24 @@ const path = require('path')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 const ejs = require('ejs')
 const jsondiffpatch = require('jsondiffpatch')
+const utils = require('../../../support/utils.js')
 const {
     schemasFromUrl,
     writeOutput,
     schemaDiffIdentifier,
     defaultOpts,
     resolveConfig,
-} = require('../')
-const utils = require('../../../support/utils')
-const DHIS2HtmlFormatter = require('./schemaHtmlFormatter')
+} = require('../index.js')
+const DHIS2HtmlFormatter = require('./schemaHtmlFormatter.js')
 
 let cache
 // We use the singular property as an unique identifier for schemas
 // name and type are used for other nested properties
-const objectHash = obj =>
+const objectHash = (obj) =>
     obj.singular || obj.name || obj.fieldName || obj.type || obj
 const Differ = jsondiffpatch.create({
     objectHash,
-    propertyFilter: name => name !== 'href' && name !== 'apiEndpoint',
+    propertyFilter: (name) => name !== 'href' && name !== 'apiEndpoint',
     arrays: {
         detectMove: true,
         includeValueOnMove: true,
@@ -63,13 +63,17 @@ async function getSchemas(urlLike, { baseUrl, auth, force }) {
 function sortSchemaObject(a, b) {
     const aHash = objectHash(a)
     const bHash = objectHash(b)
-    if (aHash < bHash) return -1
-    if (aHash > bHash) return 1
+    if (aHash < bHash) {
+        return -1
+    }
+    if (aHash > bHash) {
+        return 1
+    }
     return 0
 }
 
 function sortArrayProps(obj) {
-    Object.keys(obj).forEach(key => {
+    Object.keys(obj).forEach((key) => {
         const val = obj[key]
         if (Array.isArray(val)) {
             const sorted = val.sort(sortSchemaObject)
@@ -206,7 +210,7 @@ async function run(args) {
     })
 }
 
-const builder = yargs => {
+const builder = (yargs) => {
     yargs
         .positional('leftUrl', {
             type: 'string',
@@ -220,7 +224,7 @@ const builder = yargs => {
         })
         .option('base-url', {
             alias: 'b',
-            coerce: opt => utils.prependHttpsProtocol(opt),
+            coerce: (opt) => utils.prependHttpsProtocol(opt),
             describe: `BaseUrl to use for downloading schemas. If this is set leftServer and rightServer should be relative to this url, eg. /dev.`,
             type: 'string',
         })

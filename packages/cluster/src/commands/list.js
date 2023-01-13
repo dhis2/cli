@@ -1,8 +1,8 @@
 const { reporter, exec, chalk } = require('@dhis2/cli-helpers-engine')
 const Table = require('cli-table3')
-const { makeComposeProject, listClusters } = require('../common')
+const { makeComposeProject, listClusters } = require('../common.js')
 
-const getStatus = async cluster =>
+const getStatus = async (cluster) =>
     // TODO: check the status of the other services, not just `core`
     await exec({
         cmd: 'docker',
@@ -18,7 +18,7 @@ const getStatus = async cluster =>
         captureOut: true,
     })
 
-const formatStatus = status => {
+const formatStatus = (status) => {
     status = status.trim()
 
     if (status.length === 0) {
@@ -49,7 +49,7 @@ const run = async function (argv) {
     })
 
     await Promise.all(
-        clusters.map(async cluster => {
+        clusters.map(async (cluster) => {
             const status = await getStatus(cluster)
             table.push([
                 chalk.blue(cluster.name),
