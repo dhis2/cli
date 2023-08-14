@@ -1,24 +1,29 @@
 # Introduction
 
-`d2 cluster` helps you spin up a DHIS2 instance using containers ([Docker](https://www.docker.com))
+`d2 cluster` helps you spin up a DHIS2 instance using ([Docker](https://www.docker.com)) containers.
 
 # Usage
 
-While you can install and run `d2-cluster` from `@dhis2/cli-cluster`,
-the preferred entrypoint is the root `d2` CLI. To install the `d2` CLI:
-
+To install the `d2 cluster` command, you need to install the `@dhis2/cli` package globally:
 ```bash
 yarn global add @dhis2/cli
+# or
+npm install -g @dhis2/cli
+```
+
+> While you can install the cluster command separately using `yarn global add @dhis2/cli-cluster`, this is **not** recommended.
+
+Then you can use the `d2 cluster` command with the `--help` flag to get more information about the available commands and options.
+
+```bash
 d2 cluster --help
 ```
+# Common concepts
 
 Depending on your installation method, the following examples which use
 `d2 cluster` may need to be modified to use `d2-cluster`, or `npx @dhis2/cli-cluster`.
 
 For consistency we will use `d2 cluster`.
-
-# Common concepts
-
 ## Release channels
 
 DHIS2 has several release channels, such as **dev** and **stable**.

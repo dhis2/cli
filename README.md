@@ -12,13 +12,13 @@ See the [documentation site](https://cli.dhis2.nu) for end-user installation and
 
 ## Conventions
 
-The `d2` command-line tool is structured as a collection of namespaces, each of which may include sub-namespaces and sub-commands. This heirarchy should follow one simple rule:
+The `d2` command-line tool is structured as a collection of namespaces, each of which may include sub-namespaces and sub-commands. This hierarchy should follow one simple rule:
 
 **namespaces are nouns, commands are verbs**
 
 Each subsequent namespace should narrow the context in which a command (an action) will be performed. For example:
 
--   `d2 cluster restart` performs the action **restart** in the **d2 cluster** namespace
+-   `d2 cluster restart` performs the action `restart` in the `d2 cluster` namespace
 -   `d2 style js apply` performs the **apply** action in the **js** sub-namespace of the **d2 style** namespace
 
 Anything following the action verb is either a positional argument or a flag (if preceded by `-` or `--`), i.e.:
