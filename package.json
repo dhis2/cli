@@ -26,5 +26,8 @@
             "name": "DHIS2 CLI",
             "description": "A unified CLI for DHIS2 development workflows."
         }
-    }
+    },
+    "resolutions": {
+        "@ls-lint/ls-lint": "2.0.1"
+      }
 }
