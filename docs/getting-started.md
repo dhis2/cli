@@ -2,6 +2,7 @@
 title: Getting started with the D2 CLI
 sidebar_label: Getting Started
 ---
+
 # Install the CLI
 
 ```

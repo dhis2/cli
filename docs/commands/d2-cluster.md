@@ -5,6 +5,7 @@
 # Usage
 
 To install the `d2 cluster` command, you need to install the `@dhis2/cli` package globally:
+
 ```bash
 yarn global add @dhis2/cli
 # or
@@ -18,12 +19,14 @@ Then you can use the `d2 cluster` command with the `--help` flag to get more inf
 ```bash
 d2 cluster --help
 ```
+
 # Common concepts
 
 Depending on your installation method, the following examples which use
 `d2 cluster` may need to be modified to use `d2-cluster`, or `npx @dhis2/cli-cluster`.
 
 For consistency we will use `d2 cluster`.
+
 ## Release channels
 
 DHIS2 has several release channels, such as **dev** and **stable**.
