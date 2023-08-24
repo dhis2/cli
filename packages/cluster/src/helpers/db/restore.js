@@ -1,6 +1,6 @@
 const path = require('path')
 const { reporter, exec, chalk } = require('@dhis2/cli-helpers-engine')
-const { makeComposeProject, substituteVersion } = require('../../common')
+const { makeComposeProject, substituteVersion } = require('../../common.js')
 
 const downloadDatabase = async ({ cache, dbVersion, update, url }) => {
     const ext = '.sql.gz' //dbUrl.endsWith('.gz') ? '.gz' : '.sql'

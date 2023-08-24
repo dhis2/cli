@@ -2,7 +2,7 @@ const { existsSync } = require('fs')
 const path = require('path')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 const semanticRelease = require('semantic-release')
-const getWorkspacePackages = require('../support/getWorkspacePackages')
+const getWorkspacePackages = require('../support/getWorkspacePackages.js')
 
 const packageIsPublishable = (pkgJsonPath) => {
     try {
@@ -52,7 +52,7 @@ const handler = async ({ publish }) => {
     const updateDepsPlugin =
         packages.length > 1
             ? [
-                  require('../support/semantic-release-update-deps'),
+                  require('../support/semantic-release-update-deps.js'),
                   {
                       exact: true,
                       packages,
@@ -89,7 +89,7 @@ const handler = async ({ publish }) => {
         },
     ]
 
-    const deferPlugin = require('../support/semantic-release-defer-release')
+    const deferPlugin = require('../support/semantic-release-defer-release.js')
 
     // Order matters here!
     const plugins = [

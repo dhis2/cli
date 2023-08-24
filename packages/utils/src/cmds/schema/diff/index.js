@@ -3,15 +3,15 @@ const path = require('path')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 const ejs = require('ejs')
 const jsondiffpatch = require('jsondiffpatch')
+const utils = require('../../../support/utils.js')
 const {
     schemasFromUrl,
     writeOutput,
     schemaDiffIdentifier,
     defaultOpts,
     resolveConfig,
-} = require('../')
-const utils = require('../../../support/utils')
-const DHIS2HtmlFormatter = require('./schemaHtmlFormatter')
+} = require('../index.js')
+const DHIS2HtmlFormatter = require('./schemaHtmlFormatter.js')
 
 let cache
 // We use the singular property as an unique identifier for schemas
@@ -63,8 +63,12 @@ async function getSchemas(urlLike, { baseUrl, auth, force }) {
 function sortSchemaObject(a, b) {
     const aHash = objectHash(a)
     const bHash = objectHash(b)
-    if (aHash < bHash) return -1
-    if (aHash > bHash) return 1
+    if (aHash < bHash) {
+        return -1
+    }
+    if (aHash > bHash) {
+        return 1
+    }
     return 0
 }
 

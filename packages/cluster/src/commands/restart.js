@@ -10,8 +10,8 @@ const {
     makeComposeProject,
     makeEnvironment,
     resolveConfiguration,
-} = require('../common')
-const defaults = require('../defaults')
+} = require('../common.js')
+const defaults = require('../defaults.js')
 
 const run = async function (argv) {
     const { name, service } = argv

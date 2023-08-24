@@ -6,7 +6,7 @@ const {
     makeComposeProject,
     makeEnvironment,
     resolveConfiguration,
-} = require('../common')
+} = require('../common.js')
 
 const run = async function (argv) {
     const { name, _ } = argv

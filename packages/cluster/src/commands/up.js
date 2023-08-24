@@ -10,9 +10,9 @@ const {
     makeEnvironment,
     makeComposeProject,
     resolveConfiguration,
-} = require('../common')
-const defaults = require('../defaults')
-const { restore } = require('../helpers/db')
+} = require('../common.js')
+const defaults = require('../defaults.js')
+const { restore } = require('../helpers/db.js')
 
 const run = async function (argv) {
     const { name, seed, seedFile, update, getCache } = argv
