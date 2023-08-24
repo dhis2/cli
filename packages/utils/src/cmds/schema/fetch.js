@@ -55,7 +55,7 @@ const command = {
         },
         'base-url': {
             alias: 'b',
-            coerce: opt => prependHttpsProtocol(opt),
+            coerce: (opt) => prependHttpsProtocol(opt),
             describe: `BaseUrl to use for downloading schemas. If this is set, urls that are relative (starts with /) will be appended to this url. eg. /dev.`,
             type: 'string',
         },

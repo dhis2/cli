@@ -16,11 +16,11 @@ const DHIS2HtmlFormatter = require('./schemaHtmlFormatter')
 let cache
 // We use the singular property as an unique identifier for schemas
 // name and type are used for other nested properties
-const objectHash = obj =>
+const objectHash = (obj) =>
     obj.singular || obj.name || obj.fieldName || obj.type || obj
 const Differ = jsondiffpatch.create({
     objectHash,
-    propertyFilter: name => name !== 'href' && name !== 'apiEndpoint',
+    propertyFilter: (name) => name !== 'href' && name !== 'apiEndpoint',
     arrays: {
         detectMove: true,
         includeValueOnMove: true,
@@ -69,7 +69,7 @@ function sortSchemaObject(a, b) {
 }
 
 function sortArrayProps(obj) {
-    Object.keys(obj).forEach(key => {
+    Object.keys(obj).forEach((key) => {
         const val = obj[key]
         if (Array.isArray(val)) {
             const sorted = val.sort(sortSchemaObject)
@@ -206,7 +206,7 @@ async function run(args) {
     })
 }
 
-const builder = yargs => {
+const builder = (yargs) => {
     yargs
         .positional('leftUrl', {
             type: 'string',
@@ -220,7 +220,7 @@ const builder = yargs => {
         })
         .option('base-url', {
             alias: 'b',
-            coerce: opt => utils.prependHttpsProtocol(opt),
+            coerce: (opt) => utils.prependHttpsProtocol(opt),
             describe: `BaseUrl to use for downloading schemas. If this is set leftServer and rightServer should be relative to this url, eg. /dev.`,
             type: 'string',
         })
