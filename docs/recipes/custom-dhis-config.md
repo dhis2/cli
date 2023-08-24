@@ -1,3 +1,10 @@
+---
+title: Use a custom dhis.conf
+sidebar_label: Custom dhis.conf
+id: custom-dhis-config
+slug: '/cli/recipes/custom-dhis-config'
+---
+
 # Spin up environment with custom dhis.conf file
 
 Given that you have a `dhis.conf` file on somewhere on your computer,

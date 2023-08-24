@@ -1,3 +1,10 @@
+---
+title: d2 utils release
+sidebar_label: d2 utils release
+id: d2-utils-release
+slug: '/cli/utils/release'
+---
+
 # Introduction
 
 `d2 utils release` allows you to publish libraries and applications to

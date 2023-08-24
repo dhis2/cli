@@ -1,3 +1,10 @@
+---
+title: Spin up a development version
+sidebar_label: Use a development version
+id: development-version
+slug: '/cli/recipes/development-version'
+---
+
 # Spin up a development version
 
 Let's switch to the **dev** channel as we want the bleeding edge build

@@ -1,3 +1,10 @@
+---
+title: d2 Cluster
+sidebar_label: d2 Cluster
+id: d2-cluster
+slug: '/cli/cluster'
+---
+
 # Introduction
 
 `d2 cluster` helps you spin up a DHIS2 instance using ([Docker](https://www.docker.com)) containers.
@@ -8,7 +15,11 @@ To install the `d2 cluster` command, you need to install the `@dhis2/cli` packag
 
 ```bash
 yarn global add @dhis2/cli
-# or
+```
+
+or
+
+```bash
 npm install -g @dhis2/cli
 ```
 

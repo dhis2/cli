@@ -1,3 +1,10 @@
+---
+title: Spin up a stable version
+sidebar_label: Use a stable version
+id: stable-version
+slug: '/cli/recipes/stable-version'
+---
+
 # Spin up a stable version
 
 First up, in the best case scenario where you want to run DHIS2 2.32.0 on

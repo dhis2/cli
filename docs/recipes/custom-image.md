@@ -1,3 +1,10 @@
+---
+title: Spin up a custom DHIS2 Docker image
+sidebar_label: Use a custom docker image
+id: custom-docker-image
+slug: '/cli/recipes/custom-docker-image'
+---
+
 # Spin up a custom DHIS2 Docker image
 
 ## Build the custom image
