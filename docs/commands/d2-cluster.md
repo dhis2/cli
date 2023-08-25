@@ -18,6 +18,7 @@ Then you can use the `d2 cluster` command with the `--help` flag to get more inf
 ```sh
 d2 cluster --help
 ```
+
 Which will output something like this:
 
 ```sh
@@ -47,6 +48,7 @@ Global Options:
   --config       Path to JSON config file
 
 ```
+
 # Common concepts
 
 Depending on your installation method, the following examples which use
@@ -94,6 +96,7 @@ development branches in
 -   [2.40](https://github.com/dhis2/dhis2-core/tree/2.40)
 
 For more tags you can look at the tags page at the GitHub repository: https://github.com/dhis2/dhis2-core/tags
+
 ## Database dumps
 
 For development DHIS2 provides a [set of database dumps](https://databases.dhis2.org/) which are essential in getting a usable environment up and running quickly.

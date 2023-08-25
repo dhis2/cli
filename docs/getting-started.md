@@ -7,7 +7,9 @@
 ```bash
 yarn global add @dhis2/cli
 ```
+
 or through npm
+
 ```
 npm install --global @dhis2/cli
 ```
@@ -17,6 +19,7 @@ npm install --global @dhis2/cli
 ```
 d2 --version
 ```
+
 ## Ad-hoc usage
 
 You can also run the CLI ad-hoc with `npx`, no installation necessary (sacrifices startup performance). So only do this if you've got a good use case for it. In most cases you'll want to install it globally.
