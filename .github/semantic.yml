@@ -1,1 +1,4 @@
-enabled: false
+titleOnly: true
+commitsOnly: false
+titleAndCommits: false
+allowMergeCommits: false
