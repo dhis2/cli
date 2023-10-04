@@ -51,8 +51,7 @@ Global Options:
 
 # Common concepts
 
-Depending on your installation method, the following examples which use
-`d2 cluster` may need to be modified to use `d2-cluster`, or `npx @dhis2/cli-cluster`.
+Depending on your installation method, the following examples which use `d2 cluster` may need to be modified to use `d2-cluster`, or `npx @dhis2/cli-cluster`.
 
 For consistency we will use `d2 cluster`.
 
@@ -60,34 +59,27 @@ For consistency we will use `d2 cluster`.
 
 DHIS2 has several release channels, such as **dev** and **stable**.
 
-To each channel several artifacts can be published, so the **stable**
-channel contains all the stable releases of DHIS2, such as 2.39.0,
-2.40.0, etc.
+To each channel several artifacts can be published, so the **stable** channel contains all the stable releases of DHIS2, such as 2.39.0, 2.40.0.1, etc.
 
-The **dev** channel is the latest build straight from the development
-branches. There is one development branch per supported release of
-DHIS2.
+The **dev** channel is the latest build straight from the development branches. There is one development branch per supported release of DHIS2.
 
-For our Docker images, that means that we have one repo on Docker Hub
-per channel:
+> Keep in mind with the development branch it's a work in progress, so it might not be stable or cause unexpected issues. Never use these for production environments.
+
+For our Docker images, that means that we have one repo on Docker Hub per channel:
 
 -   Stable: https://hub.docker.com/r/dhis2/core
 -   Dev: https://hub.docker.com/r/dhis2/core-dev
 
 ## Tags
 
-Within each Docker repo, we have multiple tags. The channel coupled with
-the tag uniquely identifies a built DHIS2 Docker image. This is
-important for how the `cluster` command works.
+Within each Docker repo, we have multiple tags. The channel coupled with the tag uniquely identifies a built DHIS2 Docker image. This is important for how the `cluster` command works.
 
-For the **stable channel** each tag represents a formally released version
-of DHIS2. For example:
+For the **stable channel** each tag represents a formally released version of DHIS2. For example:
 
 -   [2.39.2.1](https://github.com/dhis2/dhis2-core/tree/2.39.2.1)
 -   [2.40.0](https://github.com/dhis2/dhis2-core/tree/2.40.0)
 
-For the **dev channel**, each tag represents the last build from the
-development branches in
+For the **dev channel**, each tag represents the last build from the development branches in
 [dhis2/dhis2-core](https://github.com/dhis2/dhis2-core):
 
 -   [master](https://github.com/dhis2/dhis2-core/tree/master)
@@ -105,16 +97,13 @@ There are database dumps per version of DHIS2, but also for the dev channel. Loo
 
 # d2 cluster command layout
 
-There are two arguments that are always required for the `cluster` to
-command to be able to do anything at all: `{command}` and `{name}`.
+There are two arguments that are always required for the `cluster` to command to be able to do anything at all: `{command}` and `{name}`.
 
 ```bash
 d2 cluster {command} {name}
 ```
 
-The command refers to an action, like `up` or `down` (see below for more information and examples) and the name is the
-name of the cluster to operate on, which can be anything you like, like
-`mydev`, `superfly`, or `2.32`.
+The command refers to an action, like `up` or `down` (see below for more information and examples) and the name is the name of the cluster to operate on, which can be anything you like, like `mydev`, `superfly`, or `2.32`.
 
 ## Command `up`
 
@@ -142,10 +131,7 @@ d2 cluster down {name} --clean
 
 # Arguments
 
-In addition to the command and name, there are more arguments you can
-pass to `cluster` to customize your environment. If the arguments are
-omitted there is some fallback logic, so even if they are not used, they
-are important to know about.
+In addition to the command and name, there are more arguments you can pass to `cluster` to customize your environment. If the arguments are omitted there is some fallback logic, so even if they are not used, they are important to know about.
 
 -   `--channel`: This matches to the Docker Hub repository mentioned above
     in [Release channels](#release-channels). E.g. `dev`.
@@ -157,16 +143,13 @@ are important to know about.
 -   `--db-version`: This matches to the database dumps mentioned in
     [Database dumps](#database-dumps). E.g. `dev` or `2.32`.
 
-So through a combination of these arguments: `channel`, `dhis2-version`,
-and `db-version` we can spin up a cluster.
+So through a combination of these arguments: `channel`, `dhis2-version`, and `db-version` we can spin up a cluster.
 
 # Configuration
 
 ## Cached configuration
 
-To avoid having to pass in all arguments over and over when using the
-`up` and `down` commands often, the `cluster` command caches your
-configuration per cluster in a `config.json` file.
+To avoid having to pass in all arguments over and over when using the `up` and `down` commands often, the `cluster` command caches your configuration per cluster in a `config.json` file.
 
 ```bash
 d2 debug cache list clusters/2.32.0
@@ -209,8 +192,7 @@ d2 cluster down superfly
 d2 cluster up superfly
 ```
 
-The second time you run `up superfly` it will use the configuration from
-the first run:
+The second time you run `up superfly` it will use the configuration from the first run:
 
 ```bash
 cat ~/.cache/d2/cache/clusters/superfly/config.json
@@ -236,8 +218,7 @@ Purged cache item clusters/superfly/config.json
 
 ## Persistent configuration
 
-It is also possible to set up your clusters in the `d2` configuration
-file, e.g. `~/.config/d2/config.js`:
+It is also possible to set up your clusters in the `d2` configuration file, e.g. `~/.config/d2/config.js`:
 
 ```js
 module.exports = {
@@ -272,8 +253,7 @@ cat ~/.cache/d2/cache/clusters/superfly/config.json
 }
 ```
 
-From here it's possible to override the configuration file properties
-for a cluster as well:
+From here it's possible to override the configuration file properties for a cluster as well:
 
 ```
 # port is 9999 in ~/.config/d2/config.js:clusters.superfly.port
@@ -282,6 +262,4 @@ d2 cluster up superfly --port 8888
 # port is saved as 8888 in ~/.cache/d2/cache/clusters/superfly/config.json:port
 ```
 
-Now for each subsequence `down` and `up` command, the cached config will
-take priority over the persistent configuration. When you clear the
-cache, the persistent configuration will come into effect again.
+Now for each subsequence `down` and `up` command, the cached config will take priority over the persistent configuration. When you clear the cache, the persistent configuration will come into effect again.
