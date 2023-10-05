@@ -168,24 +168,25 @@ So through a combination of these arguments: `channel`, `dhis2-version`, and `db
 To avoid having to pass in all arguments over and over when using the `up` and `down` commands often, the `cluster` command caches your configuration per cluster in a `config.json` file.
 
 ```bash
-d2 debug cache list clusters/2.32.0
+d2 debug cache list clusters/2.40.1
 ┌────────────────┬──────┬─────────────────────┐
 │ Name           │ Size │ Modified            │
 ├────────────────┼──────┼─────────────────────┤
-│ config.json    │ 171  │ 2019-06-06 11:07:37 │
+│ config.json    │ 205  │ 2023-10-05 06:59:04 │
 ├────────────────┼──────┼─────────────────────┤
-│ docker-compose │ 512  │ 2019-06-06 11:07:32 │
-└────────────────┴──────┴─────────────────────┘
+│ docker-compose │ 160  │ 2023-08-09 12:52:24 │
+└────────────────┴──────┴─────────────────────┘ 
 ```
 
 And it looks like this:
 
 ```bash
-cat ~/.cache/d2/cache/clusters/2.32.0/config.json
+cat ~/.cache/d2/cache/clusters/2.40.1/config.json
 {
-    "channel": "dev",
+    "channel": "stable",
     "dbVersion": "2.40",
-    "dhis2Version": "2.40.0",
+    "dhis2Version": "2.40.1",
+    "dhis2Home": "/opt/dhis2",
     "customContext": false,
     "image": "dhis2/core{channel}:{version}",
     "port": 8080
@@ -196,7 +197,7 @@ This means that if you run a command sequence like:
 
 ```bash
 d2 cluster up superfly \
-    --db-version 2.31 \
+    --db-version 2.40 \
     --dhis2-version master \
     --seed \
     --custom-context \
@@ -214,7 +215,7 @@ The second time you run `up superfly` it will use the configuration from the fir
 cat ~/.cache/d2/cache/clusters/superfly/config.json
 {
     "channel": "dev",
-    "dbVersion": "2.31",
+    "dbVersion": "2.40",
     "dhis2Version": "master",
     "customContext": true,
     "image": "dhis2/core{channel}:{version}",
@@ -243,7 +244,7 @@ module.exports = {
         clusters: {
             superfly: {
                 channel: 'dev',
-                dbVersion: '2.31',
+                dbVersion: '2.40',
                 dhis2Version: 'master',
                 customContext: true,
                 image: 'dhis2/core{channel}:{version}',

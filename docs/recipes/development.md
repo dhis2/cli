@@ -7,8 +7,7 @@ slug: '/cli/recipes/development-version'
 
 # Spin up a development version
 
-Let's switch to the **dev** channel as we want the bleeding edge build from DHIS2 v40. We want it seeded with a v40 dump so we are going to run it
-with `--seed`.
+Let's switch to the **dev** channel as we want the bleeding edge build from DHIS2 v40. We want it seeded with a v40 dump so we are going to run it with `--seed`.
 
 ```bash
 d2 cluster up 2.40 --channel dev --seed
@@ -20,7 +19,7 @@ d2 cluster up 2.40 --channel dev --seed
 # dbVersion: 2.40
 ```
 
-Since the 2.40 branch exists in [dhis2-core](https://github.com/dhis2/dhis2-core/tree/2.32) and the 2.40 dump exists in [dhis2-demo-db](https://github.com/dhis2/dhis2-demo-db/tree/master/sierra-leone/2.32) the tool doesn't need more information to create an environment.
+Since the 2.40 branch exists in [dhis2-core](https://github.com/dhis2/dhis2-core/tree/2.32) and the 2.40 dump exists on the [database site](https://databases.dhis2.org/) the tool doesn't need more information to create an environment.
 
 Now, let's run a `master` build from the **dev** channel:
 
