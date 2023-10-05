@@ -103,7 +103,7 @@ There are two arguments that are always required for the `cluster` to command to
 d2 cluster {command} {name}
 ```
 
-The command refers to an action, like `up` or `down` (see below for more information and examples) and the name is the name of the cluster to operate on, which can be anything you like, like `mydev`, `superfly`, or `2.32`.
+The command refers to an action, like `up` or `down` (see below for more information and examples) and the name is the name of the cluster to operate on, which can be anything you like, like `mydev`, `superfly`, or `2.40`.
 
 ## Command `up`
 
@@ -113,6 +113,16 @@ This command spins up a new cluster:
 d2 cluster up {name}
 ```
 
+To spin up a cluster for version `2.40` for example, you can use the following command:
+
+```bash
+d2 cluster up 2.40 --db-version 2.40
+```
+
+This assumes a db-version of 2.40 exists, and a docker container with 2.40 exists. Make sure to check the [database dumps](#database-dumps) and [release channels](#release-channels) sections for more information.
+
+To read more in-depth about spinning up a stable release, check the [stable](../recipes/stable.md) page.
+
 ## Command `down`
 
 This command destroys a running container:
@@ -121,9 +131,15 @@ This command destroys a running container:
 d2 cluster down {name}
 ```
 
+To destroy a cluster for version `2.40`, which we created above, for example, you can use the following command:
+
+```bash
+d2 cluster down 2.40
+```
+
 ### Command `down --clean`
 
-This command brings down a cluster and cleans up after itself. This destroys all containers and volumes associated with the cluster. For example, this means that the attached database will be wiped so it is useful when you want to remove a cluster entirely.
+This command brings down a cluster and cleans up after itself. This destroys all containers and volumes associated with the cluster. For example, this means that the attached database will be wiped so it is useful when you want to remove a cluster entirely. Replace the `{name}` with the name of the cluster you want to remove, such as 2.40 above.
 
 ```bash
 d2 cluster down {name} --clean
@@ -138,10 +154,10 @@ In addition to the command and name, there are more arguments you can pass to `c
 
 -   `--dhis2-version`: This matches to the [tag name within a Docker
     Hub repo](#tags). E.g.
-    [`2.32`](https://hub.docker.com/r/dhis2/core-dev/tags)
+    [`2.40`](https://hub.docker.com/r/dhis2/core-dev/tags)
 
 -   `--db-version`: This matches to the database dumps mentioned in
-    [Database dumps](#database-dumps). E.g. `dev` or `2.32`.
+    [Database dumps](#database-dumps). E.g. `dev` or `2.40`.
 
 So through a combination of these arguments: `channel`, `dhis2-version`, and `db-version` we can spin up a cluster.
 
@@ -168,8 +184,8 @@ And it looks like this:
 cat ~/.cache/d2/cache/clusters/2.32.0/config.json
 {
     "channel": "dev",
-    "dbVersion": "2.32",
-    "dhis2Version": "2.32.0",
+    "dbVersion": "2.40",
+    "dhis2Version": "2.40.0",
     "customContext": false,
     "image": "dhis2/core{channel}:{version}",
     "port": 8080
