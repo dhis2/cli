@@ -6,6 +6,7 @@ slug: '/cli/recipes/stable-version'
 ---
 
 # Spin up a stable version
+
 Spinning up a stable version is what you generally want. The Stable version is the one tested and released by the DHIS2 core team. It is the version that is recommended for production use, and therefore also the best to develop on. However, sometimes it makes sense to check out the development branch to test with the latest features. Read more about the [development branch here](./development.md).
 
 First up, in the best case scenario where you want to run DHIS2 v40 on an empty database, you are able to run:
@@ -26,6 +27,7 @@ Usually you want to `seed` your database with a database dump from Sierra Leone 
 d2 cluster up 2.40.0 --seed
 # fail: if there's no 2.40.0 database dump, it will fail
 ```
+
 You'll need to provide a `--db-version` argument to tell the command which database dump to use. The database dump needs to exist on the [databases](https://databases.dhis2.org/) site.
 
 ```bash
