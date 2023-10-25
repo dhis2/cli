@@ -2,7 +2,7 @@
 title: Spin up a stable version
 sidebar_label: Use a stable version
 id: stable-version
-slug: '/cli/recipes/stable-version'
+slug: '/cli/recipes/stable'
 ---
 
 # Spin up a stable version

@@ -2,7 +2,7 @@
 title: Spin up a development version
 sidebar_label: Use a development version
 id: development-version
-slug: '/cli/recipes/development-version'
+slug: '/cli/recipes/development'
 ---
 
 # Spin up a development version
