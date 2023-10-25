@@ -3,14 +3,14 @@ const { reporter } = require('@dhis2/cli-helpers-engine')
 const glob = require('glob')
 
 // Simplified from https://github.com/yarnpkg/yarn/blob/bb9741af4d1fe00adb15e4a7596c7a3472d0bda3/src/config.js#L814
-const globPackageFilePattern = pattern =>
+const globPackageFilePattern = (pattern) =>
     glob.sync(
         path.join(process.cwd(), pattern.replace(/\/?$/, '/package.json')),
         {
             ignore: pattern.replace(/\/?$/, '/node_modules/**/package.json'),
         }
     )
-const getWorkspacePackages = async packageFile => {
+const getWorkspacePackages = async (packageFile) => {
     try {
         const rootPackage = require(packageFile)
         if (rootPackage.workspaces) {

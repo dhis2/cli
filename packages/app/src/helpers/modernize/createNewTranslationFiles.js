@@ -115,7 +115,7 @@ const createNewTranslationFiles = ({
                     } else {
                         newContents += `msgid ""\n`
                         const newLines = splitTranslation(originalTranslation)
-                        newLines.forEach(translationPart => {
+                        newLines.forEach((translationPart) => {
                             newContents += `"${unescape(translationPart)}"\n`
                         })
                     }
@@ -125,7 +125,7 @@ const createNewTranslationFiles = ({
                     } else {
                         newContents += `msgstr ""\n`
                         const newLines = splitTranslation(translation)
-                        newLines.forEach(translationPart => {
+                        newLines.forEach((translationPart) => {
                             newContents += `"${unescape(translationPart)}"\n`
                         })
                     }

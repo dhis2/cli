@@ -1,5 +1,5 @@
 const { exec, reporter } = require('@dhis2/cli-helpers-engine')
-const { makeComposeProject } = require('../common')
+const { makeComposeProject } = require('../common.js')
 
 const run = async function ({ name, ...argv }) {
     try {

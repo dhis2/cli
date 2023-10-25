@@ -21,7 +21,7 @@ const generateTranslationMappings = ({
         })
         const lines = contents
             .split('\n')
-            .filter(line => line !== '' && !line[0].match(/\s*#/))
+            .filter((line) => line !== '' && !line[0].match(/\s*#/))
 
         if (
             languagesToTransform.length &&

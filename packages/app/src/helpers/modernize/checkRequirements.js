@@ -43,7 +43,7 @@ const checkMainTranslationFilePresent = (
     primaryLanguage,
     translationFiles
 ) => {
-    const mainTranslationFile = translationFiles.find(file =>
+    const mainTranslationFile = translationFiles.find((file) =>
         file.match(`i18n_module_${primaryLanguage}.properties`)
     )
     const mainTranslationFilePath = path.join(inDir, mainTranslationFile)

@@ -17,7 +17,7 @@ const generateCmd = {
             type: 'boolean',
         },
     },
-    handler: argv => {
+    handler: (argv) => {
         const { limit } = argv
 
         const codes = generateCodes(limit || 10)
@@ -44,7 +44,7 @@ const generateCmd = {
 module.exports = namespace('uid', {
     desc: 'DHIS2 UID tools',
     aliases: 'u',
-    builder: yargs => {
+    builder: (yargs) => {
         return yargs.command(generateCmd)
     },
 })
