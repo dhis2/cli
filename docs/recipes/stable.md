@@ -1,7 +1,7 @@
 ---
 title: Spin up a stable version
 sidebar_label: Use a stable version
-id: stable-version
+id: stable
 slug: '/cli/recipes/stable'
 ---
 
