@@ -12,12 +12,12 @@
     "license": "BSD-3-Clause",
     "devDependencies": {
         "@dhis2/cli-style": "^9.0.1",
-        "@dhis2/cli-utils-docsite": "^3.1.2",
+        "@dhis2/cli-utils-docsite": "^3.2.0",
         "tape": "^4.13.2",
         "tape-await": "^0.1.2"
     },
     "scripts": {
-        "build:docs": "d2-utils-docsite build ./docs -o ./dist",
+        "docs:build": "mkdir -p dist && cp docs/index.html dist/",
         "start": "d2-utils-docsite serve ./docs -o ./dist",
         "test": "tape packages/**/tests/*.js"
     },
@@ -26,5 +26,8 @@
             "name": "DHIS2 CLI",
             "description": "A unified CLI for DHIS2 development workflows."
         }
+    },
+    "resolutions": {
+        "@ls-lint/ls-lint": "2.0.1"
     }
 }

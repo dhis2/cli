@@ -1,17 +1,16 @@
 -   [**Getting Started**](getting-started)
 -   **Commands**
 -   -   [`d2`](commands/d2)
--   -   `d2 app`
--   -   -   [`d2 app scripts`↗️](https://platform.dhis2.nu/#/scripts ':ignore')
 -   -   [`d2 cluster`](commands/d2-cluster)
 -   -   -   [Use a stable version](recipes/stable)
 -   -   -   [Use a development version](recipes/development)
 -   -   -   [Use a custom Docker image](recipes/custom-image)
 -   -   -   [Use a custom `dhis.conf`](recipes/custom-dhis-config)
--   -   [`d2 style`↗️](https://cli-style.dhis2.nu ':ignore')
 -   -   `d2 utils`
 -   -   -   [`d2 utils release`](commands/d2-utils-release)
 -   -   -   [`d2 utils cypress`↗️](https://cli-utils-cypress.dhis2.nu ':ignore')
 -   -   -   [`d2 utils docsite`↗️](https://cli-utils-docsite.dhis2.nu ':ignore')
+-   -   [`d2 style`↗️](https://cli-style.dhis2.nu ':ignore')
+-   -   [`d2 app scripts`↗️](https://platform.dhis2.nu/#/scripts ':ignore')
 -   &nbsp;
 -   [Changelog](CHANGELOG)
