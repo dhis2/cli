@@ -17,7 +17,7 @@
         "tape-await": "^0.1.2"
     },
     "scripts": {
-        "docs:build": "mkdir -p dist && cp docs/index.html dist/",
+        "build:docs": "mkdir -p dist && cp docs/index.html dist/",
         "start": "d2-utils-docsite serve ./docs -o ./dist",
         "test": "tape packages/**/tests/*.js"
     },
