@@ -1,0 +1,20 @@
+name: 'rebuild developer docs'
+
+on:
+    push:
+        branches:
+            - master
+        paths:
+            - 'docs/**'
+
+concurrency:
+    group: ${{ github.workflow}}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    publish-docs:
+        runs-on: ubuntu-latest
+        steps:
+            - run: curl -X POST -d {} https://api.netlify.com/build_hooks/"$NETLIFY_DEVELOPER_DOCS_TOKEN"
+              env:
+                  NETLIFY_DEVELOPER_DOCS_TOKEN: ${{ secrets.NETLIFY_DEVELOPER_DOCS_TOKEN }}
