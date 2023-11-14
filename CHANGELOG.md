@@ -1,3 +1,10 @@
+## [4.2.4](https://github.com/dhis2/cli/compare/v4.2.3...v4.2.4) (2023-11-14)
+
+
+### Bug Fixes
+
+* use secret directly ([ff10368](https://github.com/dhis2/cli/commit/ff10368c6c938e403849eec32ecfc9a5e6025213))
+
 ## [4.2.3](https://github.com/dhis2/cli/compare/v4.2.2...v4.2.3) (2023-01-13)
 
 ### Bug Fixes
