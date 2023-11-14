@@ -1,4 +1,4 @@
-name: 'rebuild developer docs'
+name: 'dhis2: rebuild developer docs'
 
 on:
     push:
@@ -12,9 +12,7 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    publish-docs:
+    rebuild-docs:
         runs-on: ubuntu-latest
         steps:
-            - run: curl -X POST -d {} https://api.netlify.com/build_hooks/"$NETLIFY_DEVELOPER_DOCS_TOKEN"
-              env:
-                  NETLIFY_DEVELOPER_DOCS_TOKEN: ${{ secrets.NETLIFY_DEVELOPER_DOCS_TOKEN }}
+            - run: curl -X POST -d {} https://api.netlify.com/build_hooks/${{ NETLIFY_DEVELOPER_DOCS_TOKEN }}
