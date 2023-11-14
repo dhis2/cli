@@ -2103,14 +2103,12 @@
     jscodeshift "^0.11.0"
     yargs "^16.1.0"
 
-"@dhis2/cli-utils-cypress@^9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@dhis2/cli-utils-cypress/-/cli-utils-cypress-9.0.1.tgz#0f4c2eea102da09589cf1ca1530e3c849bd29b71"
-  integrity sha512-c3+rLqFBXgF9a6TDeuLj7Q/NEaoc3YJR3Ga43OV8M4NnkkJ8X8wzd4dDYgM9oaxfil44VBQU9xzjp4tBZg++oA==
+"@dhis2/cli-utils-cypress@^10.0.3":
+  version "10.0.3"
+  resolved "https://registry.yarnpkg.com/@dhis2/cli-utils-cypress/-/cli-utils-cypress-10.0.3.tgz#a5dd4f4e48f6635d2148fddd24cb5e4dcf05e57c"
+  integrity sha512-hCrLU9FAXS36jNslZlp5TUIJIOIiw6qVja3TYt3iECOWcVETcffxJXl3+Yhw6kJXTUEvQxoD+etl2Do55Pz6GQ==
   dependencies:
     "@dhis2/cli-helpers-engine" "^2.3.0"
-    fs-extra "^8.1.0"
-    jscodeshift "^0.11.0"
 
 "@dhis2/cli-utils-docsite@^3.1.2":
   version "3.1.2"
