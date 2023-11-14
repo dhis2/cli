@@ -21,6 +21,8 @@ d2 cluster up 2.40
 # dbVersion: empty
 ```
 
+## Seed the database
+
 Usually you want to `seed` your database with a database dump from Sierra Leone to have an instance set up with data. If you add the `--seed` command to the command above, it will try to find the database dump `2.40.0` on the [databases](https://databases.dhis2.org/) site. If it doesn't exist it will throw an error.
 
 ```bash
