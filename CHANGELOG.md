@@ -1,3 +1,10 @@
+## [4.2.5-alpha.1](https://github.com/dhis2/cli/compare/v4.2.4...v4.2.5-alpha.1) (2024-04-02)
+
+
+### Bug Fixes
+
+* **deps:** use cli-app-scripts alpha ([#619](https://github.com/dhis2/cli/issues/619)) ([d67352f](https://github.com/dhis2/cli/commit/d67352f98aed18c9ed79f483a857326450034e2e))
+
 ## [4.2.4](https://github.com/dhis2/cli/compare/v4.2.3...v4.2.4) (2023-11-14)
 
 
