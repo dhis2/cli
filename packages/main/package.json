@@ -20,9 +20,7 @@
         "@dhis2/cli-utils": "4.2.5-alpha.2",
         "cli-table3": "^0.6.0",
         "envinfo": "^7.5.0",
-        "inquirer": "^7.1.0"
-    },
-    "resolutions": {
+        "inquirer": "^7.1.0",
         "react": "16.14.0",
         "react-dom": "16.14.0"
     },
