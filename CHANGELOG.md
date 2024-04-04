@@ -1,3 +1,10 @@
+## [4.2.5-alpha.3](https://github.com/dhis2/cli/compare/v4.2.5-alpha.2...v4.2.5-alpha.3) (2024-04-04)
+
+
+### Bug Fixes
+
+* **deps:** fixed react value ([#621](https://github.com/dhis2/cli/issues/621)) ([2e81b31](https://github.com/dhis2/cli/commit/2e81b31a0cc3c65ef358bf83a41a0d51e1ddc481))
+
 ## [4.2.5-alpha.2](https://github.com/dhis2/cli/compare/v4.2.5-alpha.1...v4.2.5-alpha.2) (2024-04-04)
 
 

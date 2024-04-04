@@ -6,7 +6,7 @@
     "engines": {
         "node": ">=12"
     },
-    "version": "4.2.5-alpha.2",
+    "version": "4.2.5-alpha.3",
     "main": "src/index.js",
     "author": "Austin McGee <austin@dhis2.org>",
     "contributors": [

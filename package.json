@@ -1,5 +1,5 @@
 {
-    "version": "4.2.5-alpha.2",
+    "version": "4.2.5-alpha.3",
     "private": true,
     "workspaces": [
         "packages/*"
