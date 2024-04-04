@@ -22,6 +22,10 @@
         "envinfo": "^7.5.0",
         "inquirer": "^7.1.0"
     },
+    "resolutions": {
+        "react": "16.14.0",
+        "react-dom": "16.14.0"
+    },
     "bin": {
         "d2": "bin/d2"
     },
