@@ -1,3 +1,10 @@
+## [4.2.5-alpha.2](https://github.com/dhis2/cli/compare/v4.2.5-alpha.1...v4.2.5-alpha.2) (2024-04-04)
+
+
+### Bug Fixes
+
+* **deps:** set react resolution ([#620](https://github.com/dhis2/cli/issues/620)) ([90e4ea4](https://github.com/dhis2/cli/commit/90e4ea48ab86b2028783da68c48d0b389d16fa18))
+
 ## [4.2.5-alpha.1](https://github.com/dhis2/cli/compare/v4.2.4...v4.2.5-alpha.1) (2024-04-02)
 
 

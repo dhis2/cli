@@ -6,7 +6,7 @@
     "engines": {
         "node": ">=12"
     },
-    "version": "4.2.5-alpha.1",
+    "version": "4.2.5-alpha.2",
     "main": "src/index.js",
     "author": "Viktor Varland <viktor@dhis2.org>",
     "contributors": [
