@@ -1,3 +1,10 @@
+## [4.2.5-alpha.4](https://github.com/dhis2/cli/compare/v4.2.5-alpha.3...v4.2.5-alpha.4) (2024-04-05)
+
+
+### Bug Fixes
+
+* **deps:** test npm package overrides ([#622](https://github.com/dhis2/cli/issues/622)) ([d6311f3](https://github.com/dhis2/cli/commit/d6311f370fcf2e12436cef8340be6a231f7e1260))
+
 ## [4.2.5-alpha.3](https://github.com/dhis2/cli/compare/v4.2.5-alpha.2...v4.2.5-alpha.3) (2024-04-04)
 
 

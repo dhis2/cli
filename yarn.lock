@@ -2986,23 +2986,23 @@
     "workbox-build" "^6.1.5"
     "workbox-webpack-plugin" "^6.5.4"
 
-"@dhis2/cli-app@4.2.5-alpha.3", "@dhis2/cli-app@file:/home/runner/work/cli/cli/packages/app":
+"@dhis2/cli-app@4.2.5-alpha.4", "@dhis2/cli-app@file:/home/runner/work/cli/cli/packages/app":
   "resolved" "file:packages/app"
-  "version" "4.2.5-alpha.3"
+  "version" "4.2.5-alpha.4"
   dependencies:
     "@dhis2/cli-app-scripts" "^11.1.1-alpha.1"
     "@dhis2/cli-helpers-engine" "^3.2.1"
 
-"@dhis2/cli-cluster@4.2.5-alpha.3", "@dhis2/cli-cluster@file:/home/runner/work/cli/cli/packages/cluster":
+"@dhis2/cli-cluster@4.2.5-alpha.4", "@dhis2/cli-cluster@file:/home/runner/work/cli/cli/packages/cluster":
   "resolved" "file:packages/cluster"
-  "version" "4.2.5-alpha.3"
+  "version" "4.2.5-alpha.4"
   dependencies:
     "@dhis2/cli-helpers-engine" "^3.2.1"
     "cli-table3" "^0.6.0"
 
-"@dhis2/cli-create@4.2.5-alpha.3", "@dhis2/cli-create@file:/home/runner/work/cli/cli/packages/create":
+"@dhis2/cli-create@4.2.5-alpha.4", "@dhis2/cli-create@file:/home/runner/work/cli/cli/packages/create":
   "resolved" "file:packages/create"
-  "version" "4.2.5-alpha.3"
+  "version" "4.2.5-alpha.4"
   dependencies:
     "@dhis2/cli-helpers-engine" "^3.2.1"
     "@dhis2/cli-helpers-template" "^3.0.0"
@@ -3124,9 +3124,9 @@
     "react-docgen" "^6.0.0-alpha.0"
     "url-join" "^4.0.1"
 
-"@dhis2/cli-utils@4.2.5-alpha.3", "@dhis2/cli-utils@file:/home/runner/work/cli/cli/packages/utils":
+"@dhis2/cli-utils@4.2.5-alpha.4", "@dhis2/cli-utils@file:/home/runner/work/cli/cli/packages/utils":
   "resolved" "file:packages/utils"
-  "version" "4.2.5-alpha.3"
+  "version" "4.2.5-alpha.4"
   dependencies:
     "@dhis2/cli-helpers-engine" "^3.2.1"
     "@dhis2/cli-utils-codemods" "^3.0.0"
@@ -3147,25 +3147,23 @@
 
 "@dhis2/cli@file:/home/runner/work/cli/cli/packages/main":
   "resolved" "file:packages/main"
-  "version" "4.2.5-alpha.3"
+  "version" "4.2.5-alpha.4"
   dependencies:
-    "@dhis2/cli-app" "4.2.5-alpha.3"
-    "@dhis2/cli-cluster" "4.2.5-alpha.3"
-    "@dhis2/cli-create" "4.2.5-alpha.3"
+    "@dhis2/cli-app" "4.2.5-alpha.4"
+    "@dhis2/cli-cluster" "4.2.5-alpha.4"
+    "@dhis2/cli-create" "4.2.5-alpha.4"
     "@dhis2/cli-helpers-engine" "^3.2.1"
     "@dhis2/cli-style" "^9.0.1"
-    "@dhis2/cli-utils" "4.2.5-alpha.3"
+    "@dhis2/cli-utils" "4.2.5-alpha.4"
     "cli-table3" "^0.6.0"
     "envinfo" "^7.5.0"
     "inquirer" "^7.1.0"
-    "react" "16.14.0"
-    "react-dom" "16.14.0"
 
 "@dhis2/create-app@file:/home/runner/work/cli/cli/packages/create-app":
   "resolved" "file:packages/create-app"
-  "version" "4.2.5-alpha.3"
+  "version" "4.2.5-alpha.4"
   dependencies:
-    "@dhis2/cli-create" "4.2.5-alpha.3"
+    "@dhis2/cli-create" "4.2.5-alpha.4"
     "@dhis2/cli-helpers-engine" "^3.2.1"
 
 "@dhis2/d2-i18n@^1", "@dhis2/d2-i18n@^1.1.0", "@dhis2/d2-i18n@^1.1.1":
@@ -15095,7 +15093,7 @@
     "resolve" "^1.17.0"
     "strip-indent" "^3.0.0"
 
-"react-dom@^16.8", "react-dom@^16.8.6", "react-dom@<18.0.0", "react-dom@16.14.0", "react-dom@16.8":
+"react-dom@^16.8", "react-dom@^16.8.6", "react-dom@<18.0.0", "react-dom@16.8":
   "integrity" "sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-16.14.0.tgz"
   "version" "16.14.0"
@@ -15214,7 +15212,7 @@
   optionalDependencies:
     "fsevents" "^2.3.2"
 
-"react@^16.14.0", "react@^16.8", "react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.6", "react@<18.0.0", "react@>= 16", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@>=16.8", "react@16.14.0", "react@16.8":
+"react@^16.14.0", "react@^16.8", "react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.6", "react@<18.0.0", "react@>= 16", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@>=16.8", "react@16.8":
   "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
   "version" "16.14.0"
