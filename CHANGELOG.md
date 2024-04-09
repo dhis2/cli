@@ -1,3 +1,10 @@
+## [4.2.5-alpha.5](https://github.com/dhis2/cli/compare/v4.2.5-alpha.4...v4.2.5-alpha.5) (2024-04-09)
+
+
+### Bug Fixes
+
+* **deps:** upgrade @dhis2/cli-app-scripts to alpha3 for peer deps fixes ([#623](https://github.com/dhis2/cli/issues/623)) ([e7c3f8f](https://github.com/dhis2/cli/commit/e7c3f8f64616d9066a60deef019bbe6b9e83f7f4))
+
 ## [4.2.5-alpha.4](https://github.com/dhis2/cli/compare/v4.2.5-alpha.3...v4.2.5-alpha.4) (2024-04-05)
 
 
