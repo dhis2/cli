@@ -22,12 +22,6 @@
         "envinfo": "^7.5.0",
         "inquirer": "^7.1.0"
     },
-    "overrides": {
-        "@dhis2/cli-app-scripts": "^11.1.1-alpha.1",
-        "@dhis2/app-runtime": "^3.10.4-alpha.1",
-        "react": "^16.14.0",
-        "react-dom": "^16.14.0"
-    },
     "bin": {
         "d2": "bin/d2"
     },
