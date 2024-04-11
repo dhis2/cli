@@ -1,3 +1,10 @@
+## [4.2.5-alpha.6](https://github.com/dhis2/cli/compare/v4.2.5-alpha.5...v4.2.5-alpha.6) (2024-04-11)
+
+
+### Bug Fixes
+
+* **deps:** upgrade @dhis2/cli-app-scripts alpha for workbox version fix ([#625](https://github.com/dhis2/cli/issues/625)) ([bb1208a](https://github.com/dhis2/cli/commit/bb1208a97a38000ca8b4abeb9441f60ee3a51e11))
+
 ## [4.2.5-alpha.5](https://github.com/dhis2/cli/compare/v4.2.5-alpha.4...v4.2.5-alpha.5) (2024-04-09)
 
 
