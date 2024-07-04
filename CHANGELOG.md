@@ -1,3 +1,10 @@
+## [4.2.5](https://github.com/dhis2/cli/compare/v4.2.4...v4.2.5) (2024-07-04)
+
+
+### Bug Fixes
+
+* **deps:** upgrade @dhis2/cli-app-scripts for peer deps fixes [LIBS-578] ([#624](https://github.com/dhis2/cli/issues/624)) ([02ce484](https://github.com/dhis2/cli/commit/02ce4841725b5fc7ad272398eb8f33f7ca27e307))
+
 ## [4.2.4](https://github.com/dhis2/cli/compare/v4.2.3...v4.2.4) (2023-11-14)
 
 
