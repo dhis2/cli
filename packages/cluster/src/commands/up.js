@@ -35,11 +35,12 @@ const run = async function (argv) {
     if (update) {
         reporter.info('Pulling latest Docker images...')
         const res = await tryCatchAsync(
-            'exec(docker-compose)::pull',
+            'exec(docker compose)::pull',
             exec({
                 env: makeEnvironment(cfg),
-                cmd: 'docker-compose',
+                cmd: 'docker',
                 args: [
+                    'compose',
                     '-p',
                     makeComposeProject(name),
                     '-f',
@@ -70,11 +71,12 @@ const run = async function (argv) {
     reporter.info(`Spinning up cluster ${chalk.cyan(name)}`)
 
     const res = await tryCatchAsync(
-        'exec(docker-compose)',
+        'exec(docker compose)',
         exec({
             env: makeEnvironment(cfg),
-            cmd: 'docker-compose',
+            cmd: 'docker',
             args: [
+                'compose',
                 '-p',
                 makeComposeProject(name),
                 '-f',
@@ -86,7 +88,7 @@ const run = async function (argv) {
         })
     )
     if (res.err) {
-        reporter.error('Failed to spin up cluster docker-compose cluster')
+        reporter.error('Failed to spin up cluster docker compose cluster')
         process.exit(1)
     }
 }

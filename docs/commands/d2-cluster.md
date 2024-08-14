@@ -23,7 +23,7 @@ Which will output something like this:
 
 ```sh
 Commands:
-  d2 cluster compose <name>            Run arbitrary docker-compose commands
+  d2 cluster compose <name>            Run arbitrary docker compose commands
                                        against a DHIS2 cluster.
                                        NOTE: pass -- after <name>   [aliases: c]
   d2 cluster db                        Manage the database in a DHIS2 Docker

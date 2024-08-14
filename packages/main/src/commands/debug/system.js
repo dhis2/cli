@@ -5,7 +5,7 @@ const run = async () => {
     const info = await envInfo.run(
         {
             System: ['OS', 'CPU', 'Memory', 'Shell'],
-            Binaries: ['Node', 'Yarn', 'npm', 'docker-compose', 'docker'],
+            Binaries: ['Node', 'Yarn', 'npm', 'docker'],
             Utilities: ['Git'],
             Virtualization: ['Docker', 'Docker Compose'],
             IDEs: ['VSCode', 'Sublime Text'],

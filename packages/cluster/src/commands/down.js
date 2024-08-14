@@ -28,8 +28,9 @@ const run = async function (argv) {
     reporter.info(`Winding down cluster ${chalk.cyan(name)}`)
     try {
         await exec({
-            cmd: 'docker-compose',
+            cmd: 'docker',
             args: [
+                'compose',
                 '-p',
                 makeComposeProject(name),
                 '-f',
@@ -46,7 +47,7 @@ const run = async function (argv) {
             })
         }
     } catch (e) {
-        reporter.error('Failed to execute docker-compose', e)
+        reporter.error('Failed to execute docker compose', e)
         process.exit(1)
     }
 }

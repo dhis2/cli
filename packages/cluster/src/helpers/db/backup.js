@@ -29,7 +29,7 @@ module.exports = async ({ cacheLocation, name, path: dbPath, fat }) => {
         args: [destinationFile, fat ? 'full' : ''],
         pipe: false,
         env: {
-            DOCKER_COMPOSE: `docker-compose -p ${composeProject}`,
+            DOCKER_COMPOSE: `docker compose -p ${composeProject}`,
         },
     })
 }
