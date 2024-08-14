@@ -13,7 +13,7 @@ const run = async function (argv) {
     const cfg = await resolveConfiguration(argv)
 
     const args = _.slice(_.findIndex(x => x === 'compose') + 1)
-    reporter.debug('Passing arguments to docker-compose', args)
+    reporter.debug('Passing arguments to docker compose', args)
 
     const cacheLocation = await initDockerComposeCache({
         composeProjectName: name,
@@ -27,10 +27,11 @@ const run = async function (argv) {
         process.exit(1)
     }
     const res = await tryCatchAsync(
-        'exec(docker-compose)',
+        'exec(docker compose)',
         spawn(
-            'docker-compose',
+            'docker',
             [
+                'compose',
                 '-p',
                 makeComposeProject(name),
                 '-f',
@@ -47,14 +48,14 @@ const run = async function (argv) {
         )
     )
     if (res.err) {
-        reporter.error('Failed to run docker-compose command')
+        reporter.error('Failed to run docker compose command')
         process.exit(1)
     }
 }
 
 module.exports = {
     command: 'compose <name>',
-    desc: 'Run arbitrary docker-compose commands against a DHIS2 cluster.\nNOTE: pass -- after <name>',
+    desc: 'Run arbitrary docker compose commands against a DHIS2 cluster.\nNOTE: pass -- after <name>',
     aliases: 'c',
     handler: run,
 }

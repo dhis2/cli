@@ -40,7 +40,7 @@ const restoreFromFile = async ({ cacheLocation, dbFile, name }) => {
         args: [dbFile],
         pipe: false,
         env: {
-            DOCKER_COMPOSE: `docker-compose -p ${makeComposeProject(name)}`,
+            DOCKER_COMPOSE: `docker compose -p ${makeComposeProject(name)}`,
         },
     })
 }

@@ -36,10 +36,11 @@ const run = async function (argv) {
     )
 
     const res = await tryCatchAsync(
-        'exec(docker-compose)',
+        'exec(docker compose)',
         exec({
-            cmd: 'docker-compose',
+            cmd: 'docker',
             args: [
+                'compose',
                 '-p',
                 makeComposeProject(name),
                 '-f',
