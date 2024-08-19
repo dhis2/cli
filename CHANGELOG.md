@@ -1,3 +1,16 @@
+# [5.0.0](https://github.com/dhis2/cli/compare/v4.2.5...v5.0.0) (2024-08-19)
+
+
+### Bug Fixes
+
+* move to docker compose v2 ([a1a4fb4](https://github.com/dhis2/cli/commit/a1a4fb48f99a4d8c9239de9aa03e89b4b482eb69))
+
+
+### BREAKING CHANGES
+
+* drop docker compose v1 compatibility, as that's no longer maintained.
+See: https://docs.docker.com/compose/migrate/
+
 ## [4.2.5](https://github.com/dhis2/cli/compare/v4.2.4...v4.2.5) (2024-07-04)
 
 
