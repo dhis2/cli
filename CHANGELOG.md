@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/dhis2/cli/compare/v5.0.0...v5.0.1) (2024-10-26)
+
+
+### Bug Fixes
+
+* force a release ([2316a30](https://github.com/dhis2/cli/commit/2316a30e50661e8b01cd21acb52e869abba84fa5))
+
 # [5.0.0](https://github.com/dhis2/cli/compare/v4.2.5...v5.0.0) (2024-08-19)
 
 

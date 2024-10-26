@@ -2998,23 +2998,23 @@
     "workbox-build" "^6.1.5"
     "workbox-webpack-plugin" "^6.5.4"
 
-"@dhis2/cli-app@5.0.0", "@dhis2/cli-app@file:/home/runner/work/cli/cli/packages/app":
+"@dhis2/cli-app@5.0.1", "@dhis2/cli-app@file:/home/runner/work/cli/cli/packages/app":
   "resolved" "file:packages/app"
-  "version" "5.0.0"
+  "version" "5.0.1"
   dependencies:
     "@dhis2/cli-app-scripts" "^11.6.0"
     "@dhis2/cli-helpers-engine" "^3.2.1"
 
-"@dhis2/cli-cluster@5.0.0", "@dhis2/cli-cluster@file:/home/runner/work/cli/cli/packages/cluster":
+"@dhis2/cli-cluster@5.0.1", "@dhis2/cli-cluster@file:/home/runner/work/cli/cli/packages/cluster":
   "resolved" "file:packages/cluster"
-  "version" "5.0.0"
+  "version" "5.0.1"
   dependencies:
     "@dhis2/cli-helpers-engine" "^3.2.1"
     "cli-table3" "^0.6.0"
 
-"@dhis2/cli-create@5.0.0", "@dhis2/cli-create@file:/home/runner/work/cli/cli/packages/create":
+"@dhis2/cli-create@5.0.1", "@dhis2/cli-create@file:/home/runner/work/cli/cli/packages/create":
   "resolved" "file:packages/create"
-  "version" "5.0.0"
+  "version" "5.0.1"
   dependencies:
     "@dhis2/cli-helpers-engine" "^3.2.1"
     "@dhis2/cli-helpers-template" "^3.0.0"
@@ -3136,9 +3136,9 @@
     "react-docgen" "^6.0.0-alpha.0"
     "url-join" "^4.0.1"
 
-"@dhis2/cli-utils@5.0.0", "@dhis2/cli-utils@file:/home/runner/work/cli/cli/packages/utils":
+"@dhis2/cli-utils@5.0.1", "@dhis2/cli-utils@file:/home/runner/work/cli/cli/packages/utils":
   "resolved" "file:packages/utils"
-  "version" "5.0.0"
+  "version" "5.0.1"
   dependencies:
     "@dhis2/cli-helpers-engine" "^3.2.1"
     "@dhis2/cli-utils-codemods" "^3.0.0"
@@ -3159,23 +3159,23 @@
 
 "@dhis2/cli@file:/home/runner/work/cli/cli/packages/main":
   "resolved" "file:packages/main"
-  "version" "5.0.0"
+  "version" "5.0.1"
   dependencies:
-    "@dhis2/cli-app" "5.0.0"
-    "@dhis2/cli-cluster" "5.0.0"
-    "@dhis2/cli-create" "5.0.0"
+    "@dhis2/cli-app" "5.0.1"
+    "@dhis2/cli-cluster" "5.0.1"
+    "@dhis2/cli-create" "5.0.1"
     "@dhis2/cli-helpers-engine" "^3.2.1"
     "@dhis2/cli-style" "^9.0.1"
-    "@dhis2/cli-utils" "5.0.0"
+    "@dhis2/cli-utils" "5.0.1"
     "cli-table3" "^0.6.0"
     "envinfo" "^7.5.0"
     "inquirer" "^7.1.0"
 
 "@dhis2/create-app@file:/home/runner/work/cli/cli/packages/create-app":
   "resolved" "file:packages/create-app"
-  "version" "5.0.0"
+  "version" "5.0.1"
   dependencies:
-    "@dhis2/cli-create" "5.0.0"
+    "@dhis2/cli-create" "5.0.1"
     "@dhis2/cli-helpers-engine" "^3.2.1"
 
 "@dhis2/d2-i18n@^1", "@dhis2/d2-i18n@^1.1.0", "@dhis2/d2-i18n@^1.1.1", "@dhis2/d2-i18n@^1.1.3":
