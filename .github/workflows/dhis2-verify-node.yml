@@ -22,11 +22,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
+            - uses: actions/setup-node@v3
               with:
-                  node-version: 16.x
+                  node-version: 20.x
+                  cache: 'yarn'
 
-            - uses: c-hive/gha-yarn-cache@v1
             - run: yarn install --frozen-lockfile
 
             - name: Lint
@@ -36,11 +36,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
+            - uses: actions/setup-node@v3
               with:
-                  node-version: 16.x
+                  node-version: 20.x
+                  cache: 'yarn'
 
-            - uses: c-hive/gha-yarn-cache@v1
             - run: yarn install --frozen-lockfile
 
             - name: Smoke
@@ -57,11 +57,11 @@ jobs:
             - uses: actions/checkout@v2
               with:
                   token: ${{env.GH_TOKEN}}
-            - uses: actions/setup-node@v1
+            - uses: actions/setup-node@v3
               with:
-                  node-version: 16.x
+                  node-version: 20.x
+                  cache: 'yarn'
 
-            - uses: c-hive/gha-yarn-cache@v1
             - run: yarn install --frozen-lockfile
 
             - name: Publish to NPM
