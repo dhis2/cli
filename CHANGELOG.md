@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/dhis2/cli/compare/v5.0.1...v5.1.0) (2025-05-12)
+
+
+### Features
+
+* bump cli-app-scripts to update init script ([#628](https://github.com/dhis2/cli/issues/628)) ([8c58109](https://github.com/dhis2/cli/commit/8c58109d57b020647d2625c6634a6657cea26c13))
+
 ## [5.0.1](https://github.com/dhis2/cli/compare/v5.0.0...v5.0.1) (2024-10-26)
 
 
