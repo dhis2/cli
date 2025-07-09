@@ -1,3 +1,10 @@
+## [5.1.1-beta.1](https://github.com/dhis2/cli/compare/v5.1.0...v5.1.1-beta.1) (2025-07-09)
+
+
+### Bug Fixes
+
+* point to beta cli-app-scripts ([f7c0899](https://github.com/dhis2/cli/commit/f7c089959e42f6c1016a73f5dd4e07506d874233))
+
 # [5.1.0](https://github.com/dhis2/cli/compare/v5.0.1...v5.1.0) (2025-05-12)
 
 
