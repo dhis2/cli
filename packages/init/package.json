@@ -1,0 +1,15 @@
+{
+    "name": "@dhis2/create",
+    "version": "1.0.1",
+    "description": "",
+    "main": "bin/index.js",
+    "bin": {
+        "create-d2": "bin/index.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

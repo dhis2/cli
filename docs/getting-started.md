@@ -5,7 +5,7 @@
 # Install the CLI
 
 ```bash
-yarn global add @dhis2/cli
+pnpm add -g @dhis2/cli
 ```
 
 or through npm

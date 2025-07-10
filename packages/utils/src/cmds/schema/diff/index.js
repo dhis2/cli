@@ -63,8 +63,12 @@ async function getSchemas(urlLike, { baseUrl, auth, force }) {
 function sortSchemaObject(a, b) {
     const aHash = objectHash(a)
     const bHash = objectHash(b)
-    if (aHash < bHash) return -1
-    if (aHash > bHash) return 1
+    if (aHash < bHash) {
+        return -1
+    }
+    if (aHash > bHash) {
+        return 1
+    }
     return 0
 }
 

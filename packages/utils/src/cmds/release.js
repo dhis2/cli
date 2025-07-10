@@ -1,4 +1,4 @@
-const { existsSync } = require('fs')
+// const { existsSync } = require('fs')
 const path = require('path')
 const { reporter } = require('@dhis2/cli-helpers-engine')
 const semanticRelease = require('semantic-release')
@@ -67,27 +67,27 @@ const handler = async ({ publish }) => {
         },
     ]
 
-    const gitPlugin = [
-        '@semantic-release/git',
-        {
-            assets: [
-                'CHANGELOG.md',
-                packages.map(pkgJsonPath =>
-                    path.relative(process.cwd(), pkgJsonPath)
-                ),
-                packages
-                    .map(pkgJsonPath =>
-                        path.join(path.dirname(pkgJsonPath), 'yarn.lock')
-                    )
-                    .filter(existsSync)
-                    .map(pkgJsonPath =>
-                        path.relative(process.cwd(), pkgJsonPath)
-                    ),
-            ],
-            message:
-                'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
-        },
-    ]
+    // const gitPlugin = [
+    //     '@semantic-release/git',
+    //     {
+    //         assets: [
+    //             'CHANGELOG.md',
+    //             packages.map(pkgJsonPath =>
+    //                 path.relative(process.cwd(), pkgJsonPath)
+    //             ),
+    //             packages
+    //                 .map(pkgJsonPath =>
+    //                     path.join(path.dirname(pkgJsonPath), 'pnpm-lock.yaml')
+    //                 )
+    //                 .filter(existsSync)
+    //                 .map(pkgJsonPath =>
+    //                     path.relative(process.cwd(), pkgJsonPath)
+    //                 ),
+    //         ],
+    //         message:
+    //             'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+    //     },
+    // ]
 
     const deferPlugin = require('../support/semantic-release-defer-release')
 
@@ -99,7 +99,7 @@ const handler = async ({ publish }) => {
         updateDepsPlugin,
         changelogPlugin,
         ...publisher(publish, packages),
-        gitPlugin,
+        // gitPlugin,
         '@semantic-release/github',
     ]
 
@@ -161,3 +161,5 @@ module.exports = {
         },
     },
 }
+
+// handler({ publish: 'npm' })

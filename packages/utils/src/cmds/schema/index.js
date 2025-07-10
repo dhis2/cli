@@ -61,7 +61,9 @@ function authFromConf(conf = {}, serverConfig = {}) {
         username: serverConfig.username || conf.username,
         password: serverConfig.password || conf.password,
     }
-    if (auth.username && auth.password) return auth
+    if (auth.username && auth.password) {
+        return auth
+    }
     return true
 }
 
