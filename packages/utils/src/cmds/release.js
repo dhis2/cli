@@ -77,7 +77,7 @@ const handler = async ({ publish }) => {
                 ),
                 packages
                     .map(pkgJsonPath =>
-                        path.join(path.dirname(pkgJsonPath), 'yarn.lock')
+                        path.join(path.dirname(pkgJsonPath), 'pnpm-lock.yaml')
                     )
                     .filter(existsSync)
                     .map(pkgJsonPath =>

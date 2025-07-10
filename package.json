@@ -1,25 +1,26 @@
 {
     "version": "5.1.1-alpha.1",
     "private": true,
-    "workspaces": [
-        "packages/*"
-    ],
     "repository": "https://github.com/dhis2/cli",
     "author": "Austin McGee <austin@dhis2.org>",
     "contributors": [
         "Viktor Varland <viktor@dhis2.org>"
     ],
+    "workspaces": [
+        "packages/*"
+    ],
     "license": "BSD-3-Clause",
     "devDependencies": {
-        "@dhis2/cli-style": "^9.0.1",
+        "@dhis2/cli-style": "^9.3.1",
         "@dhis2/cli-utils-docsite": "^3.2.0",
-        "tape": "^4.13.2",
+        "tape": "^4.17.0",
         "tape-await": "^0.1.2"
     },
     "scripts": {
         "build:docs": "mkdir -p dist && cp docs/index.html dist/",
         "start": "d2-utils-docsite serve ./docs -o ./dist",
-        "test": "tape packages/**/tests/*.js"
+        "test": "tape packages/**/tests/*.js",
+        "format": "d2-style apply"
     },
     "d2": {
         "docsite": {
@@ -29,5 +30,6 @@
     },
     "resolutions": {
         "@ls-lint/ls-lint": "2.0.1"
-    }
+    },
+    "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184"
 }
