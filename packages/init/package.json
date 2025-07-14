@@ -2,9 +2,9 @@
     "name": "@dhis2/create",
     "version": "5.2.0-alpha.3",
     "description": "",
-    "main": "bin/index.js",
+    "main": "src/index.js",
     "bin": {
-        "create-d2": "bin/index.js"
+        "d2-init": "bin/index.js"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
