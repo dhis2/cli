@@ -1,3 +1,10 @@
+# [5.2.0-alpha.5](https://github.com/dhis2/cli/compare/v5.2.0-alpha.4...v5.2.0-alpha.5) (2025-07-14)
+
+
+### Bug Fixes
+
+* **create:** fix path to bin ([b42cacb](https://github.com/dhis2/cli/commit/b42cacbf05dc8f3e2d1c803a9984ef4fedbf2a30))
+
 # [5.2.0-alpha.4](https://github.com/dhis2/cli/compare/v5.2.0-alpha.3...v5.2.0-alpha.4) (2025-07-14)
 
 
