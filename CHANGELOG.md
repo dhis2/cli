@@ -1,3 +1,10 @@
+# [5.2.0-alpha.9](https://github.com/dhis2/cli/compare/v5.2.0-alpha.8...v5.2.0-alpha.9) (2025-07-14)
+
+
+### Bug Fixes
+
+* try to update pnpm-lock ([e8d911e](https://github.com/dhis2/cli/commit/e8d911e23de5bf5459823b8b4eb0704647f76d01))
+
 # [5.2.0-alpha.8](https://github.com/dhis2/cli/compare/v5.2.0-alpha.7...v5.2.0-alpha.8) (2025-07-14)
 
 
