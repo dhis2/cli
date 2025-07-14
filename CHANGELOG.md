@@ -3,6 +3,15 @@
 
 ### Bug Fixes
 
+* force alpha release to npm ([a4d9422](https://github.com/dhis2/cli/commit/a4d942234e6c7d413eaed0207963c10a5cd6fb6e))
+* try to update pnpm-lock ([00b9c7d](https://github.com/dhis2/cli/commit/00b9c7da085b79838335fb315e03022c1635af67))
+* try to update pnpm-lock ([ab438ae](https://github.com/dhis2/cli/commit/ab438aec58b87e0bf7fb9351f8dc03917fe92a11))
+
+# [5.2.0-alpha.7](https://github.com/dhis2/cli/compare/v5.2.0-alpha.6...v5.2.0-alpha.7) (2025-07-14)
+
+
+### Bug Fixes
+
 * try to update pnpm-lock ([00b9c7d](https://github.com/dhis2/cli/commit/00b9c7da085b79838335fb315e03022c1635af67))
 * try to update pnpm-lock ([ab438ae](https://github.com/dhis2/cli/commit/ab438aec58b87e0bf7fb9351f8dc03917fe92a11))
 
