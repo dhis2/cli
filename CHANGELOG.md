@@ -1,3 +1,10 @@
+# [5.2.0-alpha.1](https://github.com/dhis2/cli/compare/v5.1.1-alpha.1...v5.2.0-alpha.1) (2025-07-14)
+
+
+### Features
+
+* first attempt using pnpm ([982f7ac](https://github.com/dhis2/cli/commit/982f7ac6d8e1acc14ff5570fa377e1fb5b9e4046))
+
 ## [5.1.1-alpha.1](https://github.com/dhis2/cli/compare/v5.1.0...v5.1.1-alpha.1) (2025-07-10)
 
 
