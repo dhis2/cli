@@ -1,3 +1,10 @@
+# [5.2.0-alpha.6](https://github.com/dhis2/cli/compare/v5.2.0-alpha.5...v5.2.0-alpha.6) (2025-07-14)
+
+
+### Bug Fixes
+
+* **utils-release:** update pnpm lock file automatically ([398dcc9](https://github.com/dhis2/cli/commit/398dcc9f1cc93a5203e7ea47733665e191033a6a))
+
 # [5.2.0-alpha.5](https://github.com/dhis2/cli/compare/v5.2.0-alpha.4...v5.2.0-alpha.5) (2025-07-14)
 
 
