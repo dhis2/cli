@@ -1,6 +1,6 @@
 {
     "name": "@dhis2/create",
-    "version": "5.2.0-alpha.2",
+    "version": "5.1.1-alpha.1",
     "description": "",
     "main": "bin/index.js",
     "bin": {
@@ -12,5 +12,8 @@
     "private": false,
     "keywords": [],
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "publishConfig": {
+        "access": "public"
+    }
 }
