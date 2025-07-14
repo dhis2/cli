@@ -110,19 +110,7 @@ const handler = async ({ publish }) => {
         [
             '@semantic-release/git',
             {
-                assets: [
-                    packages
-                        .map(pkgJsonPath =>
-                            path.join(
-                                path.dirname(pkgJsonPath),
-                                'pnpm-lock.yaml'
-                            )
-                        )
-                        .filter(existsSync)
-                        .map(pkgJsonPath =>
-                            path.relative(process.cwd(), pkgJsonPath)
-                        ),
-                ],
+                assets: ['pnpm-lock.yaml'],
                 message:
                     'chore: bump pnpm-lock.yml ${nextRelease.version} [skip ci]',
             },

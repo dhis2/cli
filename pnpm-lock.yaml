@@ -63,8 +63,8 @@ importers:
   packages/create-app:
     dependencies:
       '@dhis2/cli-create':
-        specifier: 5.2.0-alpha.6
-        version: 5.2.0-alpha.6
+        specifier: 5.2.0-alpha.8
+        version: 5.2.0-alpha.8
       '@dhis2/cli-helpers-engine':
         specifier: ^3.2.1
         version: 3.2.2
@@ -74,14 +74,14 @@ importers:
   packages/main:
     dependencies:
       '@dhis2/cli-app':
-        specifier: 5.2.0-alpha.6
-        version: 5.2.0-alpha.6(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
+        specifier: 5.2.0-alpha.8
+        version: 5.2.0-alpha.8(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
       '@dhis2/cli-cluster':
-        specifier: 5.2.0-alpha.6
-        version: 5.2.0-alpha.6
+        specifier: 5.2.0-alpha.8
+        version: 5.2.0-alpha.8
       '@dhis2/cli-create':
-        specifier: 5.2.0-alpha.6
-        version: 5.2.0-alpha.6
+        specifier: 5.2.0-alpha.8
+        version: 5.2.0-alpha.8
       '@dhis2/cli-helpers-engine':
         specifier: ^3.2.1
         version: 3.2.2
@@ -89,8 +89,8 @@ importers:
         specifier: ^9.0.1
         version: 9.3.1
       '@dhis2/cli-utils':
-        specifier: 5.2.0-alpha.6
-        version: 5.2.0-alpha.6(@babel/preset-env@7.28.0(@babel/core@7.28.0))(typescript@5.8.3)
+        specifier: 5.2.0-alpha.8
+        version: 5.2.0-alpha.8(@babel/preset-env@7.28.0(@babel/core@7.28.0))(typescript@5.8.3)
       cli-table3:
         specifier: ^0.6.0
         version: 0.6.5
@@ -1371,18 +1371,18 @@ packages:
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
-  '@dhis2/cli-app@5.2.0-alpha.6':
-    resolution: {integrity: sha512-YL9iifhh/xpOXq57Tg+88vdwKv8d7vK3WzbEGWPUm/y29E59iB53bakCQwa+J6dRd4WOyJvW5YZX6sJwQ+JwUg==}
+  '@dhis2/cli-app@5.2.0-alpha.8':
+    resolution: {integrity: sha512-n9R7PUVWb4D+KdEpEkfSszGTZlwDwy2ECdOzsj6c3B4Yd/wIm7KrRrAaquYXAs0vzcDf3g8U6HQvz6XU1tA3qw==}
     engines: {node: '>=12'}
     hasBin: true
 
-  '@dhis2/cli-cluster@5.2.0-alpha.6':
-    resolution: {integrity: sha512-JtYisT6hhg50LWplD7xWyWIJ1gkVYHy78Zmb6xE+FKSNSe6E9BQvTpq+STqq0VDLpYECA9U+gUw43TjERaIxow==}
+  '@dhis2/cli-cluster@5.2.0-alpha.8':
+    resolution: {integrity: sha512-fY38RJDYDHApUWPGQWtRkzZh9TqL90oZ16fDMq1ZRQ9I60BqWpd/mU/NghkJ9lFRxgK5QmZzOPwHM3YHgiVifA==}
     engines: {node: '>=12'}
     hasBin: true
 
-  '@dhis2/cli-create@5.2.0-alpha.6':
-    resolution: {integrity: sha512-OdC3GpI63oP5BVEpE4wYaNzzg+QPwIOKIK724Xfz/l3EUh5jYGbgTFvrOOSWYBvZu9IE9LUNr674mCAV+6Erew==}
+  '@dhis2/cli-create@5.2.0-alpha.8':
+    resolution: {integrity: sha512-NEljOqiZ+prAMta2ltkPeYXZVklnGPbLm88KWAV26mdqTJX+OXExYl4hAzRzcvIYauDqECVbHv26OefTXiXT+g==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -1421,8 +1421,8 @@ packages:
     engines: {node: '>=12'}
     hasBin: true
 
-  '@dhis2/cli-utils@5.2.0-alpha.6':
-    resolution: {integrity: sha512-uzXgN67CMxcKfF1llvo+TAE8uKsGTgX2ATbL+gD1cMecwX+Z+yqWYKgMQuS+bdJzmFj21bpEgvdVGUOAcBHYqw==}
+  '@dhis2/cli-utils@5.2.0-alpha.8':
+    resolution: {integrity: sha512-S4NUQ43QgjnFf5opi1SkB+LP59h1Ezc1HaoD7+/Rn+2jk22/nrLtRQ2dn5+2Tn0l2pEXoygH7U5y1i0Ifmj0Cw==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -10321,7 +10321,7 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@dhis2/cli-app@5.2.0-alpha.6(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))':
+  '@dhis2/cli-app@5.2.0-alpha.8(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))':
     dependencies:
       '@dhis2/cli-app-scripts': 12.6.5-beta.5(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
       '@dhis2/cli-helpers-engine': 3.2.2
@@ -10357,12 +10357,12 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@dhis2/cli-cluster@5.2.0-alpha.6':
+  '@dhis2/cli-cluster@5.2.0-alpha.8':
     dependencies:
       '@dhis2/cli-helpers-engine': 3.2.2
       cli-table3: 0.6.5
 
-  '@dhis2/cli-create@5.2.0-alpha.6':
+  '@dhis2/cli-create@5.2.0-alpha.8':
     dependencies:
       '@dhis2/cli-helpers-engine': 3.2.2
       '@dhis2/cli-helpers-template': 3.0.0
@@ -10473,7 +10473,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@dhis2/cli-utils@5.2.0-alpha.6(@babel/preset-env@7.28.0(@babel/core@7.28.0))(typescript@5.8.3)':
+  '@dhis2/cli-utils@5.2.0-alpha.8(@babel/preset-env@7.28.0(@babel/core@7.28.0))(typescript@5.8.3)':
     dependencies:
       '@dhis2/cli-helpers-engine': 3.2.2
       '@dhis2/cli-utils-codemods': 3.0.0(@babel/preset-env@7.28.0(@babel/core@7.28.0))
