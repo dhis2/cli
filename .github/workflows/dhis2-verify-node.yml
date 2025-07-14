@@ -68,4 +68,4 @@ jobs:
             - run: pnpm install --frozen-lockfile
 
             - name: Publish to NPM
-              run: ./packages/main/bin/d2 utils release --publish npm
+              run: ./packages/utils/bin/d2-utils release --publish npm

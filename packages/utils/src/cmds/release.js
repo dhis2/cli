@@ -1,7 +1,7 @@
-// const { existsSync } = require('fs')
+const { existsSync } = require('fs')
 const path = require('path')
 const { reporter } = require('@dhis2/cli-helpers-engine')
-const semanticRelease = require('semantic-release')
+const semanticRelease = require('semantic-release').default
 const getWorkspacePackages = require('../support/getWorkspacePackages')
 
 const packageIsPublishable = pkgJsonPath => {
@@ -20,6 +20,7 @@ function publisher(target = '', packages) {
                 return [
                     '@semantic-release/npm',
                     {
+                        npmPublish: false,
                         pkgRoot: path.dirname(pkgJsonPath),
                     },
                 ]
@@ -32,7 +33,7 @@ function publisher(target = '', packages) {
                     '@semantic-release/npm',
                     {
                         pkgRoot: path.dirname(pkgJsonPath),
-                        npmPublish: false,
+                        // npmPublish: false,
                     },
                 ]
             })
@@ -67,27 +68,27 @@ const handler = async ({ publish }) => {
         },
     ]
 
-    // const gitPlugin = [
-    //     '@semantic-release/git',
-    //     {
-    //         assets: [
-    //             'CHANGELOG.md',
-    //             packages.map(pkgJsonPath =>
-    //                 path.relative(process.cwd(), pkgJsonPath)
-    //             ),
-    //             packages
-    //                 .map(pkgJsonPath =>
-    //                     path.join(path.dirname(pkgJsonPath), 'pnpm-lock.yaml')
-    //                 )
-    //                 .filter(existsSync)
-    //                 .map(pkgJsonPath =>
-    //                     path.relative(process.cwd(), pkgJsonPath)
-    //                 ),
-    //         ],
-    //         message:
-    //             'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
-    //     },
-    // ]
+    const gitPlugin = [
+        '@semantic-release/git',
+        {
+            assets: [
+                'CHANGELOG.md',
+                packages.map(pkgJsonPath =>
+                    path.relative(process.cwd(), pkgJsonPath)
+                ),
+                packages
+                    .map(pkgJsonPath =>
+                        path.join(path.dirname(pkgJsonPath), 'pnpm-lock.yaml')
+                    )
+                    .filter(existsSync)
+                    .map(pkgJsonPath =>
+                        path.relative(process.cwd(), pkgJsonPath)
+                    ),
+            ],
+            message:
+                'chore(release): cut ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+        },
+    ]
 
     const deferPlugin = require('../support/semantic-release-defer-release')
 
@@ -99,7 +100,7 @@ const handler = async ({ publish }) => {
         updateDepsPlugin,
         changelogPlugin,
         ...publisher(publish, packages),
-        // gitPlugin,
+        gitPlugin,
         '@semantic-release/github',
     ]
 
@@ -120,6 +121,7 @@ const handler = async ({ publish }) => {
     }
 
     try {
+        console.log(semanticRelease)
         const result = await semanticRelease(options, config)
 
         if (result) {
