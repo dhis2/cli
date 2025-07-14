@@ -31,7 +31,7 @@ function publisher(target = '', packages) {
                 return [
                     '@semantic-release/npm',
                     {
-                        pkgRoot: path.dirname(pkgJsonPath)
+                        pkgRoot: path.dirname(pkgJsonPath),
                     },
                 ]
             })
@@ -88,6 +88,12 @@ const handler = async ({ publish }) => {
         },
     ]
 
+    const updateLockFile = [
+        '@semantic-release/exec',
+        {
+            verifyCOnditionsCmd: 'pnpm install', // ToDo: make it independent of npm
+        },
+    ]
     const deferPlugin = require('../support/semantic-release-defer-release')
 
     // Order matters here!
@@ -96,6 +102,7 @@ const handler = async ({ publish }) => {
         '@semantic-release/commit-analyzer',
         '@semantic-release/release-notes-generator',
         updateDepsPlugin,
+        updateLockFile,
         changelogPlugin,
         ...publisher(publish, packages),
         gitPlugin,
