@@ -91,7 +91,7 @@ const handler = async ({ publish }) => {
     const updateLockFile = [
         '@semantic-release/exec',
         {
-            verifyCOnditionsCmd: 'pnpm install', // ToDo: make it independent of npm
+            prepareCmd: 'pnpm install --no-frozen-lockfile', // ToDo: make it independent of npm
         },
     ]
     const deferPlugin = require('../support/semantic-release-defer-release')
@@ -102,11 +102,12 @@ const handler = async ({ publish }) => {
         '@semantic-release/commit-analyzer',
         '@semantic-release/release-notes-generator',
         updateDepsPlugin,
-        updateLockFile,
         changelogPlugin,
         ...publisher(publish, packages),
         gitPlugin,
         '@semantic-release/github',
+        updateLockFile,
+        gitPlugin,
     ]
 
     /* rely on defaults for configuration, except for plugins as they
