@@ -3,6 +3,16 @@
 
 ### Bug Fixes
 
+* revert version for testing ([5ad38f5](https://github.com/dhis2/cli/commit/5ad38f5fb34a4d4603d5afef130e3f14ad2fc065))
+* revert version for testing ([74bbd54](https://github.com/dhis2/cli/commit/74bbd544ad10d9d816758c106607190ef01576ff))
+* revert version for testing ([c756c70](https://github.com/dhis2/cli/commit/c756c70411cacd3ee3d259a8fe358d2b071a7c12))
+* **utils-release:** update pnpm lock file automatically ([398dcc9](https://github.com/dhis2/cli/commit/398dcc9f1cc93a5203e7ea47733665e191033a6a))
+
+# [5.2.0-alpha.6](https://github.com/dhis2/cli/compare/v5.2.0-alpha.5...v5.2.0-alpha.6) (2025-07-14)
+
+
+### Bug Fixes
+
 * revert version for testing ([c756c70](https://github.com/dhis2/cli/commit/c756c70411cacd3ee3d259a8fe358d2b071a7c12))
 * **utils-release:** update pnpm lock file automatically ([398dcc9](https://github.com/dhis2/cli/commit/398dcc9f1cc93a5203e7ea47733665e191033a6a))
 
