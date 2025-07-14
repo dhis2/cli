@@ -1,6 +1,6 @@
 {
     "name": "@dhis2/create",
-    "version": "5.2.0-alpha.1",
+    "version": "5.1.1-alpha.1",
     "description": "",
     "main": "bin/index.js",
     "bin": {
@@ -9,6 +9,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "private": false,
     "keywords": [],
     "author": "",
     "license": "ISC"

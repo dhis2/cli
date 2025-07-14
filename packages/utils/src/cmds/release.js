@@ -20,7 +20,6 @@ function publisher(target = '', packages) {
                 return [
                     '@semantic-release/npm',
                     {
-                        npmPublish: false,
                         pkgRoot: path.dirname(pkgJsonPath),
                     },
                 ]
