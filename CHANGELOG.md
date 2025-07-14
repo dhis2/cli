@@ -1,3 +1,10 @@
+# [5.2.0-alpha.4](https://github.com/dhis2/cli/compare/v5.2.0-alpha.3...v5.2.0-alpha.4) (2025-07-14)
+
+
+### Bug Fixes
+
+* **create:** initial dhis2/create template ([7a762e7](https://github.com/dhis2/cli/commit/7a762e71ef453ae046cc01e5e79a35ab4342d578))
+
 # [5.2.0-alpha.3](https://github.com/dhis2/cli/compare/v5.2.0-alpha.2...v5.2.0-alpha.3) (2025-07-14)
 
 
