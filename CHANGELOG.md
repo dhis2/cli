@@ -1,3 +1,10 @@
+# [5.2.0-alpha.2](https://github.com/dhis2/cli/compare/v5.2.0-alpha.1...v5.2.0-alpha.2) (2025-07-14)
+
+
+### Bug Fixes
+
+* publish to npm ([9d5d329](https://github.com/dhis2/cli/commit/9d5d329e4f7087004108b9ca50ae7e883d4248e3))
+
 # [5.2.0-alpha.1](https://github.com/dhis2/cli/compare/v5.1.1-alpha.1...v5.2.0-alpha.1) (2025-07-14)
 
 
