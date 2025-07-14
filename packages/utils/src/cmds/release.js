@@ -91,8 +91,7 @@ const handler = async ({ publish }) => {
     const updateLockFile = [
         '@semantic-release/exec',
         {
-            successCmd:
-                'pnpm install --lockfile-only && git commit -am "chore: update pnpm-lock.yml [skip ci]" && git push origin ', // ToDo: make it independent of npm
+            publishCmd: 'pnpm install --lockfile-only', // ToDo: make it independent of npm
         },
     ]
     const deferPlugin = require('../support/semantic-release-defer-release')
@@ -108,6 +107,26 @@ const handler = async ({ publish }) => {
         gitPlugin,
         '@semantic-release/github',
         updateLockFile,
+        [
+            '@semantic-release/git',
+            {
+                assets: [
+                    packages
+                        .map(pkgJsonPath =>
+                            path.join(
+                                path.dirname(pkgJsonPath),
+                                'pnpm-lock.yaml'
+                            )
+                        )
+                        .filter(existsSync)
+                        .map(pkgJsonPath =>
+                            path.relative(process.cwd(), pkgJsonPath)
+                        ),
+                ],
+                message:
+                    'chore: bump pnpm-lock.yml ${nextRelease.version} [skip ci]',
+            },
+        ],
     ]
 
     /* rely on defaults for configuration, except for plugins as they
