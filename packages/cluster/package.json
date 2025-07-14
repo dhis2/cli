@@ -1,6 +1,6 @@
 {
     "name": "@dhis2/cli-cluster",
-    "version": "5.2.0-alpha.6",
+    "version": "5.2.0-alpha.8",
     "description": "D2 CLI module for managing DHIS2 development clusters",
     "main": "src/index.js",
     "repository": "https://github.com/dhis2/cli",
