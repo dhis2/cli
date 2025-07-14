@@ -1,3 +1,11 @@
+# [5.2.0-alpha.3](https://github.com/dhis2/cli/compare/v5.2.0-alpha.2...v5.2.0-alpha.3) (2025-07-14)
+
+
+### Bug Fixes
+
+* force alpha release to npm ([8a07187](https://github.com/dhis2/cli/commit/8a07187c076fcaa6f1bb493017bdf6c929806fb7))
+* update pnpm lock file before release ([39809f0](https://github.com/dhis2/cli/commit/39809f01dc811b1b5c85f0a653c868bb61a41c62))
+
 # [5.2.0-alpha.2](https://github.com/dhis2/cli/compare/v5.2.0-alpha.1...v5.2.0-alpha.2) (2025-07-14)
 
 
