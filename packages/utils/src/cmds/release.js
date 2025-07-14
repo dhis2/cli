@@ -91,7 +91,8 @@ const handler = async ({ publish }) => {
     const updateLockFile = [
         '@semantic-release/exec',
         {
-            publishCmd: 'pnpm install --lockfile-only', // ToDo: make it independent of npm
+            publishCmd:
+                'pnpm install --lockfile-only && git commit -am "chore: bump pnpm-lock.yml ${nextRelease.version} [skip ci]" && git push', // ToDo: make it independent of npm
         },
     ]
     const deferPlugin = require('../support/semantic-release-defer-release')
