@@ -108,7 +108,6 @@ const handler = async ({ publish }) => {
         gitPlugin,
         '@semantic-release/github',
         updateLockFile,
-        gitPlugin,
     ]
 
     /* rely on defaults for configuration, except for plugins as they
