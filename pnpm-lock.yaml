@@ -63,8 +63,8 @@ importers:
   packages/create-app:
     dependencies:
       '@dhis2/cli-create':
-        specifier: 5.2.0-alpha.10
-        version: 5.2.0-alpha.10
+        specifier: 5.2.0-alpha.11
+        version: 5.2.0-alpha.11
       '@dhis2/cli-helpers-engine':
         specifier: ^3.2.1
         version: 3.2.2
@@ -74,14 +74,14 @@ importers:
   packages/main:
     dependencies:
       '@dhis2/cli-app':
-        specifier: 5.2.0-alpha.10
-        version: 5.2.0-alpha.10(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
+        specifier: 5.2.0-alpha.11
+        version: 5.2.0-alpha.11
       '@dhis2/cli-cluster':
-        specifier: 5.2.0-alpha.10
-        version: 5.2.0-alpha.10
+        specifier: 5.2.0-alpha.11
+        version: 5.2.0-alpha.11
       '@dhis2/cli-create':
-        specifier: 5.2.0-alpha.10
-        version: 5.2.0-alpha.10
+        specifier: 5.2.0-alpha.11
+        version: 5.2.0-alpha.11
       '@dhis2/cli-helpers-engine':
         specifier: ^3.2.1
         version: 3.2.2
@@ -89,8 +89,8 @@ importers:
         specifier: ^9.0.1
         version: 9.3.1
       '@dhis2/cli-utils':
-        specifier: 5.2.0-alpha.10
-        version: 5.2.0-alpha.10(@babel/preset-env@7.28.0(@babel/core@7.28.0))(typescript@5.8.3)
+        specifier: 5.2.0-alpha.11
+        version: 5.2.0-alpha.11
       cli-table3:
         specifier: ^0.6.0
         version: 0.6.5
@@ -1309,19 +1309,6 @@ packages:
       react-dom: ^16.13 || ^18
       styled-jsx: ^4
 
-  '@dhis2/app-adapter@12.6.5-beta.5':
-    resolution: {integrity: sha512-/hiJBHKCLgbMz0sF8TkP+uPCI0r5ZfQEqfytFDD6pjo6+4YikvohfOsAXgWy72o7m9QW7fU2m7uuWQyBUPqe4A==}
-    peerDependencies:
-      '@dhis2/app-runtime': ^3.11.1
-      '@dhis2/d2-i18n': ^1
-      '@dhis2/ui': '>=10.7.1'
-      classnames: ^2
-      moment: ^2
-      prop-types: ^15
-      react: ^16.8.6 || ^18
-      react-dom: ^16.8.6 || ^18
-      styled-jsx: ^4
-
   '@dhis2/app-adapter@12.7.0-alpha.1':
     resolution: {integrity: sha512-pBVsyx7Qh69fCYHvpls/UDCGJPLoLMQ2CBzuwsgGLtnO1DuHJEJ/zDkuJuNToyCzfgBAdcMk4wFQInOd22ZiYw==}
     peerDependencies:
@@ -1375,36 +1362,27 @@ packages:
       react: ^16.8.6 || ^18
       react-dom: ^16.8.6 || ^18
 
-  '@dhis2/app-shell@12.6.5-beta.5':
-    resolution: {integrity: sha512-s+o8IF7vNs3rZNjizaFe0n0GTMKqao4QPXMCIbGUlvPocoPz0BouJAURNOqozVZS35hAxRcsYZBmZj/CpBzcLg==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-
   '@dhis2/app-shell@12.7.0-alpha.1':
     resolution: {integrity: sha512-XMrjPIy8nCcfVeIHbCEHp+G7qCvN0nbZ2F+96hiWWZODe6ElrE23QE0lbKCHrk/72ZEHqaQB8+Y8s9B90gdoZQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
-
-  '@dhis2/cli-app-scripts@12.6.5-beta.5':
-    resolution: {integrity: sha512-pZ1W3dOfQ68q7QFlyccMRqTGqhjAmzLwgGJKN0ClE6WBMGEMzCgEu64EU034j4IofR38l7+P1TVyTyS3lcke8Q==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
 
   '@dhis2/cli-app-scripts@12.7.0-alpha.1':
     resolution: {integrity: sha512-rfFo48jQktHxWFkntqNmyHiD/DyNn5NK+C+/4l2lYHZ423Z6UwGF8G8x3ACZ78yQHt7Kbgi7zuP+x9hskbVoVQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
-  '@dhis2/cli-app@5.2.0-alpha.10':
-    resolution: {integrity: sha512-oRc+2zkk42CEAvkO++WQvbCRJoarK0YzqL0yTnJ61B/P717rhKRirWnVKJyb6Caq266UpT8Bx4+LFWmi23ehzQ==}
+  '@dhis2/cli-app@5.2.0-alpha.11':
+    resolution: {integrity: sha512-Aw3Jv7T4x16sRb55+oY0lZNWFqYIDPqhCajZKWe+Uspqlz5jhA3ahO4HrNQQt5ka82bLoEvFz7AvuD1mtz2aHQ==}
     engines: {node: '>=12'}
     hasBin: true
 
-  '@dhis2/cli-cluster@5.2.0-alpha.10':
-    resolution: {integrity: sha512-YWBQUENh9spk/lGYgLY20S0YeirjJkZyOE65bW5+pKG8XFnGlJVOVFBmiU9dO926jRjgLFrYtgILePlBtVAI/g==}
+  '@dhis2/cli-cluster@5.2.0-alpha.11':
+    resolution: {integrity: sha512-VKRcE9YQ9gNlNuK9/FVpXkWySdIpr8HjTC+ZLNszcOR05ihWJ+XtQXZyAXurrN5L8SdJtgFu317MlUPpb+1SuQ==}
     engines: {node: '>=12'}
     hasBin: true
 
-  '@dhis2/cli-create@5.2.0-alpha.10':
-    resolution: {integrity: sha512-YetbGsTKsCSvG71AGzEP+6pAlIFhkYefInq69S9KNfYlECBM/anfK9fVuI08HrW7SLsWaJb1zdl6FqZ1/kxGnA==}
+  '@dhis2/cli-create@5.2.0-alpha.11':
+    resolution: {integrity: sha512-+CAXF1ypWWeuWDyd2Swmaw3m7l3101/dxspq/TgDcp9GDHxHtmAho1XfGiC2DfFZVK0ANtz4sF8umxe7JHjAEQ==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -1443,8 +1421,8 @@ packages:
     engines: {node: '>=12'}
     hasBin: true
 
-  '@dhis2/cli-utils@5.2.0-alpha.10':
-    resolution: {integrity: sha512-JriZLJivS/zpfkBfp5FYPpvvVQBv01jIe0KdWXRDriRxIuc7HcfymEf+VUo+bI2oQmOmkEzhloG6q9SUioyW9g==}
+  '@dhis2/cli-utils@5.2.0-alpha.11':
+    resolution: {integrity: sha512-Lu/NR6+GyZm/6ZP5TyUyQCnOOlqSurLYZUcB3VH4nNGdr3E7iDZBaEhJS98nObgzhV9yF0qvz0/X2f+E+cSV0w==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -1461,9 +1439,6 @@ packages:
     resolution: {integrity: sha512-eM0jjLOWvtXWqSFp5YC4DHFpkP8Y1D2eUwGV7MBWjni+o27oesVan+oT7WHeOeLdlAd4acRJrnaaAyB4Ck1wGQ==}
     peerDependencies:
       prop-types: ^15
-
-  '@dhis2/pwa@12.6.5-beta.5':
-    resolution: {integrity: sha512-LuyP1tKv3IN6P45vfYbwo7YaH9J7eUBnKtHEppn6l6gMduzjqS5+G6H4r+8jpjQLl2F9FJpDkioB6cm8qEI00g==}
 
   '@dhis2/pwa@12.7.0-alpha.1':
     resolution: {integrity: sha512-ERd4I9vqpeIYr1igEblKhsCczEp+XgDTENR81FdOC6JAwrbSpZ9gJ2fL+qhmGrIKBtBj/Kyr7g7kgsDFSl50bg==}
@@ -5227,7 +5202,6 @@ packages:
     resolution: {integrity: sha512-t0etAxTUk1w5MYdNOkZBZ8rvYYN5iL+2dHCCx/DpkFm/bW28M6y5nUS83D4XdZiHy35Fpaw6LBb+F88fHZnVCw==}
     engines: {node: '>=8.17.0'}
     hasBin: true
-    bundledDependencies: []
 
   jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
@@ -10287,19 +10261,6 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       styled-jsx: 4.0.1(@babel/core@7.28.0)(react@18.3.1)
 
-  '@dhis2/app-adapter@12.6.5-beta.5(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(@dhis2/ui@10.7.8(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1)))(classnames@2.5.1)(moment@2.30.1)(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1))':
-    dependencies:
-      '@dhis2/app-runtime': 3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@dhis2/d2-i18n': 1.1.3
-      '@dhis2/pwa': 12.6.5-beta.5
-      '@dhis2/ui': 10.7.8(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1))
-      classnames: 2.5.1
-      moment: 2.30.1
-      prop-types: 15.8.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      styled-jsx: 4.0.1(@babel/core@7.28.0)(react@18.3.1)
-
   '@dhis2/app-adapter@12.7.0-alpha.1(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(@dhis2/ui@10.7.8(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1)))(classnames@2.5.1)(moment@2.30.1)(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1))':
     dependencies:
       '@dhis2/app-runtime': 3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -10365,25 +10326,6 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@dhis2/app-shell@12.6.5-beta.5(@babel/core@7.28.0)':
-    dependencies:
-      '@dhis2/app-adapter': 12.6.5-beta.5(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(@dhis2/ui@10.7.8(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1)))(classnames@2.5.1)(moment@2.30.1)(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1))
-      '@dhis2/app-runtime': 3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@dhis2/d2-i18n': 1.1.3
-      '@dhis2/pwa': 12.6.5-beta.5
-      '@dhis2/ui': 10.7.8(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1))
-      classnames: 2.5.1
-      moment: 2.30.1
-      post-robot: 10.0.46
-      prop-types: 15.8.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      styled-jsx: 4.0.1(@babel/core@7.28.0)(react@18.3.1)
-      typeface-roboto: 0.0.75
-    transitivePeerDependencies:
-      - '@babel/core'
-      - react-native
-
   '@dhis2/app-shell@12.7.0-alpha.1(@babel/core@7.28.0)':
     dependencies:
       '@dhis2/app-adapter': 12.7.0-alpha.1(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(@dhis2/ui@10.7.8(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1)))(classnames@2.5.1)(moment@2.30.1)(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1))
@@ -10403,88 +10345,6 @@ snapshots:
       - '@babel/core'
       - react-native
 
-  '@dhis2/cli-app-scripts@12.6.5-beta.5(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))':
-    dependencies:
-      '@babel/core': 7.28.0
-      '@babel/plugin-syntax-dynamic-import': 7.8.3(@babel/core@7.28.0)
-      '@babel/plugin-syntax-flow': 7.27.1(@babel/core@7.28.0)
-      '@babel/plugin-transform-class-properties': 7.27.1(@babel/core@7.28.0)
-      '@babel/plugin-transform-nullish-coalescing-operator': 7.27.1(@babel/core@7.28.0)
-      '@babel/plugin-transform-optional-chaining': 7.27.1(@babel/core@7.28.0)
-      '@babel/preset-env': 7.28.0(@babel/core@7.28.0)
-      '@babel/preset-react': 7.27.1(@babel/core@7.28.0)
-      '@babel/preset-typescript': 7.27.1(@babel/core@7.28.0)
-      '@dhis2/app-shell': 12.6.5-beta.5(@babel/core@7.28.0)
-      '@dhis2/cli-helpers-engine': 3.2.2
-      '@jest/core': 27.5.1
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.17(react-refresh@0.11.0)(type-fest@4.41.0)(webpack-dev-server@4.15.2(webpack@5.100.0))(webpack@5.100.0)
-      '@vitejs/plugin-react': 4.6.0(vite@5.4.19(@types/node@24.0.4)(terser@5.43.1))
-      '@yarnpkg/lockfile': 1.1.0
-      archiver: 7.0.1
-      axios: 0.25.0
-      babel-jest: 27.5.1(@babel/core@7.28.0)
-      babel-loader: 8.4.1(@babel/core@7.28.0)(webpack@5.100.0)
-      babel-plugin-react-require: 3.1.3
-      chokidar: 3.6.0
-      css-loader: 6.11.0(webpack@5.100.0)
-      detect-port: 1.6.1
-      dotenv: 8.6.0
-      dotenv-expand: 5.1.0
-      fast-glob: 3.3.3
-      file-loader: 6.2.0(webpack@5.100.0)
-      form-data: 3.0.3
-      fs-extra: 8.1.0
-      handlebars: 4.7.8
-      html-webpack-plugin: 5.6.3(webpack@5.100.0)
-      http-proxy: 1.18.1
-      i18next-conv: 9.2.1
-      i18next-scanner: 3.3.0(typescript@5.8.3)
-      inquirer: 7.3.3
-      lodash: 4.17.21
-      mini-css-extract-plugin: 2.9.2(webpack@5.100.0)
-      node-http-proxy-json: 0.1.9
-      parse-author: 2.0.0
-      parse-gitignore: 1.0.1
-      react-refresh: 0.11.0
-      style-loader: 3.3.4(webpack@5.100.0)
-      styled-jsx: 4.0.1(@babel/core@7.28.0)(react@18.3.1)
-      terser-webpack-plugin: 5.3.14(webpack@5.100.0)
-      vite: 5.4.19(@types/node@24.0.4)(terser@5.43.1)
-      vite-plugin-dynamic-import: 1.6.0
-      webpack: 5.100.0
-      workbox-build: 7.3.0(@types/babel__core@7.20.5)
-    transitivePeerDependencies:
-      - '@rspack/core'
-      - '@swc/core'
-      - '@types/babel__core'
-      - '@types/node'
-      - '@types/webpack'
-      - bufferutil
-      - canvas
-      - debug
-      - esbuild
-      - less
-      - lightningcss
-      - node-notifier
-      - react
-      - react-native
-      - sass
-      - sass-embedded
-      - sockjs-client
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-      - ts-node
-      - type-fest
-      - typescript
-      - uglify-js
-      - utf-8-validate
-      - webpack-cli
-      - webpack-dev-server
-      - webpack-hot-middleware
-      - webpack-plugin-serve
-
   '@dhis2/cli-app-scripts@12.7.0-alpha.1(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))':
     dependencies:
       '@babel/core': 7.28.0
@@ -10500,7 +10360,7 @@ snapshots:
       '@dhis2/cli-helpers-engine': 3.2.2
       '@jest/core': 27.5.1
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.17(react-refresh@0.11.0)(type-fest@4.41.0)(webpack-dev-server@4.15.2(webpack@5.100.0))(webpack@5.100.0)
-      '@vitejs/plugin-react': 4.6.0(vite@5.4.19(@types/node@24.0.4)(terser@5.43.1))
+      '@vitejs/plugin-react': 4.6.0(vite@5.4.19)
       '@yarnpkg/lockfile': 1.1.0
       archiver: 7.0.1
       axios: 0.25.0
@@ -10567,9 +10427,9 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@dhis2/cli-app@5.2.0-alpha.10(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))':
+  '@dhis2/cli-app@5.2.0-alpha.11':
     dependencies:
-      '@dhis2/cli-app-scripts': 12.6.5-beta.5(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
+      '@dhis2/cli-app-scripts': 12.7.0-alpha.1(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
       '@dhis2/cli-helpers-engine': 3.2.2
     transitivePeerDependencies:
       - '@rspack/core'
@@ -10603,12 +10463,12 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@dhis2/cli-cluster@5.2.0-alpha.10':
+  '@dhis2/cli-cluster@5.2.0-alpha.11':
     dependencies:
       '@dhis2/cli-helpers-engine': 3.2.2
       cli-table3: 0.6.5
 
-  '@dhis2/cli-create@5.2.0-alpha.10':
+  '@dhis2/cli-create@5.2.0-alpha.11':
     dependencies:
       '@dhis2/cli-helpers-engine': 3.2.2
       '@dhis2/cli-helpers-template': 3.0.0
@@ -10691,29 +10551,11 @@ snapshots:
       - '@babel/preset-env'
       - supports-color
 
-  '@dhis2/cli-utils-codemods@3.0.0(@babel/preset-env@7.28.0(@babel/core@7.28.0))':
-    dependencies:
-      fs-extra: 9.1.0
-      jscodeshift: 0.11.0(@babel/preset-env@7.28.0(@babel/core@7.28.0))
-      yargs: 16.2.0
-    transitivePeerDependencies:
-      - '@babel/preset-env'
-      - supports-color
-
   '@dhis2/cli-utils-cypress@9.0.2(@babel/preset-env@7.28.0(@babel/core@7.27.7))':
     dependencies:
       '@dhis2/cli-helpers-engine': 2.4.0
       fs-extra: 8.1.0
       jscodeshift: 0.11.0(@babel/preset-env@7.28.0(@babel/core@7.27.7))
-    transitivePeerDependencies:
-      - '@babel/preset-env'
-      - supports-color
-
-  '@dhis2/cli-utils-cypress@9.0.2(@babel/preset-env@7.28.0(@babel/core@7.28.0))':
-    dependencies:
-      '@dhis2/cli-helpers-engine': 2.4.0
-      fs-extra: 8.1.0
-      jscodeshift: 0.11.0(@babel/preset-env@7.28.0(@babel/core@7.28.0))
     transitivePeerDependencies:
       - '@babel/preset-env'
       - supports-color
@@ -10737,27 +10579,27 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@dhis2/cli-utils@5.2.0-alpha.10(@babel/preset-env@7.28.0(@babel/core@7.28.0))(typescript@5.8.3)':
+  '@dhis2/cli-utils@5.2.0-alpha.11':
     dependencies:
       '@dhis2/cli-helpers-engine': 3.2.2
-      '@dhis2/cli-utils-codemods': 3.0.0(@babel/preset-env@7.28.0(@babel/core@7.28.0))
-      '@dhis2/cli-utils-cypress': 9.0.2(@babel/preset-env@7.28.0(@babel/core@7.28.0))
+      '@dhis2/cli-utils-codemods': 3.0.0(@babel/preset-env@7.28.0(@babel/core@7.27.7))
+      '@dhis2/cli-utils-cypress': 9.0.2(@babel/preset-env@7.28.0(@babel/core@7.27.7))
       '@dhis2/cli-utils-docsite': 3.2.0
-      '@semantic-release/changelog': 6.0.3(semantic-release@24.2.7(typescript@5.8.3))
-      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@24.2.7(typescript@5.8.3))
+      '@semantic-release/changelog': 6.0.3(semantic-release@24.2.7)
+      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@24.2.7)
       '@semantic-release/error': 4.0.0
-      '@semantic-release/exec': 7.1.0(semantic-release@24.2.7(typescript@5.8.3))
-      '@semantic-release/git': 10.0.1(semantic-release@24.2.7(typescript@5.8.3))
-      '@semantic-release/github': 11.0.3(semantic-release@24.2.7(typescript@5.8.3))
-      '@semantic-release/npm': 12.0.2(semantic-release@24.2.7(typescript@5.8.3))
-      '@semantic-release/release-notes-generator': 14.0.3(semantic-release@24.2.7(typescript@5.8.3))
+      '@semantic-release/exec': 7.1.0(semantic-release@24.2.7)
+      '@semantic-release/git': 10.0.1(semantic-release@24.2.7)
+      '@semantic-release/github': 11.0.3(semantic-release@24.2.7)
+      '@semantic-release/npm': 12.0.2(semantic-release@24.2.7)
+      '@semantic-release/release-notes-generator': 14.0.3(semantic-release@24.2.7)
       aggregate-error: 5.0.0
       dhis2-uid: 0.1.2
       ejs: 3.1.10
       glob: 11.0.3
       inquirer: 7.3.3
       jsondiffpatch: 0.4.1
-      semantic-release: 24.2.7(typescript@5.8.3)
+      semantic-release: 24.2.7
       tape: 4.17.0
     transitivePeerDependencies:
       - '@babel/preset-env'
@@ -10781,13 +10623,6 @@ snapshots:
   '@dhis2/prop-types@3.1.2(prop-types@15.8.1)':
     dependencies:
       prop-types: 15.8.1
-
-  '@dhis2/pwa@12.6.5-beta.5':
-    dependencies:
-      idb: 6.1.5
-      workbox-precaching: 7.3.0
-      workbox-routing: 7.3.0
-      workbox-strategies: 7.3.0
 
   '@dhis2/pwa@12.7.0-alpha.1':
     dependencies:
@@ -11452,6 +11287,14 @@ snapshots:
       lodash: 4.17.21
       semantic-release: 24.2.7(typescript@5.8.3)
 
+  '@semantic-release/changelog@6.0.3(semantic-release@24.2.7)':
+    dependencies:
+      '@semantic-release/error': 3.0.0
+      aggregate-error: 3.1.0
+      fs-extra: 11.3.0
+      lodash: 4.17.21
+      semantic-release: 24.2.7
+
   '@semantic-release/commit-analyzer@13.0.1(semantic-release@24.2.7(typescript@5.8.3))':
     dependencies:
       conventional-changelog-angular: 8.0.0
@@ -11463,6 +11306,20 @@ snapshots:
       lodash-es: 4.17.21
       micromatch: 4.0.8
       semantic-release: 24.2.7(typescript@5.8.3)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@semantic-release/commit-analyzer@13.0.1(semantic-release@24.2.7)':
+    dependencies:
+      conventional-changelog-angular: 8.0.0
+      conventional-changelog-writer: 8.2.0
+      conventional-commits-filter: 5.0.0
+      conventional-commits-parser: 6.2.0
+      debug: 4.4.1
+      import-from-esm: 2.0.0
+      lodash-es: 4.17.21
+      micromatch: 4.0.8
+      semantic-release: 24.2.7
     transitivePeerDependencies:
       - supports-color
 
@@ -11482,6 +11339,18 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@semantic-release/exec@7.1.0(semantic-release@24.2.7)':
+    dependencies:
+      '@semantic-release/error': 4.0.0
+      aggregate-error: 3.1.0
+      debug: 4.4.1
+      execa: 9.6.0
+      lodash-es: 4.17.21
+      parse-json: 8.3.0
+      semantic-release: 24.2.7
+    transitivePeerDependencies:
+      - supports-color
+
   '@semantic-release/git@10.0.1(semantic-release@24.2.7(typescript@5.8.3))':
     dependencies:
       '@semantic-release/error': 3.0.0
@@ -11493,6 +11362,20 @@ snapshots:
       micromatch: 4.0.8
       p-reduce: 2.1.0
       semantic-release: 24.2.7(typescript@5.8.3)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@semantic-release/git@10.0.1(semantic-release@24.2.7)':
+    dependencies:
+      '@semantic-release/error': 3.0.0
+      aggregate-error: 3.1.0
+      debug: 4.4.1
+      dir-glob: 3.0.1
+      execa: 5.1.1
+      lodash: 4.17.21
+      micromatch: 4.0.8
+      p-reduce: 2.1.0
+      semantic-release: 24.2.7
     transitivePeerDependencies:
       - supports-color
 
@@ -11518,6 +11401,28 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@semantic-release/github@11.0.3(semantic-release@24.2.7)':
+    dependencies:
+      '@octokit/core': 7.0.3
+      '@octokit/plugin-paginate-rest': 13.1.1(@octokit/core@7.0.3)
+      '@octokit/plugin-retry': 8.0.1(@octokit/core@7.0.3)
+      '@octokit/plugin-throttling': 11.0.1(@octokit/core@7.0.3)
+      '@semantic-release/error': 4.0.0
+      aggregate-error: 5.0.0
+      debug: 4.4.1
+      dir-glob: 3.0.1
+      globby: 14.1.0
+      http-proxy-agent: 7.0.2
+      https-proxy-agent: 7.0.6
+      issue-parser: 7.0.1
+      lodash-es: 4.17.21
+      mime: 4.0.7
+      p-filter: 4.1.0
+      semantic-release: 24.2.7
+      url-join: 5.0.0
+    transitivePeerDependencies:
+      - supports-color
+
   '@semantic-release/npm@12.0.2(semantic-release@24.2.7(typescript@5.8.3))':
     dependencies:
       '@semantic-release/error': 4.0.0
@@ -11535,6 +11440,23 @@ snapshots:
       semver: 7.7.2
       tempy: 3.1.0
 
+  '@semantic-release/npm@12.0.2(semantic-release@24.2.7)':
+    dependencies:
+      '@semantic-release/error': 4.0.0
+      aggregate-error: 5.0.0
+      execa: 9.6.0
+      fs-extra: 11.3.0
+      lodash-es: 4.17.21
+      nerf-dart: 1.0.0
+      normalize-url: 8.0.2
+      npm: 10.9.3
+      rc: 1.2.8
+      read-pkg: 9.0.1
+      registry-auth-token: 5.1.0
+      semantic-release: 24.2.7
+      semver: 7.7.2
+      tempy: 3.1.0
+
   '@semantic-release/release-notes-generator@14.0.3(semantic-release@24.2.7(typescript@5.8.3))':
     dependencies:
       conventional-changelog-angular: 8.0.0
@@ -11548,6 +11470,22 @@ snapshots:
       lodash-es: 4.17.21
       read-package-up: 11.0.0
       semantic-release: 24.2.7(typescript@5.8.3)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@semantic-release/release-notes-generator@14.0.3(semantic-release@24.2.7)':
+    dependencies:
+      conventional-changelog-angular: 8.0.0
+      conventional-changelog-writer: 8.2.0
+      conventional-commits-filter: 5.0.0
+      conventional-commits-parser: 6.2.0
+      debug: 4.4.1
+      get-stream: 7.0.1
+      import-from-esm: 2.0.0
+      into-stream: 7.0.0
+      lodash-es: 4.17.21
+      read-package-up: 11.0.0
+      semantic-release: 24.2.7
     transitivePeerDependencies:
       - supports-color
 
@@ -11791,7 +11729,7 @@ snapshots:
     dependencies:
       '@types/yargs-parser': 21.0.3
 
-  '@vitejs/plugin-react@4.6.0(vite@5.4.19(@types/node@24.0.4)(terser@5.43.1))':
+  '@vitejs/plugin-react@4.6.0(vite@5.4.19)':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.0)
@@ -15379,31 +15317,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jscodeshift@0.11.0(@babel/preset-env@7.28.0(@babel/core@7.28.0)):
-    dependencies:
-      '@babel/core': 7.27.7
-      '@babel/parser': 7.27.7
-      '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.27.7)
-      '@babel/plugin-proposal-nullish-coalescing-operator': 7.18.6(@babel/core@7.27.7)
-      '@babel/plugin-proposal-optional-chaining': 7.21.0(@babel/core@7.27.7)
-      '@babel/plugin-transform-modules-commonjs': 7.27.1(@babel/core@7.27.7)
-      '@babel/preset-env': 7.28.0(@babel/core@7.28.0)
-      '@babel/preset-flow': 7.27.1(@babel/core@7.27.7)
-      '@babel/preset-typescript': 7.27.1(@babel/core@7.27.7)
-      '@babel/register': 7.27.1(@babel/core@7.27.7)
-      babel-core: 7.0.0-bridge.0(@babel/core@7.27.7)
-      colors: 1.4.0
-      flow-parser: 0.275.0
-      graceful-fs: 4.2.11
-      micromatch: 3.1.10
-      neo-async: 2.6.2
-      node-dir: 0.1.17
-      recast: 0.20.5
-      temp: 0.8.4
-      write-file-atomic: 2.4.3
-    transitivePeerDependencies:
-      - supports-color
-
   jsdoc-api@5.0.4:
     dependencies:
       array-back: 4.0.2
@@ -16985,6 +16898,41 @@ snapshots:
       '@types/node-forge': 1.3.12
       node-forge: 1.3.1
     optional: true
+
+  semantic-release@24.2.7:
+    dependencies:
+      '@semantic-release/commit-analyzer': 13.0.1(semantic-release@24.2.7)
+      '@semantic-release/error': 4.0.0
+      '@semantic-release/github': 11.0.3(semantic-release@24.2.7)
+      '@semantic-release/npm': 12.0.2(semantic-release@24.2.7)
+      '@semantic-release/release-notes-generator': 14.0.3(semantic-release@24.2.7)
+      aggregate-error: 5.0.0
+      cosmiconfig: 9.0.0(typescript@5.8.3)
+      debug: 4.4.1
+      env-ci: 11.1.1
+      execa: 9.6.0
+      figures: 6.1.0
+      find-versions: 6.0.0
+      get-stream: 6.0.1
+      git-log-parser: 1.2.1
+      hook-std: 3.0.0
+      hosted-git-info: 8.1.0
+      import-from-esm: 2.0.0
+      lodash-es: 4.17.21
+      marked: 15.0.12
+      marked-terminal: 7.3.0(marked@15.0.12)
+      micromatch: 4.0.8
+      p-each-series: 3.0.0
+      p-reduce: 3.0.0
+      read-package-up: 11.0.0
+      resolve-from: 5.0.0
+      semver: 7.7.2
+      semver-diff: 4.0.0
+      signale: 1.4.0
+      yargs: 17.7.2
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   semantic-release@24.2.7(typescript@5.8.3):
     dependencies:
