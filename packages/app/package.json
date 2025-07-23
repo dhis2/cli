@@ -15,7 +15,7 @@
     "license": "BSD-3-Clause",
     "private": false,
     "dependencies": {
-        "@dhis2/cli-app-scripts": "beta",
+        "@dhis2/cli-app-scripts": "alpha",
         "@dhis2/cli-helpers-engine": "^3.2.1"
     },
     "publishConfig": {
