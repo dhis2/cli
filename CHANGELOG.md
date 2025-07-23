@@ -1,3 +1,10 @@
+# [5.2.0-alpha.11](https://github.com/dhis2/cli/compare/v5.2.0-alpha.10...v5.2.0-alpha.11) (2025-07-23)
+
+
+### Bug Fixes
+
+* point to alpha cli-app-scripts ([e2f1bff](https://github.com/dhis2/cli/commit/e2f1bff9ff2ed7dcba7945d67c68dc3573245e45))
+
 # [5.2.0-alpha.10](https://github.com/dhis2/cli/compare/v5.2.0-alpha.9...v5.2.0-alpha.10) (2025-07-14)
 
 

@@ -6,7 +6,7 @@
     "engines": {
         "node": ">=12"
     },
-    "version": "5.2.0-alpha.10",
+    "version": "5.2.0-alpha.11",
     "main": "src/index.js",
     "author": "Austin McGee <austin@dhis2.org>",
     "license": "BSD-3-Clause",
