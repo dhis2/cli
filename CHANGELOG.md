@@ -1,3 +1,10 @@
+# [5.2.0-alpha.12](https://github.com/dhis2/cli/compare/v5.2.0-alpha.11...v5.2.0-alpha.12) (2025-07-24)
+
+
+### Bug Fixes
+
+* force alpha release to npm ([34db242](https://github.com/dhis2/cli/commit/34db242289510684d1a10f9090529eb79391cfb3))
+
 # [5.2.0-alpha.11](https://github.com/dhis2/cli/compare/v5.2.0-alpha.10...v5.2.0-alpha.11) (2025-07-23)
 
 
