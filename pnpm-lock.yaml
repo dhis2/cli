@@ -28,7 +28,7 @@ importers:
     dependencies:
       '@dhis2/cli-app-scripts':
         specifier: alpha
-        version: 12.7.0-alpha.1(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
+        version: 12.7.0-alpha.13(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
       '@dhis2/cli-helpers-engine':
         specifier: ^3.2.1
         version: 3.2.2
@@ -63,8 +63,8 @@ importers:
   packages/create-app:
     dependencies:
       '@dhis2/cli-create':
-        specifier: 5.2.0-alpha.11
-        version: 5.2.0-alpha.11
+        specifier: 5.2.0-alpha.12
+        version: 5.2.0-alpha.12
       '@dhis2/cli-helpers-engine':
         specifier: ^3.2.1
         version: 3.2.2
@@ -74,14 +74,14 @@ importers:
   packages/main:
     dependencies:
       '@dhis2/cli-app':
-        specifier: 5.2.0-alpha.11
-        version: 5.2.0-alpha.11
+        specifier: 5.2.0-alpha.12
+        version: 5.2.0-alpha.12
       '@dhis2/cli-cluster':
-        specifier: 5.2.0-alpha.11
-        version: 5.2.0-alpha.11
+        specifier: 5.2.0-alpha.12
+        version: 5.2.0-alpha.12
       '@dhis2/cli-create':
-        specifier: 5.2.0-alpha.11
-        version: 5.2.0-alpha.11
+        specifier: 5.2.0-alpha.12
+        version: 5.2.0-alpha.12
       '@dhis2/cli-helpers-engine':
         specifier: ^3.2.1
         version: 3.2.2
@@ -89,8 +89,8 @@ importers:
         specifier: ^9.0.1
         version: 9.3.1
       '@dhis2/cli-utils':
-        specifier: 5.2.0-alpha.11
-        version: 5.2.0-alpha.11
+        specifier: 5.2.0-alpha.12
+        version: 5.2.0-alpha.12
       cli-table3:
         specifier: ^0.6.0
         version: 0.6.5
@@ -1309,8 +1309,8 @@ packages:
       react-dom: ^16.13 || ^18
       styled-jsx: ^4
 
-  '@dhis2/app-adapter@12.7.0-alpha.1':
-    resolution: {integrity: sha512-pBVsyx7Qh69fCYHvpls/UDCGJPLoLMQ2CBzuwsgGLtnO1DuHJEJ/zDkuJuNToyCzfgBAdcMk4wFQInOd22ZiYw==}
+  '@dhis2/app-adapter@12.7.0-alpha.13':
+    resolution: {integrity: sha512-ObgVSLPJV9E5oTHXpbKM57ptMaI/OoOvUj6agfvD17Uw2G5dbqpXKpL4EtkwVS3Vargpz0JsBQwr8RzZE4Yvlw==}
     peerDependencies:
       '@dhis2/app-runtime': ^3.11.1
       '@dhis2/d2-i18n': ^1
@@ -1362,27 +1362,27 @@ packages:
       react: ^16.8.6 || ^18
       react-dom: ^16.8.6 || ^18
 
-  '@dhis2/app-shell@12.7.0-alpha.1':
-    resolution: {integrity: sha512-XMrjPIy8nCcfVeIHbCEHp+G7qCvN0nbZ2F+96hiWWZODe6ElrE23QE0lbKCHrk/72ZEHqaQB8+Y8s9B90gdoZQ==}
+  '@dhis2/app-shell@12.7.0-alpha.13':
+    resolution: {integrity: sha512-7KO6Ehj6EBd9Ooy/+1w2cIJg4zXjqFtvR/6+dwnx8yEa50yAaT2mLW4T6R5a/JPL1fIt8k+ZpO5Mnb/Q+OKmcw==}
     engines: {node: ^18.0.0 || >=20.0.0}
 
-  '@dhis2/cli-app-scripts@12.7.0-alpha.1':
-    resolution: {integrity: sha512-rfFo48jQktHxWFkntqNmyHiD/DyNn5NK+C+/4l2lYHZ423Z6UwGF8G8x3ACZ78yQHt7Kbgi7zuP+x9hskbVoVQ==}
+  '@dhis2/cli-app-scripts@12.7.0-alpha.13':
+    resolution: {integrity: sha512-7Uvlr3FvHsKP8jvcQsyYwDQoEZbt7hif2qddjKvhbnddgNlNS39Hght7K44+2g4+PDAnOQQXuDCuh8LWLVrq8Q==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
-  '@dhis2/cli-app@5.2.0-alpha.11':
-    resolution: {integrity: sha512-Aw3Jv7T4x16sRb55+oY0lZNWFqYIDPqhCajZKWe+Uspqlz5jhA3ahO4HrNQQt5ka82bLoEvFz7AvuD1mtz2aHQ==}
+  '@dhis2/cli-app@5.2.0-alpha.12':
+    resolution: {integrity: sha512-RTfnz1QUt7KRucsKn5cuGECLxeSKDInwSOJQmn7xe3WUz/ADck3MnZXH2zEccmMnWAlCDVzJevzeQA6E8uADWw==}
     engines: {node: '>=12'}
     hasBin: true
 
-  '@dhis2/cli-cluster@5.2.0-alpha.11':
-    resolution: {integrity: sha512-VKRcE9YQ9gNlNuK9/FVpXkWySdIpr8HjTC+ZLNszcOR05ihWJ+XtQXZyAXurrN5L8SdJtgFu317MlUPpb+1SuQ==}
+  '@dhis2/cli-cluster@5.2.0-alpha.12':
+    resolution: {integrity: sha512-ST6i+LvVjeeLxtOt81zU1VwsDXiIcq/zVrUs4nSBqvWuTaP3JdA8BQs43mxP95PKoSGisHKfXAAJ7+dMKbtUcQ==}
     engines: {node: '>=12'}
     hasBin: true
 
-  '@dhis2/cli-create@5.2.0-alpha.11':
-    resolution: {integrity: sha512-+CAXF1ypWWeuWDyd2Swmaw3m7l3101/dxspq/TgDcp9GDHxHtmAho1XfGiC2DfFZVK0ANtz4sF8umxe7JHjAEQ==}
+  '@dhis2/cli-create@5.2.0-alpha.12':
+    resolution: {integrity: sha512-U+LMA3s2xB1oso766iLeJIrpUVcXFgbXo92p5mV9xIWWhU5Os5vc45nT5qOOmykrf+qNwCG9qy2s1ZYVAKYEtA==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -1421,8 +1421,8 @@ packages:
     engines: {node: '>=12'}
     hasBin: true
 
-  '@dhis2/cli-utils@5.2.0-alpha.11':
-    resolution: {integrity: sha512-Lu/NR6+GyZm/6ZP5TyUyQCnOOlqSurLYZUcB3VH4nNGdr3E7iDZBaEhJS98nObgzhV9yF0qvz0/X2f+E+cSV0w==}
+  '@dhis2/cli-utils@5.2.0-alpha.12':
+    resolution: {integrity: sha512-uWNTfi21KBO+nhlqSoNs4xORZJ/YXZywl8rKebmmO+NbF7eTlF/KcQU1MhQi8A79zRLefFF6cFljCkaKNWeT7Q==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -1440,8 +1440,8 @@ packages:
     peerDependencies:
       prop-types: ^15
 
-  '@dhis2/pwa@12.7.0-alpha.1':
-    resolution: {integrity: sha512-ERd4I9vqpeIYr1igEblKhsCczEp+XgDTENR81FdOC6JAwrbSpZ9gJ2fL+qhmGrIKBtBj/Kyr7g7kgsDFSl50bg==}
+  '@dhis2/pwa@12.7.0-alpha.13':
+    resolution: {integrity: sha512-fKRppXKfdRFzDkAjExZ8df66flqHFgvuNjfqWaOL3zq7gt6rwH2OSYRkCoSI3+hx5BWURsteVviMtqU+wK0oPw==}
 
   '@dhis2/ui-constants@10.7.8':
     resolution: {integrity: sha512-3WKutEs4PmlXN6Rdfx/lAeXYTclew07oxqjzUAXx4eDhyid4XjkoxGlKbjMYpOJYyfsWaYFJkTcTcWzhCkAk2g==}
@@ -10261,11 +10261,11 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       styled-jsx: 4.0.1(@babel/core@7.28.0)(react@18.3.1)
 
-  '@dhis2/app-adapter@12.7.0-alpha.1(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(@dhis2/ui@10.7.8(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1)))(classnames@2.5.1)(moment@2.30.1)(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1))':
+  '@dhis2/app-adapter@12.7.0-alpha.13(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(@dhis2/ui@10.7.8(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1)))(classnames@2.5.1)(moment@2.30.1)(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1))':
     dependencies:
       '@dhis2/app-runtime': 3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@dhis2/d2-i18n': 1.1.3
-      '@dhis2/pwa': 12.7.0-alpha.1
+      '@dhis2/pwa': 12.7.0-alpha.13
       '@dhis2/ui': 10.7.8(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1))
       classnames: 2.5.1
       moment: 2.30.1
@@ -10326,12 +10326,12 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@dhis2/app-shell@12.7.0-alpha.1(@babel/core@7.28.0)':
+  '@dhis2/app-shell@12.7.0-alpha.13(@babel/core@7.28.0)':
     dependencies:
-      '@dhis2/app-adapter': 12.7.0-alpha.1(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(@dhis2/ui@10.7.8(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1)))(classnames@2.5.1)(moment@2.30.1)(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1))
+      '@dhis2/app-adapter': 12.7.0-alpha.13(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(@dhis2/ui@10.7.8(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1)))(classnames@2.5.1)(moment@2.30.1)(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1))
       '@dhis2/app-runtime': 3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@dhis2/d2-i18n': 1.1.3
-      '@dhis2/pwa': 12.7.0-alpha.1
+      '@dhis2/pwa': 12.7.0-alpha.13
       '@dhis2/ui': 10.7.8(@dhis2/app-runtime@3.14.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.1.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.0)(react@18.3.1))
       classnames: 2.5.1
       moment: 2.30.1
@@ -10345,7 +10345,7 @@ snapshots:
       - '@babel/core'
       - react-native
 
-  '@dhis2/cli-app-scripts@12.7.0-alpha.1(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))':
+  '@dhis2/cli-app-scripts@12.7.0-alpha.13(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-syntax-dynamic-import': 7.8.3(@babel/core@7.28.0)
@@ -10356,7 +10356,7 @@ snapshots:
       '@babel/preset-env': 7.28.0(@babel/core@7.28.0)
       '@babel/preset-react': 7.27.1(@babel/core@7.28.0)
       '@babel/preset-typescript': 7.27.1(@babel/core@7.28.0)
-      '@dhis2/app-shell': 12.7.0-alpha.1(@babel/core@7.28.0)
+      '@dhis2/app-shell': 12.7.0-alpha.13(@babel/core@7.28.0)
       '@dhis2/cli-helpers-engine': 3.2.2
       '@jest/core': 27.5.1
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.17(react-refresh@0.11.0)(type-fest@4.41.0)(webpack-dev-server@4.15.2(webpack@5.100.0))(webpack@5.100.0)
@@ -10427,9 +10427,9 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@dhis2/cli-app@5.2.0-alpha.11':
+  '@dhis2/cli-app@5.2.0-alpha.12':
     dependencies:
-      '@dhis2/cli-app-scripts': 12.7.0-alpha.1(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
+      '@dhis2/cli-app-scripts': 12.7.0-alpha.13(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
       '@dhis2/cli-helpers-engine': 3.2.2
     transitivePeerDependencies:
       - '@rspack/core'
@@ -10463,12 +10463,12 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@dhis2/cli-cluster@5.2.0-alpha.11':
+  '@dhis2/cli-cluster@5.2.0-alpha.12':
     dependencies:
       '@dhis2/cli-helpers-engine': 3.2.2
       cli-table3: 0.6.5
 
-  '@dhis2/cli-create@5.2.0-alpha.11':
+  '@dhis2/cli-create@5.2.0-alpha.12':
     dependencies:
       '@dhis2/cli-helpers-engine': 3.2.2
       '@dhis2/cli-helpers-template': 3.0.0
@@ -10579,7 +10579,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@dhis2/cli-utils@5.2.0-alpha.11':
+  '@dhis2/cli-utils@5.2.0-alpha.12':
     dependencies:
       '@dhis2/cli-helpers-engine': 3.2.2
       '@dhis2/cli-utils-codemods': 3.0.0(@babel/preset-env@7.28.0(@babel/core@7.27.7))
@@ -10624,7 +10624,7 @@ snapshots:
     dependencies:
       prop-types: 15.8.1
 
-  '@dhis2/pwa@12.7.0-alpha.1':
+  '@dhis2/pwa@12.7.0-alpha.13':
     dependencies:
       idb: 6.1.5
       workbox-precaching: 7.3.0
