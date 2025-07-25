@@ -4,10 +4,15 @@
     "description": "",
     "main": "src/index.js",
     "bin": {
-        "d2-init": "bin/d2-init"
+        "d2-create": "bin/d2-create"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "@dhis2/cli-app-scripts": "alpha",
+        "inquirer": "^7.3.3",
+        "yargs": "^18.0.0"
     },
     "private": false,
     "keywords": [],

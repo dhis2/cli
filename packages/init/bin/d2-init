@@ -1,2 +1,0 @@
-#!/usr/bin/env node
-console.log('a placeholder for being able to run `npx @dhis2/create` to scaffold a new app')
