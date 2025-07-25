@@ -1,3 +1,10 @@
+# [5.2.0-alpha.13](https://github.com/dhis2/cli/compare/v5.2.0-alpha.12...v5.2.0-alpha.13) (2025-07-25)
+
+
+### Bug Fixes
+
+* scaffold command for npx create ([02d8906](https://github.com/dhis2/cli/commit/02d8906f3afd63cbfbb82d1bb9464d1b77ada6a3))
+
 # [5.2.0-alpha.12](https://github.com/dhis2/cli/compare/v5.2.0-alpha.11...v5.2.0-alpha.12) (2025-07-24)
 
 
