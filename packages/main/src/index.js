@@ -1,4 +1,8 @@
-const { namespace, createModuleLoader } = require('@dhis2/cli-helpers-engine')
+const {
+    namespace,
+    createModuleLoader,
+    chalk,
+} = require('@dhis2/cli-helpers-engine')
 
 const command = namespace('d2', {
     desc: 'DHIS2 CLI',
@@ -6,6 +10,14 @@ const command = namespace('d2', {
         const loader = createModuleLoader({
             parentModule: __filename,
         })
+
+        console.log(
+            `\nTo create new web apps, you can now use ${chalk.cyan(
+                'npm create @dhis2@alpha'
+            )} instead of ${chalk.bold(
+                'd2 app scripts init'
+            )} for more options.\n`
+        )
 
         yargs.command(loader('@dhis2/cli-app'))
         yargs.command(loader('@dhis2/cli-cluster'))
