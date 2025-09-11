@@ -11,13 +11,18 @@ const command = namespace('d2', {
             parentModule: __filename,
         })
 
-        console.log(
-            `\nTo create new web apps, you can now use ${chalk.cyan(
-                'npm create @dhis2@alpha'
-            )} instead of ${chalk.bold(
-                'd2 app scripts init'
-            )} for more options.\n`
-        )
+
+        if (!yargs.argv._?.[0]) {
+            console.log(
+                chalk.yellowBright(
+                    `Check the D2 CLI documentation: ${chalk.underline(
+                        'https://developers.dhis2.org/docs/cli'
+                    )}. To create new web apps, you can also now run ${chalk.cyan(
+                        'npm create @dhis2@alpha'
+                    )} or ${chalk.cyan('npx @dhis2/create@alpha')}.\n`
+                )
+            )
+        }
 
         yargs.command(loader('@dhis2/cli-app'))
         yargs.command(loader('@dhis2/cli-cluster'))
