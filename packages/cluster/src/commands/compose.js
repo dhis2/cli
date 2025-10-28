@@ -12,7 +12,7 @@ const run = async function (argv) {
     const { name, _ } = argv
     const cfg = await resolveConfiguration(argv)
 
-    const args = _.slice(_.findIndex(x => x === 'compose') + 1)
+    const args = _.slice(_.findIndex((x) => x === 'compose') + 1)
     reporter.debug('Passing arguments to docker compose', args)
 
     const cacheLocation = await initDockerComposeCache({
