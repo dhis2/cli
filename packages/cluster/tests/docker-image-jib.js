@@ -14,7 +14,7 @@ test(`DHIS2 versions with Docker image containing /opt/dhis2`, async function (t
     ]
     t.plan(versions.length)
 
-    versions.forEach(version => t.ok(dockerImageUsingJib(version), version))
+    versions.forEach((version) => t.ok(dockerImageUsingJib(version), version))
 })
 
 test('DHIS2 versions with Docker image built containing /DHIS2_home', async function (t) {
@@ -33,14 +33,16 @@ test('DHIS2 versions with Docker image built containing /DHIS2_home', async func
     ]
     t.plan(versions.length)
 
-    versions.forEach(version => t.notOk(dockerImageUsingJib(version), version))
+    versions.forEach((version) =>
+        t.notOk(dockerImageUsingJib(version), version)
+    )
 })
 
 test('throws given invalid version', async function (t) {
     const versions = ['', '   ', '2', '2.']
     t.plan(versions.length)
 
-    versions.forEach(version =>
+    versions.forEach((version) =>
         t.throws(
             function () {
                 dockerImageUsingJib(version)

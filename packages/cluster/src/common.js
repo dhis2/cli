@@ -111,10 +111,10 @@ function dockerImageUsingJib(version) {
 
     const segments = version
         .split('.')
-        .map(s => s.trim())
-        .filter(s => s.length > 0) // to remove empty segments we get with versions like "2."
-        .map(n => parseInt(n, 10))
-        .filter(n => !Number.isNaN(n))
+        .map((s) => s.trim())
+        .filter((s) => s.length > 0) // to remove empty segments we get with versions like "2."
+        .map((n) => parseInt(n, 10))
+        .filter((n) => !Number.isNaN(n))
     if (segments.length < 2) {
         throw new Error(
             `Invalid version format: '${version}'. Must be 'master' or '2.major.minor.patch'. 'patch' being optional.`
@@ -206,7 +206,7 @@ async function resolveConfiguration(argv = {}) {
 module.exports.cleanCache = async ({ cache, name }) =>
     await cache.purge(path.join(clusterDir, name))
 
-module.exports.makeEnvironment = cfg => {
+module.exports.makeEnvironment = (cfg) => {
     const env = {
         DHIS2_HOME: cfg.dhis2Home,
         DHIS2_CORE_NAME: cfg.name,
@@ -227,11 +227,12 @@ module.exports.makeEnvironment = cfg => {
 
 // This has to match the normalization done by docker compose to reliably get container statuses
 //   from https://github.com/docker/compose/blob/c8279bc4db56f49cf2e2b80c8734ced1c418b856/compose/cli/command.py#L154
-const normalizeName = name => name.replace(/[^-_a-z0-9]/g, '')
+const normalizeName = (name) => name.replace(/[^-_a-z0-9]/g, '')
 
-module.exports.makeComposeProject = name => `d2-cluster-${normalizeName(name)}`
+module.exports.makeComposeProject = (name) =>
+    `d2-cluster-${normalizeName(name)}`
 
-module.exports.listClusters = async argv => {
+module.exports.listClusters = async (argv) => {
     const cache = argv.getCache()
 
     const exists = await cache.exists(clusterDir)
@@ -241,8 +242,8 @@ module.exports.listClusters = async argv => {
 
     const stat = await cache.stat(clusterDir)
     const promises = Object.keys(stat.children)
-        .filter(name => cache.exists(path.join(clusterDir, name)))
-        .map(name => resolveConfiguration({ name, getCache: argv.getCache }))
+        .filter((name) => cache.exists(path.join(clusterDir, name)))
+        .map((name) => resolveConfiguration({ name, getCache: argv.getCache }))
     return await Promise.all(promises)
 }
 

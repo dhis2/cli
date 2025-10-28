@@ -6,11 +6,10 @@ const {
 
 const command = namespace('d2', {
     desc: 'DHIS2 CLI',
-    builder: yargs => {
+    builder: (yargs) => {
         const loader = createModuleLoader({
             parentModule: __filename,
         })
-
 
         if (!yargs.argv._?.[0]) {
             console.log(

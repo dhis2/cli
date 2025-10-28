@@ -21,7 +21,7 @@ const verifyConditions = (config = {}, context) => {
         throw new AggregateError(errors)
     }
 
-    validPackages.forEach(pkg => {
+    validPackages.forEach((pkg) => {
         pkg.label = pkg.json.name || '<unnamed>'
         if (!silent) {
             logger.log(`Package ${pkg.label} found at ${pkg.path}`)
@@ -33,8 +33,8 @@ const verifyConditions = (config = {}, context) => {
 
 const replaceDependencies = ({ pkg, listNames, packageNames, version }) => {
     const dependencies = []
-    packageNames.forEach(packageName => {
-        listNames.forEach(listName => {
+    packageNames.forEach((packageName) => {
+        listNames.forEach((listName) => {
             if (pkg[listName] && pkg[listName][packageName]) {
                 pkg[listName][packageName] = version
                 dependencies.push(`${packageName} (${listName})`)
@@ -55,8 +55,8 @@ const prepare = (config, context) => {
         ? nextRelease.version
         : `^${nextRelease.version}`
 
-    const names = packages.map(pkg => pkg.json.name).filter(n => n)
-    packages.forEach(pkg => {
+    const names = packages.map((pkg) => pkg.json.name).filter((n) => n)
+    packages.forEach((pkg) => {
         const pkgJson = pkg.json
         const relativePath = path.relative(context.cwd, pkg.path)
 
@@ -75,7 +75,7 @@ const prepare = (config, context) => {
             packageNames: names,
             version: targetVersion,
         }).forEach(
-            dep =>
+            (dep) =>
                 !silent &&
                 logger.log(
                     `Upgraded dependency ${dep}@${targetVersion} for ${pkg.label} at ${relativePath}`

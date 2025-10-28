@@ -4,7 +4,7 @@ const { reporter } = require('@dhis2/cli-helpers-engine')
 const semanticRelease = require('semantic-release').default
 const getWorkspacePackages = require('../support/getWorkspacePackages')
 
-const packageIsPublishable = pkgJsonPath => {
+const packageIsPublishable = (pkgJsonPath) => {
     try {
         const pkgJson = require(pkgJsonPath)
         return !!pkgJson.name && !pkgJson.private
@@ -16,7 +16,7 @@ const packageIsPublishable = pkgJsonPath => {
 function publisher(target = '', packages) {
     switch (target.toLowerCase()) {
         case 'npm': {
-            return packages.filter(packageIsPublishable).map(pkgJsonPath => {
+            return packages.filter(packageIsPublishable).map((pkgJsonPath) => {
                 return [
                     '@semantic-release/npm',
                     {
@@ -27,7 +27,7 @@ function publisher(target = '', packages) {
         }
 
         default: {
-            return packages.map(pkgJsonPath => {
+            return packages.map((pkgJsonPath) => {
                 return [
                     '@semantic-release/npm',
                     {
@@ -71,15 +71,15 @@ const handler = async ({ publish }) => {
         {
             assets: [
                 'CHANGELOG.md',
-                packages.map(pkgJsonPath =>
+                packages.map((pkgJsonPath) =>
                     path.relative(process.cwd(), pkgJsonPath)
                 ),
                 packages
-                    .map(pkgJsonPath =>
+                    .map((pkgJsonPath) =>
                         path.join(path.dirname(pkgJsonPath), 'pnpm-lock.yaml')
                     )
                     .filter(existsSync)
-                    .map(pkgJsonPath =>
+                    .map((pkgJsonPath) =>
                         path.relative(process.cwd(), pkgJsonPath)
                     ),
             ],
@@ -124,7 +124,7 @@ const handler = async ({ publish }) => {
      * https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md
      */
     const options = {
-        plugins: plugins.filter(n => !!n),
+        plugins: plugins.filter((n) => !!n),
     }
 
     const config = {

@@ -4,7 +4,7 @@ const {
     checkMainTranslationFilePresent,
 } = require('./checkRequirements')
 
-const fileIsOldTranslationFile = fileName => fileName.match(/\.properties$/)
+const fileIsOldTranslationFile = (fileName) => fileName.match(/\.properties$/)
 
 /**
  * @param {Object} args

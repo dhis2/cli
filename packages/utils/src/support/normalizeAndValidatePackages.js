@@ -1,11 +1,11 @@
 const fs = require('fs')
 const path = require('path')
 
-const normalizeAndValidatePackages = packages => {
+const normalizeAndValidatePackages = (packages) => {
     const errors = []
     const validPackages = []
 
-    packages.forEach(packagePath => {
+    packages.forEach((packagePath) => {
         let pkgJsonPath
         if (!fs.existsSync(packagePath)) {
             errors.push(`Path ${packagePath} does not exist`)

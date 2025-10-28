@@ -3,7 +3,7 @@ const { reporter } = require('@dhis2/cli-helpers-engine')
 const { groupGlobalOptions } = require('@dhis2/cli-helpers-engine')
 const { input, select } = require('@inquirer/prompts')
 
-process.on('uncaughtException', error => {
+process.on('uncaughtException', (error) => {
     if (error instanceof Error && error.name === 'ExitPromptError') {
         console.log('👋 until next time!')
     } else {
@@ -18,10 +18,10 @@ process.on('uncaughtException', error => {
 // * 3.
 const command = {
     command: '[app]',
-    builder: yargs => {
+    builder: (yargs) => {
         groupGlobalOptions(yargs)
     },
-    handler: async argv => {
+    handler: async (argv) => {
         let name = argv._[0] || argv.name
 
         const interactive = argv.i || argv.interactive
