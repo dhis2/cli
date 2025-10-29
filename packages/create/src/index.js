@@ -76,7 +76,6 @@ const command = {
             ...argv,
             pnpm,
             npm,
-            reporter,
             typeScript,
             name,
         })
