@@ -1,3 +1,10 @@
+# [5.2.0-alpha.17](https://github.com/dhis2/cli/compare/v5.2.0-alpha.16...v5.2.0-alpha.17) (2025-10-29)
+
+
+### Bug Fixes
+
+* rebuild with latest alpha version of app-scripts ([991add9](https://github.com/dhis2/cli/commit/991add9cf1082f80050008d195994dc639d6c7df))
+
 # [5.2.0-alpha.16](https://github.com/dhis2/cli/compare/v5.2.0-alpha.15...v5.2.0-alpha.16) (2025-10-29)
 
 
