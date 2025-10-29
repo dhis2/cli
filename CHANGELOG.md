@@ -1,3 +1,17 @@
+# [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-10-29)
+
+
+### Bug Fixes
+
+* add help message in CLI ([2915676](https://github.com/dhis2/cli/commit/2915676386b0080f62c14082c2234c3fe341d607))
+* update cli-style version in cli ([2e5a294](https://github.com/dhis2/cli/commit/2e5a2947cfabe86df889f8f0892480030dccfb23))
+* update new-app command so that it shares global options with d2 app scripts ([5a48538](https://github.com/dhis2/cli/commit/5a48538acef9d8e4d39f264640c6e281b8121b91))
+
+
+### Features
+
+* add wizard question for npm create ([2c99073](https://github.com/dhis2/cli/commit/2c99073eddafa157bce8d12e26f30728caeeea9b))
+
 # [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-09-10)
 
 
