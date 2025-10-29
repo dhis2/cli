@@ -11,8 +11,8 @@
     },
     "dependencies": {
         "@dhis2/cli-app-scripts": "alpha",
-        "@inquirer/prompts": "^7.8.4",
-        "yargs": "^18.0.0"
+        "@dhis2/cli-helpers-engine": "^3.2.2",
+        "@inquirer/prompts": "^7.8.4"
     },
     "private": false,
     "keywords": [],

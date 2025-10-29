@@ -1,6 +1,5 @@
 const initCommand = require('@dhis2/cli-app-scripts/init')
 const { reporter } = require('@dhis2/cli-helpers-engine')
-const { groupGlobalOptions } = require('@dhis2/cli-helpers-engine')
 const { input, select } = require('@inquirer/prompts')
 
 process.on('uncaughtException', (error) => {
@@ -12,18 +11,21 @@ process.on('uncaughtException', (error) => {
     }
 })
 
-// ToDo:
-// * 1. proxy debug and rest to init command
-// * 2. include build and lint scripts in template?
-// * 3.
+const commandHandler = {
+    command: '*', // default command
+}
+
 const command = {
     command: '[app]',
     builder: (yargs) => {
-        groupGlobalOptions(yargs)
+        yargs.command(commandHandler)
     },
     handler: async (argv) => {
         let name = argv._[0] || argv.name
 
+        reporter.debug(
+            `running "npm create @dhis2" (or npx) command which is an alias to "d2 app scripts init"`
+        )
         const interactive = argv.i || argv.interactive
 
         if (!name) {
