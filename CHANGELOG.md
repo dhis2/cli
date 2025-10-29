@@ -1,3 +1,10 @@
+# [5.2.0-alpha.18](https://github.com/dhis2/cli/compare/v5.2.0-alpha.17...v5.2.0-alpha.18) (2025-10-29)
+
+
+### Bug Fixes
+
+* update the CLI interface ([d091055](https://github.com/dhis2/cli/commit/d091055bc1a40e7d4caec1ede80715e2e1265834))
+
 # [5.2.0-alpha.17](https://github.com/dhis2/cli/compare/v5.2.0-alpha.16...v5.2.0-alpha.17) (2025-10-29)
 
 
