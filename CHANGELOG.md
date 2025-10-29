@@ -1,3 +1,10 @@
+# [5.2.0-alpha.16](https://github.com/dhis2/cli/compare/v5.2.0-alpha.15...v5.2.0-alpha.16) (2025-10-29)
+
+
+### Bug Fixes
+
+* revert passing reporter ([99f92e3](https://github.com/dhis2/cli/commit/99f92e3bb5eb78944c259c6476d782cc09b4d165))
+
 # [5.2.0-alpha.15](https://github.com/dhis2/cli/compare/v5.2.0-alpha.14...v5.2.0-alpha.15) (2025-10-29)
 
 
