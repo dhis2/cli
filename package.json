@@ -20,7 +20,8 @@
         "build:docs": "mkdir -p dist && cp docs/index.html dist/",
         "start": "d2-utils-docsite serve ./docs -o ./dist",
         "test": "tape packages/**/tests/*.js",
-        "format": "d2-style apply"
+        "format": "d2-style apply",
+        "lint": "d2-style check"
     },
     "d2": {
         "docsite": {
