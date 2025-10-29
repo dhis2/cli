@@ -44,30 +44,15 @@ importers:
 
   packages/create:
     dependencies:
+      '@dhis2/cli-app-scripts':
+        specifier: alpha
+        version: 12.8.0-alpha.1(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
       '@dhis2/cli-helpers-engine':
-        specifier: ^3.2.1
+        specifier: ^3.2.2
         version: 3.2.2
-      '@dhis2/cli-helpers-template':
-        specifier: ^3.0.0
-        version: 3.0.0
-      fs-extra:
-        specifier: ^9.0.0
-        version: 9.1.0
-      handlebars:
-        specifier: ^4.7.3
-        version: 4.7.8
-      inquirer:
-        specifier: ^7.1.0
-        version: 7.3.3
-
-  packages/create-app:
-    dependencies:
-      '@dhis2/cli-create':
-        specifier: 5.2.0-alpha.14
-        version: 5.2.0-alpha.14
-      '@dhis2/cli-helpers-engine':
-        specifier: ^3.2.1
-        version: 3.2.2
+      '@inquirer/prompts':
+        specifier: ^7.8.4
+        version: 7.8.4(@types/node@24.0.4)
 
   packages/main:
     dependencies:
@@ -98,18 +83,6 @@ importers:
       inquirer:
         specifier: ^7.1.0
         version: 7.3.3
-
-  packages/new-app:
-    dependencies:
-      '@dhis2/cli-app-scripts':
-        specifier: alpha
-        version: 12.8.0-alpha.1(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
-      '@dhis2/cli-helpers-engine':
-        specifier: ^3.2.2
-        version: 3.2.2
-      '@inquirer/prompts':
-        specifier: ^7.8.4
-        version: 7.8.4(@types/node@24.0.4)
 
   packages/utils:
     dependencies:
@@ -5507,6 +5480,7 @@ packages:
     resolution: {integrity: sha512-t0etAxTUk1w5MYdNOkZBZ8rvYYN5iL+2dHCCx/DpkFm/bW28M6y5nUS83D4XdZiHy35Fpaw6LBb+F88fHZnVCw==}
     engines: {node: '>=8.17.0'}
     hasBin: true
+    bundledDependencies: []
 
   jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
