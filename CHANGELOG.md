@@ -1,3 +1,10 @@
+# [5.2.0-alpha.15](https://github.com/dhis2/cli/compare/v5.2.0-alpha.14...v5.2.0-alpha.15) (2025-10-29)
+
+
+### Bug Fixes
+
+* force alpha release ([6c12b2e](https://github.com/dhis2/cli/commit/6c12b2e8a110d9ecf1689c6c2b6b0ae1d40a006d))
+
 # [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-10-29)
 
 
