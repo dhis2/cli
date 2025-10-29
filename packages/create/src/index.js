@@ -72,7 +72,14 @@ const command = {
             typeScript = template === 'ts'
         }
 
-        await initCommand.handler({ ...argv, pnpm, npm, typeScript, name })
+        await initCommand.handler({
+            ...argv,
+            pnpm,
+            npm,
+            reporter,
+            typeScript,
+            name,
+        })
     },
 }
 
