@@ -4,6 +4,27 @@
 ### Bug Fixes
 
 * add help message in CLI ([2915676](https://github.com/dhis2/cli/commit/2915676386b0080f62c14082c2234c3fe341d607))
+* force alpha release ([ccfb0ae](https://github.com/dhis2/cli/commit/ccfb0ae013d4619d3466a5346720799bfaffdf5f))
+* force alpha release ([63d78d3](https://github.com/dhis2/cli/commit/63d78d3982c54be5e67ecdf9e05ffc406896d52b))
+* force another alpha release ([17ac311](https://github.com/dhis2/cli/commit/17ac311aedd09a0e6f0794f8a341a3bc6f71193a))
+* pass reporter explicitly to app-scripts ([ca96146](https://github.com/dhis2/cli/commit/ca96146a8801d48924c17ecdd58ec87a1ade4d7c))
+* rename folder for @dhis2/create package ([6ae3e60](https://github.com/dhis2/cli/commit/6ae3e603a0d420c62cdd7c84412f2808628ce824))
+* update cli-style version in cli ([2e5a294](https://github.com/dhis2/cli/commit/2e5a2947cfabe86df889f8f0892480030dccfb23))
+* update new-app command so that it shares global options with d2 app scripts ([5a48538](https://github.com/dhis2/cli/commit/5a48538acef9d8e4d39f264640c6e281b8121b91))
+
+
+### Features
+
+* add wizard question for npm create ([2c99073](https://github.com/dhis2/cli/commit/2c99073eddafa157bce8d12e26f30728caeeea9b))
+* force alpha release ([624a58e](https://github.com/dhis2/cli/commit/624a58eec1a99cb9d841842e1026e650641bcea9))
+* force alpha release ([8eff559](https://github.com/dhis2/cli/commit/8eff5595c96533621e0783aa789793b0546f2621))
+
+# [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-10-29)
+
+
+### Bug Fixes
+
+* add help message in CLI ([2915676](https://github.com/dhis2/cli/commit/2915676386b0080f62c14082c2234c3fe341d607))
 * force alpha release ([63d78d3](https://github.com/dhis2/cli/commit/63d78d3982c54be5e67ecdf9e05ffc406896d52b))
 * force another alpha release ([17ac311](https://github.com/dhis2/cli/commit/17ac311aedd09a0e6f0794f8a341a3bc6f71193a))
 * pass reporter explicitly to app-scripts ([ca96146](https://github.com/dhis2/cli/commit/ca96146a8801d48924c17ecdd58ec87a1ade4d7c))
