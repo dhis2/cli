@@ -1,5 +1,5 @@
 const initCommand = require('@dhis2/cli-app-scripts/init')
-const { reporter } = require('@dhis2/cli-helpers-engine')
+const { reporter, chalk } = require('@dhis2/cli-helpers-engine')
 const { input, select } = require('@inquirer/prompts')
 
 process.on('uncaughtException', (error) => {
@@ -24,9 +24,9 @@ const command = {
         let name = argv._[0] || argv.name
 
         reporter.debug(
-            `running "npm create @dhis2" (or npx) command which is an alias to "d2 app scripts init"`
+            `running "npm create @dhis2/app" (or npx) command which is an alias to "d2 app scripts init"`
         )
-        const interactive = argv.i || argv.interactive
+        const useDefauls = argv.yes
 
         if (!name) {
             name = await input({
@@ -40,8 +40,8 @@ const command = {
 
         let pnpm = true
         let npm = false
-        let typeScript = false
-        if (interactive) {
+        let typeScript = argv.typescript || true
+        if (!useDefauls) {
             const packageManager = await select({
                 message: 'Select a package manager',
                 default: 'pnpm',
@@ -57,7 +57,7 @@ const command = {
 
             const template = await select({
                 message: 'Select a template',
-                default: 'js',
+                default: 'ts',
                 choices: [
                     { name: 'JavaScript', value: 'js' },
                     { name: 'TypeScript', value: 'ts' },
@@ -70,6 +70,16 @@ const command = {
             })
 
             typeScript = template === 'ts'
+        }
+
+        if (useDefauls) {
+            reporter.info(
+                chalk.greenBright(
+                    `These default options will be used to create a new app: \n${chalk.greenBright(
+                        '- Language: TypeScript\n- Package manager: pnpm'
+                    )}`
+                )
+            )
         }
 
         await initCommand.handler({

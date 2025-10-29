@@ -17,8 +17,8 @@ const command = namespace('d2', {
                     `Check the D2 CLI documentation: ${chalk.underline(
                         'https://developers.dhis2.org/docs/cli'
                     )}. To create new web apps, you can also now run ${chalk.cyan(
-                        'npm create @dhis2@alpha'
-                    )} or ${chalk.cyan('npx @dhis2/create@alpha')}.\n`
+                        'npm create @dhis2/app'
+                    )}.\n`
                 )
             )
         }
