@@ -1,7 +1,7 @@
 const { existsSync } = require('fs')
 const path = require('path')
 const { reporter } = require('@dhis2/cli-helpers-engine')
-const semanticRelease = require('semantic-release')
+const semanticRelease = require('semantic-release').default
 const getWorkspacePackages = require('../support/getWorkspacePackages')
 
 const packageIsPublishable = (pkgJsonPath) => {
@@ -32,7 +32,6 @@ function publisher(target = '', packages) {
                     '@semantic-release/npm',
                     {
                         pkgRoot: path.dirname(pkgJsonPath),
-                        npmPublish: false,
                     },
                 ]
             })
@@ -77,7 +76,7 @@ const handler = async ({ publish }) => {
                 ),
                 packages
                     .map((pkgJsonPath) =>
-                        path.join(path.dirname(pkgJsonPath), 'yarn.lock')
+                        path.join(path.dirname(pkgJsonPath), 'pnpm-lock.yaml')
                     )
                     .filter(existsSync)
                     .map((pkgJsonPath) =>
@@ -89,6 +88,13 @@ const handler = async ({ publish }) => {
         },
     ]
 
+    const updateLockFile = [
+        '@semantic-release/exec',
+        {
+            publishCmd:
+                'pnpm install --lockfile-only && git commit -am "chore: bump pnpm-lock.yml ${nextRelease.version} [skip ci]" && git push',
+        },
+    ]
     const deferPlugin = require('../support/semantic-release-defer-release')
 
     // Order matters here!
@@ -101,6 +107,15 @@ const handler = async ({ publish }) => {
         ...publisher(publish, packages),
         gitPlugin,
         '@semantic-release/github',
+        updateLockFile,
+        [
+            '@semantic-release/git',
+            {
+                assets: ['pnpm-lock.yaml'],
+                message:
+                    'chore: bump pnpm-lock.yml ${nextRelease.version} [skip ci]',
+            },
+        ],
     ]
 
     /* rely on defaults for configuration, except for plugins as they

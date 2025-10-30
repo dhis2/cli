@@ -1,3 +1,328 @@
+# [5.2.0-alpha.19](https://github.com/dhis2/cli/compare/v5.2.0-alpha.18...v5.2.0-alpha.19) (2025-10-30)
+
+
+### Bug Fixes
+
+* update CLI help ([04962c7](https://github.com/dhis2/cli/commit/04962c7054a8f26da8d713e28d466c01ed845521))
+
+# [5.2.0-alpha.18](https://github.com/dhis2/cli/compare/v5.2.0-alpha.17...v5.2.0-alpha.18) (2025-10-29)
+
+
+### Bug Fixes
+
+* update the CLI interface ([d091055](https://github.com/dhis2/cli/commit/d091055bc1a40e7d4caec1ede80715e2e1265834))
+
+# [5.2.0-alpha.17](https://github.com/dhis2/cli/compare/v5.2.0-alpha.16...v5.2.0-alpha.17) (2025-10-29)
+
+
+### Bug Fixes
+
+* rebuild with latest alpha version of app-scripts ([991add9](https://github.com/dhis2/cli/commit/991add9cf1082f80050008d195994dc639d6c7df))
+
+# [5.2.0-alpha.16](https://github.com/dhis2/cli/compare/v5.2.0-alpha.15...v5.2.0-alpha.16) (2025-10-29)
+
+
+### Bug Fixes
+
+* revert passing reporter ([99f92e3](https://github.com/dhis2/cli/commit/99f92e3bb5eb78944c259c6476d782cc09b4d165))
+
+# [5.2.0-alpha.15](https://github.com/dhis2/cli/compare/v5.2.0-alpha.14...v5.2.0-alpha.15) (2025-10-29)
+
+
+### Bug Fixes
+
+* force alpha release ([6c12b2e](https://github.com/dhis2/cli/commit/6c12b2e8a110d9ecf1689c6c2b6b0ae1d40a006d))
+
+# [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-10-29)
+
+
+### Bug Fixes
+
+* add help message in CLI ([2915676](https://github.com/dhis2/cli/commit/2915676386b0080f62c14082c2234c3fe341d607))
+* force alpha release ([ccfb0ae](https://github.com/dhis2/cli/commit/ccfb0ae013d4619d3466a5346720799bfaffdf5f))
+* force alpha release ([63d78d3](https://github.com/dhis2/cli/commit/63d78d3982c54be5e67ecdf9e05ffc406896d52b))
+* force another alpha release ([17ac311](https://github.com/dhis2/cli/commit/17ac311aedd09a0e6f0794f8a341a3bc6f71193a))
+* pass reporter explicitly to app-scripts ([ca96146](https://github.com/dhis2/cli/commit/ca96146a8801d48924c17ecdd58ec87a1ade4d7c))
+* rename folder for @dhis2/create package ([6ae3e60](https://github.com/dhis2/cli/commit/6ae3e603a0d420c62cdd7c84412f2808628ce824))
+* update cli-style version in cli ([2e5a294](https://github.com/dhis2/cli/commit/2e5a2947cfabe86df889f8f0892480030dccfb23))
+* update new-app command so that it shares global options with d2 app scripts ([5a48538](https://github.com/dhis2/cli/commit/5a48538acef9d8e4d39f264640c6e281b8121b91))
+
+
+### Features
+
+* add wizard question for npm create ([2c99073](https://github.com/dhis2/cli/commit/2c99073eddafa157bce8d12e26f30728caeeea9b))
+* force alpha release ([624a58e](https://github.com/dhis2/cli/commit/624a58eec1a99cb9d841842e1026e650641bcea9))
+* force alpha release ([8eff559](https://github.com/dhis2/cli/commit/8eff5595c96533621e0783aa789793b0546f2621))
+
+# [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-10-29)
+
+
+### Bug Fixes
+
+* add help message in CLI ([2915676](https://github.com/dhis2/cli/commit/2915676386b0080f62c14082c2234c3fe341d607))
+* force alpha release ([63d78d3](https://github.com/dhis2/cli/commit/63d78d3982c54be5e67ecdf9e05ffc406896d52b))
+* force another alpha release ([17ac311](https://github.com/dhis2/cli/commit/17ac311aedd09a0e6f0794f8a341a3bc6f71193a))
+* pass reporter explicitly to app-scripts ([ca96146](https://github.com/dhis2/cli/commit/ca96146a8801d48924c17ecdd58ec87a1ade4d7c))
+* rename folder for @dhis2/create package ([6ae3e60](https://github.com/dhis2/cli/commit/6ae3e603a0d420c62cdd7c84412f2808628ce824))
+* update cli-style version in cli ([2e5a294](https://github.com/dhis2/cli/commit/2e5a2947cfabe86df889f8f0892480030dccfb23))
+* update new-app command so that it shares global options with d2 app scripts ([5a48538](https://github.com/dhis2/cli/commit/5a48538acef9d8e4d39f264640c6e281b8121b91))
+
+
+### Features
+
+* add wizard question for npm create ([2c99073](https://github.com/dhis2/cli/commit/2c99073eddafa157bce8d12e26f30728caeeea9b))
+* force alpha release ([624a58e](https://github.com/dhis2/cli/commit/624a58eec1a99cb9d841842e1026e650641bcea9))
+* force alpha release ([8eff559](https://github.com/dhis2/cli/commit/8eff5595c96533621e0783aa789793b0546f2621))
+
+# [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-10-29)
+
+
+### Bug Fixes
+
+* add help message in CLI ([2915676](https://github.com/dhis2/cli/commit/2915676386b0080f62c14082c2234c3fe341d607))
+* force another alpha release ([17ac311](https://github.com/dhis2/cli/commit/17ac311aedd09a0e6f0794f8a341a3bc6f71193a))
+* pass reporter explicitly to app-scripts ([ca96146](https://github.com/dhis2/cli/commit/ca96146a8801d48924c17ecdd58ec87a1ade4d7c))
+* rename folder for @dhis2/create package ([6ae3e60](https://github.com/dhis2/cli/commit/6ae3e603a0d420c62cdd7c84412f2808628ce824))
+* update cli-style version in cli ([2e5a294](https://github.com/dhis2/cli/commit/2e5a2947cfabe86df889f8f0892480030dccfb23))
+* update new-app command so that it shares global options with d2 app scripts ([5a48538](https://github.com/dhis2/cli/commit/5a48538acef9d8e4d39f264640c6e281b8121b91))
+
+
+### Features
+
+* add wizard question for npm create ([2c99073](https://github.com/dhis2/cli/commit/2c99073eddafa157bce8d12e26f30728caeeea9b))
+* force alpha release ([624a58e](https://github.com/dhis2/cli/commit/624a58eec1a99cb9d841842e1026e650641bcea9))
+* force alpha release ([8eff559](https://github.com/dhis2/cli/commit/8eff5595c96533621e0783aa789793b0546f2621))
+
+# [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-10-29)
+
+
+### Bug Fixes
+
+* add help message in CLI ([2915676](https://github.com/dhis2/cli/commit/2915676386b0080f62c14082c2234c3fe341d607))
+* force another alpha release ([17ac311](https://github.com/dhis2/cli/commit/17ac311aedd09a0e6f0794f8a341a3bc6f71193a))
+* pass reporter explicitly to app-scripts ([ca96146](https://github.com/dhis2/cli/commit/ca96146a8801d48924c17ecdd58ec87a1ade4d7c))
+* rename folder for @dhis2/create package ([6ae3e60](https://github.com/dhis2/cli/commit/6ae3e603a0d420c62cdd7c84412f2808628ce824))
+* update cli-style version in cli ([2e5a294](https://github.com/dhis2/cli/commit/2e5a2947cfabe86df889f8f0892480030dccfb23))
+* update new-app command so that it shares global options with d2 app scripts ([5a48538](https://github.com/dhis2/cli/commit/5a48538acef9d8e4d39f264640c6e281b8121b91))
+
+
+### Features
+
+* add wizard question for npm create ([2c99073](https://github.com/dhis2/cli/commit/2c99073eddafa157bce8d12e26f30728caeeea9b))
+* force alpha release ([8eff559](https://github.com/dhis2/cli/commit/8eff5595c96533621e0783aa789793b0546f2621))
+
+# [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-10-29)
+
+
+### Bug Fixes
+
+* add help message in CLI ([2915676](https://github.com/dhis2/cli/commit/2915676386b0080f62c14082c2234c3fe341d607))
+* force another alpha release ([17ac311](https://github.com/dhis2/cli/commit/17ac311aedd09a0e6f0794f8a341a3bc6f71193a))
+* pass reporter explicitly to app-scripts ([ca96146](https://github.com/dhis2/cli/commit/ca96146a8801d48924c17ecdd58ec87a1ade4d7c))
+* rename folder for @dhis2/create package ([6ae3e60](https://github.com/dhis2/cli/commit/6ae3e603a0d420c62cdd7c84412f2808628ce824))
+* update cli-style version in cli ([2e5a294](https://github.com/dhis2/cli/commit/2e5a2947cfabe86df889f8f0892480030dccfb23))
+* update new-app command so that it shares global options with d2 app scripts ([5a48538](https://github.com/dhis2/cli/commit/5a48538acef9d8e4d39f264640c6e281b8121b91))
+
+
+### Features
+
+* add wizard question for npm create ([2c99073](https://github.com/dhis2/cli/commit/2c99073eddafa157bce8d12e26f30728caeeea9b))
+
+# [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-10-29)
+
+
+### Bug Fixes
+
+* add help message in CLI ([2915676](https://github.com/dhis2/cli/commit/2915676386b0080f62c14082c2234c3fe341d607))
+* force another alpha release ([17ac311](https://github.com/dhis2/cli/commit/17ac311aedd09a0e6f0794f8a341a3bc6f71193a))
+* rename folder for @dhis2/create package ([6ae3e60](https://github.com/dhis2/cli/commit/6ae3e603a0d420c62cdd7c84412f2808628ce824))
+* update cli-style version in cli ([2e5a294](https://github.com/dhis2/cli/commit/2e5a2947cfabe86df889f8f0892480030dccfb23))
+* update new-app command so that it shares global options with d2 app scripts ([5a48538](https://github.com/dhis2/cli/commit/5a48538acef9d8e4d39f264640c6e281b8121b91))
+
+
+### Features
+
+* add wizard question for npm create ([2c99073](https://github.com/dhis2/cli/commit/2c99073eddafa157bce8d12e26f30728caeeea9b))
+
+# [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-10-29)
+
+
+### Bug Fixes
+
+* add help message in CLI ([2915676](https://github.com/dhis2/cli/commit/2915676386b0080f62c14082c2234c3fe341d607))
+* rename folder for @dhis2/create package ([6ae3e60](https://github.com/dhis2/cli/commit/6ae3e603a0d420c62cdd7c84412f2808628ce824))
+* update cli-style version in cli ([2e5a294](https://github.com/dhis2/cli/commit/2e5a2947cfabe86df889f8f0892480030dccfb23))
+* update new-app command so that it shares global options with d2 app scripts ([5a48538](https://github.com/dhis2/cli/commit/5a48538acef9d8e4d39f264640c6e281b8121b91))
+
+
+### Features
+
+* add wizard question for npm create ([2c99073](https://github.com/dhis2/cli/commit/2c99073eddafa157bce8d12e26f30728caeeea9b))
+
+# [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-10-29)
+
+
+### Bug Fixes
+
+* add help message in CLI ([2915676](https://github.com/dhis2/cli/commit/2915676386b0080f62c14082c2234c3fe341d607))
+* update cli-style version in cli ([2e5a294](https://github.com/dhis2/cli/commit/2e5a2947cfabe86df889f8f0892480030dccfb23))
+* update new-app command so that it shares global options with d2 app scripts ([5a48538](https://github.com/dhis2/cli/commit/5a48538acef9d8e4d39f264640c6e281b8121b91))
+
+
+### Features
+
+* add wizard question for npm create ([2c99073](https://github.com/dhis2/cli/commit/2c99073eddafa157bce8d12e26f30728caeeea9b))
+
+# [5.2.0-alpha.14](https://github.com/dhis2/cli/compare/v5.2.0-alpha.13...v5.2.0-alpha.14) (2025-09-10)
+
+
+### Features
+
+* add wizard question for npm create ([2c99073](https://github.com/dhis2/cli/commit/2c99073eddafa157bce8d12e26f30728caeeea9b))
+
+# [5.2.0-alpha.13](https://github.com/dhis2/cli/compare/v5.2.0-alpha.12...v5.2.0-alpha.13) (2025-07-25)
+
+
+### Bug Fixes
+
+* scaffold command for npx create ([02d8906](https://github.com/dhis2/cli/commit/02d8906f3afd63cbfbb82d1bb9464d1b77ada6a3))
+
+# [5.2.0-alpha.12](https://github.com/dhis2/cli/compare/v5.2.0-alpha.11...v5.2.0-alpha.12) (2025-07-24)
+
+
+### Bug Fixes
+
+* force alpha release to npm ([34db242](https://github.com/dhis2/cli/commit/34db242289510684d1a10f9090529eb79391cfb3))
+
+# [5.2.0-alpha.11](https://github.com/dhis2/cli/compare/v5.2.0-alpha.10...v5.2.0-alpha.11) (2025-07-23)
+
+
+### Bug Fixes
+
+* point to alpha cli-app-scripts ([e2f1bff](https://github.com/dhis2/cli/commit/e2f1bff9ff2ed7dcba7945d67c68dc3573245e45))
+
+# [5.2.0-alpha.10](https://github.com/dhis2/cli/compare/v5.2.0-alpha.9...v5.2.0-alpha.10) (2025-07-14)
+
+
+### Bug Fixes
+
+* try to update pnpm-lock ([48a185f](https://github.com/dhis2/cli/commit/48a185f132be913ac3734170e85fb03e27a83423))
+
+# [5.2.0-alpha.9](https://github.com/dhis2/cli/compare/v5.2.0-alpha.8...v5.2.0-alpha.9) (2025-07-14)
+
+
+### Bug Fixes
+
+* try to update pnpm-lock ([e8d911e](https://github.com/dhis2/cli/commit/e8d911e23de5bf5459823b8b4eb0704647f76d01))
+
+# [5.2.0-alpha.8](https://github.com/dhis2/cli/compare/v5.2.0-alpha.7...v5.2.0-alpha.8) (2025-07-14)
+
+
+### Bug Fixes
+
+* try to update pnpm-lock ([457042b](https://github.com/dhis2/cli/commit/457042b3f05896f325d11c57490b63bfd5dc34a1))
+
+# [5.2.0-alpha.7](https://github.com/dhis2/cli/compare/v5.2.0-alpha.6...v5.2.0-alpha.7) (2025-07-14)
+
+
+### Bug Fixes
+
+* force alpha release to npm ([a4d9422](https://github.com/dhis2/cli/commit/a4d942234e6c7d413eaed0207963c10a5cd6fb6e))
+* try to update pnpm-lock ([00b9c7d](https://github.com/dhis2/cli/commit/00b9c7da085b79838335fb315e03022c1635af67))
+* try to update pnpm-lock ([ab438ae](https://github.com/dhis2/cli/commit/ab438aec58b87e0bf7fb9351f8dc03917fe92a11))
+
+# [5.2.0-alpha.7](https://github.com/dhis2/cli/compare/v5.2.0-alpha.6...v5.2.0-alpha.7) (2025-07-14)
+
+
+### Bug Fixes
+
+* try to update pnpm-lock ([00b9c7d](https://github.com/dhis2/cli/commit/00b9c7da085b79838335fb315e03022c1635af67))
+* try to update pnpm-lock ([ab438ae](https://github.com/dhis2/cli/commit/ab438aec58b87e0bf7fb9351f8dc03917fe92a11))
+
+# [5.2.0-alpha.7](https://github.com/dhis2/cli/compare/v5.2.0-alpha.6...v5.2.0-alpha.7) (2025-07-14)
+
+
+### Bug Fixes
+
+* try to update pnpm-lock ([ab438ae](https://github.com/dhis2/cli/commit/ab438aec58b87e0bf7fb9351f8dc03917fe92a11))
+
+# [5.2.0-alpha.6](https://github.com/dhis2/cli/compare/v5.2.0-alpha.5...v5.2.0-alpha.6) (2025-07-14)
+
+
+### Bug Fixes
+
+* revert version for testing ([5ad38f5](https://github.com/dhis2/cli/commit/5ad38f5fb34a4d4603d5afef130e3f14ad2fc065))
+* revert version for testing ([74bbd54](https://github.com/dhis2/cli/commit/74bbd544ad10d9d816758c106607190ef01576ff))
+* revert version for testing ([c756c70](https://github.com/dhis2/cli/commit/c756c70411cacd3ee3d259a8fe358d2b071a7c12))
+* **utils-release:** update pnpm lock file automatically ([398dcc9](https://github.com/dhis2/cli/commit/398dcc9f1cc93a5203e7ea47733665e191033a6a))
+
+# [5.2.0-alpha.6](https://github.com/dhis2/cli/compare/v5.2.0-alpha.5...v5.2.0-alpha.6) (2025-07-14)
+
+
+### Bug Fixes
+
+* revert version for testing ([c756c70](https://github.com/dhis2/cli/commit/c756c70411cacd3ee3d259a8fe358d2b071a7c12))
+* **utils-release:** update pnpm lock file automatically ([398dcc9](https://github.com/dhis2/cli/commit/398dcc9f1cc93a5203e7ea47733665e191033a6a))
+
+# [5.2.0-alpha.6](https://github.com/dhis2/cli/compare/v5.2.0-alpha.5...v5.2.0-alpha.6) (2025-07-14)
+
+
+### Bug Fixes
+
+* **utils-release:** update pnpm lock file automatically ([398dcc9](https://github.com/dhis2/cli/commit/398dcc9f1cc93a5203e7ea47733665e191033a6a))
+
+# [5.2.0-alpha.5](https://github.com/dhis2/cli/compare/v5.2.0-alpha.4...v5.2.0-alpha.5) (2025-07-14)
+
+
+### Bug Fixes
+
+* **create:** fix path to bin ([b42cacb](https://github.com/dhis2/cli/commit/b42cacbf05dc8f3e2d1c803a9984ef4fedbf2a30))
+
+# [5.2.0-alpha.4](https://github.com/dhis2/cli/compare/v5.2.0-alpha.3...v5.2.0-alpha.4) (2025-07-14)
+
+
+### Bug Fixes
+
+* **create:** initial dhis2/create template ([7a762e7](https://github.com/dhis2/cli/commit/7a762e71ef453ae046cc01e5e79a35ab4342d578))
+
+# [5.2.0-alpha.3](https://github.com/dhis2/cli/compare/v5.2.0-alpha.2...v5.2.0-alpha.3) (2025-07-14)
+
+
+### Bug Fixes
+
+* force alpha release to npm ([8a07187](https://github.com/dhis2/cli/commit/8a07187c076fcaa6f1bb493017bdf6c929806fb7))
+* update pnpm lock file before release ([39809f0](https://github.com/dhis2/cli/commit/39809f01dc811b1b5c85f0a653c868bb61a41c62))
+
+# [5.2.0-alpha.2](https://github.com/dhis2/cli/compare/v5.2.0-alpha.1...v5.2.0-alpha.2) (2025-07-14)
+
+
+### Bug Fixes
+
+* force alpha release to npm ([60a7517](https://github.com/dhis2/cli/commit/60a751735b21fc1378b7c2e9852bc369514b0952))
+* publish to npm ([9d5d329](https://github.com/dhis2/cli/commit/9d5d329e4f7087004108b9ca50ae7e883d4248e3))
+* update pnpm lock file before release ([34431a5](https://github.com/dhis2/cli/commit/34431a5d4b8806bc6752c1c6e477d545dfd3a1b0))
+
+# [5.2.0-alpha.2](https://github.com/dhis2/cli/compare/v5.2.0-alpha.1...v5.2.0-alpha.2) (2025-07-14)
+
+
+### Bug Fixes
+
+* publish to npm ([9d5d329](https://github.com/dhis2/cli/commit/9d5d329e4f7087004108b9ca50ae7e883d4248e3))
+
+# [5.2.0-alpha.1](https://github.com/dhis2/cli/compare/v5.1.1-alpha.1...v5.2.0-alpha.1) (2025-07-14)
+
+
+### Features
+
+* first attempt using pnpm ([982f7ac](https://github.com/dhis2/cli/commit/982f7ac6d8e1acc14ff5570fa377e1fb5b9e4046))
+
+## [5.1.1-alpha.1](https://github.com/dhis2/cli/compare/v5.1.0...v5.1.1-alpha.1) (2025-07-10)
+
+
+### Bug Fixes
+
+* point to beta cli-app-scripts ([f7c0899](https://github.com/dhis2/cli/commit/f7c089959e42f6c1016a73f5dd4e07506d874233))
+
 # [5.1.0](https://github.com/dhis2/cli/compare/v5.0.1...v5.1.0) (2025-05-12)
 
 

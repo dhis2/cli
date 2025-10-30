@@ -6,7 +6,7 @@
     "engines": {
         "node": ">=12"
     },
-    "version": "5.1.0",
+    "version": "5.2.0-alpha.19",
     "main": "src/index.js",
     "author": "Austin McGee <austin@dhis2.org>",
     "contributors": [
@@ -15,7 +15,7 @@
     "license": "BSD-3-Clause",
     "private": false,
     "dependencies": {
-        "@dhis2/cli-app-scripts": "^12.5.1",
+        "@dhis2/cli-app-scripts": "alpha",
         "@dhis2/cli-helpers-engine": "^3.2.1"
     },
     "publishConfig": {

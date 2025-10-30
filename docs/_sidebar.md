@@ -1,4 +1,5 @@
 -   [**Getting Started**](getting-started)
+-   -   [Initialize a new web application](commands/create-app)
 -   **Commands**
 -   -   [`d2`](commands/d2)
 -   -   [`d2 cluster`](commands/d2-cluster)
