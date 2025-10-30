@@ -13,6 +13,15 @@ process.on('uncaughtException', (error) => {
 
 const commandHandler = {
     command: '*', // default command
+    description: 'Initialize a new DHIS2 web application',
+    builder: {
+        yes: {
+            description:
+                'Skips interactive setup questions, accepting default options to create the new app (TypeScript, pnpm)',
+            type: 'boolean',
+            default: false,
+        },
+    },
 }
 
 const command = {
