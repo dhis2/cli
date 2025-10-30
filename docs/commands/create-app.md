@@ -25,6 +25,6 @@ npx @dhis2/create-app --yes
 
 By passing `--yes` argument, this will create a new DHIS2 web application using the default options without prompting (using `pnpm` as a package manager, and `TypeScript` as the language).
 
-If you omit the `--yes` argument `pnpm create @dhis2/app project-name` then you will be prompted and guided through a wizard to choose your options.
+If you omit the `--yes` argument (`pnpm create @dhis2/app project-name`), then you will be prompted and guided through a wizard to choose your options.
 
 You can run the commands in `debug` mode to get more verbose logs by passing the `--debug` option (`pnpm create @dhis2/app project-name --debug`).
