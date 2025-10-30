@@ -1,6 +1,6 @@
 {
     "name": "@dhis2/create-app",
-    "version": "5.2.0-alpha.19",
+    "version": "5.2.0",
     "description": "",
     "main": "src/index.js",
     "bin": {

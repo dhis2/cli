@@ -1,3 +1,15 @@
+# [5.2.0](https://github.com/dhis2/cli/compare/v5.1.0...v5.2.0) (2025-10-30)
+
+
+### Bug Fixes
+
+* force a rebuild ([483f89f](https://github.com/dhis2/cli/commit/483f89f0e721c32bde2100216456e18d40ea0cbf))
+
+
+### Features
+
+* move CLI project to use pnpm and add @dhis2/create project ([#629](https://github.com/dhis2/cli/issues/629)) ([1f58f7c](https://github.com/dhis2/cli/commit/1f58f7c223ff4cb939a76c9c9dc466ea537dd18b))
+
 # [5.2.0-alpha.19](https://github.com/dhis2/cli/compare/v5.2.0-alpha.18...v5.2.0-alpha.19) (2025-10-30)
 
 
