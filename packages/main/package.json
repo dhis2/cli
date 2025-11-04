@@ -14,7 +14,6 @@
     "dependencies": {
         "@dhis2/cli-app": "5.2.0",
         "@dhis2/cli-cluster": "5.2.0",
-        "@dhis2/cli-create": "5.2.0-alpha.14",
         "@dhis2/cli-helpers-engine": "^3.2.1",
         "@dhis2/cli-style": "^10.7.9",
         "@dhis2/cli-utils": "5.2.0",

@@ -25,7 +25,6 @@ const command = namespace('d2', {
 
         yargs.command(loader('@dhis2/cli-app'))
         yargs.command(loader('@dhis2/cli-cluster'))
-        yargs.command(loader('@dhis2/cli-create'))
         yargs.command(loader('@dhis2/cli-style').command)
         yargs.command(loader('@dhis2/cli-utils'))
         yargs.commandDir('commands')

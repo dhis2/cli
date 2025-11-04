@@ -62,9 +62,6 @@ importers:
       '@dhis2/cli-cluster':
         specifier: 5.2.0
         version: 5.2.0
-      '@dhis2/cli-create':
-        specifier: 5.2.0-alpha.14
-        version: 5.2.0-alpha.14
       '@dhis2/cli-helpers-engine':
         specifier: ^3.2.1
         version: 3.2.2
@@ -1377,11 +1374,6 @@ packages:
 
   '@dhis2/cli-cluster@5.2.0':
     resolution: {integrity: sha512-2R71LXrnXPdQvi0Q5dGsb4xFhyToO2sw8Yu7i3Xunlv/ap/dY13BCuWsOtDqfgGBe0Oqwg57rZigwrw4tg6p0Q==}
-    engines: {node: '>=12'}
-    hasBin: true
-
-  '@dhis2/cli-create@5.2.0-alpha.14':
-    resolution: {integrity: sha512-xlECFeg/BFxgdVXvenTd8toZo0E2MH33yQLP+R1+lUd69y/nQuhxU+WM7iAMSbu0u4co/YwAxl+hKChmm/dIkw==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -5480,6 +5472,7 @@ packages:
     resolution: {integrity: sha512-t0etAxTUk1w5MYdNOkZBZ8rvYYN5iL+2dHCCx/DpkFm/bW28M6y5nUS83D4XdZiHy35Fpaw6LBb+F88fHZnVCw==}
     engines: {node: '>=8.17.0'}
     hasBin: true
+    bundledDependencies: []
 
   jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
@@ -10827,14 +10820,6 @@ snapshots:
     dependencies:
       '@dhis2/cli-helpers-engine': 3.2.2
       cli-table3: 0.6.5
-
-  '@dhis2/cli-create@5.2.0-alpha.14':
-    dependencies:
-      '@dhis2/cli-helpers-engine': 3.2.2
-      '@dhis2/cli-helpers-template': 3.0.0
-      fs-extra: 9.1.0
-      handlebars: 4.7.8
-      inquirer: 7.3.3
 
   '@dhis2/cli-helpers-engine@1.5.0':
     dependencies:
