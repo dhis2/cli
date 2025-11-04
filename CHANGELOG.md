@@ -1,3 +1,10 @@
+## [5.2.1-alpha.1](https://github.com/dhis2/cli/compare/v5.2.0...v5.2.1-alpha.1) (2025-11-04)
+
+
+### Bug Fixes
+
+* update d2 utils release to support both pnpm and yarn ([ec7ff8b](https://github.com/dhis2/cli/commit/ec7ff8b314dafe4d5b18b61b9114a229f71a548f))
+
 # [5.2.0](https://github.com/dhis2/cli/compare/v5.1.0...v5.2.0) (2025-10-30)
 
 
