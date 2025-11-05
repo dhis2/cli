@@ -1,3 +1,11 @@
+## [5.2.1](https://github.com/dhis2/cli/compare/v5.2.0...v5.2.1) (2025-11-05)
+
+
+### Bug Fixes
+
+* run publish pipeline ([#633](https://github.com/dhis2/cli/issues/633)) ([5abdd1a](https://github.com/dhis2/cli/commit/5abdd1af8caf7d48846082774e60295d116b200a))
+* update d2 utils release to support both pnpm and yarn ([#632](https://github.com/dhis2/cli/issues/632)) ([21d988d](https://github.com/dhis2/cli/commit/21d988da810e240f8f6b497e72311cb3363b8465))
+
 ## [5.2.1-alpha.1](https://github.com/dhis2/cli/compare/v5.2.0...v5.2.1-alpha.1) (2025-11-04)
 
 
