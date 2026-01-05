@@ -110,8 +110,6 @@ const command = {
                 ],
             })
 
-            // pnpm = packageManager === 'pnpm'
-            // npm = packageManager === 'npm'
             selectedOptions.packageManager = packageManager
 
             const language = await select({
@@ -306,6 +304,19 @@ const command = {
 
         reporter.info(`Running '${pkgManager} install'`)
 
+        reporter.debug(`Upgrading @dhis2 dependencies to latest`)
+        await exec({
+            cmd: pkgManager,
+            args: [
+                npm ? 'install --save' : 'upgrade',
+                '@dhis2/app-runtime@latest',
+                '@dhis2/cli-app-scripts@latest',
+                '@dhis2/ui@latest',
+            ],
+            cwd: paths.base,
+            pipe: argv.debug,
+        })
+
         await exec({
             cmd: pkgManager,
             args: ['install'],
@@ -313,6 +324,7 @@ const command = {
             pipe: argv.debug,
         })
 
+        reporter.debug(`Running '${pkgManager} format'`)
         await exec({
             cmd: pkgManager,
             args: npm ? ['run', 'format'] : ['format'],
