@@ -1,3 +1,10 @@
+# [5.3.0-alpha.1](https://github.com/dhis2/cli/compare/v5.2.1...v5.3.0-alpha.1) (2026-01-05)
+
+
+### Features
+
+* add new templates and options to @dhis2/create-app ([6d7fccd](https://github.com/dhis2/cli/commit/6d7fccdf428004ff57d09caf221cbbd27560ca62))
+
 ## [5.2.1](https://github.com/dhis2/cli/compare/v5.2.0...v5.2.1) (2025-11-05)
 
 
