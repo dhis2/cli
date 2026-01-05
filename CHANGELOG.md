@@ -1,3 +1,10 @@
+# [5.3.0-alpha.2](https://github.com/dhis2/cli/compare/v5.3.0-alpha.1...v5.3.0-alpha.2) (2026-01-05)
+
+
+### Bug Fixes
+
+* ensure latest version  for dhis2 dependencies ([2505d67](https://github.com/dhis2/cli/commit/2505d67cf5aa664e6ad121aef92c697d98bfec90))
+
 # [5.3.0-alpha.1](https://github.com/dhis2/cli/compare/v5.2.1...v5.3.0-alpha.1) (2026-01-05)
 
 
