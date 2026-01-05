@@ -10,9 +10,11 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
-        "@dhis2/cli-app-scripts": "alpha",
         "@dhis2/cli-helpers-engine": "^3.2.2",
-        "@inquirer/prompts": "^7.8.4"
+        "@inquirer/prompts": "^7.8.4",
+        "decompress": "^4.2.1",
+        "fast-glob": "^3.3.3",
+        "fs-extra": "^11.3.3"
     },
     "private": false,
     "keywords": [],
