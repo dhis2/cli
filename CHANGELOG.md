@@ -1,3 +1,10 @@
+# [5.3.0-alpha.4](https://github.com/dhis2/cli/compare/v5.3.0-alpha.3...v5.3.0-alpha.4) (2026-01-06)
+
+
+### Bug Fixes
+
+* drop package manager question ([9bf5926](https://github.com/dhis2/cli/commit/9bf5926aa5627ecdacf64235af713992d2e0d9df))
+
 # [5.3.0-alpha.3](https://github.com/dhis2/cli/compare/v5.3.0-alpha.2...v5.3.0-alpha.3) (2026-01-06)
 
 
