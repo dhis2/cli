@@ -1,0 +1,9 @@
+.tableContainer {
+    max-width: 168px;
+}
+
+@media (min-width: 768px) {
+    .tableContainer {
+        max-width: 90%;
+    }
+}

@@ -1,0 +1,39 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"POT-Creation-Date: 2026-01-03T10:13:09.567Z\n"
+"PO-Revision-Date: 2026-01-03T10:13:09.567Z\n"
+
+msgid "ERROR"
+msgstr "ERROR"
+
+msgid "Loading..."
+msgstr "Loading..."
+
+msgid "Hello {{name}}"
+msgstr "Hello {{name}}"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Error loading the data elements"
+msgstr "Error loading the data elements"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Domain"
+msgstr "Domain"
+
+msgid "Value Type"
+msgstr "Value Type"
+
+msgid "Created by"
+msgstr "Created by"

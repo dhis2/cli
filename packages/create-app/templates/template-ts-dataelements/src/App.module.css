@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    max-width: 1020px;
+    margin: 0px auto;
+    padding-top: 8px;
+}
+
+.noticeContainer {
+    max-width: 800px;
+    margin: 16px 0;
+    align-self: center;
+}
+
+:global(h2),
+:global(h3) {
+    margin: 8px;
+    margin-inline-start: 0;
+}
