@@ -86,23 +86,12 @@ const command = {
 
         const selectedOptions = {
             typeScript: argv.typescript,
-            packageManager: argv.packageManager ?? getPackageManager(),
+            packageManager:
+                argv.packageManager ?? getPackageManager() ?? 'pnpm',
             templateName: argv.template,
         }
 
         if (!useDefauls) {
-            const packageManager = await select({
-                message: 'Select a package manager',
-                default: 'pnpm',
-                choices: [
-                    { name: 'npm', value: 'npm' },
-                    { name: 'pnpm', value: 'pnpm' },
-                    { name: 'yarn 1 (legacy)', value: 'yarn' },
-                ],
-            })
-
-            selectedOptions.packageManager = packageManager
-
             const language = await select({
                 message: 'Select a language',
                 default: 'ts',
