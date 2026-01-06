@@ -1,9 +1,10 @@
+const { execSync } = require('child_process')
 const path = require('path')
-const { reporter, exec } = require('@dhis2/cli-helpers-engine')
+const { reporter, exec, chalk } = require('@dhis2/cli-helpers-engine')
 const { input, select } = require('@inquirer/prompts')
-const decompress = require('decompress')
 const fg = require('fast-glob')
 const fs = require('fs-extra')
+const { default: getPackageManager } = require('./utils/getPackageManager')
 
 process.on('uncaughtException', (error) => {
     if (error instanceof Error && error.name === 'ExitPromptError') {
@@ -15,14 +16,15 @@ process.on('uncaughtException', (error) => {
 })
 
 const templates = {
+    templateRoot: path.join(__dirname, '../templates'),
     templateWithList: path.join(
         __dirname,
-        '../templates/template-ts-dataelements.zip'
+        '../templates/template-ts-dataelements'
     ),
 
     templateWithReactRouter: path.join(
         __dirname,
-        '../templates/template-ts-dataelements-react-router.zip'
+        '../templates/template-ts-dataelements-react-router'
     ),
 }
 
@@ -51,22 +53,15 @@ const commandHandler = {
         packageManager: {
             description: 'Package Manager',
             type: 'string',
-            default: 'pnpm',
             alias: ['package', 'packagemanager'],
         },
     },
 }
+
 const getTemplateFile = (templateName) => {
     return templateName === 'react-router'
         ? templates.templateWithReactRouter
         : templates.templateWithList
-}
-
-const defaultOptions = {
-    typeScript: true,
-    templateName: 'basic',
-    template: getTemplateFile('basic'),
-    packageManager: 'pnpm',
 }
 
 const command = {
@@ -77,11 +72,6 @@ const command = {
     handler: async (argv) => {
         let name = argv._[0] || argv.name
 
-        const selectedOptions = {
-            ...defaultOptions,
-        }
-
-        reporter.debug(`running "npm create @dhis2/app" (or npx) command"`)
         const useDefauls = argv.yes
 
         if (!name) {
@@ -94,10 +84,11 @@ const command = {
             reporter.log(`name of project: ${name}`)
         }
 
-        selectedOptions.typeScript = argv.typescript
-        selectedOptions.packageManager = argv.packageManager
-        selectedOptions.templateName = argv.template
-        selectedOptions.template = getTemplateFile(argv.template)
+        const selectedOptions = {
+            typeScript: argv.typescript,
+            packageManager: argv.packageManager ?? getPackageManager(),
+            templateName: argv.template,
+        }
 
         if (!useDefauls) {
             const packageManager = await select({
@@ -124,7 +115,7 @@ const command = {
             selectedOptions.typeScript = language === 'ts'
 
             const template = await select({
-                message: 'Select a teamplate',
+                message: 'Select a template',
                 default: 'ts',
                 choices: [
                     { name: 'Basic Template', value: 'basic' },
@@ -136,23 +127,15 @@ const command = {
             })
 
             selectedOptions.templateName = template
-            selectedOptions.template = getTemplateFile(template)
         }
-
-        // let pkgManager = 'yarn'
-        // if (pnpm) {
-        //     pkgManager = 'pnpm'
-        // } else if (npm) {
-        //     pkgManager = 'npm'
-        // }
 
         reporter.info(
             `Initialising a new project using "${selectedOptions.packageManager}" as a package manager.`
         )
 
-        if (selectedOptions.packageManager !== 'pnpm') {
+        if (selectedOptions.packageManager === 'yarn') {
             reporter.warn(
-                'We recommend using "pnpm" as a package manager for new projects. You can do so by passing the argument --pnpm (i.e. d2 app scripts init --pnpm). This will become the default in future versions of d2 CLI.'
+                'We recommend using "pnpm" as a package manager for new projects. Yarn 1 will be deprecated in future versions of the CLI.'
             )
         }
         // create the folder where the template will be generated
@@ -166,9 +149,26 @@ const command = {
             process.exit(1)
         }
 
-        reporter.info(`selected options: ${JSON.stringify(selectedOptions)}`)
+        reporter.info(`${chalk.cyan('Selected options:')}`)
+        for (const [x, y] of Object.entries(selectedOptions)) {
+            reporter.info(`    ${x}: ${y}`)
+        }
 
-        await decompress(selectedOptions.template, cwd)
+        try {
+            // Running git clean on templates folder
+            // This is  useful in local development if you have built the templates for testing
+            // and want to make sure to delete d2 and node_modules folders before copying the template
+            execSync(`git clean -X -f -- ${templates.templateRoot}`, {
+                stdio: 'ignore',
+            })
+            reporter.debug('Successfully ran git clean')
+        } catch (err) {
+            reporter.debug(err)
+        }
+
+        reporter.info('Copying template files')
+        const templateFiles = getTemplateFile(selectedOptions.templateName)
+        fs.copySync(templateFiles, cwd)
 
         const paths = {
             base: cwd,
@@ -235,6 +235,8 @@ const command = {
 
         // copy correct lock file for npm/yarn
         if (!pnpm) {
+            // ? copying yarn.lock or package-lock speeds installation a bit
+            // ? but we could also just run "yarn install" and generate the lock file
             if (fs.existsSync(paths.pnpmLock)) {
                 fs.removeSync(paths.pnpmLock)
             }
@@ -304,19 +306,6 @@ const command = {
 
         reporter.info(`Running '${pkgManager} install'`)
 
-        reporter.debug(`Upgrading @dhis2 dependencies to latest`)
-        await exec({
-            cmd: pkgManager,
-            args: [
-                npm ? 'install --save' : 'upgrade',
-                '@dhis2/app-runtime@latest',
-                '@dhis2/cli-app-scripts@latest',
-                '@dhis2/ui@latest',
-            ],
-            cwd: paths.base,
-            pipe: argv.debug,
-        })
-
         await exec({
             cmd: pkgManager,
             args: ['install'],
@@ -324,7 +313,8 @@ const command = {
             pipe: argv.debug,
         })
 
-        reporter.debug(`Running '${pkgManager} format'`)
+        // ToDo: setup the formatting on CLI project properly and avoid running it on scaffolding
+        reporter.debug(`Running '${pkgManager} format' (prettier)`)
         await exec({
             cmd: pkgManager,
             args: npm ? ['run', 'format'] : ['format'],
@@ -332,7 +322,14 @@ const command = {
             pipe: argv.debug,
         })
 
-        reporter.info('Done!')
+        reporter.info(`${chalk.greenBright('Done!')}`)
+
+        const cdCmd = name != '.' ? `cd ${name} && ` : ''
+        reporter.print(
+            `Run ${chalk.bold(
+                `${cdCmd}${pkgManager} start`
+            )} to launch your new DHIS2 application`
+        )
 
         return
     },

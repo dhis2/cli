@@ -43,6 +43,7 @@ const MyApp: FC = () => {
                             <a
                                 target="_blank"
                                 href="https://developers.dhis2.org/docs/guides"
+                                rel="noreferrer"
                             >
                                 Web development guides
                             </a>
@@ -51,6 +52,7 @@ const MyApp: FC = () => {
                             <a
                                 target="_blank"
                                 href="https://docs.dhis2.org/en/develop/using-the-api/dhis-core-version-master/metadata.html"
+                                rel="noreferrer"
                             >
                                 Documentation for the API{' '}
                             </a>
@@ -59,6 +61,7 @@ const MyApp: FC = () => {
                             <a
                                 target="_blank"
                                 href="https://developers.dhis2.org/docs/tutorials/app-runtime-query/"
+                                rel="noreferrer"
                             >
                                 AppRuntime and useDataQuery hook
                             </a>
@@ -67,6 +70,7 @@ const MyApp: FC = () => {
                             <a
                                 target="_blank"
                                 href="https://developers.dhis2.org/docs/ui/webcomponents"
+                                rel="noreferrer"
                             >
                                 UI Library
                             </a>
@@ -75,6 +79,7 @@ const MyApp: FC = () => {
                             <a
                                 target="_blank"
                                 href="https://developers.dhis2.org/demo/"
+                                rel="noreferrer"
                             >
                                 UI library demo
                             </a>
