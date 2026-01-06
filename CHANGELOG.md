@@ -1,3 +1,10 @@
+# [5.3.0-alpha.3](https://github.com/dhis2/cli/compare/v5.3.0-alpha.2...v5.3.0-alpha.3) (2026-01-06)
+
+
+### Bug Fixes
+
+* use templates from file system not zip ([e5ce2c4](https://github.com/dhis2/cli/commit/e5ce2c4a6d6fc37059aa6272b16e56ac86375b46))
+
 # [5.3.0-alpha.2](https://github.com/dhis2/cli/compare/v5.3.0-alpha.1...v5.3.0-alpha.2) (2026-01-05)
 
 
