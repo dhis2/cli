@@ -99,7 +99,7 @@ const handler = async ({ publish }) => {
         ? [
               '@semantic-release/exec',
               {
-                  success:
+                  successCmd:
                       'pnpm install --lockfile-only && git commit -am "chore: bump pnpm-lock.yml ${nextRelease.version} [skip ci]" && git push',
               },
           ]
