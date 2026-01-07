@@ -171,7 +171,11 @@ const command = {
             appRootWrapperFile: path.join(cwd, 'src/AppWrapper.tsx'),
             initYarnLock: path.join(__dirname, '../templates/yarn.lock'),
             initNpmLock: path.join(__dirname, '../templates/package-lock.json'),
+            initGitIgnore: path.join(__dirname, '../templates/gitignore'),
         }
+
+        // .gitignore file seems to be removed from the published npm package, so copying it separately here
+        fs.copyFileSync(paths.initGitIgnore, path.join(cwd, '.gitignore'))
 
         const pnpm = selectedOptions.packageManager === 'pnpm'
         const npm = selectedOptions.packageManager === 'npm'
