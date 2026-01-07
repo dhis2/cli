@@ -1,3 +1,10 @@
+# [5.3.0-alpha.5](https://github.com/dhis2/cli/compare/v5.3.0-alpha.4...v5.3.0-alpha.5) (2026-01-07)
+
+
+### Bug Fixes
+
+* skip language and template questions when args provided ([7a2b5cf](https://github.com/dhis2/cli/commit/7a2b5cfd99eb15dfe8507a333d5a5ce166ba8ffc))
+
 # [5.3.0-alpha.4](https://github.com/dhis2/cli/compare/v5.3.0-alpha.3...v5.3.0-alpha.4) (2026-01-06)
 
 
