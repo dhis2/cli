@@ -1,3 +1,10 @@
+# [5.3.0-alpha.8](https://github.com/dhis2/cli/compare/v5.3.0-alpha.7...v5.3.0-alpha.8) (2026-01-07)
+
+
+### Bug Fixes
+
+* ensure gitignore is part of the scaffolded template ([212544b](https://github.com/dhis2/cli/commit/212544b8f24e4075dc0c6bf6a26153166e6f2e19))
+
 # [5.3.0-alpha.7](https://github.com/dhis2/cli/compare/v5.3.0-alpha.6...v5.3.0-alpha.7) (2026-01-07)
 
 
