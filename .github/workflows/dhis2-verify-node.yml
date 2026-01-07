@@ -1,8 +1,6 @@
 name: 'dhis2: verify (node)'
 
-on:
-    push:
-        branches:
+on: push
 
 concurrency:
     group: ${{ github.workflow}}-${{ github.ref }}
