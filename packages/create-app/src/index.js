@@ -329,6 +329,14 @@ const command = {
             )} to launch your new DHIS2 application`
         )
 
+        reporter.print(
+            `${chalk.gray(
+                `You can also run the web application with ${chalk.bold(
+                    `${pkgManager} start --proxy https://YOUR_DHIS2_INSTANCE_URL`
+                )} to create a proxy on localhost to a remote DHIS2 instance. Check https://developers.dhis2.org/docs/quickstart/quickstart-web#connecting-your-web-app-to-dhis2 for more information.`
+            )}`
+        )
+
         return
     },
 }

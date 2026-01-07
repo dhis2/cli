@@ -90,11 +90,16 @@ const handler = async ({ publish }) => {
         },
     ]
 
+    reporter.info('isPnpm:', isPnpm)
+    if (isPnpm) {
+        reporter.info('isPnpm:', isPnpm)
+    }
+
     const updateLockFile = isPnpm
         ? [
               '@semantic-release/exec',
               {
-                  publishCmd:
+                  success:
                       'pnpm install --lockfile-only && git commit -am "chore: bump pnpm-lock.yml ${nextRelease.version} [skip ci]" && git push',
               },
           ]
