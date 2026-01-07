@@ -58,7 +58,7 @@ const commandHandler = {
     },
 }
 
-const getTemplateFile = (templateName) => {
+const getTemplateDirectory = (templateName) => {
     return templateName === 'react-router'
         ? templates.templateWithReactRouter
         : templates.templateWithList
@@ -156,7 +156,7 @@ const command = {
         }
 
         reporter.info('Copying template files')
-        const templateFiles = getTemplateFile(selectedOptions.templateName)
+        const templateFiles = getTemplateDirectory(selectedOptions.templateName)
         fs.copySync(templateFiles, cwd)
 
         const paths = {
@@ -166,6 +166,7 @@ const command = {
             pnpmLock: path.join(cwd, 'pnpm-lock.yaml'),
             pnpmWorkspace: path.join(cwd, 'pnpm-workspace.yaml'),
             appRootFile: path.join(cwd, 'src/App.tsx'),
+            appRootWrapperFile: path.join(cwd, 'src/AppWrapper.tsx'),
             initYarnLock: path.join(__dirname, '../templates/yarn.lock'),
             initNpmLock: path.join(__dirname, '../templates/package-lock.json'),
         }
@@ -179,6 +180,12 @@ const command = {
         // Default template is with PNPM with TypeScript - some modifications here for yarn/npm/JS
         const templateModifications = [
             [paths.package, true, (f) => f.replace('{{template-name}}', name)],
+            [
+                paths.appRootWrapperFile,
+                true,
+                (f) => f.replace('{{template-name}}', name),
+            ],
+
             // [
             //     path.join(paths.base, '.husky/pre-commit'),
             //     !pnpm,
@@ -249,14 +256,14 @@ const command = {
         // convert to JS
         if (!typeScript) {
             reporter.info('Preparing JavaScript template')
-            reporter.info(` running '${pkgManager} install'`)
+            reporter.info(`    Running '${pkgManager} install'`)
 
             await exec({
                 cmd: pkgManager,
                 args: ['install'],
                 cwd: paths.base,
             })
-            reporter.info(' convert template to JS with tsc')
+            reporter.info('    Converting template to JS with tsc')
             await exec({
                 cmd: 'npx',
                 args: [
@@ -274,7 +281,7 @@ const command = {
                 pipe: argv.debug,
             })
 
-            reporter.info(' Deleting TS files')
+            reporter.debug('    Deleting TS files')
             const filePathsToRemove = path.join(paths.base, '/src/**/*.ts[x]')
             const filesToRemove = await fg.glob(filePathsToRemove)
 

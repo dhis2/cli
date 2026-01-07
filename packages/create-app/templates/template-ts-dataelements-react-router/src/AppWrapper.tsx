@@ -22,7 +22,19 @@ const AppWrapper = () => {
                         <Route path="/about" element={<AboutPage />} />
                     </Routes>
                 </div>
-                <div className={classes.footer}>Our App</div>
+                <div className={classes.footer}>
+                    <div>{'{{template-name}}'}</div>
+                    <div>
+                        This web application was created using{' '}
+                        <a
+                            target="_blank"
+                            rel="noreferrer"
+                            href="https://developers.dhis2.org/docs/quickstart/quickstart-web"
+                        >
+                            @dhis2/create-app
+                        </a>
+                    </div>
+                </div>
             </HashRouter>
         </div>
     )
