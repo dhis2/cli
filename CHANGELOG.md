@@ -1,3 +1,10 @@
+# [5.3.0-alpha.6](https://github.com/dhis2/cli/compare/v5.3.0-alpha.5...v5.3.0-alpha.6) (2026-01-07)
+
+
+### Bug Fixes
+
+* update yarn and npm lock files ([d9f5d0b](https://github.com/dhis2/cli/commit/d9f5d0ba484c66b4d50ecd82301c1ebcb5228da5))
+
 # [5.3.0-alpha.5](https://github.com/dhis2/cli/compare/v5.3.0-alpha.4...v5.3.0-alpha.5) (2026-01-07)
 
 
