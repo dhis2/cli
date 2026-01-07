@@ -60,11 +60,11 @@ importers:
   packages/main:
     dependencies:
       '@dhis2/cli-app':
-        specifier: 5.3.0-alpha.7
-        version: 5.3.0-alpha.7(typescript@5.8.3)
+        specifier: 5.3.0-alpha.8
+        version: 5.3.0-alpha.8(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
       '@dhis2/cli-cluster':
-        specifier: 5.3.0-alpha.7
-        version: 5.3.0-alpha.7
+        specifier: 5.3.0-alpha.8
+        version: 5.3.0-alpha.8
       '@dhis2/cli-helpers-engine':
         specifier: ^3.2.1
         version: 3.2.2
@@ -72,8 +72,8 @@ importers:
         specifier: ^10.7.9
         version: 10.7.9
       '@dhis2/cli-utils':
-        specifier: 5.3.0-alpha.7
-        version: 5.3.0-alpha.7(typescript@5.8.3)
+        specifier: 5.3.0-alpha.8
+        version: 5.3.0-alpha.8(@babel/preset-env@7.28.0(@babel/core@7.28.0))(typescript@5.8.3)
       cli-table3:
         specifier: ^0.6.0
         version: 0.6.5
@@ -1370,13 +1370,13 @@ packages:
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
-  '@dhis2/cli-app@5.3.0-alpha.7':
-    resolution: {integrity: sha512-kKD9NLaD5jvrhqr1FHCk5Z1g7Oif5o0YFG8JznTnOBvWEhLSHSCo4qZOgU9e1WvKgoKEzHUCXWUZf4Y4nsU9sg==}
+  '@dhis2/cli-app@5.3.0-alpha.8':
+    resolution: {integrity: sha512-VDrUOyYOZG5CjuoTYaUsga1TrH3P/7l1fOYXhJn7xczWbtzCBiFOP6i/+/OA8Ixoj3qFyWBZI+o2H678VtmZ6w==}
     engines: {node: '>=12'}
     hasBin: true
 
-  '@dhis2/cli-cluster@5.3.0-alpha.7':
-    resolution: {integrity: sha512-PkcXs0BXu9ePKyiQt+03m9QX/a4Zva7hQJIIDPm4wcoPiEcBYneIgA/dO8V5wxM2SUaULqZxJnps0HG9pcA0lQ==}
+  '@dhis2/cli-cluster@5.3.0-alpha.8':
+    resolution: {integrity: sha512-2NV/uT9yXHg9pRf95ogQEnlG7pBlTvlMhu7Db/nijkOZZMaW0+q4K0UTjGYVn5Xlp3ZGkiyTfdkBWaJnjUf3/Q==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -1415,8 +1415,8 @@ packages:
     engines: {node: '>=12'}
     hasBin: true
 
-  '@dhis2/cli-utils@5.3.0-alpha.7':
-    resolution: {integrity: sha512-yg4qNqKdUFRLEBi/Henc3d0nRgXotk7bXcN15Uf45OVvg2EOVGZq7F2UvoFFwhyw5KVxKqFIoNokLes+LVd6sg==}
+  '@dhis2/cli-utils@5.3.0-alpha.8':
+    resolution: {integrity: sha512-SF03QOsDMamWG81Y8j4z5yAppzn35rcwOZE2SI1x8KeeKaRIaUZYcX+jWORJz4AgGGr44OwPSKuX18XyKP9Kmg==}
     engines: {node: '>=12'}
     hasBin: true
 
@@ -5492,6 +5492,7 @@ packages:
     resolution: {integrity: sha512-t0etAxTUk1w5MYdNOkZBZ8rvYYN5iL+2dHCCx/DpkFm/bW28M6y5nUS83D4XdZiHy35Fpaw6LBb+F88fHZnVCw==}
     engines: {node: '>=8.17.0'}
     hasBin: true
+    bundledDependencies: []
 
   jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
@@ -10733,7 +10734,7 @@ snapshots:
       '@dhis2/cli-helpers-engine': 3.2.2
       '@jest/core': 27.5.1
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.17(react-refresh@0.11.0)(type-fest@4.41.0)(webpack-dev-server@4.15.2(webpack@5.100.0))(webpack@5.100.0)
-      '@vitejs/plugin-react': 4.6.0(vite@5.4.19)
+      '@vitejs/plugin-react': 4.6.0(vite@5.4.19(@types/node@24.0.4)(terser@5.43.1))
       '@yarnpkg/lockfile': 1.1.0
       archiver: 7.0.1
       axios: 0.25.0
@@ -10800,7 +10801,7 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@dhis2/cli-app@5.3.0-alpha.7(typescript@5.8.3)':
+  '@dhis2/cli-app@5.3.0-alpha.8(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))':
     dependencies:
       '@dhis2/cli-app-scripts': 12.8.0-alpha.3(@types/babel__core@7.20.5)(@types/node@24.0.4)(react@18.3.1)(terser@5.43.1)(type-fest@4.41.0)(typescript@5.8.3)(webpack-dev-server@4.15.2(webpack@5.100.0))
       '@dhis2/cli-helpers-engine': 3.2.2
@@ -10836,7 +10837,7 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@dhis2/cli-cluster@5.3.0-alpha.7':
+  '@dhis2/cli-cluster@5.3.0-alpha.8':
     dependencies:
       '@dhis2/cli-helpers-engine': 3.2.2
       cli-table3: 0.6.5
@@ -10928,11 +10929,29 @@ snapshots:
       - '@babel/preset-env'
       - supports-color
 
+  '@dhis2/cli-utils-codemods@3.0.0(@babel/preset-env@7.28.0(@babel/core@7.28.0))':
+    dependencies:
+      fs-extra: 9.1.0
+      jscodeshift: 0.11.0(@babel/preset-env@7.28.0(@babel/core@7.28.0))
+      yargs: 16.2.0
+    transitivePeerDependencies:
+      - '@babel/preset-env'
+      - supports-color
+
   '@dhis2/cli-utils-cypress@9.0.2(@babel/preset-env@7.28.0(@babel/core@7.27.7))':
     dependencies:
       '@dhis2/cli-helpers-engine': 2.4.0
       fs-extra: 8.1.0
       jscodeshift: 0.11.0(@babel/preset-env@7.28.0(@babel/core@7.27.7))
+    transitivePeerDependencies:
+      - '@babel/preset-env'
+      - supports-color
+
+  '@dhis2/cli-utils-cypress@9.0.2(@babel/preset-env@7.28.0(@babel/core@7.28.0))':
+    dependencies:
+      '@dhis2/cli-helpers-engine': 2.4.0
+      fs-extra: 8.1.0
+      jscodeshift: 0.11.0(@babel/preset-env@7.28.0(@babel/core@7.28.0))
     transitivePeerDependencies:
       - '@babel/preset-env'
       - supports-color
@@ -10956,11 +10975,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@dhis2/cli-utils@5.3.0-alpha.7(typescript@5.8.3)':
+  '@dhis2/cli-utils@5.3.0-alpha.8(@babel/preset-env@7.28.0(@babel/core@7.28.0))(typescript@5.8.3)':
     dependencies:
       '@dhis2/cli-helpers-engine': 3.2.2
-      '@dhis2/cli-utils-codemods': 3.0.0(@babel/preset-env@7.28.0(@babel/core@7.27.7))
-      '@dhis2/cli-utils-cypress': 9.0.2(@babel/preset-env@7.28.0(@babel/core@7.27.7))
+      '@dhis2/cli-utils-codemods': 3.0.0(@babel/preset-env@7.28.0(@babel/core@7.28.0))
+      '@dhis2/cli-utils-cypress': 9.0.2(@babel/preset-env@7.28.0(@babel/core@7.28.0))
       '@dhis2/cli-utils-docsite': 3.2.0
       '@semantic-release/changelog': 6.0.3(semantic-release@24.2.7(typescript@5.8.3))
       '@semantic-release/commit-analyzer': 13.0.1(semantic-release@24.2.7(typescript@5.8.3))
@@ -12236,7 +12255,7 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@vitejs/plugin-react@4.6.0(vite@5.4.19)':
+  '@vitejs/plugin-react@4.6.0(vite@5.4.19(@types/node@24.0.4)(terser@5.43.1))':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.0)
@@ -15877,6 +15896,31 @@ snapshots:
       '@babel/plugin-proposal-optional-chaining': 7.21.0(@babel/core@7.27.7)
       '@babel/plugin-transform-modules-commonjs': 7.27.1(@babel/core@7.27.7)
       '@babel/preset-env': 7.28.0(@babel/core@7.27.7)
+      '@babel/preset-flow': 7.27.1(@babel/core@7.27.7)
+      '@babel/preset-typescript': 7.27.1(@babel/core@7.27.7)
+      '@babel/register': 7.27.1(@babel/core@7.27.7)
+      babel-core: 7.0.0-bridge.0(@babel/core@7.27.7)
+      colors: 1.4.0
+      flow-parser: 0.275.0
+      graceful-fs: 4.2.11
+      micromatch: 3.1.10
+      neo-async: 2.6.2
+      node-dir: 0.1.17
+      recast: 0.20.5
+      temp: 0.8.4
+      write-file-atomic: 2.4.3
+    transitivePeerDependencies:
+      - supports-color
+
+  jscodeshift@0.11.0(@babel/preset-env@7.28.0(@babel/core@7.28.0)):
+    dependencies:
+      '@babel/core': 7.27.7
+      '@babel/parser': 7.27.7
+      '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.27.7)
+      '@babel/plugin-proposal-nullish-coalescing-operator': 7.18.6(@babel/core@7.27.7)
+      '@babel/plugin-proposal-optional-chaining': 7.21.0(@babel/core@7.27.7)
+      '@babel/plugin-transform-modules-commonjs': 7.27.1(@babel/core@7.27.7)
+      '@babel/preset-env': 7.28.0(@babel/core@7.28.0)
       '@babel/preset-flow': 7.27.1(@babel/core@7.27.7)
       '@babel/preset-typescript': 7.27.1(@babel/core@7.27.7)
       '@babel/register': 7.27.1(@babel/core@7.27.7)
