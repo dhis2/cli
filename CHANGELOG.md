@@ -1,3 +1,10 @@
+# [5.3.0-alpha.7](https://github.com/dhis2/cli/compare/v5.3.0-alpha.6...v5.3.0-alpha.7) (2026-01-07)
+
+
+### Bug Fixes
+
+* fix the pnpm semantic-release step ([3656df4](https://github.com/dhis2/cli/commit/3656df4440f30fb305ae9b8bb7c024f204636dd2))
+
 # [5.3.0-alpha.6](https://github.com/dhis2/cli/compare/v5.3.0-alpha.5...v5.3.0-alpha.6) (2026-01-07)
 
 
