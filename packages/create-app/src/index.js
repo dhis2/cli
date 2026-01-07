@@ -42,13 +42,11 @@ const commandHandler = {
         typescript: {
             description: 'Use TypeScript or JS',
             type: 'boolean',
-            default: true,
             alias: ['ts', 'typeScript'],
         },
         template: {
             description: 'Which template to use (Basic, With React Router)',
             type: 'string',
-            default: 'basic',
         },
         packageManager: {
             description: 'Package Manager',
@@ -85,37 +83,41 @@ const command = {
         }
 
         const selectedOptions = {
-            typeScript: argv.typescript,
+            typeScript: argv.typescript ?? true,
             packageManager:
                 argv.packageManager ?? getPackageManager() ?? 'pnpm',
-            templateName: argv.template,
+            templateName: argv.template ?? 'basic',
         }
 
         if (!useDefauls) {
-            const language = await select({
-                message: 'Select a language',
-                default: 'ts',
-                choices: [
-                    { name: 'JavaScript', value: 'js' },
-                    { name: 'TypeScript', value: 'ts' },
-                ],
-            })
+            if (argv.typeScript === undefined) {
+                const language = await select({
+                    message: 'Select a language',
+                    default: 'ts',
+                    choices: [
+                        { name: 'JavaScript', value: 'js' },
+                        { name: 'TypeScript', value: 'ts' },
+                    ],
+                })
 
-            selectedOptions.typeScript = language === 'ts'
+                selectedOptions.typeScript = language === 'ts'
+            }
 
-            const template = await select({
-                message: 'Select a template',
-                default: 'ts',
-                choices: [
-                    { name: 'Basic Template', value: 'basic' },
-                    {
-                        name: 'Template with React Router',
-                        value: 'react-router',
-                    },
-                ],
-            })
+            if (argv.template === undefined) {
+                const template = await select({
+                    message: 'Select a template',
+                    default: 'ts',
+                    choices: [
+                        { name: 'Basic Template', value: 'basic' },
+                        {
+                            name: 'Template with React Router',
+                            value: 'react-router',
+                        },
+                    ],
+                })
 
-            selectedOptions.templateName = template
+                selectedOptions.templateName = template
+            }
         }
 
         reporter.info(
