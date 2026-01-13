@@ -1,3 +1,21 @@
+# [5.4.0-alpha.1](https://github.com/dhis2/cli/compare/v5.3.0...v5.4.0-alpha.1) (2026-01-13)
+
+
+### Bug Fixes
+
+* drop package manager question ([9bf5926](https://github.com/dhis2/cli/commit/9bf5926aa5627ecdacf64235af713992d2e0d9df))
+* ensure gitignore is part of the scaffolded template ([212544b](https://github.com/dhis2/cli/commit/212544b8f24e4075dc0c6bf6a26153166e6f2e19))
+* ensure latest version  for dhis2 dependencies ([2505d67](https://github.com/dhis2/cli/commit/2505d67cf5aa664e6ad121aef92c697d98bfec90))
+* fix the pnpm semantic-release step ([3656df4](https://github.com/dhis2/cli/commit/3656df4440f30fb305ae9b8bb7c024f204636dd2))
+* skip language and template questions when args provided ([7a2b5cf](https://github.com/dhis2/cli/commit/7a2b5cfd99eb15dfe8507a333d5a5ce166ba8ffc))
+* update yarn and npm lock files ([d9f5d0b](https://github.com/dhis2/cli/commit/d9f5d0ba484c66b4d50ecd82301c1ebcb5228da5))
+* use templates from file system not zip ([e5ce2c4](https://github.com/dhis2/cli/commit/e5ce2c4a6d6fc37059aa6272b16e56ac86375b46))
+
+
+### Features
+
+* add new templates and options to @dhis2/create-app ([6d7fccd](https://github.com/dhis2/cli/commit/6d7fccdf428004ff57d09caf221cbbd27560ca62))
+
 # [5.3.0](https://github.com/dhis2/cli/compare/v5.2.1...v5.3.0) (2026-01-07)
 
 ### Bug Fixes
