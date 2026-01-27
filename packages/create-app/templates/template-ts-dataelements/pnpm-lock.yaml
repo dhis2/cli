@@ -22,8 +22,8 @@ importers:
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@dhis2/cli-app-scripts':
-        specifier: 12.8.0-alpha.3
-        version: 12.8.0-alpha.3(@types/babel__core@7.20.5)(@types/node@25.0.3)(react@18.3.1)(terser@5.44.1)(type-fest@0.21.3)(typescript@5.9.3)
+        specifier: 12.10.3
+        version: 12.10.3(@types/babel__core@7.20.5)(@types/node@25.0.3)(react@18.3.1)(terser@5.44.1)(type-fest@0.21.3)(typescript@5.9.3)
       '@dhis2/config-eslint':
         specifier: ^0.2.2
         version: 0.2.2(eslint@9.39.2)
@@ -1056,12 +1056,12 @@ packages:
       react-dom: ^16.13 || ^18
       styled-jsx: ^4
 
-  '@dhis2/app-adapter@12.8.0-alpha.3':
-    resolution: {integrity: sha512-8i2aVxlNPpA/rzzGnpzUycIc94f89j6VntPw1NqAcXAKpjTLaKaFqEW+TM3Un19iLOahIgTDND8qsgIE9hgMaQ==}
+  '@dhis2/app-adapter@12.10.3':
+    resolution: {integrity: sha512-eCO1iPl2V8XTt6x4IkOCHc2qz4EJBv/Hd9am7u3IbRwD9sMNaQ1sQQqQpbbNS+9plq5GbZ5ADFhWHWLDYvb8pw==}
     peerDependencies:
       '@dhis2/app-runtime': ^3.11.1
-      '@dhis2/d2-i18n': ^1
-      '@dhis2/ui': '>=10.7.1'
+      '@dhis2/d2-i18n': ^1.2.0
+      '@dhis2/ui': '>=10.9.2'
       classnames: ^2
       moment: ^2
       prop-types: ^15
@@ -1115,12 +1115,12 @@ packages:
       react: ^16.8.6 || ^18
       react-dom: ^16.8.6 || ^18
 
-  '@dhis2/app-shell@12.8.0-alpha.3':
-    resolution: {integrity: sha512-/Zc9VLBN56B8lS1K3OyXmVYbjsT56/bg54/ZPa4tHGo5L52phweU9afmLbcNulm9SmzaCMGUeC92OsdGS90g5A==}
+  '@dhis2/app-shell@12.10.3':
+    resolution: {integrity: sha512-yAEV4lftl+iFLzqzDWyAnl7jKLfgU/9FbnAqo1bIqTNeEfbhT4d6i7+FwjPvUyO0/f61C9mqAxP+/m5LfXRWDA==}
     engines: {node: ^18.0.0 || >=20.0.0}
 
-  '@dhis2/cli-app-scripts@12.8.0-alpha.3':
-    resolution: {integrity: sha512-4xrL9XgCn0Apoh0Yg8FYJWVhgbjm4yhuLbT6f9GvB7adt9G6kJuNl8CjcQUIZNLutCks4Pu61OLacMVBC7dupA==}
+  '@dhis2/cli-app-scripts@12.10.3':
+    resolution: {integrity: sha512-p32iy1TTzaGPFUDZEmK8eLDpMTvDKrRchLOOEZn2c/63acpc3fIfI/xR82VHV7AQlq9ahmIm54XiUPAh/MCadQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
@@ -1152,8 +1152,8 @@ packages:
     peerDependencies:
       prop-types: ^15
 
-  '@dhis2/pwa@12.8.0-alpha.3':
-    resolution: {integrity: sha512-sFEeKtTnNncG0sUx9cIJIsfb7LrWQd1/+JCkSeM9dBzdr5Rt2SCkSlDNUf09RbxRAcXUbUt6JNlECke+Hi/DLg==}
+  '@dhis2/pwa@12.10.3':
+    resolution: {integrity: sha512-WXWgtmjb95t5jU8vFYCdlJ1mczkLGDCXL69ZC/kUa2XTAby6cpLkoZMNFfOyoVOOtbq0J88UEaXrDGK1zoGfbg==}
 
   '@dhis2/ui-constants@10.11.0':
     resolution: {integrity: sha512-uEFrVwXV0+3vwg8DlDrZXhltqTx7k9i4I3tPsC1msjVtWUndOb7j8Mc3Xukp+PXF4Vb8WuHwzNXaei2s6HrWtg==}
@@ -5245,6 +5245,7 @@ packages:
   tar@4.4.19:
     resolution: {integrity: sha512-a20gEsvHnWe0ygBY8JbxoM4w3SJdhc7ZAuxkLqh+nvNQN2IOt0B5lLgM490X5Hl8FF0dl0tOf2ewFYAlIFgzVA==}
     engines: {node: '>=4.5'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
 
   temp-dir@2.0.0:
     resolution: {integrity: sha512-aoBAniQmmwtcKp/7BzsH8Cxzv8OL736p7v1ihGb5e9DJ9kTwGWHrQrVB5+lfVDzfGrdRzXch+ig7LHaY1JTOrg==}
@@ -7284,11 +7285,11 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       styled-jsx: 4.0.1(@babel/core@7.28.5)(react@18.3.1)
 
-  '@dhis2/app-adapter@12.8.0-alpha.3(@dhis2/app-runtime@3.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.2.0)(@dhis2/ui@10.11.0(@dhis2/app-runtime@3.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.2.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.5)(react@18.3.1)))(classnames@2.5.1)(moment@2.30.1)(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.5)(react@18.3.1))':
+  '@dhis2/app-adapter@12.10.3(@dhis2/app-runtime@3.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.2.0)(@dhis2/ui@10.11.0(@dhis2/app-runtime@3.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.2.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.5)(react@18.3.1)))(classnames@2.5.1)(moment@2.30.1)(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.5)(react@18.3.1))':
     dependencies:
       '@dhis2/app-runtime': 3.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@dhis2/d2-i18n': 1.2.0
-      '@dhis2/pwa': 12.8.0-alpha.3
+      '@dhis2/pwa': 12.10.3
       '@dhis2/ui': 10.11.0(@dhis2/app-runtime@3.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.2.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.5)(react@18.3.1))
       classnames: 2.5.1
       moment: 2.30.1
@@ -7356,12 +7357,12 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@dhis2/app-shell@12.8.0-alpha.3(@babel/core@7.28.5)':
+  '@dhis2/app-shell@12.10.3(@babel/core@7.28.5)':
     dependencies:
-      '@dhis2/app-adapter': 12.8.0-alpha.3(@dhis2/app-runtime@3.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.2.0)(@dhis2/ui@10.11.0(@dhis2/app-runtime@3.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.2.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.5)(react@18.3.1)))(classnames@2.5.1)(moment@2.30.1)(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.5)(react@18.3.1))
+      '@dhis2/app-adapter': 12.10.3(@dhis2/app-runtime@3.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.2.0)(@dhis2/ui@10.11.0(@dhis2/app-runtime@3.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.2.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.5)(react@18.3.1)))(classnames@2.5.1)(moment@2.30.1)(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.5)(react@18.3.1))
       '@dhis2/app-runtime': 3.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@dhis2/d2-i18n': 1.2.0
-      '@dhis2/pwa': 12.8.0-alpha.3
+      '@dhis2/pwa': 12.10.3
       '@dhis2/ui': 10.11.0(@dhis2/app-runtime@3.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@dhis2/d2-i18n@1.2.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-jsx@4.0.1(@babel/core@7.28.5)(react@18.3.1))
       classnames: 2.5.1
       moment: 2.30.1
@@ -7375,7 +7376,7 @@ snapshots:
       - '@babel/core'
       - react-native
 
-  '@dhis2/cli-app-scripts@12.8.0-alpha.3(@types/babel__core@7.20.5)(@types/node@25.0.3)(react@18.3.1)(terser@5.44.1)(type-fest@0.21.3)(typescript@5.9.3)':
+  '@dhis2/cli-app-scripts@12.10.3(@types/babel__core@7.20.5)(@types/node@25.0.3)(react@18.3.1)(terser@5.44.1)(type-fest@0.21.3)(typescript@5.9.3)':
     dependencies:
       '@babel/core': 7.28.5
       '@babel/plugin-syntax-dynamic-import': 7.8.3(@babel/core@7.28.5)
@@ -7383,10 +7384,12 @@ snapshots:
       '@babel/plugin-transform-class-properties': 7.27.1(@babel/core@7.28.5)
       '@babel/plugin-transform-nullish-coalescing-operator': 7.27.1(@babel/core@7.28.5)
       '@babel/plugin-transform-optional-chaining': 7.28.5(@babel/core@7.28.5)
+      '@babel/plugin-transform-private-methods': 7.27.1(@babel/core@7.28.5)
+      '@babel/plugin-transform-private-property-in-object': 7.27.1(@babel/core@7.28.5)
       '@babel/preset-env': 7.28.5(@babel/core@7.28.5)
       '@babel/preset-react': 7.28.5(@babel/core@7.28.5)
       '@babel/preset-typescript': 7.28.5(@babel/core@7.28.5)
-      '@dhis2/app-shell': 12.8.0-alpha.3(@babel/core@7.28.5)
+      '@dhis2/app-shell': 12.10.3(@babel/core@7.28.5)
       '@dhis2/cli-helpers-engine': 3.2.2
       '@jest/core': 27.5.1
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.17(react-refresh@0.11.0)(type-fest@0.21.3)(webpack@5.104.1)
@@ -7512,7 +7515,7 @@ snapshots:
     dependencies:
       prop-types: 15.8.1
 
-  '@dhis2/pwa@12.8.0-alpha.3':
+  '@dhis2/pwa@12.10.3':
     dependencies:
       idb: 6.1.5
       workbox-precaching: 7.4.0
