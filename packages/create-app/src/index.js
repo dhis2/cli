@@ -1,7 +1,7 @@
 const { execSync } = require('child_process')
 const path = require('path')
 const { reporter, exec, chalk } = require('@dhis2/cli-helpers-engine')
-const { input, select } = require('@inquirer/prompts')
+const { input, select, confirm } = require('@inquirer/prompts')
 const fg = require('fast-glob')
 const fs = require('fs-extra')
 const { default: getPackageManager } = require('./utils/getPackageManager')
@@ -26,6 +26,14 @@ const templates = {
         __dirname,
         '../templates/template-ts-dataelements-react-router'
     ),
+    templateWithListTailwind: path.join(
+        __dirname,
+        '../templates/template-ts-dataelements-tailwind'
+    ),
+    templateWithReactRouterTailwind: path.join(
+        __dirname,
+        '../templates/template-ts-dataelements-react-router-tailwind'
+    ),
 }
 
 const commandHandler = {
@@ -48,6 +56,10 @@ const commandHandler = {
             description: 'Which template to use (Basic, With React Router)',
             type: 'string',
         },
+        tailwind: {
+            description: 'Enable Tailwind CSS setup',
+            type: 'boolean',
+        },
         packageManager: {
             description: 'Package Manager',
             type: 'string',
@@ -56,9 +68,15 @@ const commandHandler = {
     },
 }
 
-const getTemplateDirectory = (templateName) => {
-    return templateName === 'react-router'
-        ? templates.templateWithReactRouter
+const getTemplateDirectory = (templateName, tailwind) => {
+    if (templateName === 'react-router') {
+        return tailwind
+            ? templates.templateWithReactRouterTailwind
+            : templates.templateWithReactRouter
+    }
+
+    return tailwind
+        ? templates.templateWithListTailwind
         : templates.templateWithList
 }
 
@@ -87,6 +105,7 @@ const command = {
             packageManager:
                 argv.packageManager ?? getPackageManager() ?? 'pnpm',
             templateName: argv.template ?? 'basic',
+            tailwind: argv.tailwind ?? false,
         }
 
         if (!useDefauls) {
@@ -117,6 +136,13 @@ const command = {
                 })
 
                 selectedOptions.templateName = template
+            }
+
+            if (argv.tailwind === undefined) {
+                selectedOptions.tailwind = await confirm({
+                    message: 'Would you like to enable Tailwind CSS?',
+                    default: false,
+                })
             }
         }
 
@@ -158,7 +184,10 @@ const command = {
         }
 
         reporter.info('Copying template files')
-        const templateFiles = getTemplateDirectory(selectedOptions.templateName)
+        const templateFiles = getTemplateDirectory(
+            selectedOptions.templateName,
+            selectedOptions.tailwind
+        )
         fs.copySync(templateFiles, cwd)
 
         const paths = {

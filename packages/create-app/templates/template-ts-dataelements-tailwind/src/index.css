@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+    color-scheme: light;
+}
+
+h2,
+h3 {
+    margin: 8px;
+    margin-inline-start: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 2rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.75rem;
+}
+
+a {
+    color: #0864d8;
+    text-decoration: underline;
+}
+
+ul {
+    list-style: disc;
+    margin-inline-start: 20px;
+}

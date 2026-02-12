@@ -43,6 +43,7 @@ You can run `pnpm create @dhis2/app@alpha --help` for the list of options availa
   --typescript, --ts, --typeScript          Use TypeScript or JS       [boolean]
   --template                                Which template to use (Basic, With
                                             React Router)               [string]
+  --tailwind                                Enable Tailwind CSS setup   [boolean]
   --packageManager, --package,              Package Manager
   --packagemanager                                                      [string]
 ```
@@ -57,6 +58,12 @@ pnpm create @dhis2/app my-app --yes
 
 # use the default settings but override the template
 pnpm create @dhis2/app my-app --yes --template react-router
+
+# use optional Tailwind CSS setup with the basic template
+pnpm create @dhis2/app my-app --yes --tailwind
+
+# use optional Tailwind CSS setup with the react-router template
+pnpm create @dhis2/app my-app --yes --template react-router --tailwind
 
 # use yarn as a package manager (and prompt for other settings)
 pnpm create @dhis2/app my-app --packageManager yarn
