@@ -42,11 +42,14 @@ You can run `pnpm create @dhis2/app@alpha --help` for the list of options availa
                                             template) [boolean] [default: false]
   --typescript, --ts, --typeScript          Use TypeScript or JS       [boolean]
   --template                                Which template to use (Basic, With
-                                            React Router, or GitHub
-                                            template specifier)         [string]
+                                            React Router, community template
+                                            source, or GitHub template
+                                            specifier)                  [string]
   --packageManager, --package,              Package Manager
   --packagemanager                                                      [string]
 ```
+
+In interactive mode, template selection includes built-in templates, configured community templates, and a `Custom template from Git` option. For non-interactive usage, `--template` accepts built-in values (`basic`, `react-router`), configured community template sources, and direct GitHub specifiers.
 
 ## Examples
 
@@ -58,6 +61,9 @@ pnpm create @dhis2/app my-app --yes
 
 # use the default settings but override the template
 pnpm create @dhis2/app my-app --yes --template react-router
+
+# use a configured community template source
+pnpm create @dhis2/app my-app --template derrick-nuby/dhis2-ts-tailwind-react-router
 
 # use a custom template from GitHub (owner/repo)
 pnpm create @dhis2/app my-app --template owner/repo

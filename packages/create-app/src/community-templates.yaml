@@ -1,0 +1,10 @@
+templates:
+    - name: Tailwind + React Router
+      description: React Router DHIS2 app with Tailwind CSS
+      source: derrick-nuby/dhis2-ts-tailwind-react-router
+      maintainer:
+          name: Derrick Iradukunda
+          url: https://github.com/derrick-nuby
+      organisation:
+          name: HISP Rwanda
+          url: https://hisprwanda.org

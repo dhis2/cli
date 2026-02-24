@@ -13,7 +13,8 @@
         "@dhis2/cli-helpers-engine": "^3.2.2",
         "@inquirer/prompts": "^7.8.4",
         "fast-glob": "^3.3.3",
-        "fs-extra": "^11.3.3"
+        "fs-extra": "^11.3.3",
+        "yaml": "^2.8.1"
     },
     "private": false,
     "keywords": [],

@@ -1,11 +1,16 @@
-const { execSync } = require('child_process')
-const path = require('path')
+const { execSync } = require('node:child_process')
+const path = require('node:path')
 const { reporter, exec, chalk } = require('@dhis2/cli-helpers-engine')
 const { input, select } = require('@inquirer/prompts')
 const fg = require('fast-glob')
 const fs = require('fs-extra')
+const getCommunityTemplates = require('./utils/getCommunityTemplates')
 const { default: getPackageManager } = require('./utils/getPackageManager')
+const { isGitTemplateSpecifier } = require('./utils/isGitTemplateSpecifier')
 const resolveExternalTemplateSource = require('./utils/resolveExternalTemplateSource')
+const {
+    resolveTemplateSourceInput,
+} = require('./utils/resolveTemplateSourceInput')
 
 process.on('uncaughtException', (error) => {
     if (error instanceof Error && error.name === 'ExitPromptError') {
@@ -28,6 +33,7 @@ const templates = {
         '../templates/template-ts-dataelements-react-router'
     ),
 }
+const builtInTemplateKeys = ['basic', 'react-router']
 
 const commandHandler = {
     command: '*', // default command
@@ -47,7 +53,7 @@ const commandHandler = {
         },
         template: {
             description:
-                'Which template to use (Basic, With React Router, or GitHub template specifier)',
+                'Which template to use (basic, react-router, community template source, or GitHub template specifier)',
             type: 'string',
         },
         packageManager: {
@@ -70,6 +76,18 @@ const getBuiltInTemplateDirectory = (templateName) => {
     return null
 }
 
+const formatUnknownTemplateError = (templateSource, communityTemplates) => {
+    const communitySources = communityTemplates.map(
+        (template) => template.source
+    )
+    const availableTemplates = [...builtInTemplateKeys, ...communitySources]
+    const formattedTemplateList = availableTemplates.length
+        ? availableTemplates.join(', ')
+        : '(none)'
+
+    return `Unknown template "${templateSource}". Available templates: ${formattedTemplateList}. Or use a GitHub template specifier like "owner/repo#ref" or "https://github.com/owner/repo#ref".`
+}
+
 const command = {
     command: '[app]',
     builder: (yargs) => {
@@ -77,6 +95,16 @@ const command = {
     },
     handler: async (argv) => {
         let name = argv._[0] || argv.name
+        let communityTemplates = []
+
+        try {
+            communityTemplates = getCommunityTemplates()
+        } catch (error) {
+            reporter.error(
+                error instanceof Error ? error.message : String(error)
+            )
+            process.exit(1)
+        }
 
         const useDefauls = argv.yes
 
@@ -122,6 +150,10 @@ const command = {
                             value: 'react-router',
                         },
                         {
+                            name: 'Community templates',
+                            value: 'community',
+                        },
+                        {
                             name: 'Custom template from Git',
                             value: 'custom-git',
                         },
@@ -134,6 +166,30 @@ const command = {
                             'Enter GitHub template specifier (e.g. owner/repo#main)',
                         required: true,
                     })
+                } else if (template === 'community') {
+                    const communityTemplate = await select({
+                        message: 'Select a community template',
+                        choices: [
+                            ...communityTemplates.map((communityEntry) => ({
+                                name: communityEntry.displayName,
+                                value: communityEntry.source,
+                            })),
+                            {
+                                name: 'Use a Git repository',
+                                value: 'custom-git',
+                            },
+                        ],
+                    })
+
+                    if (communityTemplate === 'custom-git') {
+                        selectedOptions.templateSource = await input({
+                            message:
+                                'Enter GitHub template specifier (e.g. owner/repo#main)',
+                            required: true,
+                        })
+                    } else {
+                        selectedOptions.templateSource = communityTemplate
+                    }
                 } else {
                     selectedOptions.templateSource = template
                 }
@@ -174,21 +230,45 @@ const command = {
             })
             reporter.debug('Successfully ran git clean')
         } catch (err) {
-            reporter.debug(err)
+            reporter.debug(err instanceof Error ? err.message : String(err))
         }
 
         reporter.info('Copying template files')
         let resolvedExternalTemplate
         try {
+            const normalizedTemplateSource = String(
+                selectedOptions.templateSource || ''
+            ).trim()
             const builtInTemplatePath = getBuiltInTemplateDirectory(
-                selectedOptions.templateSource
+                normalizedTemplateSource
             )
 
             if (builtInTemplatePath) {
                 fs.copySync(builtInTemplatePath, cwd)
             } else {
+                const resolvedTemplateSource = resolveTemplateSourceInput(
+                    normalizedTemplateSource,
+                    communityTemplates
+                )
+                const externalTemplateSource = resolvedTemplateSource.source
+
+                if (!isGitTemplateSpecifier(externalTemplateSource)) {
+                    if (resolvedTemplateSource.kind === 'community') {
+                        throw new Error(
+                            `Community template "${resolvedTemplateSource.name}" has an invalid source "${externalTemplateSource}".`
+                        )
+                    }
+
+                    throw new Error(
+                        formatUnknownTemplateError(
+                            normalizedTemplateSource,
+                            communityTemplates
+                        )
+                    )
+                }
+
                 resolvedExternalTemplate = await resolveExternalTemplateSource(
-                    selectedOptions.templateSource
+                    externalTemplateSource
                 )
                 fs.copySync(resolvedExternalTemplate.templatePath, cwd)
             }
