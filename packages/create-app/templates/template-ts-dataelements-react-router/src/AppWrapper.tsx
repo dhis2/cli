@@ -4,6 +4,7 @@ import App from '@/App'
 import classes from '@/App.module.css'
 import AboutPage from '@/components/About'
 import AppMenu from '@/components/AppMenu'
+import './locales'
 
 const AppWrapper = () => {
     return (
