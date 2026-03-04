@@ -68,10 +68,7 @@ Main components: Tailwind CSS, React Router
 Organisation: HISP Rwanda
 Developed by: [Derrick Iradukunda](https://github.com/derrick-nuby)
 
-If you would like to promote your own community template, you can open a PR
-for the [CLI docs](https://github.com/dhis2/cli/blob/master/docs/commands/create-app.md)
-including template URL and installation steps, and any other relevant
-information.
+If you would like to promote your own community template, you can open a PR for the [CLI docs](https://github.com/dhis2/cli/blob/master/docs/commands/create-app.md) including template URL and installation steps, and any other relevant information.
 
 ## Examples
 
