@@ -52,13 +52,13 @@ You can run `pnpm create @dhis2/app@alpha --help` for the list of options availa
 
 The CLI also supports installing templates developed by the community using a GitHub repository URL or `owner/repo` specifier. These templates are maintained outside the CLI, so you should review the source code before using them in your project.
 
-Here is a good starting template developed by the community:
+Here are some of the available community templates:
 
 ### Tailwind + React Router
 
 React Router DHIS2 app template with Tailwind CSS.
 
-Repository: <https://github.com/derrick-nuby/dhis2-ts-tailwind-react-router>
+Repository: [https://github.com/derrick-nuby/dhis2-ts-tailwind-react-router](https://github.com/derrick-nuby/dhis2-ts-tailwind-react-router)
 
 ```sh
 pnpm create @dhis2/app my-app --template https://github.com/derrick-nuby/dhis2-ts-tailwind-react-router
@@ -66,7 +66,12 @@ pnpm create @dhis2/app my-app --template https://github.com/derrick-nuby/dhis2-t
 
 Main components: Tailwind CSS, React Router
 Organisation: HISP Rwanda
-Developed by: Derrick Iradukunda
+Developed by: [Derrick Iradukunda](https://github.com/derrick-nuby)
+
+If you would like to promote your own community template, you can open a PR
+for the [CLI docs](https://github.com/dhis2/cli/blob/master/docs/commands/create-app.md)
+including template URL and installation steps, and any other relevant
+information.
 
 ## Examples
 
