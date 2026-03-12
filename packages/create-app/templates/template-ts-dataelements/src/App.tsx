@@ -4,6 +4,7 @@ import { NoticeBox } from '@dhis2/ui'
 import React, { FC } from 'react'
 import classes from '@/App.module.css'
 import DataElementsList from '@/components/DataElementsList'
+import './locales'
 
 interface QueryResults {
     me: {
